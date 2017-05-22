@@ -22,4 +22,5 @@
   - IDA
   - OD
 - 知识经验
-  - Hackintosh
+  - [Hackintosh](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/Hackintosh.md)
+  - [在线资源](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/online.md)
