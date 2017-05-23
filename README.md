@@ -4,7 +4,7 @@
 
 ## 前言
 
-记录和归纳一些自己在Win、Mac和Linux上个人常用效率、开发软件相关的使用技巧。有些经验真的是自己连续七八个小时专研出来的，但不记录，过了半把年可能会忘记大部分。
+记录和归纳一些自己在Win、Mac和Linux上个人常用效率、开发软件相关的使用技巧。有些经验真的是自己连续七八个小时专研出来的，但不记录，过了半把年可能会忘记大部分。比如2017年初玩的黑苹果，花了一个月专门研究，各种都弄熟了，但不记录，现在都有些不记得。
 
 
 ## 目录
@@ -16,8 +16,10 @@
 - 软件/App
   - MAC: 常用APP集
   - Win: 常用软件集
-  - WebStorm
-  - Visual Studio Code
+  - [WebStorm](https://github.com/szy0syz/szy-tech-articles/blob/master/App/WebStorm.md)
+  - [VSCode](https://github.com/szy0syz/szy-tech-articles/blob/master/App/VSCode.md)
+  - [Redis](https://github.com/szy0syz/szy-tech-articles/blob/master/App/redis.md)
+  - [MongoDB](https://github.com/szy0syz/szy-tech-articles/blob/master/App/mongodb.md)
   - 科学上网
   - IDA
   - OD
