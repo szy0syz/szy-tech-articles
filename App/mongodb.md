@@ -5,3 +5,7 @@
 ### 安装
 
 - Ubuntu安装，[地球最牛安装手册doc](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
+
+### 问题
+
+- mongoose在创建新对象写入数据库时，如果是undefined时，则忽略写入此属性。
