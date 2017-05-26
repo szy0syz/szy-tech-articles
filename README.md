@@ -10,19 +10,20 @@
 ## 目录
 
 - 操作系统
-  - [MAC OS](https://github.com/szy0syz/szy-tech-articles/blob/master/OS/MAC.md)
-  - [Windows](https://github.com/szy0syz/szy-tech-articles/blob/master/OS/Windows.md)
-  - [Linux](https://github.com/szy0syz/szy-tech-articles/blob/master/OS/Linux.md)
+    - [MAC OS](https://github.com/szy0syz/szy-tech-articles/blob/master/OS/MAC.md)
+    - [Windows](https://github.com/szy0syz/szy-tech-articles/blob/master/OS/Windows.md)
+    - [Linux](https://github.com/szy0syz/szy-tech-articles/blob/master/OS/Linux.md)
 - 软件/App
-  - MAC: 常用APP集
-  - Win: 常用软件集
-  - [WebStorm](https://github.com/szy0syz/szy-tech-articles/blob/master/App/WebStorm.md)
-  - [VSCode](https://github.com/szy0syz/szy-tech-articles/blob/master/App/VSCode.md)
-  - [Redis](https://github.com/szy0syz/szy-tech-articles/blob/master/App/redis.md)
-  - [MongoDB](https://github.com/szy0syz/szy-tech-articles/blob/master/App/mongodb.md)
-  - 科学上网
-  - IDA
-  - OD
+    - [MAC: 常用APP集](https://github.com/szy0syz/szy-tech-articles/blob/master/App/MacList.md)
+    - [Win: 常用软件集](#)
+    - [WebStorm](https://github.com/szy0syz/szy-tech-articles/blob/master/App/WebStorm.md)
+    - [VSCode](https://github.com/szy0syz/szy-tech-articles/blob/master/App/VSCode.md)
+    - [Redis](https://github.com/szy0syz/szy-tech-articles/blob/master/App/redis.md)
+    - [MongoDB](https://github.com/szy0syz/szy-tech-articles/blob/master/App/mongodb.md)
+    - 科学上网
+    - IDA
+    - OD
 - 知识经验
-  - [Hackintosh](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/Hackintosh.md)
-  - [在线资源](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/online.md)
+    - [Hackintosh](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/Hackintosh.md)
+    - [在线资源](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/online.md)
+    - [珠峰JS全栈培训：一、作用域深入和面向对象](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf01.md)
