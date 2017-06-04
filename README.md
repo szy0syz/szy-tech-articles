@@ -26,4 +26,5 @@
 - 知识经验
     - [Hackintosh](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/Hackintosh.md)
     - [在线资源](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/online.md)
-    - [珠峰JS全栈培训：一、作用域深入和面向对象](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf01.md)
+    - [珠峰前端全栈培训第一周：作用域深入和面向对象编程](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf01.md)
+    - [珠峰前端全栈培训第二周：call/apply/表格排序/正则](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf02.md)
