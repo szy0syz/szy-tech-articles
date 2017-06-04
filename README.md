@@ -20,7 +20,7 @@
     - [VSCode](https://github.com/szy0syz/szy-tech-articles/blob/master/App/VSCode.md)
     - [Redis](https://github.com/szy0syz/szy-tech-articles/blob/master/App/redis.md)
     - [MongoDB](https://github.com/szy0syz/szy-tech-articles/blob/master/App/mongodb.md)
-    - 科学上网
+    - [科学上网](https://github.com/szy0syz/szy-tech-articles/blob/master/App/ss.md)
     - IDA
     - OD
 - 知识经验
