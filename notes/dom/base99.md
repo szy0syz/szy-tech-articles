@@ -50,8 +50,6 @@ HTML DOM Tree 实例
 
 #### 小细节记录
  
- - 关于体会“在HTML DOM中，所有事物都是节点。”
- 
 ```javascript
 // 我在我博客http://jerryshi.com执行这个，你懂的我为什么不加all，毕竟一个文档只有一个html根节点嘛。
 var html = document.querySelector("html")
@@ -90,6 +88,11 @@ this.children = function () {
 
 ----------
 
+#### HTML DOM Nodes prototype
+
+![dom-node-prototype.png-91.1kB][3]
+
 
   [1]: http://static.zybuluo.com/szy0syz/7gzcwkkvflsvtlj8n1hsgcgs/dom-tree.png
   [2]: http://static.zybuluo.com/szy0syz/lkekkdkpplyhuem5xu6m6g2k/dom-tree-relation.png
+  [3]: http://static.zybuluo.com/szy0syz/uli7yhkhho89xpdar1hcfwj2/dom-node-prototype.png
