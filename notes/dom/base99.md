@@ -27,7 +27,7 @@ HTML DOM 将HTML  文档视作树结构。这种树结构被统称为节点数�
 
 HTML DOM Tree 实例
 
-![tree]()
+![dom-tree.png-34kB][1]
 
 > 通过HTML DOM，树中的所有节点均可通过JavaScript进行访问。所有HTML元素(节点)均可修改，也可以创删除节点。
 
@@ -44,7 +44,7 @@ HTML DOM Tree 实例
 
 来个图部分展示一下节点数以及他们之间的关系
 
-![relation]()
+![dom-tree-relation.png-30.2kB][2]
 
 > w3cshcool上的例子讲错了，`html`是有父节点的，就是文档节点`document`。
 
@@ -89,3 +89,7 @@ this.children = function () {
 ```
 
 ----------
+
+
+  [1]: http://static.zybuluo.com/szy0syz/7gzcwkkvflsvtlj8n1hsgcgs/dom-tree.png
+  [2]: http://static.zybuluo.com/szy0syz/lkekkdkpplyhuem5xu6m6g2k/dom-tree-relation.png
