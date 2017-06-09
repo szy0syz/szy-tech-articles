@@ -30,6 +30,7 @@
   - [在线资源](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/online.md)
   - [珠峰前端全栈培训第一周：作用域深入和面向对象编程](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf01.md)
   - [珠峰前端全栈培训第二周：call/apply/表格排序/正则](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf02.md)
+  - [珠峰前端全栈培训第三周：dom盒子模型实战和dom库封装](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf03.md)
 
 - 学习笔记
   - [JavaScript DOM基础 ---- 04.HTMLElement class](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base04.md)
