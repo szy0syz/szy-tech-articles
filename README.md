@@ -38,8 +38,10 @@
   - [JavaScript DOM基础 ---- 99. DOM 个人总结](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base99.md)
 
 - 干货店铺
-  - [JavaScript标准参考教材](http://javascript.ruanyifeng.com/)
+  - [JavaScript标准参考教材](http://javascript.ruanyifeng.com/)
   - [《ECMAScript 6入门》](http://es6.ruanyifeng.com/)
   - [jstraining](https://github.com/ruanyf/jstraining)
   - [shanyue's blog](https://github.com/shfshanyue/blog)
   - [冴羽的博客](https://github.com/mqyqingfeng/Blog)
+
+-------------
