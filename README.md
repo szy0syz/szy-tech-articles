@@ -28,14 +28,15 @@
 - 知识经验
   - [Hackintosh](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/Hackintosh.md)
   - [在线资源](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/online.md)
-  - [珠峰前端全栈培训第一周：作用域深入和面向对象编程](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf01.md)
-  - [珠峰前端全栈培训第二周：call/apply/表格排序/正则](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf02.md)
-  - [珠峰前端全栈培训第三周：dom盒子模型实战和dom库封装](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf03.md)
 
 - 学习笔记
-  - [JavaScript DOM基础 ---- 04.HTMLElement class](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base04.md)
-  - [JavaScript DOM基础 ---- 05.HTMLDivElement、HTMLAnchorElement](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base05.md)
-  - [JavaScript DOM基础 ---- 99. DOM 个人总结](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base99.md)
+     - [珠峰前端全栈培训第一周：作用域深入和面向对象编程](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf01.md)
+     - [珠峰前端全栈培训第二周：call/apply/表格排序/正则](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf02.md)
+    - [珠峰前端全栈培训第三周：dom盒子模型实战和dom库封装](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf03.md)
+    - [珠峰前端全栈培训第四周：tween动画和轮播图以及jquery实战](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf04.md)
+    - [JavaScript DOM基础 ---- 04.HTMLElement class](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base04.md)
+    - [JavaScript DOM基础 ---- 05.HTMLDivElement、HTMLAnchorElement](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base05.md)
+    - [JavaScript DOM基础 ---- 99. DOM 个人总结](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base99.md)
 
 - 干货店铺
   - [JavaScript标准参考教材](http://javascript.ruanyifeng.com/)
