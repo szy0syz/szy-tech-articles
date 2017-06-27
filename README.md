@@ -35,6 +35,7 @@
     - [珠峰前端全栈培训第三周：dom盒子模型实战和dom库封装](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf03.md)
     - [珠峰前端全栈培训第四周：tween动画和轮播图以及jquery实战(1)](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf04-1.md)
     - [珠峰前端全栈培训第四周：tween动画和轮播图以及jquery实战(2)](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf04-2.md)
+    - [珠峰前端全栈培训第五周：dom零级、二级事件基础和实战](https://github.com/szy0syz/szy-tech-articles/blob/master/Knowledge/FullStack/zf05.md) 
     - [JavaScript DOM基础 ---- 04.HTMLElement class](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base04.md)
     - [JavaScript DOM基础 ---- 05.HTMLDivElement、HTMLAnchorElement](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base05.md)
     - [JavaScript DOM基础 ---- 99. DOM 个人总结](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base99.md)
