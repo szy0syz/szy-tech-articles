@@ -39,6 +39,8 @@
     - [JavaScript DOM基础 ---- 04.HTMLElement class](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base04.md)
     - [JavaScript DOM基础 ---- 05.HTMLDivElement、HTMLAnchorElement](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base05.md)
     - [JavaScript DOM基础 ---- 99. DOM 个人总结](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/dom/base99.md)
+    - [VanillaJS小技巧总结](https://github.com/szy0syz/szy-tech-articles/blob/master/notes/vanillaJS.md)
+
 
 - 干货店铺
   - **[JavaScript标准参考教材](http://javascript.ruanyifeng.com/)**
