@@ -23,13 +23,16 @@
   - [珠峰前端培训第二周：call/apply/表格排序/正则](/Knowledge/FullStack/zf02.md)
   - [珠峰前端培训第三周：dom盒子模型实战和dom库封装](/Knowledge/FullStack/zf03.md)
   - [珠峰前端培训第四周：tween动画和轮播图以及jquery实战(1)](/Knowledge/FullStack/zf04-1.md)
-  - [珠峰前端培训第四周：tween动画和轮播图以及jquery实战(2)](Knowledge/FullStack/zf04-2.md)
+  - [珠峰前端培训第四周：tween动画和轮播图以及jquery实战(2)](/Knowledge/FullStack/zf04-2.md)
   - [珠峰前端培训第五周：dom零级、二级事件基础和实战](/Knowledge/FullStack/zf05.md) 
   - [JS dom基础：04.HTMLElement class](/notes/dom/base04.md)
   - [JS dom基础：05.HTMLDivElement、HTMLAnchorElement](/notes/dom/base05.md)
   - [JS dom基础：99. DOM 个人总结](/notes/dom/base99.md)
   - [VanillaJS小技巧总结](/notes/vanillaJS.md)
 
+- 读书笔记
+  - [《JavaScript权威指南（第6版）》](/notes/reading/9787111376613/README.md)
+  - [《ECMAScript 6 入门（第2版）》](/notes/reading/9787121276576/README.md)
 
 - 干货店铺
   - **[JavaScript标准参考教材](http://javascript.ruanyifeng.com/)**
