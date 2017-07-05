@@ -11,8 +11,8 @@
   - [Redis](/App/redis.md)
   - [MongoDB](/App/mongodb.md)
   - [科学上网](/App/ss.md)
-  - IDA
-  - OD
+  - [IDA](#)
+  - [OD](#)
 
 - 知识经验
   - [Hackintosh](/Knowledge/Hackintosh.md)

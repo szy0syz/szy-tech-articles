@@ -1,12 +1,13 @@
 <!--![logo](_media/icon.svg)-->
 
-# **szy-tech-articles**
+# **szy-tech-articles <small>^_^</small>**
 
 > 用来记录各式各样技术相关的文章
 
-- 精细
+- ~争取做到~
 - 准确
-- 原创
+- 细致
+- 持续
 
 
 [GitHub](https://github.com/szy0syz/szy-tech-articles)
