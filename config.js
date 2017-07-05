@@ -18,6 +18,13 @@ window.$docsify = {
       placeholder: 'Type to search',
       noData: '未找到结果'
     },
+    alias: {
+      '/App/_sidebar.md': '/_sidebar.md',
+      '/Knowledge/_sidebar.md': '/_sidebar.md',
+      '/notes/_sidebar.md': '/_sidebar.md',
+      '/OS/_sidebar.md': '/_sidebar.md',
+      '/Knowledge/FullStack/_sidebar.md': '/_sidebar.md'
+    },
     plugins: [
       function (hook, vm) {
         hook.beforeEach(function (md) {
