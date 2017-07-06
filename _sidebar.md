@@ -36,6 +36,7 @@
   - [《Node与Express开发》](/notes/reading/9787115380333/README.md)
   - [《Node.JS实战》](/notes/reading/9787115352460/README.md)
   - [《深入浅出Node.js》](/notes/reading/9787115335500/README.md)
+  - [《JavaScript模式》](/notes/reading/9787512329232/README.md)
 
 
 - 干货店铺
