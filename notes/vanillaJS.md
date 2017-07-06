@@ -8,7 +8,14 @@
 var str = '  szy0syz '.replace(/^ +| +$/g,''); // -> str: "szy0syz"
 ```
 
-- 【兼容处理类】事件兼容写法
+- 【数组类】类数组转换数组
+
+```javascript
+var ary = [].slice.call(likeAry);
+var ary2 = Array.prototype.slice.call(likeAry);
+```
+
+- 【兼容类】事件兼容写法
 
 ```javascript
 e = e || window.event;
