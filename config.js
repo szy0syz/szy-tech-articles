@@ -20,7 +20,12 @@ window.$docsify = {
       '/notes/_sidebar.md': '/_sidebar.md',
       '/OS/_sidebar.md': '/_sidebar.md',
       '/notes/learing/_sidebar.md': '/_sidebar.md',
-      'notes/reading/_sidebar.md': '/_sidebar.md',
+      '/notes/reading/_sidebar.md': '/_sidebar.md',
+      '/notes/reading/9787111376613/_sidebar.md': '/_sidebar.md',
+      '/notes/reading/9787115335500/_sidebar.md': '/_sidebar.md',
+      '/notes/reading/9787115352460/_sidebar.md': '/_sidebar.md',
+      '/notes/reading/9787115380333/_sidebar.md': '/_sidebar.md',
+      '/notes/reading/9787121276576/_sidebar.md': '/_sidebar.md',
       '/Knowledge/FullStack/_sidebar.md': '/_sidebar.md'
     },
     plugins: [
