@@ -1,7 +1,3 @@
-function getTimestamp() {
-  return parseInt(new Date() / 1000, 10);
-}
-
 window.$docsify = {
     name: 'szy-tech-articles',
     repo: 'https://github.com/szy0syz/szy-tech-articles',
@@ -39,3 +35,8 @@ window.$docsify = {
         });
   }]
 }
+
+// 离线阅读
+if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('sw.js')
+  }
