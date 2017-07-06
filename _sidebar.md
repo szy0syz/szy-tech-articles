@@ -34,7 +34,6 @@
   - [《JavaScript权威指南（第6版）》](/notes/reading/9787111376613/README.md)
   - [《ECMAScript 6 入门（第2版）》](/notes/reading/9787121276576/README.md)
   - [《Node与Express开发》](/notes/reading/9787115380333/README.md)
-  - [《Node与Express开发》](/notes/reading/9787115380333/README.md)
   - [《Node.JS实战》](/notes/reading/9787115352460/README.md)
   - [《深入浅出Node.js》](/notes/reading/9787115335500/README.md)
 
