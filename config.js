@@ -1,6 +1,6 @@
 window.$docsify = {
     name: 'szy-tech-articles',
-    repo: 'https://github.com/szy0syz/szy-tech-articles',
+    repo: 'https://github.com/szy0syz/szy-tech-articles.git',
     coverpage: true,
     loadSidebar: true,
     subMaxLevel: 2,
@@ -36,7 +36,7 @@ window.$docsify = {
   }]
 }
 
-// 离线阅读
-if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('sw.js')
-  }
+// 离线阅读 (必须https才能上)
+// if (typeof navigator.serviceWorker !== 'undefined') {
+//     navigator.serviceWorker.register('sw.js')
+// }
