@@ -31,6 +31,7 @@
   - [VanillaJS小技巧总结](/notes/vanillaJS.md)
   - [SASS学习笔记](/notes/learning/css/SASS.md)
   - [JS进阶：实现bind方法](/notes/learning/js/adv-bind.md)
+  - [[极客学院]微信小程序学习笔记](/notes/learning/wxapp/jkxy.md)
   
 
 - 读书笔记
