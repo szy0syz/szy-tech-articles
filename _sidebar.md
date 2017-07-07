@@ -30,6 +30,7 @@
   - [JS dom基础：99. DOM 个人总结](/notes/dom/base99.md)
   - [VanillaJS小技巧总结](/notes/vanillaJS.md)
   - [SASS学习笔记](/notes/learning/css/SASS.md)
+  - [JS进阶：实现bind方法](/notes/learning/js/adv-bind.md)
   
 
 - 读书笔记
