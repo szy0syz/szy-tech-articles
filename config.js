@@ -19,6 +19,7 @@ window.$docsify = {
       '/Knowledge/_sidebar.md': '/_sidebar.md',
       '/notes/_sidebar.md': '/_sidebar.md',
       '/OS/_sidebar.md': '/_sidebar.md',
+      '/notes/dom/_sidebar.md': '/_sidebar.md',
       '/notes/learning/_sidebar.md': '/_sidebar.md',
       '/notes/learning/css/_sidebar.md': '/_sidebar.md',
       '/notes/learning/js/_sidebar.md': '/_sidebar.md',
