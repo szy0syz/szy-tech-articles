@@ -18,6 +18,17 @@ var ary2 = Array.prototype.slice.call(likeAry);
 - 【兼容类】事件兼容写法
 
 ```javascript
-e = e || window.event;
-e.target = e.target || e.srcElement;
+function handleClick (e) {
+    e = e || window.event; // 事件对象
+    e.target = e.target || e.srcElement; // 事件源
+    e.pageX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft); // 鼠标点击坐标距离(首屏)body的绝对距离X坐标
+    e.pageY = e.clientY + (document.documentElement.scrollHeight || document.body.scrollTop); // 鼠标点击坐标距离(首屏)body的绝对距离Y坐标
+    e.preventDefault = function () {
+      e.returnValue = false; // 取消事件的默认行为
+    };
+    e.stopPropagation = function () {
+      e.cancelBubble = true; // 取消事件的默认冒泡
+    }
+}
+
 ```
