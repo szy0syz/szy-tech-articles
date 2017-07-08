@@ -247,6 +247,9 @@ Access-Control-Allow-Credentials: true
 - 项目需求
 - 编码实战
 
+> 我靠，竟然有缓存bug，我也是醉了。
+  还是得熟悉页面生命周期才行。
+
 ## 4.1 微信小程序的UI精讲
 
 
