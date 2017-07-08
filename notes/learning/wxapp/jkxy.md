@@ -96,8 +96,10 @@ App({
 - 组件的基本使用
   - 基本一样
 - 数据绑定
-  - `.js`的`data{}`对象中 
+  - `.js`的`data{}`对象
 - 渲染标签
+  - 列表渲染：`wx:for` `block wx:for` `wx:key` 
+  - 条件渲染：`wx:if` `block wx:if`
 - 模板的使用
 
 ```javascript
@@ -172,8 +174,106 @@ Page({
 
 ## 2.3.2 微信小程序事件
 
+- 什么是事件
+  - 一种用户行为
+  - 一种通讯方式
+- 事件类别
+  - 点击事件 tap --> [属于冒泡事件]
+  - 长按事件 longtap --> [属于冒泡事件]
+  - 触摸事件 touchstart、touchend(正常结束触摸)、touchmove、touchcancel(打断触摸) --> [属于冒泡事件]
+  - 其他 submit、input...  --> [属于非冒泡事件]
+  - 事件冒泡：冒泡事件和非冒泡事件
+- 事件绑定
+  - bind绑定：带冒泡机制的绑定
+  - catch绑定：不带冒泡机制的绑定
+- 事件对象详解
+  - 类型 type
+  - 时间戳 timeStamp
+  - 事件源组件 target (就算在冒泡阶段，此属性仍然会指向原来的事件源)
+  - 当前组件 currentTarget (在冒泡执行阶段，此属性会变为冒泡执行到的组件)
+  - 触摸点数 touches
 
 ## 2.4 综合案例 - 快递查询
 
+- 产品需求
+- 准备
+- 编码实战
+
+```bash
+/442408775253/
+╭─jerry@JerrydeiMac  ~  ‹master*›
+╰─$ curl -i -k --get --include 'https://ali-deliver.showapi.com/showapi_expInfo?com=zhongtong&nu=444669873836'  -H 'Authorization:APPCODE 1e37be95b6254fd184067e20b87d1381'
+HTTP/1.1 200 OK
+Server: Tengine
+Date: Sat, 08 Jul 2017 06:46:47 GMT
+Content-Type: application/json;charset=utf-8
+Content-Length: 1697
+Connection: keep-alive
+Vary: Accept-Encoding
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Access-Control-Max-Age: 172800
+X-Ca-Request-Id: 1F5A9B6E-265D-4029-BFDE-1926F6557B67
+Access-Control-Allow-Credentials: true
+
+{"showapi_res_code":0,"showapi_res_error":"","showapi_res_body":{"mailNo":"444669873836","update":1499496407144,"updateStr":"2017-07-08 14:46:47","ret_code":0,"flag":true,"dataSize":11,"status":4,"tel":"021-39777777","expSpellName":"zhongtong","data":[{"time":"2017-07-06 10:50:26","context":"[昆明月牙塘二部] [昆明市] [昆明月牙塘二部]的派件已签收 感谢使用中通快递,期待再次为您服务!"},{"time":"2017-07-06 08:08:35","context":"[昆明月牙塘二部] [昆明市] [昆明月牙塘二部]的皮国金正在第1次派件 电话:18206766125 请保持电话畅通、耐心等待"},{"time":"2017-07-06 08:06:14","context":"[昆明月牙塘二部] [昆明市] 快件到达 [昆明月牙塘二部]"},{"time":"2017-07-06 07:45:34","context":"[昆明月牙塘] [昆明市] 快件离开 [昆明月牙塘]已发往[昆明月牙塘二部]"},{"time":"2017-07-06 07:24:57","context":"[昆明月牙塘] [昆明市] 快件到达 [昆明月牙塘]"},{"time":"2017-07-06 02:55:31","context":"[昆明中转] [昆明市] 快件离开 [昆明中转]已发往[昆明月牙塘]"},{"time":"2017-07-06 02:32:16","context":"[昆明中转] [昆明市] 快件到达 [昆明中转]"},{"time":"2017-07-05 00:24:28","context":"[深圳中心] [深圳市] 快件离开 [深圳中心]已发往[昆明中转]"},{"time":"2017-07-05 00:22:52","context":"[深圳中心] [深圳市] 快件到达 [深圳中心]"},{"time":"2017-07-04 22:22:43","context":"[深圳龙华] [深圳市] 快件离开 [深圳龙华]已发往[昆明]"},{"time":"2017-07-04 20:21:17","context":"[深圳龙华] [深圳市] [深圳龙华]的大浪无线网络科技已收件 电话:18138812078"}],"expTextName":"中通快递"}}%
+```
+- 阿里云市场：[全国快递物流查询]返回的对象结构图
+![image.png-36.3kB][1]
+
+## 3.1 微信小程序的配置详情
 
 
+## 3.2.1 微信小程序的生命周期与app对象的使用
+
+- app的页面配置
+- app的窗口配置
+- app的tabBar配置
+  - `pages`和`tabBar`路径要配对，否则不显示 
+- 网络超时配置及debug开启配置
+- 页面配置
+  - 在页面文件夹下新建的`.json`和`.wxss`会覆盖全局的`app.json`和`app.wxss`配置
+
+## 3.2.2 微信小程序页面的生命周期和参数传递
+
+
+
+## 3.3 综合案例 - 用户登录
+
+
+
+## 4.1 微信小程序的UI精讲
+
+
+
+## 4.2.1 布局基础
+
+
+
+## 4.2.2 样式基础
+
+
+
+## 4.3.1 组件的使用
+
+
+
+## 4.3.2 视图容器组件
+
+
+
+## 4.3.3 基础内容组件
+
+
+
+## 4.3.4表单组件
+
+
+
+
+
+  [1]: http://static.zybuluo.com/szy0syz/6bfjlbsej8g60s6efq5qyfmr/image.png
+  
+  
+  
