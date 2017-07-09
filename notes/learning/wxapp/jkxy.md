@@ -250,6 +250,8 @@ Access-Control-Allow-Credentials: true
 > 我靠，竟然有缓存bug，我也是醉了。
   还是得熟悉页面生命周期才行。
 
+- navigateTo, redirectTo 只能打开非 tabBar 页面。
+
 ## 4.1 微信小程序的UI精讲
 
 
