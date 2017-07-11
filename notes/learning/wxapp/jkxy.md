@@ -272,6 +272,8 @@ Access-Control-Allow-Credentials: true
     6 align-self定义元素自身的对齐方式
   - flex布局实战
 - 相对定位和绝对定位
+  - 相对定位的元素是相对自身进行定位，参照物是自己
+  - 绝对定位的元素时相对<font color=#0099ff>离它最近的一个已定位的父级元素</font>进行定位
 
 理解flex的容器和元素
 ![image.png-217.7kB][2]
