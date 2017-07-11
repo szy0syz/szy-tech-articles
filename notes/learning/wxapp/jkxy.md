@@ -280,7 +280,39 @@ Access-Control-Allow-Credentials: true
 
 ## 4.2.1 布局基础
 
-
+- 样式的基本使用
+- 样式的属性
+  - 尺寸
+  - 背景
+  - 边框
+  - 边距
+  - 文本
+  - 其他
+- 样式选择器的使用
+  - 基本选择器
+    1. 类选择器 (.name{})
+    2. ID选择器 (.id{})
+    3. 元素选择器 (.tagname{})
+    4. 通配符选择器 (*{})
+    5. 包含选择器 (parent child{})
+    6. 子元素选择器 (parent > c{})
+    7. 邻近兄弟元素选择器 (c + c{})
+    8. 通用兄弟元素选择器 (c ~ c{})
+  - 属性选择器
+    1. E[attr]
+    2. E[attr="value"]
+    3. E[attr~="value"]
+    4. E[attr|="value"]
+    5. E[attr^="value"]
+    6. E[attr$="value"]
+    7. E[attr*="value"]
+  - 伪类选择器
+    1. 动态伪类选择器(:link, :visited, :hover, :active, :focus)
+    2. 状态伪类选择器(:enable, :disable, :checked)
+    3. 选择伪类选择器(:first-child, :last-child, :nth:-child(), :nth-last-child, :nth-of-type, :nth-last-of-type(), :first-of-type, :last-of-tupe, :only-child, :only-of-type)
+    4. 空内容伪类选择器(:empty)
+    5. 否定伪类选择器(:not)
+    6. 伪元素(::first-line, ::first-letter, ::before, ::after, ::selection)
 
 ## 4.2.2 样式基础
 
