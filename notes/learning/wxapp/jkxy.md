@@ -251,10 +251,30 @@ Access-Control-Allow-Credentials: true
   还是得熟悉页面生命周期才行。
 
 - navigateTo, redirectTo 只能打开非 tabBar 页面。
+- 在开发中，注意异步函数。
 
 ## 4.1 微信小程序的UI精讲
 
+- flex布局基础
+  - flex的容器和元素
+  - flex容器属性详解
+    1 flex-direction决定元素的排列方向
+    2 flex-warp决定元素如何换行(排列不下时)
+    3 flex-flow、flex-direction和flex-warp的简写
+    4 justify-content元素在主轴上的对齐方式
+    5 align-items元素在交叉轴的对齐方式
+  - flex元素属性详解
+    1 flex-grow当有多余空间时，元素的放大比例
+    2 flew-shriw当空间不足时，元素的缩小比例
+    3 flex-basis元素在主轴上占据的空间
+    4 flex是grow、shrink、basis的简写
+    5 order定义元素的排列方式
+    6 align-self定义元素自身的对齐方式
+  - flex布局实战
+- 相对定位和绝对定位
 
+理解flex的容器和元素
+![image.png-217.7kB][2]
 
 ## 4.2.1 布局基础
 
@@ -282,7 +302,10 @@ Access-Control-Allow-Credentials: true
 
 
 
+  
+  
+
+
   [1]: http://static.zybuluo.com/szy0syz/6bfjlbsej8g60s6efq5qyfmr/image.png
-  
-  
+  [2]: http://static.zybuluo.com/szy0syz/5wz3qdz29etdwps9e63a1ed1/image.png
   
