@@ -278,7 +278,7 @@ Access-Control-Allow-Credentials: true
 理解flex的容器和元素
 ![image.png-217.7kB][2]
 
-## 4.2.1 布局基础
+## 4.2 布局基础与样式基础
 
 - 样式的基本使用
 - 样式的属性
@@ -314,13 +314,10 @@ Access-Control-Allow-Credentials: true
     5. 否定伪类选择器(:not)
     6. 伪元素(::first-line, ::first-letter, ::before, ::after, ::selection)
 
-## 4.2.2 样式基础
-
-
-
 ## 4.3.1 组件的使用
 
-
+- 组件的使用
+- 组件的配置
 
 ## 4.3.2 视图容器组件
 
