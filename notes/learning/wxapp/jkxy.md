@@ -258,18 +258,18 @@ Access-Control-Allow-Credentials: true
 - flex布局基础
   - flex的容器和元素
   - flex容器属性详解
-    1 flex-direction决定元素的排列方向
-    2 flex-warp决定元素如何换行(排列不下时)
-    3 flex-flow、flex-direction和flex-warp的简写
-    4 justify-content元素在主轴上的对齐方式
-    5 align-items元素在交叉轴的对齐方式
+    1. flex-direction决定元素的排列方向
+    2. flex-warp决定元素如何换行(排列不下时)
+    3. flex-flow、flex-direction和flex-warp的简写
+    4. justify-content元素在主轴上的对齐方式
+    5. align-items元素在交叉轴的对齐方式
   - flex元素属性详解
-    1 flex-grow当有多余空间时，元素的放大比例
-    2 flew-shriw当空间不足时，元素的缩小比例
-    3 flex-basis元素在主轴上占据的空间
-    4 flex是grow、shrink、basis的简写
-    5 order定义元素的排列方式
-    6 align-self定义元素自身的对齐方式
+    1. flex-grow当有多余空间时，元素的放大比例
+    2. flew-shriw当空间不足时，元素的缩小比例
+    3. flex-basis元素在主轴上占据的空间
+    4. flex是grow、shrink、basis的简写
+    5. order定义元素的排列方式
+    6. align-self定义元素自身的对齐方式
   - flex布局实战
 - 相对定位和绝对定位
   - 相对定位的元素是相对自身进行定位，参照物是自己

@@ -26,7 +26,8 @@
   - SSD: Samsung 850 EVO 250G SATA3
   - HHD: WD 3TB SATA3 64M 
   - Monitor: Samsung T240 (2007年10月1日买的...)
-  - macOS Sierra 10.12.3
+  - macOS Sierra 10.12.4
+  - Accessories: BCM94360CD/11AC-1900M
   
 
 
