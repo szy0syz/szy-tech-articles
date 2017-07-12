@@ -321,17 +321,44 @@ Access-Control-Allow-Credentials: true
 
 ## 4.3.2 视图容器组件
 
-
+- view
+- scroll-view
+- swiper
+- movable-view
+- cover-view
 
 ## 4.3.3 基础内容组件
 
+- icon
+- text
+- progress
+- rich-text
+
+## 4.3.4 表单组件
 
 
-## 4.3.4表单组件
+## 4.4.1 操作反馈小工具
 
+- wx.showToast
+- wx.showLoading
+- wx.hideToast
+- wx.showModal
+- wx.showActionSheet
 
+## 4.4.4 地图于LBS
 
+- 地图的基本使用
+- 地图标记
+- 地图覆盖物
 
+## 4.4.5 画图于游戏
+
+- canvas的使用
+- 绘图API的使用
+
+## 4.5 综合案例-评测小程序首页的实现
+
+> 花了40分钟边学边写。需要注意几点：一是如果设置幻灯片的具体大小，要直接设置到<image>标签的大小上，要不然撑不开；二是如果可以尽量利用flexbox布局；三是就把<view>标签当做<div>来看待。
 
   
   
