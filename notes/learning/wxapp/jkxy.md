@@ -260,7 +260,7 @@ Access-Control-Allow-Credentials: true
   - flex容器属性详解
     1. flex-direction决定元素的排列方向
     2. flex-warp决定元素如何换行(排列不下时)
-    3. flex-flow、flex-direction和flex-warp的简写
+    3. flex-flow: flex-direction和flex-warp的简写
     4. justify-content元素在主轴上的对齐方式
     5. align-items元素在交叉轴的对齐方式
   - flex元素属性详解
