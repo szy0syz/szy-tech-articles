@@ -275,8 +275,8 @@ Access-Control-Allow-Credentials: true
   - 相对定位的元素是相对自身进行定位，参照物是自己
   - 绝对定位的元素时相对<font color=#0099ff>离它最近的一个已定位的父级元素</font>进行定位
 
-理解flex的容器和元素: [MDN解释][3]
-![image.png-40.2kB][2]
+理解flex的容器和元素: [MDN解释][2]
+![image.png-40.2kB][3]
 
 ## 4.2 布局基础与样式基础
 
@@ -402,15 +402,46 @@ Access-Control-Allow-Credentials: true
 
 ## 6.1 课程介绍
 
+- 仿V2ex微信小程序开发
+  1. 产品设计：利用XMind等工具进行产品分析和原型设计
+  2. 框架搭建：微信小程序MINA框架讲解和配置
+  3. 界面设计与开发：微信小程序常用组件讲解和界面开发
+  4. API设计与开发：微信小程序常用API讲解和接口调用
+  5. 部署上线：微信小程序公众号后台大揭秘
 
 ## 6.2.1 使用XMind进行产品需求分析
 
+![image.png-19.8kB][4]
 
 ## 6.2.2 使用墨刀进行产品原型设计
 
+- 什么是产品原型？
+  - 产品原型展示了页面级别的信息架构、文案设计及页面和页面之间的交互信息，它是产品功能与内容的示意图。
+  - 产品原型是产品在上线前的一个蓝图！展示产品的功能！
+  - 一个号的产品原型，可以减少我们在开发过程中纠结的时间。
+
+- 墨刀是一款简洁易用的移动端原型设计工具，支持团队协作，拥有大量的控件支持在手机上预览效果，查看原型的具体状态。
+- 原型设计应关注的点
+  1. 页面元素
+  2. 数据逻辑
+  3. 操作逻辑
+  
 
 ## 6.3.1 路由配置、完成底部TabBar设计
 
+- 微信小程序框架--MINA框架
+  - Json File： 配置文件 `.json` 
+  - WXML File：界面结构 `*.mxml`
+  - JS File：功能编写 `*.js`
+  - WXSS File：样式美化 `*.wxss`
+
+
+- App.json文件用于对小程序进行全局设置
+  - pages：定义小程序的路由
+  - window：定义小程序的菜单
+  - tabBar：定义小程序的底部Tab
+  - networkTimeout：定义小程序的超时
+  - debug：定义小程序的debug模式
 
 ## 6.3.2 产品层级、组件模块化设计
 
@@ -446,6 +477,7 @@ Access-Control-Allow-Credentials: true
 
 
   [1]: http://static.zybuluo.com/szy0syz/6bfjlbsej8g60s6efq5qyfmr/image.png
-  [2]: http://static.zybuluo.com/szy0syz/udpz3u2dcbe9ennep3fhpaud/image.png
-  [3]: https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes
-  
+  [2]: https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes
+  [3]: http://static.zybuluo.com/szy0syz/udpz3u2dcbe9ennep3fhpaud/image.png
+  [4]: http://static.zybuluo.com/szy0syz/i0aew6q52q1elzgt476p11cf/image.png
+
