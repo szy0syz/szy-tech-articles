@@ -25,7 +25,7 @@ sudo apt-get update
 sudo apt-get install build-essential libssl-dev  
 ```
 
-- 安装
+- 安装&更新
 
 ```bash
 apt-get install git
@@ -33,42 +33,10 @@ apt-get install git
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash  
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash  
 
-
 ```
 
+- 更新ConEmu终端模拟器https://www.fosshub.com/ConEmu.html
 
-```bash
----------------------------
-ConEmu 161022 [64]
----------------------------
-ConEmu is unable to download update package.
-You may either download new versions manually from
-http://www.fosshub.com/ConEmu.html
-or let ConEmu retry the downloading.
-
-
-File download was failed
-https://github.com/Maximus5/ConEmu/releases/download/v16.12.06/ConEmuPack.161206.7z
-ErrCode=0x00000091
-
-2017-07-13 13:23:32.045
-
-
-
-13:23:32.033{4340} Error: Download failed
-
-2017-07-13 13:23:32.033
-
-
-
-13:23:32.031{4340} Error: DownloadFile(https://github.com/Maximus5/ConEmu/releases/download/v16.12.06/ConEmuPack.161206.7z) failed, code=12002
-
-2017-07-13 13:23:32.032
----------------------------
-重试(R)   取消   
----------------------------
-
-```
 
 
   [1]: http://static.zybuluo.com/szy0syz/zul0h8envd7e14vl6j5dboss/screen.jpg
