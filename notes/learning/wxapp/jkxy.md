@@ -478,6 +478,9 @@ Access-Control-Allow-Credentials: true
 
 ## 6.4.6 使用WXSS对页面进行美化
 
+- WXSS(WeiXin Style Sheets)是一套样式语言，用于描述WXML的组件样式。
+- 具有CSS的大部分特性
+- 新增特性：尺寸单位(rpx、rem)、样式导入(相对路径)
 
 ## 6.5.1 wx.navigateTo、wx.redirectTo、wx.request 方法使用讲解
 

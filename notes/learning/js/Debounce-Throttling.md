@@ -206,7 +206,7 @@ function debounce(func, wait, immediate) {
 }
 
 container.onmousemove = debounce(getUserAction, 1000, true);
-
+// 取消防抖
 document.getElementById("button").addEventListener('click', function(){
   setUseAction.cancel();
 });
