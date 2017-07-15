@@ -33,6 +33,7 @@ window.$docsify = {
       '/notes/reading/9787121276576/_sidebar.md': '/_sidebar.md',
       '/notes/reading/9787512329232/_sidebar.md': '/_sidebar.md',
       '/notes/reading/9787302311034/_sidebar.md': '/_sidebar.md',
+      '/notes/reading/9787121177408/_sidebar.md': '/_sidebar.md',
       '/Knowledge/FullStack/_sidebar.md': '/_sidebar.md'
     },
     plugins: [

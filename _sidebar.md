@@ -47,6 +47,7 @@
   - [《深入浅出Node.js》](/notes/reading/9787115335500/README.md)
   - [《JavaScript模式》](/notes/reading/9787512329232/README.md)
   - [《HTML & CSS 设计与构建网站》](/notes/reading/9787302311034/README.md)
+  - [《JAVASCRIPT语言精粹》](/notes/reading/9787121177408/README.md)
 
 
 - 干货店铺
