@@ -45,9 +45,10 @@
   - [《Node与Express开发》](/notes/reading/9787115380333/README.md)
   - [《Node.JS实战》](/notes/reading/9787115352460/README.md)
   - [《深入浅出Node.js》](/notes/reading/9787115335500/README.md)
-  - [《JavaScript模式》](/notes/reading/9787512329232/README.md)
   - [《HTML & CSS 设计与构建网站》](/notes/reading/9787302311034/README.md)
   - [《JAVASCRIPT语言精粹》](/notes/reading/9787121177408/README.md)
+  - [《JavaScript模式》](/notes/reading/9787512329232/README.md)
+  - [《代码整洁之道》](/notes/reading/9787115216878/README.md)
 
 
 - 干货店铺
