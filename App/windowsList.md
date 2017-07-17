@@ -1,6 +1,3 @@
-## Windows 常用软件集
-
-
 - **[Dism++][1]**: 全球第一款基于 CBS 的 Dism GUI 实现。其实就是Windows管理软件，好用到爆。
 
 ![dism++](/static/img/app_screenshots/dism.jpg)
