@@ -5,7 +5,7 @@
 
 - 软件/App
   - [MAC: 常用APP集](/App/MacList.md)
-  - [Win: 常用软件集](#)
+  - [Win: 常用软件集](/App/windowsList.md)
   - [WebStorm](/App/WebStorm.md)
   - [VSCode](/App/VSCode.md)
   - [Redis](/App/redis.md)
