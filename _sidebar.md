@@ -48,6 +48,7 @@
   - [《HTML & CSS 设计与构建网站》](/notes/reading/9787302311034/README.md)
   - [《JAVASCRIPT语言精粹》](/notes/reading/9787121177408/README.md)
   - [《JavaScript模式》](/notes/reading/9787512329232/README.md)
+  - [《Eloquent JavaScript》](/notes/reading/9781593275846/README.md)
   - [《代码整洁之道》](/notes/reading/9787115216878/README.md)
 
 
