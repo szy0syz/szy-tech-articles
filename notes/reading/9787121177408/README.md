@@ -185,7 +185,49 @@ String.method('trim', function () {
 ### 闭包
 
 - 作用域的作用是内部函数可以访问定义它们的外部函数参数和变量(除了this和arguments)！说实话前面这句话翻译的有点难理解，换种说法：**作用域的作用是内部函数可以访问到外部函数的参数和变量。**
-- 
+
+
+```javascript
+var myObject = (function () {
+    var val = 0;
+    
+    return {
+        increment: function (inc) {
+            val += typeof inc === 'number' ? inc : 1;
+        }
+        getValue: function () {
+            return val; // 外层作用域的val
+        }
+    }
+})()
+```
+ > 这里栗子有点简单了，本来不想写了，为了基础么再来走一遭：
+   1. 在全局作用域预解释时定义myObject；
+   2. 开始赋值myObject，不管是啥IIFE，先给你整个作用域摆那，把该预解释的做了，然后返回一个对象，此时这个对象偏偏要用作用域链方式拉了根线牵着外层作用域的val，所以外层作用域用完也不能销毁，直到myObject不用了；
+   3. 这个时候好玩了，每次用myObject对象是，方法里的val变量会从国作用域链那val值，然后进行各种操作；
+   4. 总结一下，也就是把val搞成一个私有属性，值可以访问和累加它。
+
+```javascript
+var fade = function (node) {
+    var level = 1;
+    var step = function () {
+      var hex = level.toString(16);
+      node.style.backgroundColor = '#FFFF' + hex + hex;
+      if (level < 15) {
+        level += 1;
+        setTimeout(step, 100);
+      }
+    };
+    setTimeout(step, 100);
+};
+// 让当前页面body的背景色从黄色设置为白色
+fade(document.body);
+```
+ 
+
+
+
+
 
 ----------
 
