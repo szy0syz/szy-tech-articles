@@ -325,8 +325,9 @@ var eventuality = function (that) {
             handler,
             i,
             type = typeof event === 'string' ? event : event.type;
+        // 上面的声明声明方式很整洁啊，get~
         
-        // 如果这个事件存在一组事件处理程序，那么遍就遍历它们并按顺序依次执行。
+        // 如果这个事件存在一组事件处理程序，那么遍就遍历它们并按顺序依次执行
         if (registry.hasOwnProperty[type]) {
             array = registry[type]
             for (i=0; i < array.length; i +=1) {
@@ -370,6 +371,15 @@ var eventuality = function (that) {
 ## 第六章：数组
 
 > **数组是一段线性分配的内存，它通过整数计算偏移并访问其中的元素。*但JavaScript没有想此类数组一样的数据结构！***
+
+- 在大多语言中，一个数组的所有元素都要求是相同类型。JavaScript允许数组包含任意混合类型的值：
+
+```javascript
+var misc = [
+    'string', 98.64, true, false, null, undefined,
+    ['nested', 'array'], {object: true}, NaN, Infinity
+];  // misc.length  --> 10
+```
 
 ## 总结
 
