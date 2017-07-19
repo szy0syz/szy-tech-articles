@@ -1,7 +1,5 @@
 ![9787121177408](../../../static/img/9787121177408.jpg)
 
-# 《JavaScript语言精粹》
-
 ## 第一章：精华
 
 - JAvaScript优化的想法包括函数、弱类型、动态对象和富有表现力的对象字面量表示法。而其糟糕的想法包括基于全局变量的编程模型。
@@ -244,8 +242,60 @@ fade(document.body);
 
 > 其实模块模式让我有感触的是一次写自己的动画库时候，一开始禁用闭包去实现，给每个元素自身设置动画计时器ID时，因为没法保证这个变量一定执行你期望的地址，所有动画老实跳来跳出的，也就是你的计时器ID没保存对地方，所以清不掉，才导致动画跳。有了模块模式，将动画库构造成一个类，内部函数里全部用this.xx来保存动画ID，妥妥的，不会保存飞掉，确保了动画的质量。
 
+### 柯里化Curry
+
+- 柯里化，也称为“局部套用”，是把多参数函数转换为一系列单参数函数并进行调用的技术。
+
+```javascript
+var add1 = add.curry(1);
+cosnole.log(add1(6)) // -> 7
+// 简单来说，搬来是add(1,6) -> 被柯里化后为add1(6)
+
+// 实现柯里化
+Function.method('curry', function () {
+    var slice = Array.prototype.slice,
+        args = slice.apply(arguments),
+        that = this;
+    return function () {
+        return that.apply(null, args.concat(slilce.apply(arguments)));
+    }
+})
+```
 
 ----------
+
+## 第五章：继承
+
+JavaScript是一门弱类型语言，从不需要类型转换。对象继承关系变得无关紧要。对于一个对象来说重要的是它能做什么，而不是它从哪里来。
+
+### 伪类
+
+- 当一个函数对象呗创建时，Function构造器产生的函数对象会运行以下类似的代码：
+
+```javascript
+this.prototype = { constructor: this };
+```
+
+- 新函数对象被赋予一个prototype熟悉，它的值是一个包含constructor熟悉且属性值为该新函数的对象(这个属性存的其实是该新函数的堆内存)。这个prototype对象是存放继承特征的地方。
+- 当采用构造器调用模式，即用new前缀去调用一个函数时，函数的执行方式会被改变。我们可以在Function类的原型上简单模拟一个方法：
+
+```javascript
+// 事件new关键字的功能
+Function.method('new', function () {
+    // 创建一个新对象，它继承自构造函数的原型对象，用Object类的create方法
+    vat that = Object.create(this.prototype)
+    
+    // 调用构造函数，绑定 this  到新对象上
+    var other = this.apply(that, arguments) //在这里开始实例化一个类
+    
+    // 如果other不是一个对象，就直接返回上面的that
+    return (typeof other === 'object' && other) || that
+})
+
+// 用的使用就这样
+Person.new({name: 'jerry', age: '20'})
+```
+
 
 
 ## 总结
