@@ -312,10 +312,64 @@ Person.new({name: 'jerry', age: '20'})
 
 > 总的来说第五章，相对抽象，看一遍肯定不行，得用更多时间去推敲。部件这小结的例子很不错。
 
+```javascript
+var eventuality = function (that) {
+    var registry = {};
 
+    this.fire = function (event) {
+        // 在一个对象上触发一个事件。该事件可以是一个包含事件名称的字符串，
+        // 或者是一个拥有包含事件名称的type属性的对象。
+        // 通过 'on' 方法注册的时间处理程序中匹配事件名称的函数将被调用。
+        var array,
+            func,
+            handler,
+            i,
+            type = typeof event === 'string' ? event : event.type;
+        
+        // 如果这个事件存在一组事件处理程序，那么遍就遍历它们并按顺序依次执行。
+        if (registry.hasOwnProperty[type]) {
+            array = registry[type]
+            for (i=0; i < array.length; i +=1) {
+                handler = array[i]
+                
+                // 每个处理程序包含一个方法和一组可选的参数
+                // 如果该方法是一个字符串形式的名字，那么找到该函数
+                func = handler.method;
+                if (typeof func === 'string') {
+                    func = this[func];
+                }
+
+                // 调用一个处理程序。如果该条目包含参数，那么传递它们过去。否者，传递该事件对象。
+                func.apply(this, handler.parameters || [event]);
+            }
+        }
+        return this;
+    };
+    that.on = function (type, method, parameters) {
+        // 注册一个事。构造一条处理程序条目。将它插入到处理程序数组中，
+        // 如果这种类型的时间还存在，那就构造一个。
+        var handler = {
+            method: method,
+            parameters: parameters
+        };
+        if (registry.hasOwnProperty(type)) {
+            registry[type].push(handler);
+        } else {
+            registry[type] = [handler];
+        }
+        return this;
+    };
+    return that;
+}
+```
+
+- 我们可以在任何单独的对象上调用eventuality，授权它事件处理方法。我们也可以赶在that被返回前在构造函数中调用它`eventuality(that)`。如果我们想要eventuality访问该对象的私有状态，而已把私有成员集my传递给它。
 
 ----------
 
+## 第六章：数组
+
+> **数组是一段线性分配的内存，它通过整数计算偏移并访问其中的元素。*但JavaScript没有想此类数组一样的数据结构！***
 
 ## 总结
 
