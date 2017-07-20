@@ -40,4 +40,7 @@ methods = {
         })
     }
 }
+
+// 5. 最后肯定就是在元素上加事件绑定
+<button @tap="toast" size="mini">第三方组件</button>
 ```
