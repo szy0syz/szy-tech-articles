@@ -398,25 +398,85 @@ var misc = [
 
 ## 第七章：正则表达式
 
+>  正则学的还算扎实，这章刚才作为复习。
+
 ### 匹配URL的例子
 
+```javascript
+var parse_url = /^(?:([A-Za-z]+:))?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
+
+var url = "http://www.ora.com:80/goodparts?q#fragment";
+
+var result = pasre_url.exec(url);
+
+var names = ['url', 'scheme', 'slash', 'host', 'post', 'path', 'query', 'hash'];
+
+var blanks = '      ', i;
+
+for (var i = 0; i < names.length; i += 1) {
+    document.writeln(names[i] + ':' + blanks.substring(names[i].length), result[i]);
+}
+
+// url:    http://www.ora.com:80/goodparts?q#fragment
+// scheme: http
+// slash:  //
+// host:   www.ora.com
+// port:   80
+// path:   goodparts
+// query:  q
+// hasg:   fragment
+```
 
 ### 匹配数字的例子
 
+```javascript
+var parse_number = /^-?\d+(?:\.\d*)?(?:e[+\-]?\d+)?$/i
+
+var test = function (num) {
+    document.writeln(parse_number.test(num));
+};
+
+test("1")           // true
+test("number")      // flase
+test("98.6")        // true
+test("123.1.86.11") // false
+test("123.45E-67")  // true
+test("123.45D-67")  // false
+```
 
 ### 结构
 
+- ~~用正则表达式字面量创建RegExp对象时共享同一个单例~~。就这点而言，书上是错的，chrme-59.0.3071.115中已经***不再共享同一单例！***
 
-### 元素-正则表达式分支
+```javascript
+function make_a_matcher() {
+    return /a/gi;
+}
+
+var x = make_a_matcher();
+var y = make_a_matcher();
+
+x.lastIndex = 10;
+console.log(y.lastIndex) // 0
+```
+
+### 元素
+
+- 正则表达式分支
+  - 一个正则表达式分支分支包含一个或多个正则表达式序列。这些序列被`|`字符分隔。如果这些序列中的任何一项符合匹配条件，那么这个选择就被匹配。它蚕食按顺序依次匹配这些序列项。
+  - yes~~~~很好的解释了正则的懒惰性！
 
 
-### 元素-正则表达式序列
+- 正则表达式序列
+  - 一个正则表达式序列包含一个或多个正则表达式因子。每个因子能选择是否跟随一个量词，这个量词决定着这个因子被允许出现的次数。如果没有指定这个量词，那么该因子只会被匹配一次。 
+  
+- 正则表达式因子
+  - 一个正则表达式因子可以是一个字符、一个由圆括号包围的组、一个字符类，或者是一个转移序列。除了控制字符和特殊字符以外，所有字符都会被按照字面处理。
+  - `\ / [ ] () { } ? + * | . ^ $`这些字符按照字面去匹配，那么必须用一个`\`转义字符前缀进行转义。
+  - 一个未被转义的`.`会匹配除行结束符以外的任何字符。
 
-
-### 元素-正则表达式因子
-
-
-### 元素-正则表达式转义
+- 正则表达式转义
+ - 
 
 ### 元素-正则表达式分组
 
