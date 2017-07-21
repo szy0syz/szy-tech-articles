@@ -45,13 +45,17 @@ methods = {
 <button @tap="toast" size="mini">第三方组件</button>
 ```
 
+- 在wepy的page实例就业页面实例，page实例随便用页面跳转，而在components实例就不该用页面跳转。
+- 在wepy的component实例中，就不该用onload方法，因为组件的onload方法会在页面onload方法前执行，好坑啊。
+- 在wepy程序中，数据放在page的实例中，不要放在组件中。这个真是我自己写业务，写不下去后憋出来的。
+
+
 - 看看`wepy`实例到底有些啥属性
 
-| 项目        | 价格   |  数量  |
+| name        | x|  y  |
 | :----:  | :----:   | :----:  |
-| \$copy     | \$1600 |   5     |
-| \$createApp        |   \$12   |   12   |
-| \$createPage        |    \$1    |  234  |
-| \$extend        |    \$1    |  234  |
-| \$has        |    \$1    |  234  |
-
+| \$copy     |  |        |
+| \$createApp        |      |     |
+| \$createPage        |        |    |
+| \$extend        |        |    |
+| \$has        |     |   |
