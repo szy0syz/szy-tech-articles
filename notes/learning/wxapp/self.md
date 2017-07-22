@@ -49,6 +49,10 @@ methods = {
 - 在wepy的component实例中，就不该用onload方法，因为组件的onload方法会在页面onload方法前执行，好坑啊。
 - 在wepy程序中，数据放在page的实例中，不要放在组件中。这个真是我自己写业务，写不下去后悟出来的。
 - 原来新版wepy的所有请求都默认是回调函数模式，保持和官方的一致，可能是降低难度，但劳资为了一个promise调试了3个多小时，就是没发现这个中间件，我靠。
+- 在wepy添加中间件所有请求全部promise化后，await后还得加脏数据处理$apply()或者数据不同步
+- 我懂了，每次在异步后都要进行脏数据数据$apply()
+- 在promise对象中，resolve(res)并不是return，所以可以在resolve(res)后继续写代码
+- 子组件的onload方法要在父页面组件onload方法前执行，好tm费解的机制。
 
 - 看看`wepy`实例到底有些啥属性
 
