@@ -65,6 +65,16 @@ methods = {
 | \$extend        |        |    |
 | \$has        |     |   |
 
+### wepy-v2ex-demo笔记
 
-### wepy-one demo学习笔记
+#### 流程
+
+- 流程
+  - 首页设hot，实例化`wepy.page`类生成实例对象，然后用封装好的api将数据存page中。注册子组件topicList，通过动态绑定props传递数据进子组件展示数据；
+  - 第二页设latest，实例化`wepy.page`类生成实例对象并api调用数据。动态绑定属性到topicList组件展示，同上。
+  - 第三页为nodes页，实例化`wepy.page`类生成实例对象并api调用数据存page中。动态绑定属性到nodeList组件展示。同时在page对象上为onReachBottom行为注册事件，并在events中定义函数，如果触发page组件的行为则用`this.$broadcast('getMoreNodes', 100)`广播行为到子组件，注册子组件getMoreNodes事件，
+ - 在nodeList组件中，因为要分段显示数据，而父组件传进来的只绑定在props上，但子组件的onload又先在父组件onload先执行，则只能在子组件中利用watcher监控props里传入的数据，等父组件异步获取到数据，并传进来后执行展示。
+
+
+### wepy-one 学习笔记
 
