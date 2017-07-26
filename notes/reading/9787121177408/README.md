@@ -476,7 +476,12 @@ console.log(y.lastIndex) // 0
   - 一个未被转义的`.`会匹配除行结束符以外的任何字符。
 
 - 正则表达式转义
- - 
+  - 反斜杠字符在正则表达式因子中与其在字符串中一样均表示转义，但在正则因子中稍有不同。
+  - 正则的转义包含：`\b`表示退格符；`\d`等同[0-9]，它匹配一个数字；`\d`则表示与其相反的`^[0-9]`
+
+![js-Good-Parts-regex_escape.png-50.6kB][3]
+
+> 画完老爷子的这个‘铁路’图，我才发现老爷子真的超级牛，把计算机思想都给体现出来，而且构图还把正则转义的知识点全覆盖，拽呀！我得把之前的铁路图全手画补上。
 
 ### 元素-正则表达式分组
 
@@ -497,4 +502,5 @@ console.log(y.lastIndex) // 0
 
   [1]: http://ofx24fene.bkt.clouddn.com//img/book/prototype_chain_final.svg
   [2]: http://static.zybuluo.com/szy0syz/tec435v48u8km68xr6zszb0e/image.png
-  
+  [3]: http://static.zybuluo.com/szy0syz/5iycj66am1qijm0x5szdjzwu/js-Good-Parts-regex_escape.png
+
