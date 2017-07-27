@@ -475,13 +475,15 @@ console.log(y.lastIndex) // 0
   - `\ / [ ] () { } ? + * | . ^ $`这些字符按照字面去匹配，那么必须用一个`\`转义字符前缀进行转义。
   - 一个未被转义的`.`会匹配除行结束符以外的任何字符。
 
+![js-Good-Parts-regex_factor (1).png-25.3kB][3]
+
 - 正则表达式转义
   - 反斜杠字符在正则表达式因子中与其在字符串中一样均表示转义，但在正则因子中稍有不同。
   - 正则的转义包含：`\b`表示退格符；`\d`等同[0-9]，它匹配一个数字；`\d`则表示与其相反的`^[0-9]`
 
+![js-Good-Parts-regex_escape.png-50.6kB][4]
 
-
-> 画完老爷子这个图，我才发现老爷子超级牛，把计算机思想都体现出来，拽啊。
+> 画完老爷子的这个‘铁路’图，我才发现老爷子真的超级牛，把计算机思想都给体现出来，而且构图还把正则转义的知识点全覆盖，拽呀！我得把之前的铁路图全手画补上。
 
 ### 元素-正则表达式分组
 
@@ -494,6 +496,11 @@ console.log(y.lastIndex) // 0
 
 ### 元素-正则表达式量词
 
+![js-Good-Parts-regex_quamtifier.png-19.1kB][5]
+
+- 正则表达式因子可以用一个正则表达式量词后缀来决定这个因子应该被匹配的次数。
+  - `?`等同于`{0,1}`，`*`等同于`{0,}`，`+`则等同于`{1,}`
+  - 如果只有一个量词，表示趋向于进行贪婪性匹配，即匹配尽可能多的副本直至达到上限。如果这个量词附加一个后缀`?`，则表示趋向于进行非贪婪匹配，即只匹配必要的副本就好。但一般情况下最好坚持使用贪婪性匹配。
 
 ## 总结
 
@@ -502,4 +509,7 @@ console.log(y.lastIndex) // 0
 
   [1]: http://ofx24fene.bkt.clouddn.com//img/book/prototype_chain_final.svg
   [2]: http://static.zybuluo.com/szy0syz/tec435v48u8km68xr6zszb0e/image.png
+  [3]: http://static.zybuluo.com/szy0syz/zhc291pqg5ievvgramt3tlyy/js-Good-Parts-regex_factor%20%281%29.png
+  [4]: http://static.zybuluo.com/szy0syz/5iycj66am1qijm0x5szdjzwu/js-Good-Parts-regex_escape.png
+  [5]: http://static.zybuluo.com/szy0syz/oznyx2csgidw9c4dex2wuody/js-Good-Parts-regex_quamtifier.png
   
