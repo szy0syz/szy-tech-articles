@@ -588,8 +588,67 @@ typeof运算符返回一个用于识别其运算数类型的字符串。
     parseInt('09') // ->0
     parseInt('08', 10) // -> 8
 
+### +
+
+`+`只有其两边都是数字时才会求和，否则都是字符串连接。
+
+### 浮点数
+
+- 二进制的浮点数不能正确地处理十进制的小数，因此0.1+0.2不等于0.3。这是JavaScript中最常见的bug，并且它是遵循二进制浮点数算术标准而有意导致的结果。
+
+### NaN
+
+如果你有一个公式链产生了NaN的结果，那么肯定其中一个输入项是NaN，要么在某个地方产生了NaN。
+
+```javascript
+NaN === NaN  // false
+NaN !== NaN  // true  NaN不能与自己本身
+
+// 判断是否是一个数字
+function isNumber (val) {
+    return typeof val === 'number' && isFinite(val);
+}
+```
+
+### 假值
+
+- JavaScript的众多假值
+| 值            | 类型       | 
+|:----:         | :----:     |
+| 0             |  Number    |
+| NaN (非数字)  |  Number    |
+| ''  (空字符)  |  String    |
+| false         |  Boolean   |
+| null          |  Object    |
+| undefined     |  Undefined |
+
+以上这些值全部都等同于假，但它们是不可互换的。例如，要想确定一个对象是否缺少一个成员属性，这是一种错误的方式：
+
+```javascript
+value myObject[name];
+if (value == null) {
+    alert(name + ' not found.');
+}
+```
+
+undefined是缺失的成员属性的值，但这段代码里用null来测试。它使用了会强制转换类型的==运算符，而不是更可靠的===运算符。
+undefined和NaN并不是常量。他们居然是全局变量，而且你可以改变它们的值。
+
+### hasOwnProperty
+
+`hasOwnProperty`因为是个方法，别乱在原型链上替换它，坑人。
+
+### 对象
+
+**JavaScript的对象永远不会是真的空对象，因为它们可以从原型链中取得成员属性。**
+
+
 ----------
 
+## 附录A：毒瘤
+
+
+----------
 
 ## 总结
 
