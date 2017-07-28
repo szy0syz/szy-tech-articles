@@ -642,10 +642,59 @@ undefined和NaN并不是常量。他们居然是全局变量，而且你可以�
 
 **JavaScript的对象永远不会是真的空对象，因为它们可以从原型链中取得成员属性。**
 
-
 ----------
 
 ## 附录A：毒瘤
+
+### ==
+
+`==`和`!=`非常邪恶，在用它们比较时，如果两边的类型不一致，它们会强制对他们进行转换，然后再比较。这个转换的规则复杂且难以记忆。
+
+```javascript
+// 来看看用==的奇葩示例
+'' == '0'   // false
+0 == ''     // true
+0 == '0'    // true
+
+false == 'false'    // false
+false == `0`        // true
+
+false == undefined  // false
+false == null       // null
+null == undefined   // true
+
+' \t\r\n' == 0      // true
+```
+
+### with语句
+
+JavaScript提供了一个with语句，本意是用它来快捷地访问对象的属性。不幸的是，它的结果可能有时不可预料，所以应避免使用它。with语句在这门语言里的存在，本身就严重影响了JavaScript处理器的速度，因为它阻断了变量名的词法作用域绑定。
+
+### eval
+
+- eval函数传递一个字符串给JavaScript编译器，并且执行结果。它的危害：
+  - 大大降低性能，因为它需要运行编译器
+  - 其还减弱了程序的安全性，因为它给被求值的文本赋予了太多权限
+  - `Function`构造器是eval的另一种形式，同样避免使用它
+  - 浏览器提供的`setTimeout`和`setInterval`函数，他们能接受字符串参数或者函数参数。当传递的是字符串参数时，也会想用eval那样处理，故应避免
+
+### 缺少块的语句
+
+请坚持在if、while、do或for语句时，使用花括号。
+
+### 位运算符
+
+因为JavaScript没有整数类型，它只有双精度的浮点数。因此，位操作把它们的数字运算符先转换成整数，接着执行运算，然后再转换回去。JS接触不到硬件，所以非常慢！
+
+### function语句 VS function表达式
+
+JavaScript既有function语句，同时也有function表达式。它们看上去相同，但实则一个function语句就是其值为一个函数的var语句的速记形式。还是用代码说话吧！
+
+```javascript
+function foo () {};   // 其实全等于下面的语句
+
+var foo = function foo () {};
+```
 
 
 ----------
