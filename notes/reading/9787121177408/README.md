@@ -1,6 +1,6 @@
 ![9787121177408](../../../static/img/9787121177408.jpg)
 
-# 《JavaScript语言精粹》
+> 竟然还是在计划时间7月29日看完，哈哈哈。
 
 ## 第一章：精华
 
@@ -695,6 +695,25 @@ function foo () {};   // 其实全等于下面的语句
 
 var foo = function foo () {};
 ```
+
+### 类型的包装对象
+
+JavaScript中不要使用new Boolean、new Number、new String。避免使用new Object、new Array。可以使用`{}`和`[]`来代替
+
+### void
+
+JavaScript里，void是一个运算符，它接受一个运算数并返回`undefined`。
+
+----------
+
+## 附录D：JSLint
+
+- 这个讲了一些大概的JSLint期望的语法规定，其实也是糟粕和毒瘤的超集。
+
+----------
+
+## 附录E：JSON
+
 
 
 ----------
