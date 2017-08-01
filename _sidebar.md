@@ -37,7 +37,7 @@
   - [微信小程序自学笔记](/notes/learning/wxapp/self.md)  
   - [flexbox学习笔记](/notes/learning/css/flexbox.md)
   - [怒马说Excel](/notes/learning/excel/numaExcel.md)
-  - [WTK JavaScript学习笔记](/notes/learning/js/wtkjs.md)
+  - [WTK JavaScript学习笔记](/notes/learning/js/wtfjs.md)
   
 
 
