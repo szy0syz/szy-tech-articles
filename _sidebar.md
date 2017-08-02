@@ -53,7 +53,7 @@
   - [《JavaScript模式》](/notes/reading/9787512329232/README.md)
   - [《Eloquent JavaScript》](/notes/reading/9781593275846/README.md)
   - [《代码整洁之道》](/notes/reading/9787115216878/README.md)
-   - [《C Primer Plus (第6版)》](/notes/reading/9787115390592/README.md) 
+  - [《C Primer Plus (第6版)》](/notes/reading/9787115390592/README.md) 
 
 
 - 干货店铺
