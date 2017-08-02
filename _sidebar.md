@@ -43,7 +43,7 @@
 
 - 读书笔记
   - [《JavaScript权威指南（第6版）》](/notes/reading/9787111376613/README.md)
-  - [《ECMAScript 6 入门（第2版）》](/notes/reading/9787121276576/README.md)
+  - [《ECMAScript6 入门（第2版）》](/notes/reading/9787121276576/README.md)
   - [《Node与Express开发》](/notes/reading/9787115380333/README.md)
   - [《Node.JS实战》](/notes/reading/9787115352460/README.md)
   - [《深入浅出Node.js》](/notes/reading/9787115335500/README.md)
@@ -53,11 +53,12 @@
   - [《JavaScript模式》](/notes/reading/9787512329232/README.md)
   - [《Eloquent JavaScript》](/notes/reading/9781593275846/README.md)
   - [《代码整洁之道》](/notes/reading/9787115216878/README.md)
+   - [《C Primer Plus (第6版)》](/notes/reading/9787115390592/README.md) 
 
 
 - 干货店铺
   - **[JavaScript标准参考教材](http://javascript.ruanyifeng.com/)**
-  - [《ECMAScript 6入门》](http://es6.ruanyifeng.com/)
+  - [《ECMAScript6 入门》](http://es6.ruanyifeng.com/)
   - [jstraining](https://github.com/ruanyf/jstraining)
   - [shanyue's blog](https://github.com/shfshanyue/blog)
   - [冴羽的博客](https://github.com/mqyqingfeng/Blog)
