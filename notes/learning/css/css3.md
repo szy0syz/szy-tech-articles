@@ -43,11 +43,11 @@ white-space: nowrap;
 
 - text-shadow
 
-
     text-shadow: 颜色(Color)  x轴(X Offset) y轴(Y Offset) 模糊半径(Blur)
     text-shadow: x轴(X Offset) y轴(Y Offset)  模糊半径(Blur)  颜色(Color)
     
 和box-shdow很像，可以设置偏移、颜色、阴影大小：
+
     text-shdow: 2px 2px 3px #333;
 
 可以写多个`，`隔开：
