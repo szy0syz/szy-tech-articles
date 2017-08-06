@@ -54,6 +54,7 @@ flex-basis用于设置或检索弹性项目的伸缩基准
 
 - [A Complete Guide to Flexbox][11](css-tricks超详细flex资料)
 - [使用 CSS 弹性盒子][12](MDN-flex 资料)
+- [青蛙flexbox游戏][13]
 
 
   [1]: http://static.zybuluo.com/szy0syz/cf4b3i040nppqg2ttglo91uj/image.png
@@ -68,4 +69,5 @@ flex-basis用于设置或检索弹性项目的伸缩基准
   [10]: http://static.zybuluo.com/szy0syz/t3dexfya6z34dfkdd99uc6ua/image.png
   [11]: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
   [12]: https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes
+  [13]: https://flexboxfroggy.com/
   
