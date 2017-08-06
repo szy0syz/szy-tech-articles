@@ -66,6 +66,6 @@ flex-basis用于设置或检索弹性项目的伸缩基准
   [8]: http://static.zybuluo.com/szy0syz/rogze9ld7r46ma5syy3xbz7j/image.png
   [9]: http://static.zybuluo.com/szy0syz/mftkhbfj2l5214s0lgvhgq9m/image.png
   [10]: http://static.zybuluo.com/szy0syz/t3dexfya6z34dfkdd99uc6ua/image.png
-  [11]: https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+  [11]: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
   [12]: https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes
   
