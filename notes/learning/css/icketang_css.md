@@ -38,3 +38,5 @@
 - 设置兄弟元素，div中的p与span: div>p+span
 - 设置兄弟元素的子元素，如dic中的li与p(里面有个span): dic>li+p>span
 - 设置兄弟元素的子元素中有子元素，如div中li和p分别有span: div>(li>span)+p>span
+
+> 这个教程是在太水了，直接看官网API不就完了？https://docs.emmet.io/cheat-sheet/
