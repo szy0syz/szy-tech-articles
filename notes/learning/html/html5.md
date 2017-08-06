@@ -90,3 +90,85 @@ HTML5 ：
 |section	|定义文档中的节（section、区段）|
 |time	|定义日期或时间|
 |wbr	|规定在文本中的何处适合添加换行符|
+
+### input 新增type
+
+- email
+- url
+- number
+- range
+- Date Picker
+  - Date
+  - month
+  - week
+  - time
+  - datatime
+
+### 移除的元素
+
+- 能被CSS替代的元素
+   1. basefont
+   2. big
+   3. center
+   4. font
+   5. s
+   6. u
+   7. tt
+   8. strike
+
+- 不再使用frame框架
+   1. frame
+   2. frameset
+   3. noframes
+
+- 其它
+  1. rb => ruby
+  2. acronym => abbr
+  3. dir => ul
+  4. isindex => input
+  5. listing => pre
+  6. xmp => code
+  7. nextid => CUIDS
+  8. plaintext => text/plain 
+
+### 新增属性
+
+- 全局属性
+  1. contentEditable
+  2. designMode
+  3. hidden
+  4. spellcheck
+  5. tabindex
+
+- 表单相关
+  1. autofocus
+  2. placeholder
+  3. form
+  4. required
+  5. formaction, formenctype, formmethod, formtarget, formnovalidate
+  6. novalidate
+
+- 链接相关
+  1. a和area新增`media`
+  2. link新增`sizes`属性
+  3. base新增`target`属性
+  4. area新增hreflang和rel
+
+- 其它
+  1. ol新增 reversed 
+  2. meta新增 charset
+  3. menu新增 type和label
+  4. style新增 scoped
+  5. script新增 async
+  6. html新增 manifest
+  7. iframe新增sandbox， seamless， srcdoc
+
+- 废弃的属性
+
+[废弃的元素和属性](http://www.cnblogs.com/TomXu/archive/2011/12/17/2269168.html)
+
+- 参考
+
+[HTML 参考手册](http://www.w3school.com.cn/tags/)
+  
+    
