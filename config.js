@@ -23,6 +23,7 @@ window.$docsify = {
       '/notes/learning/_sidebar.md': '/_sidebar.md',
       '/notes/learning/css/_sidebar.md': '/_sidebar.md',
       '/notes/learning/js/_sidebar.md': '/_sidebar.md',
+      '/notes/learning/html/_sidebar.md': '/_sidebar.md',
       '/notes/learning/wxapp/_sidebar.md': '/_sidebar.md',
         '/notes/learning/excel/_sidebar.md': '/_sidebar.md',
       '/notes/reading/_sidebar.md': '/_sidebar.md',
