@@ -26,4 +26,15 @@
   - 我们观察发现伪类和伪元素很像，语法都类似。常用的伪元素有两个，分别是`:after`和`:before`，对应分别表示在元素的后/前面插入一个元素
   - ***伪类的display属性默认是行内元素inline，这两个伪元素都必须设置`content`属性，否则伪元素不存在，所以说`content`是这两个伪元素(伪类)的灵魂***
 
+## 04 emmet
 
+- 设置id为abc的div: div#abc
+- 设置cla为bcd的p: p.bcd
+- 设置class为abc、bcd、efg 的span: span.abc.bcd.efg
+- 设置内容为hello的em: em{hello}
+- 设置type属性为checkbox的input标签: input[checkbox] 。也可以设置自定义属性
+- 设置10个div: div*10
+- 设置10个div的类是demo1到demo10: div.demo$*10 。 这里$表示连续的意思
+- 设置兄弟元素，div中的p与span: div>p+span
+- 设置兄弟元素的子元素，如dic中的li与p(里面有个span): dic>li+p>span
+- 设置兄弟元素的子元素中有子元素，如div中li和p分别有span: div>(li>span)+p>span
