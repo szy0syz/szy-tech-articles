@@ -74,3 +74,18 @@ app.use(three);
 << two
 << one
 ```
+
+#### 异步中间件
+
+```javascript
+const main = async function (ctx, next) {
+  ctx.response.type = 'html';
+  console.log('before');
+  ctx.response.body = await fs.readFile('./demos/template.html', 'utf8');
+  console.log('after');
+};
+app.use(main);
+app.listen(3000);
+//////////////////
+// 顺序是先打印before、然后打印after、最后等执行完成再设置body为文件内容!
+```
