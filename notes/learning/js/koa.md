@@ -89,3 +89,53 @@ app.listen(3000);
 //////////////////
 // 顺序是先打印before、然后打印after、最后等执行完成再设置body为文件内容!
 ```
+
+- 中间件的合成
+
+koa-compose模块可以将多个中件合成为一个
+
+### 错误处理
+
+如果代码运行过程中发生错误，我们需要把错误信息返回给用户。HTTP 协定约定这时要返回500状态码。Koa 提供了ctx.throw()方法，用来抛出错误，ctx.throw(500)就是抛出500错误。
+
+    ctx.throw(500);
+
+- 如果将ctx.response.status设置成404，就相当于ctx.throw(404)，返回404错误。
+
+```javascript
+const main = ctx => {
+  ctx.response.status = 404;
+  ctx.response.body = 'Page Not Found';
+};
+```
+
+#### 处理错误的中间件
+
+为了方便处理错误，最好使用try...catch将其捕获。但是，为每个中间件都写try...catch太麻烦，我们可以让最外层的中间件，负责所有中间件的错误处理。
+
+```javascript
+const handler = async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    ctx.response.status = err.statusCode || err.status || 500;
+    ctx.response.body = {
+      message: err.message
+    };
+  }
+};
+
+const main = ctx => {
+  ctx.throw(500);
+};
+
+app.use(handler);
+app.use(main);
+```
+
+看到上面这个栗子我就看到了tj关于koa的洋葱图，大神就是拽啊。
+
+- error 事件的监听
+
+运行过程中一旦出错，Koa 会触发一个error事件。监听这个事件，也可以处理错误。
+需要注意的是，如果错误被try...catch捕获，就不会触发error事件。这时，必须调用ctx.app.emit()，手动释放error事件，才能让监听函数生效。
