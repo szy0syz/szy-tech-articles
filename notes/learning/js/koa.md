@@ -137,5 +137,5 @@ app.use(main);
 
 - error 事件的监听
 
-运行过程中一旦出错，Koa 会触发一个error事件。监听这个事件，也可以处理错误。
-需要注意的是，如果错误被try...catch捕获，就不会触发error事件。这时，必须调用ctx.app.emit()，手动释放error事件，才能让监听函数生效。
+运行过程中一旦出错，Koa 会触发一个error事件。监听这个事件`app.on('error', (err, ctx) =>`，也可以处理错误。
+需要注意的是，如果错误被try...catch捕获，就不会触发error事件。这时，必须调用`ctx.app.emit('error', err, ctx);`，手动释放error事件，才能让监听函数生效。
