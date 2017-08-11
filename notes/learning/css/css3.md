@@ -54,3 +54,59 @@ white-space: nowrap;
 
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;
 
+----------
+
+## 动画
+
+### 初次遇见`animation`
+
+- 今天高仿猎豹浏览器官网时，第一次学习使用`animation`，果断记录下来。使用原理步骤大概分为：
+  - 首先定义动画具体怎么运动的：`@keyframes 动画名称`，这里的大括号里又分from和to两个样式，分别设置改元素从动画开始到动画结束时的具体形状样式
+  - 然后定义动画时间和方式：在某个选择器中定义动画运动时间等`animation: navhover 0.2s linear 0s 1 normal;`，这里第一个参数就是动画名称。
+  - 最后在JS或别的方式触发这个样式即可触发动画！
+
+```css
+.nav-main a i.nav-hover {
+    display: block;
+    animation-name: navhover;
+    -webkit-animation: navhover 0.2s linear 0s 1 normal;
+    -moz-animation: navhover 0.2s linear 0s 1 normal;
+    animation: navhover 0.2s linear 0s 1 normal;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+@-webkit-keyframes navhover {
+    from {
+        opacity: 0;
+        -webkit-transform: scale(0, 1);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: scale(1, 1);
+    }
+}
+
+@-moz-keyframes navhover {
+    from {
+        opacity: 0;
+        -moz-transform: scale(0, 1);
+    }
+    to {
+        opacity: 1;
+        -moz-transform: scale(1, 1);
+    }
+}
+
+@keyframes navhover {
+    from {
+        opacity: 0;
+        transform: scale(0, 1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+```
+
