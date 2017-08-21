@@ -85,3 +85,12 @@ methods.forEach(function(method){
 ### 视图
 
 在视图的模板中用handlebars代码用`{{foo.bar}}`扩起来，然后`res.render(xxx.handlebars, viewModel)`即可。
+
+----------
+
+## 第4章 工欲善其事 必先利其器
+
+### 4.5 项目元数据
+
+`package.json`文件的另一个作用便是存储项目的元数据，比如项目名称、作者、授权信息等。当然里面还包含了项目的依赖，这个可是非常重要。
+
