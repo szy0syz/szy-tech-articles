@@ -29,6 +29,8 @@
 
 ## 第3章：省时省力的Express
 
+### 小栗子
+
 ```javascript
 var express require('express');
 
@@ -58,10 +60,9 @@ app.listen(app.get('port'), function () {
 ```
 
 - 这个栗子真的挺不错的。
-- 首先就是那个app.set、app.get。以前网上看的教程没看到app.set用法，原来tj在源码里来了个forEach循环，先然后把use、set、post等常用的动态添加到app对象的属性里，然后如果是get操作就把把path当做keyName读取keyValue。
+- 首先就是那个app.set、app.get。以前网上看的教程没看到app.set用法，原来tj在源码里来了个forEach循环，先然后把use、set、post等常用的动态添加到app对象的属性里，然后判断如果是get获取变量值的(arguments.length===1，因为不是还有get请求和他重名嘛)，就把path当做keyName读取keyValue。
 - 然后就是app.use的使用顺序，404肯定在500前面，因为然res调用sned方法后就不会再往下面得代码走了
 - 最后，在node中回调函数秉承了‘error’优先原则
-- 以上就是我的总结
 
 ```javascript
 // express 路由部分源码
@@ -81,3 +82,6 @@ methods.forEach(function(method){
 });
 ```
 
+### 视图
+
+在视图的模板中用handlebars代码用`{{foo.bar}}`扩起来，然后`res.render(xxx.handlebars, viewModel)`即可。
