@@ -132,4 +132,63 @@ methods.forEach(function(method){
 
 ## 第6章 请求和响应对象
 
+### 6.1 URL的组成部分
+
+![D70F491C-3421-4419-9874-D064E7610514.png-41.9kB][1]
+
+### 6.8 请求对象
+
+- 请求对象的生命周期起始于Node的一个核心对象http.IncomingMessage的实例。Express添加了一些附加功能。
+  - req.params：一个数组，包含命名过的路由参数。
+  - req.param(name)：返回命名的路由参数，或者GET请求或者POST请求参数。
+  - req.query：一个对象，包含POST请求参数。需要用中间件解析。
+  - req.route：路由信息
+  - req.cookies/res.singnedCookies：一个对象，包含从客户端传递过来的cookie值
+  - req.headers：从客户端接收到的请求报头
+  - req.accepts([types])：一个简便的方法，用来确定客户端是否接受一个或一组指定的类型(可选类型可以是单个MIME类型，如application/json、一个逗号分割集合或是一个数组)。写公共API的人对该方法很感兴趣。
+  - req.ip
+  - req.path：请求路径(不包含协议、主机、端口或查询字符串)
+  - req.host：用来返回客户端所报告的主机名。这个信息可以伪造。
+  - req.xhr：如果请求由Ajax发起将返回true。
+  - req.protocol：用于表示请求的协议(http或者https)。
+  - req.secure：如果连接是安全的，将返回true
+  - req.url/req.originalUrl：返回路径和查询字符串。req.url若是出于内部路由的目的，则可以重写，但是req.originalUrl旨在保留原始请求和查询字符串。
+  - req.acceptedLanguages：用来返回客户端首选的一组语言。
+
+### 6.9 响应对象
+
+- 响应对象的生命周期始于Node核心对象http.serverResponse的实例。
+  - res.status(code)：设置http状态码
+  - res.set(name, value)：设置响应头，通常不需要手动设置。
+  - res.cookie(name, value, [options])、res.clearCookie(name, [options])：设置或者清除客户端cookies值，需要中间件支持。
+  - res.redirect([status], url)：重定向浏览器。默认重定向代码是302(建立)。通常，你应该尽量减少重定向，除非永久移动一个页面，这种情况应该使用代码301(永久移动)。
+  - res.send(body) 、res.send(status, body)：向客户端发送响应几可选的状态码。
+  - res.json(json)、res.json(status,json)：向客户端发送JSON以及可选的状态码
+  - res.jsonp(json)、res.jsonp(status,json)
+  - res.type(type)：用于设置Content-type头信息。基本上相当于res.set('Content-Type', 'type')。
+  - res.format(object)：这个方法允许你根据接收请求报头发送不同的内容。
+  - res.attachment([filename])、res.download(path, [filename], [callback])：将响应报头Content-Disposition设为attachment，这样浏览器就会选择下载而不是展现内容。
+  - res.sendFile(path, [option], [callback])：这个方法可根据路径读取指定文件并将内容发送到客服端。
+  - res.link(links)：设置链接响应报头。
+  - res.locals、res.render(view, [locals], callback)：res.locals是一个对象，包含用于渲染视图的默认上下文。res.render使用配置的模板引擎渲染视图。
+
+### 6.10 获取更多信息
+
+由于JavaScript的原型继承，有时确切知道自己在做什么是很困难的。
+
+- Express远吗的路径说明：
+  - lib/application.js：Express主接口。如果想了解中间件是如何接入的，或视图是如何被渲染的，可以看这里。
+  - lib/express.js：这是一个相对较短的shell，是lib/application.js中Connect的功能扩展，它返回一个函数，可以用http.createServer运行Express应用。
+  - lib/request.js：扩展了Node的http.IncomingMessage对象，提供了一个稳健的请求对象。关于请求对象属性的方法的所有信息都在这个文件里。
+  - lib/response.js：扩展了Node的http.ServerReponse对象，提供相应对象。关于响应对象的所有属性和方法都在这个文件里。
+  - lib/router/route.js：提供基础路由支持。尽管路由是应用的核心，但这个文件只有不到200行，你会发现它非常优雅。
+
+
+  
+  
+
+
+
+
+  [1]: http://static.zybuluo.com/szy0syz/klv51h5qw4x3ynpvyaqkrz24/D70F491C-3421-4419-9874-D064E7610514.png
 
