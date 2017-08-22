@@ -170,7 +170,36 @@ ES6 引入 rest 参数（形式为“...变量名”），用于获取函数的�
 
 ----------
 
+## 第十二章 Proxy
 
+```javascript
+var pipe = (function () {
+  return function (value) {
+    var funcStack = [];
+    var oproxy = new Proxy({} , {
+      get : function (pipeObject, fnName) {
+        if (fnName === 'get') {
+          return funcStack.reduce(function (val, fn) {
+            return fn(val); //此处报错，fn不是一个函数！
+          },value);
+        }
+        funcStack.push(window[fnName]);
+        return oproxy;
+      }
+    });
+
+    return oproxy;
+  }
+}());
+
+var double = n => n * 2;
+var pow    = n => n * n;
+var reverseInt = n => n.toString().split("").reverse().join("") | 0;
+
+pipe(3).double.pow.reverseInt.get; // 63
+```
+
+> 上面代码原理：现在当前作用域注册一个pipe函数，使其可以链式编程。首先给pipe()传入参数，当获取它的值时(即调用内置getter)，只要函数名不是`get`，就将所调用函数的值push到全局变量的函数栈中保存，而当调用函数名为`get`时，用recude累积其以前的所有值！
 
 ----------
 
