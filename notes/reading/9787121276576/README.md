@@ -137,3 +137,32 @@ ES6 引入 rest 参数（形式为“...变量名”），用于获取函数的�
 
 类似Array.prototype.reduce函数！
 
+----------
+
+## 第九章 对象的扩展
+
+- 属性的简洁表示法：ES6允许对象中，直接写变量，即属性名为变量名，属性值为变量值。方法也可以简写，但关键字不能出现，会报错。
+ - 属性名表达式：在对象的属性访问器中括号（[]）可以写表达式。
+ - 方法的name属性：返回函数名。特殊情况：bind方法创造的函数，name属性返回`bound`加上原函数的名字；`Funtcion`构造函数创造的函数，name属性返回anonymous。
+ - Object.is()：同值相等比较。`Object.is(+0, -0)` 和 `Object.is(NaN, NaN)`
+ - Object.assign()：用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。其实行浅拷贝，不考虑继承的属性。常见用途：(1)为对象添加属性；(2)为对象添加方法；(3)克隆对象；(4)合并多个对象；(5)为属性指定默认值。以上都需要考虑被覆盖情况。
+ - 属性的可枚举型：对象的每个属性都有一个描述对象（Descriptor），用来控制该属性的行为。`Object.getOwnPropertyDescriptor`方法可以获取该属性的描述对象`{value, writable, enumerable, configurable}`。ES6规定，所有Class的原型的方法都是不可枚举的。
+ - 属性的遍历：(1)`for...in`循环遍历对象自身的和继承的可枚举属性(不含Symbol属性)；(2)`Object,keys`返回一个数组，包括对象自身的(不含继承的)所有可枚举属性(不含Symbol属性)；(3)`Object.getOwnPropertyNames(obj)`返回一个数组，包含对象自身的所有属性（不含Symbol属性，但是包括不可枚举属性）。(4)`Object.getOwnPropertySymbols(obj)`返回一个数组，包含对象自身的所有Symbol属性。(5)`Reflect.ownKeys(obj)`返回一个数组，包含对象自身的所有属性，不管是属性名是Symbol或字符串，也不管是否可枚举。
+ - __proto__属性，Object.setPrototypeOf()，Object.getPrototypeOf()：__proto__属性，用来读取或设置当前对象的prototype对象。`Object.setPrototypeOf()`设置一个对象的prototype对象，返回参数对象本身。`Object.getPrototypeOf()`获取一个对象的prototype对象，返回参数对象本身。
+ - Object.keys()，Object.values()，Object.entries()：`Object.keys`返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。
+ - 对象的扩展运算符：(1)解构赋值，对象的解构赋值用于从一个对象取值，相当于将所有可遍历的、但尚未被读取的属性，分配到指定的对象上面。所有的键和它们的值，都会拷贝到新对象上面。；(2)扩展运算符，取出参数对象的所有可遍历属性，拷贝到当前对象之中。
+ - Object.getOwnPropertyDescriptors()：返回指定对象所有自身属性（非继承属性）的描述对象。
+ - Null 传导运算符：上面代码有三个?.运算符，只要其中一个返回null或undefined，就不再往下运算，而是返回undefined。
+
+----------
+
+## 
+
+
+----------
+
+
+
+----------
+
+
