@@ -183,12 +183,141 @@ methods.forEach(function(method){
   - lib/response.js：扩展了Node的http.ServerReponse对象，提供相应对象。关于响应对象的所有属性和方法都在这个文件里。
   - lib/router/route.js：提供基础路由支持。尽管路由是应用的核心，但这个文件只有不到200行，你会发现它非常优雅。
 
+----------
 
-  
-  
+## 第7章：Handlebars模板引擎
+
+### 7.2 选择模板引擎
+
+- 选择时可供参考的准则：
+  - 性能
+  - 客户端、服务端或兼而有之？
+  - 抽象
+
+### 7.3 Jade：不走寻常路
+
+Jade是TJ大神的设想，他也是为我们带来Express的人。那Jade和Express可以很好地结合也就不足为奇了。Jade采用的方式是难能可贵的，其核心就是声称HTML是一中手写的模糊、枯燥的语言。
+
+Jade无疑是少打了很多字，因为不再有尖括号和结束标记。取而代之，它依赖缩进和一些常识性规则，从而更容易表达出自己想要的。Jade具有一个额外的优势：理论上讲，当HTML自身发生改变时，你可以轻松地将Jade定位于HTML版本的最新版，从而让你的内容具有“前瞻性”。
+
+### 7.4 Handlebars基础
+
+Handlebars是另一个流行的模板引擎Mustache的扩展。其简单的JavaScript集成(前端和后端)和容易掌握的语法。
+
+理解模板引擎的关键在于context。当你渲染一个模板时，便会传递给模板引擎一个对象，叫做上下文对象，它能让替换标识运行。
+
+从下图中我们可以看到Handlebars引擎是怎样使用上下文结合模板渲染HTML的。
+![0A483A9A-F388-48A4-B2CE-4573FAC0BE98.png-60.5kB][2]
+
+#### 7.4.1 注释
+Handlebars里注释：`{{! comment goes here }}`
+
+#### 7.4.2 块级表达式
+
+- {{#each var}}循环
+- {{if var}}
+- {{unless var}} 和if相反，只有条件为false才执行
+
+每个块级表达式内都有一个context，如果想获取上级的context就用`../`，如果要用当前上下文可以使用`{{.}}`来获取。
+
+#### 7.4.3 服务器模板
+
+服务端模板除了隐藏实现细节，还支持末班缓存。开启缓存：`app.set('view cache', true);`
+
+如果嫌弃.handlebars扩展名太长的话，`require('express3-handlebars').create({ extname: '.hbs' });`就可以将扩展名改为`.hbs`。
+
+#### 7.4.4 视图和布局
+
+![C4225C9C-5475-4C6E-A6E5-D3E6826E8839.png-156.8kB][3]
+
+#### 7.4.5 在Express中使用布局
+
+这个布局的意思就是模板再细不变的部分和变化的部分。
+
+例如有一个main.hbs文件是。在Express中配置默认hbs设置的默认布局：
+```javascript
+var handlebars = require('express3-handlebars').create({defaultLayout: 'main'});
+```
+这样，Express会在views子目录中查找视图，在views/layouts下查找布局。所以如果有一个叫view/foo.hbs的视图，可以这样渲染它：
+```javascript
+app.get('/foo', function(req, res) {
+    res.render('foo');
+})
+```
+它就会使用views/layouts/main.hbs作为布局。如果你不想用布局可以`res.render('foo', {layout: null});`，这个提前是指定了默认layout。还可以指定要用哪个布局`res.render('foo', {layout: index});`
+
+#### 7.4.6 局部文件
+
+先创建一个局部文件：weather.hbs。上下文待设置。
+```html
+{{#each partials.weather.locations}}
+...
+{{/each}}
+```
+
+请注意这里使用partials.weather为开头来命名上下文。此后我们仅需设置res.locals(对于任何视图可用)。但是我们并不想让个别视图干扰指定的上下文，于是我们将所有局部文件上下文都放在partials对象中。
+
+现在创建一个中间件给res.locals.partials对象添加数据。待所有东西都准备好了以后，我们可以使用视图中的这个局部文件。
+
+```html
+<h2>tieeeee</h2>
+{{> weather}}
+```
+语法{{> partials_name}}可以让你在视图中使用一个局部文件。hbs会在views/partials中寻找一个叫做partials_name.hbs的视图。
+
+> 老表讲得复杂了点，简化后应该是这样的。
+> 首先定义定义局部文件，给局部文件添加context，名字自取。然后把需要传递给局部文件的对象赋值给res.locals对象上。最后引入局部文件用{{> partials_name}}。
+
+#### 7.4.7 段落
+
+从微软的Razor中借鉴了段落(section)的概念。使用方法就是在hbs的option时多加一个helpers:{section: function (name, options) { ... }}。
+
+```html
+var handlebars = require('express3-handlebars').create({ 
+    defaultLayout:'main',
+    helpers: {
+        section: function(name, options){ 
+        if(!this._sections) this._sections = {}; 
+        this._sections[name] = options.fn(this); 
+        return null;
+        } 
+    }
+});
+
+{{#section 'head'}}
+    <!-- we want Google to ignore this page -->
+    <meta name="robots" content="noindex"> {{/section}}
+
+<h1>Test Page</h1>
+<p>We're testing some jQuery stuff.</p>
+
+{{#section 'jquery'}}
+    <script>
+        $('document').ready(function(){
+            $('h1').html('jQuery Works');
+        });
+    </script>
+{{/section}}
+
+<!doctype html>
+<html>
+<head>
+    <title>Meadowlark Travel</title>
+    {{{_sections.head}}}
+</head>
+<body>
+    {{{body}}}
+    <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>               {{{_sections.jquery}}}
+</body>
+</html>
+```
+
 
 
 
 
   [1]: http://static.zybuluo.com/szy0syz/klv51h5qw4x3ynpvyaqkrz24/D70F491C-3421-4419-9874-D064E7610514.png
+  [2]: http://static.zybuluo.com/szy0syz/xsc5sb8kzsk7eqxdilv4wd96/0A483A9A-F388-48A4-B2CE-4573FAC0BE98.png
+  [3]: http://static.zybuluo.com/szy0syz/g55lqqnimcxjpty3tu3ktmve/C4225C9C-5475-4C6E-A6E5-D3E6826E8839.png
+
 
