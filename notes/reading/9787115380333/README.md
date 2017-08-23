@@ -312,6 +312,42 @@ var handlebars = require('express3-handlebars').create({
 </html>
 ```
 
+----------
+
+## 第8章：表单处理
+
+> 我记得node里可以用on('data')事件监听post的数据，然后合并chunk后最终得到全文吧。
+
+```javascript
+    // 利用node的基于事件驱动完成接收POST请求data的值
+    req.on('data', function (chunk) {
+      str += chunk;
+    });
+    // 这就是原生的表单处理吧
+    req.on('end', function () {
+      res.writeHead(200, {'content-type': 'application/json;charset=utf-8;'});
+      try {
+        // 1. 获取数组中id的最大值
+        let o = JSON.parse(str);
+        res.end(JSON.stringify(o));
+      } catch (e) {
+        console.error(e);
+        res.end('error');
+      }
+    });
+  }
+```
+
+### 8.4 处理表单的不同方式
+
+- 无论使用寿命路径来处理表单，必须决定如何响应浏览器，选择如下：
+  - 直接响应HTML
+  - 302重定向
+  - 303重定向
+  - 重定向到专用的成功或失败页面
+  - 运用flash消息重定向到原来位置
+  - 运用flash消息重定向到新位置
+
 
 
 
