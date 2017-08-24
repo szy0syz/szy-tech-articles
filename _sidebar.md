@@ -27,6 +27,7 @@
   - [珠峰前端4：tween动画和轮播图以及jquery实战(2)](/Knowledge/FullStack/zf04-2.md)
   - [珠峰前端5：dom零级、二级事件基础和实战](/Knowledge/FullStack/zf05.md)
   - [珠峰前端7：ajax jsonp node基础及项目实战开发](/Knowledge/FullStack/zf07.md)
+  - [珠峰前端8：JS专题总结和技能提升](/Knowledge/FullStack/zf08.md)
   - [珠峰前端9：h5 css3响应式布局webpp](/Knowledge/FullStack/zf09.md)
   - [JS_dom基础：04.HTMLElement class](/notes/dom/base04.md)
   - [JS_dom基础：05.HTMLDivElement、HTMLAnchorElement](/notes/dom/base05.md)
