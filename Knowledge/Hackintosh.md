@@ -28,7 +28,8 @@
   - Monitor: Samsung T240 (2007年10月1日买的...)
   - macOS Sierra 10.12.4
   - Accessories: BCM94360CD/11AC-1900M
-  
+
+![max-home](http://ofx24fene.bkt.clouddn.com//img/2017/mac_home.png)
 
 
 ## 黑苹果全套流程
