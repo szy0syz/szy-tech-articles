@@ -285,7 +285,95 @@ littleBell.emit('drop');
 
 ## 课时08：events2
 
+```javascript
+// 纯原生态使用JS原理将两异步操作结果合并输出
+var fs = require('fs'),
+  person = {},
+  count = 0;
+// 都怪vs~修改一下~
+process.chdir(__dirname);
+fs.readFile('name.txt', 'utf8', function(err, data) {
+  person.name = data;
+  if(++count == 2) {
+    out();
+  }
+});
+fs.readFile('age.txt', 'utf8', function(err,data) {
+  person.age = data;
+  if(++count == 2) {
+    out();
+  }
+});
 
+function out() {
+  console.log(person.name, person.age);
+}
+```
+
+- 升级：使用`events`内置类处理
+
+```javascript
+// 此时仅加载进来一个类！
+var EventEmitter = require('events');
+// 实例化这个类
+var eve = new EventEmitter();
+// 一个将两个异步操作结果合并的小demo
+var fs = require('fs'),
+  person = {},
+  count = 0;
+// 都怪vs~修改一下~
+process.chdir(__dirname);
+
+// 注册事件，data事件的回调函数
+eve.on('data', out);
+
+fs.readFile('name.txt', 'utf8', function (err, data) {
+  person.name = data;
+  // 如果异步读取到值，发射data事件到监听处
+  eve.emit('data');
+});
+fs.readFile('age.txt', 'utf8', function (err, data) {
+  person.age = data;
+  // 如果异步读取到值，发射data事件到监听处
+  eve.emit('data');
+});
+
+function out() {
+  if(person.name && person.age) {
+    console.log(person.name, person.age);
+  }
+}
+```
+
+```javascript
+// 实现原理还是利用闭包生成一个不销毁的作用域，然后将这个作用域返回到newEat，第一次初始化时有个内置的计数器0，然后每执行一次就让内置计数器+1，只到大于等于times则执行回调函数！
+function eat(times, callback) {
+  var _times = 0;
+  return function() {
+    _times++;
+    if (_times >= times) {
+      callback && callback();
+    }
+  }
+}
+
+var newEat = eat(6, function() {
+  console.log('吃完了');
+})
+
+console.log('1');
+newEat();
+console.log('2');
+newEat();
+console.log('3');
+newEat();
+console.log('4');
+newEat();
+console.log('5');
+newEat();
+console.log('6');
+newEat();
+```
 
 ----------
 
