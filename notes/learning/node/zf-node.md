@@ -86,7 +86,7 @@
 
 ----------
 
-## 课时06_global
+## 课时06：global
 
 - 状态码
   - 1XX 请求正在处理
@@ -176,14 +176,27 @@ function Child() {
   this.name = 'Chind';
 }
 
-// 第一种继承：原型继承
-Child.prototype = new Parent;
+//原型继承
+// Child.prototype = new Parent;
+// 其实node的util也给我们封装了一个继承方法
+var util = require('util');
+util.inherits(Child, Parent);
 var child = new Child();
 child.showName(); 
+console.log(child.__proto__.__proto__.__proto__ === Object.prototype);
 ```
     
+- util.inherits()：继承
+- util.inspect()：检查
+  - showHide, 是否显示隐藏属性
+  - depth, 对象的递归显示深度
+  - colors，是否显示颜色
 
-1:27:00
+```javascript
+// arr1.concat(arr2);
+Array.prototype.push.apply(arr1, arr2);
+console.log(arr1);
+```
 
 ----------
 
