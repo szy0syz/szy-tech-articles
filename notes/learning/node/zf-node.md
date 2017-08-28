@@ -120,6 +120,71 @@ var counter = 0,
     })
 ```
 
+- global对象中常用属性
+  - `process` - 当前进程对象
+
+
+```javascript
+// console.log('123');
+// 其实consoloe.log()在node里就是stdout.write的一个子节点
+process.stdout.write('hello');
+process.stdin.on('data', function(data) {
+  console.log(data.toString());
+})
+
+////////////////////////////////
+
+console.log('a客人');
+console.log('b客人');
+console.log('c客人');
+console.log('d厨师');
+console.log('e厨师');
+
+setTimeout(function() {
+  console.log('去扫地 setTimeout');
+}, 0);
+
+// nextTick 会把该事件放入当前任务队列的末端
+// 而setTimeout会把事件放入下一个任务队列的顶端
+process.nextTick(function() {
+  console.log('去扫地 nextTick1');
+  process.nextTick(function() {
+    console.log('去扫地 nextTick2');
+    process.nextTick(function() {
+      console.log('去扫地 nextTick3');
+    });
+  });
+});
+```
+
+- 异步时的优先级：nextTick > setTimeout > setImmediate > async IO
+
+```javascript
+function Parent() {
+  this.name = 'Parent';
+  this.age = '29';
+  function say() {
+    console.log('hello ' + this.name);
+  }
+}
+
+Parent.prototype.showName = function () {
+  console.log(this.name);
+}
+
+function Child() {
+  this.name = 'Chind';
+}
+
+// 第一种继承：原型继承
+Child.prototype = new Parent;
+var child = new Child();
+child.showName(); 
+```
+    
+
+1:27:00
+
 ----------
 
 
