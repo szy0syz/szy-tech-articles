@@ -250,7 +250,41 @@ girl.on('长发及腰', function() {
 girl.emit('长发及腰');
 ```
 
+- node中的`events`小栗子
+
+```javascript
+var EventEmitter = require('events'),
+  util = require('util');
+
+function Bell(name) {
+  this.name = name;
+}
+util.inherits(Bell, EventEmitter);
+
+var littleBell = new Bell("little");
+littleBell.on('ring', function() {
+  console.log('收到礼物1');
+});
+littleBell.addListener('ring', function() {
+  console.log('收到礼物2');
+});
+// 可以移除某个事件上的所有回调函数
+// littleBell.removeAllListeners('ring');
+function drop() {
+  console.log('铃铛丢了');
+};
+littleBell.once('drop', drop);
+littleBell.emit('ring');
+// 移动事件上的某一个回调函数
+// littleBell.removeListener('drop', drop);
+littleBell.emit('drop');
+littleBell.emit('drop');
+```
+
 ----------
+
+## 课时08：events2
+
 
 
 ----------
