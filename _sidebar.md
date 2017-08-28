@@ -38,7 +38,6 @@
   - [极客学院-微信小程序学习笔记](/notes/learning/wxapp/jkxy.md)
   - [微信小程序自学笔记](/notes/learning/wxapp/self.md)  
   - [flexbox学习笔记](/notes/learning/css/flexbox.md)
-  - [怒马说Excel](/notes/learning/excel/numaExcel.md)
   - [WTK JavaScript学习笔记](/notes/learning/js/wtfjs.md)
   - [爱创课堂CSS内部视频](/notes/learning/css/icketang_css.md)
   - [html5学习笔记](/notes/learning/html/html5.md)
