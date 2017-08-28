@@ -81,9 +81,44 @@
   2. 解析过程中遇到**引用的服务器上的资源**(额外的CSS、JS、图片、音视频、附件等)，再向服务器发送请求
   3. 浏览器解析HTML包含的内容，用得到的CSS代码进行外观上的进一步**渲染**，JS代码也可能会对外观进行一定**处理**
   4. 当用户与页面交互(点击、悬停等)时，JS代码对此作出一定反应，添加特效与动画
+  5. 交互的过程中可能需要向服务器索取或提交额外的数据(局部的刷新)，一般不是跳转就是通过JS代码(响应某个动作或定时)向服务器发送AJAX请求
+  6. 服务器再把客户端需要的资源返回，客户端用得到的资源来实现动态效果或者修改DOM结构
 
 ----------
 
+## 课时06_global
+
+- 状态码
+  - 1XX 请求正在处理
+  - 2XX 正常处理完成
+    - 200 OK 请求成功 
+  - 3XX 重定向
+    - 301 Moved Permanently 永久重定向
+    - 302 Found 临时重定向
+  - 4XX 客服端错误
+    - 400 Bad Request 语法错误
+    - 401 Unauthorized 未认证
+    - 403 Forbidden 禁止访问
+    - 404 Not Found 资源未找到
+  - 5XX 服务器错误
+    - 500 Internal Sever Error 
+
+- 在tcp协议头中，有一个`Connection:keep-alive`，是在TCP中一个可以检测死连接的机制，keepalive原理很简单，TCP会在空闲了一定时间后发送数据给对方。
+
+```javascript
+// 很好玩的一个东西，持续向客服端发送内容 keepalive
+var counter = 0,
+    int = setInterval(function() {
+        // 这里给客服端返回一部分内容，但我们不结束响应，则服务端和客户端保持了一个keepalice!
+        res.write(new Date().toString());
+        counter++;
+        if (counter >= 5) {
+            clearInterval(int);
+            // 好了，发够5次了，我们结束本次响应！
+            res.end();
+        }
+    })
+```
 
 ----------
 
