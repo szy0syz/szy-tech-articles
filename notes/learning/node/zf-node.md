@@ -60,6 +60,14 @@
   - 文件模块：`var math = require('./math');`
   - 第三方模块：`var async = require('async');`
 
+- NPM初始化一个项目后package.json：
+  - "name": "包的名称，必须是唯一的，由小写英文字母、数字和下划线组成，不能包含空格"
+  - "description": "包的简要说明"
+  - "version": "符合语义化八大识别规范的版本字符串"
+  - "keyword": "关键字数组，通常用于搜索"
+  - "maintainers": "维护者数组，每个元素都要包含name、email(可选)、web(可选)字段"
+  - "contributors": "贡献者数组，格式与maintainers相同。包的作者应该是贡献则数组的第一个元素"
+
 ![image.png-387.1kB][1]
 
 - 全局对象global：表示Node所在的全局环境，类似于浏览器的window对象，它及其所有属性都可以在程序的任何地方访问。
