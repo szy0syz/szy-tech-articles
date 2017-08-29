@@ -505,13 +505,49 @@ var Person =  require('./human');
 - module属性和方法
   - module.id 模块的ID，也就是模块的**绝对路径** 
   - module.filename 模块文件名，也时模块的**绝对路径**
-  - module.loadde 模块是否加载完毕
+  - module.loaded 模块是否加载完毕
 
-- node.js在循环依赖中进行了优化，如果A和B为循环依赖且A较于B先初始化时，在B中加载A时，仅加载了一部分A的模块(也就是加载A模块之前的那部分，下面定义的代码均未加载到)。如果使用B模块来使用A模块可能有部分属性访问不到。
+- node.js在循环依赖中进行了优化，如果A和B为循环依赖且A较于B先初始化时，在B中加载A时，仅加载了一部分A的模块(绝大部分属性都不能访问到)。如果使用B模块来使用A模块可能有部分属性访问不到。
+- 在module加载时，只有当全部加载完毕时才会设置module.loaded`module.loaded = true`，如果在模块的代码块里时，loaded均为false。因为这个文件模块被module嵌套在了一个函数内执行，所以不管你怎么判断，loaded都是false。
 
 ```javascript
 //小栗子证明循环依赖部分加载问题
+// A module
+function A() {
+  console.log('A');
+}
+console.log('A is loading');
+console.log('module.loaded: ', module.loaded);
+var b = require('./b');
+module.exports = {
+  A: A,
+  name: 'aaaaa'
+};
+/////////////////
+// B module
+function B() {
+  console.log('B');
+}
+console.log('B is loading');
+console.log('module.loaded: ', module.loaded);
+var a = require('./a');
+module.exports = {
+  B: B,
+  a: a,
+  test: function () {
+    console.log(module.loaded);
+  }
+};
+/////////////////
+//loop.js
+var A = require('./a');
+var B = require('./b');
 
+// 只有全部加载完后才会加载完毕
+B.test();
+// 循环依赖时，B模块内加载的A模块时，大部分属性都访问不到。
+console.log(B.a.name);
+console.log(A.name);
 ```
 
 ----------
