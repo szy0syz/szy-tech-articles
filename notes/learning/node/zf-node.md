@@ -67,8 +67,10 @@
   - "keyword": "关键字数组，通常用于搜索"
   - "maintainers": "维护者数组，每个元素都要包含name、email(可选)、web(可选)字段"
   - "contributors": "贡献者数组，格式与maintainers相同。包的作者应该是贡献则数组的第一个元素"
-
-![image.png-387.1kB][1]
+  - "bugs": "提交bugs的地址，可以是网址或者邮箱"
+  - "licenses": "许可证数组，每个元素要包含type和url字段"
+  - "repositories": "仓库托管地址数组。每个元素都要包含type和url字段"
+  - "dependencies": "包的依赖，一个关联数组，由包名次和版本组成"
 
 - 全局对象global：表示Node所在的全局环境，类似于浏览器的window对象，它及其所有属性都可以在程序的任何地方访问。
 
@@ -564,7 +566,6 @@ console.log(A.name);
 ----------
 
 
-  [1]: http://static.zybuluo.com/szy0syz/37h1t668jithowio81vlcsvb/image.png
   [2]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [3]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
 
