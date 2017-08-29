@@ -377,6 +377,125 @@ newEat();
 
 ----------
 
+## 课时09：module
+
+- JS的不足
+  - js没有模块系统，不支持**封闭作用域**或**依赖管理**
+  - 没有**标准库**，没有文件系统和IO流API
+  - 没有**包**管理系统，不能自动加载和安装依赖
+
+- commonJS规范
+  - 以**模块**划分所有的功能，一个node.js由大量模块组成，**每个JS文件都是一个模块**；
+  - 实现了`require`方法，npm基**于common.js**实现了自动加载和安装依赖；
+
+- 模块和包的优点
+  - 提高效率
+  - 增加**内聚性**
+  - 有助于分工
+  - 重构方便
+  - 提高代码质量
+
+- 模块的分类
+  - 核心模块
+  - 文件模块
+    - 后缀名为.js文件
+    - 后缀名为.json文件
+    - 后缀名为.node的经过编译后的二进制模块文件
+  - 第三方模块 
+
+- node.js加载json模块的原理
+
+```javascript
+var jsonObj = require('./json');
+// 底下代码就是上面代码的原理实现，注意读文件是时同步模式！
+var fs = require('fs');
+var result = fs.readFileSync('json.json', 'utf8');
+var jObj = JSON.parse(result);
+```
+
+- 那我还是去找一下node源码是怎么实现的！基本上和我们写的原理一样！
+
+```javascript
+// Native extension for .js
+Module._extensions['.js'] = function(module, filename) {
+  var content = fs.readFileSync(filename, 'utf8');
+  module._compile(internalModule.stripBOM(content), filename);
+};
+
+// 这里就是怎么解析json文件的函数！
+// Native extension for .json
+Module._extensions['.json'] = function(module, filename) {
+  var content = fs.readFileSync(filename, 'utf8');
+  try {
+    module.exports = JSON.parse(internalModule.stripBOM(content));
+  } catch (err) {
+    err.message = filename + ': ' + err.message;
+    throw err;
+  }
+};
+
+//Native extension for .node
+Module._extensions['.node'] = function(module, filename) {
+  return process.dlopen(module, path._makeLong(filename));
+};
+```
+
+- 文件模块
+  - js模块
+    - 使用exports对象导出**成员**
+    - 模块定义为**类**
+
+```javascript
+(function(exports, require, module, __filename, __driname) {
+    // 自定义代码
+    return module.exports;
+})
+```
+
+- 在module加载的js文件模块的原理，初始化时开头就让`exports = module.exports;`了
+
+```javascript
+//
+//exports = module.exports;
+
+var Person = function(name, age) {
+  this._name = name;
+  this._age = age;
+}
+
+Person.prototype.getName = function() {
+  return this._name;
+}
+
+Person.prototype.setName = function(name) {
+  this._name = name;
+}
+
+Person.prototype.getAge = function() {
+  return this._age;
+}
+
+Person.prototype.setName = function(age) {
+  this._age = age;
+}
+
+Person.prototype.home = "中国";
+
+// exports = Person;
+// 在导出引用类型对象时，还必须使用module.exports来导出！
+module.exports = Person;
+// return module.exports;
+```
+
+
+----------
+
+
+----------
+
+
+----------
+
 
   [1]: http://static.zybuluo.com/szy0syz/37h1t668jithowio81vlcsvb/image.png
 
