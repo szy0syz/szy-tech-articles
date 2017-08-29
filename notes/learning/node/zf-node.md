@@ -502,10 +502,15 @@ var Person =  require('./human');
 
 - module加载模块时的查找逻辑
 
+![node-require-logic.png-63kB][2]
+
+![node-module-find-files.png-132.1kB][3]
+
 - module属性和方法
   - module.id 模块的ID，也就是模块的**绝对路径** 
   - module.filename 模块文件名，也时模块的**绝对路径**
   - module.loaded 模块是否加载完毕
+  - module.parent 父模块，即调用当前模块的模块对象
 
 - node.js在循环依赖中进行了优化，如果A和B为循环依赖且A较于B先初始化时，在B中加载A时，仅加载了一部分A的模块(绝大部分属性都不能访问到)。如果使用B模块来使用A模块可能有部分属性访问不到。
 - 在module加载时，只有当全部加载完毕时才会设置module.loaded`module.loaded = true`，如果在模块的代码块里时，loaded均为false。因为这个文件模块被module嵌套在了一个函数内执行，所以不管你怎么判断，loaded都是false。
@@ -560,5 +565,7 @@ console.log(A.name);
 
 
   [1]: http://static.zybuluo.com/szy0syz/37h1t668jithowio81vlcsvb/image.png
+  [2]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
+  [3]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
 
 
