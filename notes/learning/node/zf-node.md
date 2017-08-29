@@ -444,6 +444,8 @@ Module._extensions['.node'] = function(module, filename) {
   - js模块
     - 使用exports对象导出**成员**
     - 模块定义为**类**
+  -  json模块
+    - fs读入内存，并且转化成json对象  
 
 ```javascript
 (function(exports, require, module, __filename, __driname) {
@@ -487,6 +489,30 @@ module.exports = Person;
 // return module.exports;
 ```
 
+- `require.reslove('./person');` 查找`person`模块并返回该模块的绝对路径
+
+```javascript
+process.chdir(__dirname);
+var Person =  require('./human');
+console.dir(require.cache);
+// 如果不清楚缓存，require只会加载一次human模块，如果请了后会加载两次！
+// delete require.cache[require.resolve('./person')];
+var Person =  require('./human');
+```
+
+- module加载模块时的查找逻辑
+
+- module属性和方法
+  - module.id 模块的ID，也就是模块的**绝对路径** 
+  - module.filename 模块文件名，也时模块的**绝对路径**
+  - module.loadde 模块是否加载完毕
+
+- node.js在循环依赖中进行了优化，如果A和B为循环依赖且A较于B先初始化时，在B中加载A时，仅加载了一部分A的模块(也就是加载A模块之前的那部分，下面定义的代码均未加载到)。如果使用B模块来使用A模块可能有部分属性访问不到。
+
+```javascript
+//小栗子证明循环依赖部分加载问题
+
+```
 
 ----------
 
