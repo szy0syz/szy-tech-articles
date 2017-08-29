@@ -573,7 +573,7 @@ console.log(A.name);
   - `doc` 说明文档
   - `test` 单元测试和其他测试
 
-- npm包管理工具
+- npm 包管理工具
   - `npm search gulp` 查找宝，很慢，需要把官网所有包索引在本地构建一份
   - `npm view gulp` 查看包
   - `npm install gulp` 安装包
@@ -589,11 +589,20 @@ console.log(A.name);
   - `npm updated gulp -g` 更新全局的gulp
   - `npm update` 更新当前目录下所有的包
   - `npm update -g` 更新所有目录下所有的包
-  -  
 
 ----------
 
 ## 课时10：buffer
+
+- 缓冲区Buffer是暂时存放输入输出数据的一段**内存**。
+- JS语言自身只有字符串数据类型，没有**二进制**数据类型，而处理TCP和文件流的时候，必须处理二进制数据。
+- NodeJS提供了一个Buffer对象来提供对二进制数据的操作。
+- 其是一个表示**固定**内存分配的全局对象，也就是说放到缓存区中的字节需要**提前确定**。
+- Buffer好比由一个**八位字节**元素组成的数组，可以有效的在JavaScript中表示二进制数据
+- 创建Buffer
+  - new Buffer(size)
+  - new Buffer(array)
+  - new Buffer(str, [encoding])
 
 ----------
 
