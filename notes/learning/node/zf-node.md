@@ -513,6 +513,9 @@ var Person =  require('./human');
   - module.filename 模块文件名，也时模块的**绝对路径**
   - module.loaded 模块是否加载完毕
   - module.parent 父模块，即调用当前模块的模块对象
+  - module.children 子模块，即当前模块require的模块对象
+  - module.exports 导出对象
+  - module.exports 模块的查找路径
 
 - node.js在循环依赖中进行了优化，如果A和B为循环依赖且A较于B先初始化时，在B中加载A时，仅加载了一部分A的模块(绝大部分属性都不能访问到)。如果使用B模块来使用A模块可能有部分属性访问不到。
 - 在module加载时，只有当全部加载完毕时才会设置module.loaded`module.loaded = true`，如果在模块的代码块里时，loaded均为false。因为这个文件模块被module嵌套在了一个函数内执行，所以不管你怎么判断，loaded都是false。
@@ -556,6 +559,21 @@ B.test();
 console.log(B.a.name);
 console.log(A.name);
 ```
+
+- require
+  - main 主模块
+  - reslove 得到实际查找模块的绝对路径
+  - cache 模块缓存
+  - delete cache[key] 删除缓存
+
+- 包：在node.js中通过包来对一级具有**相互依赖**关系的模块进行统一管理。一个包就是一个**目录**。
+  - `package.json` 包描述文件
+  - `bin` 二进制
+  - `lib` 存放JavaScript文件
+  - `doc` 说明文档
+  - `test` 单元测试和其他测试
+
+01:09:40  
 
 ----------
 
