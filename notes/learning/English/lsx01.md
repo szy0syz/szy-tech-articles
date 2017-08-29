@@ -6,10 +6,13 @@
 
 ## lesson-01 Greetings
 
+> Finished: 2017.08.27
 
 ----------
 
 ## lesson-02 Courtesy
+
+> Finished: 2017.08.28
 
 ### 语法
 
@@ -18,3 +21,5 @@
 ----------
 
 ## lesson-03 
+
+> Finished: 2017.08.29
