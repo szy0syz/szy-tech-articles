@@ -573,10 +573,27 @@ console.log(A.name);
   - `doc` 说明文档
   - `test` 单元测试和其他测试
 
-01:09:40  
+- npm包管理工具
+  - `npm search gulp` 查找宝，很慢，需要把官网所有包索引在本地构建一份
+  - `npm view gulp` 查看包
+  - `npm install gulp` 安装包
+  - `npm install -g express-generator` 安装全局包
+  - `npm config ls` 查看npm配置 (prefix = ... 全局配置路径)
+  - `npm root -g` 查看全局安装路径
+  - `npm config set prefix "d:\global"` 修改全局路径
+  - `npm list` 显示当前目录下的所有包
+  - `npm list -g` 显示全局下所有包
+  - `npm uninstall gulp` 卸载本地的包
+  - `npm uninstall gulp -g` 卸载全局的包
+  - `npm update gulp` 更新本地的gulp
+  - `npm updated gulp -g` 更新全局的gulp
+  - `npm update` 更新当前目录下所有的包
+  - `npm update -g` 更新所有目录下所有的包
+  -  
 
 ----------
 
+## 课时10：buffer
 
 ----------
 
