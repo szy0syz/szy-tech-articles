@@ -604,6 +604,19 @@ console.log(A.name);
   - new Buffer(array)
   - new Buffer(str, [encoding])
 
+```javascript
+var fs = require('fs');
+// 使用fs模块读取文件时，默认就是二进制！
+var content = fs.readFileSync('index.js');
+console.log(content);
+```
+
+- JavaScript任意进制数转换
+  - parseInt("11", 2); // -> 3
+  - .toString("3", 2); // -> 11
+
+31:26
+
 ----------
 
 
