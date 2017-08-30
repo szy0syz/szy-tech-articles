@@ -687,6 +687,49 @@ console.log(buff.toString());
 
 ----------
 
+## 课时10：file
+
+- 异步方式把字符串写入文件时权限
+  - 二爷(写)一直(执行)死(4)读书   4  2  1
+  - `-rw-` 表示仅有自己的创建者拥有权限
+  - `r--` 所属组
+  - 默认node异步文件流权限为`0x666`表示所有人可读写
+  - `fs.appendFile`内部用的还是`fs.writeFile + flag:a`模式
+
+- base64编码原理：
+  1. 把3个9位字符转成4个6为字节
+  2. 在每个6位字节前补两个0 
+  3. 再转成十进制数
+  4. 将10进制数代如base64取值范围[0~63]中换取结果
+  5. 最后连接所有结果
+
+
+- 小栗子展示`fs.readFileSync()`内部实现流程
+
+```javascript
+// 用个vs也是用烦了, 我是不是优化配置一下，省得这样麻烦。
+process.chdir(__dirname);
+
+////// 模拟fs.readFile内部实现流程 //////
+var fs = require('fs');
+
+var fd = fs.openSync('line.txt', 'r');
+
+// 我在line.txt里就写了三个字符szy
+var buffer = new Buffer(3);
+
+/**
+ * fd 文件描述符(正常情况下是3，因为0被stdout占用，1被stdin占用，2倍stderr占用)
+ * buffer 往buffer里写的偏移量
+ * length 长度(这次写入的长度)
+ * position 文件的当前读取位置
+ */
+fs.readSync(fd, buffer, 0 ,3);
+console.log(buffer);
+```
+
+
+
 
 ----------
 
