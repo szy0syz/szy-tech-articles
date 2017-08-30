@@ -895,7 +895,49 @@ setInterval(function () { }, 1000);
 
 > 注意：如果没有绑定data事件处理器，并且没有pipe()目标，同时流被切换到流动模式，那么数据就会流失。
 
+- 切回暂停模式
+  - 如果没有导流目标，调用`pause()`方法
+  - 如果有导流目标，移除所有 data 事件处理器，调用`unpipe()`方法移除所有导流目标
+
+### ReadStream文件可写流
+
+    fs.createReadStream(path, [options]);
+
+- path
+- options
+  - flags 对文件采取何种操作，默认为'r'
+  - encoding 指定 **编码**，默认为null
+  - autoClose 读完数据后是否关闭文件描述符
+  - start 用整数表示文件 **开始** 读取的字节数的索引位置
+  - end 用整数表示文件 **结束** 读取的字节数的缩影位置(包含end位置)
+  - highWaterMark 最高水位线，停止从底层资源读取前内部缓冲区最多能存放的字节数。缺省时为`64kb`
+
+```javascript
+// 一个可读流的小demo
+var fs = require('fs');
+process.chdir(__dirname);
+var rs = fs.createReadStream('./read.txt', {
+  highWaterMark: 3, // 设置缓存区大小为3，那这个流因为要读6个字节，所以导致data事件执行两次
+  encoding: 'utf8',
+  start: 0,
+  end: 5
+});
+
+rs.on('data', function (data) {
+  console.log(data);
+  // 如果这里加了setTimeout(function() {console.log(data);}, 5000);
+  // 此时会先打印finished，再打印123，456！
+  // 其实这就是流的特点
+});
+
+rs.on('end', function () {
+  console.log('finished...');
+});
+```
+
+
 
   [2]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [3]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
+
 
