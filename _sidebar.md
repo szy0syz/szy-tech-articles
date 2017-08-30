@@ -43,6 +43,7 @@
   - [html5学习笔记](/notes/learning/html/html5.md)
   - [css3学习笔记](/notes/learning/css/css3.md)
   - [TED演讲笔记](/notes/ted/ted.md)
+  - [珠峰Node.js全栈开发教程](/notes/learning/node/zf-node.md)
 
 
 - 读书笔记
