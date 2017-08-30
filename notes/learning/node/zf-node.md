@@ -815,7 +815,38 @@ function copySync(src, tar) {
 copySync('src.txt', 'tar.txt');
 ```
 
+- 小栗子：通过fs.read()方法读取默认stdin(fd为0)，当我们输入后等3秒输出buff
+
+```javascript
+var fs = require('fs');
+
+// 0  stdin
+// 1  stdout
+// 2  stderr
+
+setTimeout(function () {
+  var buffer = new Buffer(1);
+  console.log(buffer);
+  // 用fs读stdin
+  fs.read(0, buffer, 0, 1, 0, function (err) {
+    console.log(buffer);
+  })
+}, 3000);
+
+// process.stdin.on('data', function (err, data) {
+//   console.log(arguments);
+// });
+
+setInterval(function () { }, 1000);
+```
+
+- 小栗子：copy 异步版！待写
+
 ----------
+
+## 
+
+
 
 
   [2]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
