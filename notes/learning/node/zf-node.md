@@ -636,6 +636,53 @@ console.log(decoder.write(buf1));
 console.log(decoder.write(buf2));
 // StringDecoder 大概实现原理为 输出buf1时如果解码出现非法字符，看哈有没有底下连续输出的，又就凑对拼接后再输出
 
+var srcBuff = new Buffer([4,5,6]);
+var tarBuff = new Buff(6);
+tarBuff[0] = 0x01;
+tarBuff[1] = 0x02;
+tarBuff[2] = 3;
+srcBuff.copy(tarBuff, 3, 0, 3); // 拷贝到tarBuff，从索引3开始，源从0开始，源拷贝3个字节
+console.log(tarBuff);  // -> <Buffer 01 02 03 04 05 06>
+
+var buf4 = new Buffer(2);
+buf4[0] = -250;
+buf4[1] = 260;
+console.log(buf4.toString()); // -> <Buffer 06 04>
+// 如果溢出时，
+// 对于小于0的，会对256去模
+// 对于大于250的，先模上256，再加256
+```
+
+- Buffer静态方法
+  - `concat` `var buff = Buffer.concat([buff1, buff2], 3+3);`
+  - `isBuffer`
+  - `byteLength`
+  - `isEncoding`
+
+```javascript
+//手工实现`Buffer.concat()`静态方法
+function myConcat(list, len) {
+  var b = new Buffer(len), i, j, counter = 0;
+  // 双循环便利数组里的Buffer数组对象们
+  for (i = 0; i < list.length; i++) {
+    for (j = 0; j < list[i].length; j++) {
+      // 如果提前到了长度限制，就返回了！
+      if (counter >= len) {
+        return b;
+      }
+      // 赋值 
+      b[counter++] = list[i][j];
+    }
+  }
+  return b;
+}
+
+var buff1 = new Buffer('振宇');
+var buff2 = new Buffer('集团');
+
+var buff = myConcat([buff1, buff2], 12);
+
+console.log(buff.toString());
 ```
 
 ----------
