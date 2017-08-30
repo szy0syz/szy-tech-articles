@@ -728,8 +728,92 @@ fs.readSync(fd, buffer, 0 ,3);
 console.log(buffer);
 ```
 
+- 小栗子展示异步分批读取数据
 
+```javascript
+var fs = require('fs');
+process.chdir(__dirname);
+// demo要求：例如4个汉字，异步方式，两个两个的分别读取
 
+// 第零步：创建buffer
+var buffer = new Buffer(12); // 我已经提前知道长度了：4个汉字*3=12
+// console.log(buffer); // <Buffer 00 00 38 00 00 00 00 00 d9 e9 ca 00>
+// 第一步: 打开文件
+fs.open('line.txt', 'r',function (err, fd) {
+  // 第二步：执行第一次异步，读取一个汉字
+  fs.read(fd, buffer, 0, 3, 0, function (err, bytesRead, buffer) {
+    console.log('bytesRead:',bytesRead);
+    console.log('第一次读取的内容: ' + buffer); //奇怪，为什么有乱码呢？原来实例化时被填充了一些数字
+    // 第三部：异步嵌套执行，读取第2~4个汉字
+    fs.read(fd, buffer, 3, 9, 3, function (err, bytesRead, buffer) {
+      console.log('bytesRead:',bytesRead);
+      console.log('第二次读取的内容: ' + buffer.toString());
+    });
+  });
+});
+```
+
+- 升级版异步读取文件
+
+```javascript
+var fs = require('fs');
+process.chdir(__dirname);
+
+var res = new Buffer(8192), list = []; // 8k
+
+// 实现异步读取文件，每次读3个字节！
+fs.open('line.txt', 'r', function (err, fd) {
+  var pos = 0; // 这个表示目标文件从哪读取的位置
+  function read() {
+    // 创建一个临时buffer当做缓存区，接收读到的那个字符
+    var buffer = new Buffer(3);
+    fs.read(fd, buffer, 0, 3, pos, function (err, bytesRead) {
+      // 读取文件内容，将二级制buffer存到数组中
+      list.push(buffer);
+      // 设置文件读取位置，方便下次读取
+      pos += bytesRead;
+      // 如果还能读到内容
+      if (bytesRead > 0) {
+        // 递归执行这个函数
+        read();
+      }
+      else {
+        // 使用Buffer类的静态方法将数组链接成新Buffer
+        var res = Buffer.concat(list);
+        console.log(res.slice(0, pos).toString());
+      }
+    })
+  };
+  read();
+});
+```
+
+- 小测验：复制文件
+
+```javascript
+
+function copySync(src, tar) {
+  var fs = require('fs');
+  process.chdir(__dirname);
+
+  var list = [], size = 0, length = 255, flag = true; // 8k
+
+  // 实现copy小栗子
+  // 第一步：我们要创建一个缓存区的话，肯定要知道文件的大小嘛，fd好像可以看到文件大小，我看看node源码readFile怎么写的。
+  // 哎，node的readFile里有别的方法确认大小，我们就有标准api吧
+  size = fs.statSync(src).size;
+  var res = new Buffer(size)
+  var fd = fs.openSync(src, 'r');
+  fs.readSync(fd, res, 0, size, 0);
+  var fd_wtire = fs.openSync(tar, 'w');
+  fs.writeSync(fd_wtire, res, 0, size, 0);
+  fs.closeSync(fd);
+  fs.closeSync(fd_wtire);
+  console.log('同步模式复制文件完毕');
+}
+
+copySync('src.txt', 'tar.txt');
+```
 
 ----------
 
