@@ -844,12 +844,58 @@ setInterval(function () { }, 1000);
 
 ----------
 
-## 
+## 课时12：可读流
+
+### fs模块中几种流的读写方法的区别
+| 用途                              | 异步            |     同步       |
+| :-------------:                   |:-----------:    |     :-----:    |
+| 将文件作为 **整体** 读入缓存区    | readFile        | readFileSync   |
+| 将文件 **部分** 读入缓存区        | read            |   readSync     |
+| 将数据 **完整** 写入文件          | writeFile       |  writeFilesync |
+| 将缓存区的 **部分** 内容写入文件  | write           |   writeSync    |
+
+- read & readSync 读取文件
+  - 一**小块**一**小块**读入缓存区
+  - 最后从缓存区读取 **完整** 文件内容
+
+- write & writeSync 写入文件
+  - 将需要操作的数据写到一个 系统缓存区内
+  - 带缓存区写满后在将缓存区写到文件中
+
+- 流的概念
+  - 流是一组 `有序` 的，有 `起点` 和 `终点` 的 `字节数据传输` 手段
+  - 不关心文件的整体内容，只关注是否从文件中 **读** 到了数据，以及读到数据后的 **处理**
+  - 流是一个 **粗体文本** 抽象接口，被Node中的很多对象所实现。比如对一个HTTP服务器的请求对象request是一个流，stdout也是一个流。
+
+> 几乎所有Node程序，无论多简单，都在某种途径用到了流。
 
 
+### stream.Readable可读流
+
+> 使用实现了stream.Readable接口的对象来将对象数据读取为流数据，在表明准备接收之前，Readable流并不会开始发射数据。
+
+|      对象             |     同步       |
+|:-----------:          |    :-----:     |
+| fs.ReadStream         |   读取文件     |
+| http.IncomingMessage  |   客户端的请求 |
+| net.Socket            |   tcp连接中的socket对象 |
+| process.stdin         |   标准输入流   |
+| Gzip                  |   数据压缩     |
+
+
+- 可读流模式
+  - 内部 **flowing(流动)** 模式和 **非flowing(暂停)** 模式来读取数据
+  - `flowing`模式使用操作系统的内部IO机制来读取数据，并尽可能 **快** 地为您提供数据
+  - `非flowing`模式时流默认处于 暂停 模式，必须显示调用`read`方法来读取数据
+
+- 如何切换到流动模式
+  - 添加一个`data`事件处理器来监听数据
+  - 调用`resume()`方法来明确开启数据流
+  - 调用`pipe()`方法将数据发送到一个`Writable`可写流
+
+> 注意：如果没有绑定data事件处理器，并且没有pipe()目标，同时流被切换到流动模式，那么数据就会流失。
 
 
   [2]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [3]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
-
 
