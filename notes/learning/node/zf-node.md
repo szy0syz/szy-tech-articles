@@ -1128,10 +1128,12 @@ finished...
 
 ## 课时13：可写流
 
+
 > 可写流writable：使用各种实现了stream.Writable接口的对象来将流数据写入到对象中。
 
-|         对象        |           描述    |
-|       :------      |   :-----------    |
+
+|         对象        |       描述        |
+|       :------       |   :-----------    |
 | fs.writeStream      | 写入文件          |
 | http.ClientRequest  | 客户端请求对象    |
 | http.ServerResponse | http中的相应对象  |
@@ -1143,8 +1145,8 @@ finished...
 ### 可写流的方法
 | 方法  |    描述    |
 | :---- |   :----    |
-| write | 写入数据          |
-| end   | 结束写入 数据时触发，迫使缓存区中的数据立即写入目标对象，调用后不能再write()写入方法 |
+| write | 写入数据   |
+| end   | 结束写入 数据时触发，迫使缓存区中的数据立即写入目标对象，调用后不能再write()写入方法    |
 
 ### 创建WriteStream
 在fs模块中使用`createWriteStream`方法创建一个将流数据写入文件中的`WriteStream`对象：`fs.createWriteStream(path, [options]);`
@@ -1156,7 +1158,6 @@ finished...
   - autoClose 是否自动关闭文件描述符
   - start 用整数表示文件开始字节数的写入位置
   - highWaterMark 最高水位线，write()开始返回false的缓存区大小。缺省时为16kb
-  - 
 
 - 可写流的小demo
 
@@ -1181,7 +1182,61 @@ rs.on('data', function() {
     console.log('共写入%d字节', ws.bytesWritten);
   })
 });
+```
 
+- write方法：`writeable.write(chunk, [encoding], [callback]);`
+  - chunk 要**写入**的数据，Buffer或字符串对象，必须指定
+  - encoding 写入的**编码格式**，chunk为字符串时才有用，科尔选参数
+  - callback 写入成功后的 **回调函数**
+  - write方法返回值为布尔值，系统缓存区灌满时为`false`，未满时为`true`
+
+- end方法：在写入文件时，当不再需要写入数据时可调用方法关闭文件。迫使系统缓存区的数据立即写入文件中。
+
+- 大文件读取流程
+  1. 从文件读入 缓存区 并填满
+  2. 把缓存区中的数据写入到目标文件，同时读取剩余数据到内存中，write返回flase
+  3. 缓存区中的数据全部写入后触发drain事件
+  4. 先将内存中的数据写入缓存区，再读取文件剩余数据到缓存区直到填满
+  5. **持续**上述步骤，直到读取完成
+
+```javascript
+// 大文件读写流程demo
+var fs = require('fs');
+process.chdir(__dirname);
+var rs = fs.createReadStream('./project.zip');
+var ws = fs.createWriteStream('./project_copy.zip');
+
+rs.on('data', function (data) {
+  // 这里可读流没设置最高水位线，应该是64kb，我打印个看看
+  console.log(data.length);
+  var flag = ws.write(data);
+  console.log(flag);
+});
+
+ws.on('drain', function () {
+  console.log('===drain===');
+})
+
+rs.on('end', function() {
+  console.log('文件读取完毕');
+})
+
+//////////输出结果//////////
+// ===drain===
+// 65536
+// false
+// ===drain===
+// 65536
+// false
+// ...
+// ...
+// ===drain===
+// 65536
+// false
+// ===drain===
+// 13347
+// true
+// 文件读取完毕
 ```
 
 ----------
