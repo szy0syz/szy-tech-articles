@@ -1126,6 +1126,69 @@ finished...
 
 ----------
 
+## 课时13：可写流
+
+> 可写流writable：使用各种实现了stream.Writable接口的对象来将流数据写入到对象中。
+
+|         对象        |           描述    |
+|       :------      |   :-----------    |
+| fs.writeStream      | 写入文件          |
+| http.ClientRequest  | 客户端请求对象    |
+| http.ServerResponse | http中的相应对象  |
+| net.Socket          | Tcp中的socket对象 |
+| process.stdout      | 标准输出          |
+| process.stderr      | 标准输入          |
+| Gunzip              | 解压              |
+
+### 可写流的方法
+| 方法  |    描述    |
+| :---- |   :----    |
+| write | 写入数据          |
+| end   | 结束写入 数据时触发，迫使缓存区中的数据立即写入目标对象，调用后不能再write()写入方法 |
+
+### 创建WriteStream
+在fs模块中使用`createWriteStream`方法创建一个将流数据写入文件中的`WriteStream`对象：`fs.createWriteStream(path, [options]);`
+
+- path 读取的文件路径
+- options 
+  - flags 对文件采取何种操作，默认为'w'
+  - encoding 指定 编码 ，默认为null
+  - autoClose 是否自动关闭文件描述符
+  - start 用整数表示文件开始字节数的写入位置
+  - highWaterMark 最高水位线，write()开始返回false的缓存区大小。缺省时为16kb
+  - 
+
+- 可写流的小demo
+
+```javascript
+var fs = require('fs');
+process.chdir(__dirname);
+var rs = fs.createReadStream('./read.txt');
+var ws = fs.createWriteStream('./write.txt');
+
+ws.on('open', function(){
+  console.log('写入文件已经打开');
+});
+
+rs.on('data', function(data) {
+  ws.write(data); // 写入
+});
+
+rs.on('data', function() {
+  // 异步方法：追加`写入完成`四个字在文末
+  ws.end('写入完毕', function() { // 写入并关闭
+    console.log('写入完毕');
+    console.log('共写入%d字节', ws.bytesWritten);
+  })
+});
+
+```
+
+----------
+
+
+----------
+
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
