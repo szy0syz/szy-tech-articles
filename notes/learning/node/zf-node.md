@@ -504,9 +504,9 @@ var Person =  require('./human');
 
 - module加载模块时的查找逻辑
 
-![node-require-logic.png-63kB][2]
+![node-require-logic.png-63kB][1]
 
-![node-module-find-files.png-132.1kB][3]
+![node-module-find-files.png-132.1kB][2]
 
 - module属性和方法
   - module.id 模块的ID，也就是模块的**绝对路径** 
@@ -953,7 +953,7 @@ rs.on('end', function () {
 | resume      | 通知对象`恢复`触发data事件  |
 | pipe        | 设置 `管道` ，将可读流里的内容导入到参数指定的 `可写流`里 |
 | unpipe      | `取消`数据管道              |
-| unshift     | 把数据块 `插回` 到队列开头 |
+| unshift     | 把数据块 `插回` 到队列开头  |
 
 ```javascript
 // 关于刘的暂停于恢复
@@ -1012,10 +1012,58 @@ rs.on('end', function () {
   console.log('stream is closed...');
 });
 ```
+
+- 关于`readable事件`和`read方法`的demo：
+  - 11
+  - 22
+  - 33
+
+```javascript
+var fs = require('fs');
+process.chdir(__dirname);
+var rs = fs.createReadStream('./read.txt', {
+  highWaterMark: 3,
+  // encoding: 'utf8',
+  start: 0,
+  end: 5  // 设置了只读0~5，6个数
+});
+var buffers = [], counter = 0;
+rs.on('readable', function() {
+  console.log('===readable===');
+  var buff;
+  // console.log(rs.read(1)); //最后一次进来，rs.read(1)返回的结果是null
+  while(null != (buff = rs.read(1))) {
+    buffers.push(buff);
+    counter++;
+    console.log(counter);
+  }
+});
+rs.on('end', function() {
+  rs.close();
+  var data = Buffer.concat(buffers);
+  console.log(data);
+  console.log('finished...');
+});
+```
+
+- 上例的原理图
+
+![node-stream-readable.png-110.5kB][3]
+
+- 可读流读数据的原理归结(**流动模式**)：
+  1. 初始化可读流(path, start, end, highWaterMark...)
+  2. 流去打开原始数据，看看原始数据的长度，买买，大着点了，哥哥的缓存区放不下，那么流就
+
+- 可读流读数据的原理归结(**非流动模式**)：
+  1. 1
+  2. 2
+
+
+
 ----------
 
 
-  [2]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
-  [3]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
-
+  [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
+  [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
+  [3]: http://static.zybuluo.com/szy0syz/e84ucok5rm265ybau1al8h85/node-stream-readable.png
 
