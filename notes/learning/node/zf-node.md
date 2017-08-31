@@ -935,6 +935,84 @@ rs.on('end', function () {
 });
 ```
 
+### 可读流触发的事件
+|   事件   |           用途              |
+| :------: |        :-----------:      |
+| readable | 监听`readable`会使数据从底层读到系统缓存区，读到数据后或者排空后如果再读到数据时，就会触发`readable`事件 |
+| data     | 绑定一个`data`事件监听器会将流切换到`流动模式`，数据会尽可能快地读出 |
+| end      | 该事件会在`读完`数据后被触发 |
+| error | 当数据在接收中发生`错误`时触发 |
+| close | 当底层数据源(如源头的文件描述符)被`关闭`时触发。并不是所有流都会触发这个事件 |
+
+### 可读流触发的方法
+|     方法    |           描述              |
+| :-----:     |         :-----------:       |
+| read        | 在`readable`事件触发时的`回调函数`里读取数据 |
+| setEncoding | 指定`编码`                  |
+| pause       | 通知对象`停止`触发data事件  |
+| resume      | 通知对象`恢复`触发data事件  |
+| pipe        | 设置 `管道` ，将可读流里的内容导入到参数指定的 `可写流`里 |
+| unpipe      | `取消`数据管道              |
+| unshift     | 把数据块 `插回` 到队列开头 |
+
+```javascript
+// 关于刘的暂停于恢复
+var fs = require('fs');
+process.chdir(__dirname);
+var rs = fs.createReadStream('./read.txt', {
+  highWaterMark: 3, // 设置缓存区大小为3，那这个流因为要读6个字节，所以导致data事件执行两次
+  encoding: 'utf8',
+  start: 0,
+  end: 5
+});
+
+rs.on('data', function (data) {
+  console.log(data);
+  rs.pause(); // 将流切换成非流动模式/暂停模式，此时就不会触发data事件！
+  setTimeout(function() {
+    rs.resume(); // 切换流到流动模式
+    // 这时，先打印123后，等2秒后再打印456，再触发end事件！
+  },2000);
+});
+
+rs.on('end', function () {
+  console.log('finished...');
+  rs.close();
+  console.log('stream is closed...');
+});
+```
+
+- 用以下小栗子证明：
+  1. 当把流切换成`流动模式`时，数据一定会尽可能快地被读取！
+  2. 当可以恢复后没有data事件的监听，这样数据就过了，你再也监听不到流中的数据！
+
+```javascript
+var fs = require('fs');
+process.chdir(__dirname);
+var rs = fs.createReadStream('./read.txt', {
+  highWaterMark: 3, // 强制流读两次数据
+  encoding: 'utf8',
+  start: 0,
+  end: 5
+});
+
+rs.pause();
+
+setTimeout(function() {
+  rs.on('data', function (data) {
+    console.log(data);
+  });
+}, 5);
+
+rs.resume(); // 切换流到流动模式
+
+rs.on('end', function () {
+  console.log('finished...');
+  rs.close();
+  console.log('stream is closed...');
+});
+```
+----------
 
 
   [2]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
