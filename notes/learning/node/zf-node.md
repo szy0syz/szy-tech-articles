@@ -1013,52 +1013,113 @@ rs.on('end', function () {
 });
 ```
 
-- 关于`readable事件`和`read方法`的demo：
-  - 11
-  - 22
-  - 33
+- 可读流读数据的原理归结(**流动模式**)：
+  1. 初始化可读流(path, start, end, highWaterMark(默认64kb)...);
+  2. 流去打开原始数据，看看原始数据的长度。买买，大着点了，哥哥的缓存区放不下。此时流就会分批读取到缓存区;
+  3. 在从原始数据读到缓存区时，读满一次缓存区就会触发data事件，并将其回调函数的第一个参数赋值为目前缓存区的内容buff;
+  4. 回调执行完后，再清空缓存区又跑去原始数据那读取等额长度的buff存在缓存区，又触发data事件并回调赋值buff;
+  5. 当data读到文件末尾时，能读几个字节读几个，读完后data就不再触发。在data事件触发过程中，不会触发readable事件;
+  6. 当原始数据读完(最后一次data事件触发完)后，流会最后执行一次readable事件，此时rs.read()返回null;
+  7. 最后流发现该做的都做完了，触发end事件，完成读取。
+
+```javascript
+// 流动模式的流读取数据demo
+var fs = require('fs');
+process.chdir(__dirname);
+var rs = fs.createReadStream('./read.txt', {
+  highWaterMark: 3,
+  start: 0,
+  end: 8 
+});
+var counter = 0;
+rs.on('readable', function() {
+  console.log('===readable===  No.',counter++);
+  console.log('rs.read(1): ', rs.read(1));
+});
+rs.on('data', function(data) {
+  console.log('===data===  No.',counter++);
+  console.log(data);
+  console.log(rs.read(1)); // 流动模式的流我们读不到缓存区数据了！
+});
+rs.on('end', function() {
+  // 流一般都带自动关闭
+  // rs.close();
+  console.log('===end===  No.',counter++);
+});
+
+////////执行结果/////////
+// ===data===  No. 0
+// <Buffer 31 32 33>
+// In data -> rs.read(1):  null
+// ===data===  No. 1
+// <Buffer 34 35 36>
+// In data -> rs.read(1):  null
+// ===data===  No. 2
+// <Buffer 37 38 39>
+// In data -> rs.read(1):  null
+// ===readable===  No. 3
+// In readable -> rs.read(1):  null
+// ===end===  No. 4
+```
+
+- 可读流读数据的原理归结(**手动流模式**)：
+  1. 初始化可读流(path, start, end, highWaterMark(默认64kb)...)(假设原始数据长度3，缓存区长度3);
+  2. 流检查了下自己的属性，没有导向目标，也没拿on绑定任何事件，好吧，'我'似乎不是一个流动模式的流(流的_state状态属性中 **flowing: null** );
+  3. 绑定readable事件
+  4. 流接到执行，我可以读数据了。流就开始读取原始数据到缓存区(3字节)，然后我们在readable的回调函数中，使用rs.read(n)来读取缓存区n个字节buff
+  5. 每一次调用read()方法都会返回缓存区不同位置的数据，不停往下移，直到移动到null，说明缓存区没有数据了，可以返回这个回调；
+  6. 执行完一次readable后，流发现原始数据还没读完时，流就先请缓存区再接着读3字节原始数据放在缓存区后，哦吼，readable事件又触发，又拿rs.read(n)读数据；
+  7. 当流将原始数据全部读完后，readable事件还会触发一次，这次在readable回调中用read()方法时返回null，感觉是此多余的readable
+  8. 最后触发end事件，我们可以在end上对buff拼接得到结果
 
 ```javascript
 var fs = require('fs');
 process.chdir(__dirname);
 var rs = fs.createReadStream('./read.txt', {
-  highWaterMark: 3,
-  // encoding: 'utf8',
+  highWaterMark: 5,
   start: 0,
-  end: 5  // 设置了只读0~5，6个数
+  end: 9  // 设置了只读0~5，6个数
 });
 var buffers = [], counter = 0;
 rs.on('readable', function() {
   console.log('===readable===');
   var buff;
-  // console.log(rs.read(1)); //最后一次进来，rs.read(1)返回的结果是null
-  while(null != (buff = rs.read(1))) {
+  //执行一次read()方法，缓存区指针就变一次，谨慎啊！
+  while(null != (buff = rs.read(2))) {
+    console.log('buf:', buff);
     buffers.push(buff);
     counter++;
-    console.log(counter);
+    console.log('counter', counter);
   }
 });
 rs.on('end', function() {
   rs.close();
   var data = Buffer.concat(buffers);
-  console.log(data);
+  console.log('data', data);
   console.log('finished...');
 });
+
+///////执行结果/////
+===readable===
+buf: <Buffer 31 32>
+counter 1
+buf: <Buffer 33 34>
+counter 2
+===readable===
+buf: <Buffer 35 36>
+counter 3
+buf: <Buffer 37 38>
+counter 4
+buf: <Buffer 39>
+counter 5
+===readable===
+data <Buffer 31 32 33 34 35 36 37 38 39>
+finished...
 ```
 
 - 上例的原理图
 
 ![node-stream-readable.png-110.5kB][3]
-
-- 可读流读数据的原理归结(**流动模式**)：
-  1. 初始化可读流(path, start, end, highWaterMark...)
-  2. 流去打开原始数据，看看原始数据的长度，买买，大着点了，哥哥的缓存区放不下，那么流就
-
-- 可读流读数据的原理归结(**非流动模式**)：
-  1. 1
-  2. 2
-
-
 
 ----------
 
