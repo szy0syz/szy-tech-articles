@@ -1239,6 +1239,40 @@ rs.on('end', function() {
 // 文件读取完毕
 ```
 
+- 关于可写流`drain`事件的小demo
+
+```javascript
+var fs = require('fs');
+process.chdir(__dirname);
+var ws = fs.createWriteStream('./test.txt', {
+  highWaterMark: 17
+});
+// drain演示demo：使用递归不停往缓存区里覆写数据，不使用可写流默认用内存空间的功能
+writeMillion(ws, 'data', 'utf8', function () { });
+function writeMillion(writer, data, encoding, callback) {
+  var i = 1000000;
+  write();
+  function write() {
+    var ok = true;
+    do {
+      i -= 1;
+      if (i === 0) {
+        writer.write(data, encoding, callback);
+      } else {
+        ok = writer.write(data, encoding);
+        console.log(ok);
+      }
+    } while(i > 0 && ok);
+    if (i > 0) { // 又是递归~~
+      writer.once('drain', write);
+    }
+  }
+}
+```
+
+![node-writeStream-drain.png-51.3kB][4]
+
+
 ----------
 
 
@@ -1248,4 +1282,5 @@ rs.on('end', function() {
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
   [3]: http://static.zybuluo.com/szy0syz/e84ucok5rm265ybau1al8h85/node-stream-readable.png
+  [4]: http://static.zybuluo.com/szy0syz/hrhqghcddn7xvdxdg6wo3hxf/node-writeStream-drain.png
 
