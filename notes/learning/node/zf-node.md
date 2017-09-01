@@ -1392,15 +1392,13 @@ parseHeader(function (h) {
   - host 监听的IP地址或主机名
   - backlog 等待队列中的最大数量
 
-- tcp小栗子：
-
 ```javascript
 var net = require('net');
 var util = require('util');
 
 // socket是 双工流 Dyplux
 var server = net.createServer(function (socket) {
-  console.log(util.inspect(socket.address()));
+  console.log(util.inspect(socket.remoteAddress));
   // 查看当前连接数量
   server.getConnections(function (err, count) {
     console.log('TCPs:', count);
@@ -1408,6 +1406,8 @@ var server = net.createServer(function (socket) {
   // 当收到数据是，打印出来。
   socket.on('data', function (data) {
     console.log('接收数据:', data);
+    // 将客户端传递来的data加工后写入可写流就传到客户端了
+    socket.write('服务端的:' + data);
   });
   socket.on('error', function (err) {
     console.log(err);
@@ -1426,13 +1426,93 @@ server.listen(8088, function () {
 server.on('close', function () {
   console.log('server is closed...');
 });
+```
 
-server.on('end', function () {
-  console.log('server is end...');
+### 创建socket
+
+    `var socket = new net.Socket([options]);`
+
+- options
+  - fd socket 文件描述符
+  - type 客户端协议，ipv4或者ipv6
+  - allowHalfOpen 是否允许半开连接
+
+```javascript
+// 客户端模式
+var net = require('net');
+var util = require('util');
+
+var socket = new net.Socket({ allowHalfOpen: true });
+socket.setEncoding('utf8');
+// 连接我们的服务器
+socket.connect(8088, 'localhost', function () {
+  // 其实了嘛，socket是个双工流，我在这里write，服务端将能read
+  socket.write('hello, jerry.');
+  // 当服务端write时，客户端readable方向会触发data事件，会接收服务端返回值
+  socket.on('data', function(data) {
+    console.log(data);
+  });
 });
 ```
 
-01:09:36
+### 连接TCP服务器
+
+    `socket.connect(port, [host], [connectListener]);`
+- port
+- host
+- connectListener 连接成功后的监听
+
+### 向服务器发送数据
+
+    `socket.write(data, [encoding], [callback]);`
+- data 写入的数据
+- encoding 编码
+- callback 回调函数
+
+### net类方法
+
+- `net.isIP` 判断字符是否是IP地址
+- `net.isIPv4` 是否是IPv4地址
+- `net.isIPv6` 是否是IPv6地址
+
+### UDP
+
+- TCP是基于连接的协议，进行通信前客户端与服务端要先建立连接，UDP是面向 **非连接** 的协议，可以直接发送数据包。
+- **不要求分组顺序** 到达传输层中
+- 受网络影响可能 **丢失** 数据包
+- 资源消耗 少，处理速度 快，适合音频、视频和普通数据传输
+- UDP协议中的包称为数据报`datagram`
+
+UDP创建socket
+
+    `var socket = dgram.createSocket(type, [callback]);`
+
+- type 协议类型可以为udp4或upd6
+- `callback = function(msg, rinfo)` 收到数据 时的回调函数
+  - msg 收到的 **数据**
+  - rinfo 
+    - address 发送者的**ip**
+    - family 地址**类型**
+    - port 发送者的socket **端口** 号
+    - size 发送者发送的数据 **字节数**
+
+UDP发送数据
+
+    `socket.send(buf, offset, length, port, address, [callback]);`
+    
+- buf 要发送的 **数据**
+- offset 从缓存区中 **第几个** 字节开始发送数据
+- length 发送数据的 **字节数**
+- port 接收数据的 **端口号**
+- address 接收数据的 IP地址
+- `callback function(err, bytes) {}` 发送完毕时所调用的回调函数
+  - err 发送出错时所触发的 **错误对象**
+  - bytes **发送数据的字节数**
+- 
+
+```javascript
+
+```
 
 ----------
 
