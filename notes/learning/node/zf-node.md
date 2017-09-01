@@ -1392,6 +1392,8 @@ parseHeader(function (h) {
   - host 监听的IP地址或主机名
   - backlog 等待队列中的最大数量
 
+- tcp小栗子：
+
 ```javascript
 var net = require('net');
 var util = require('util');
@@ -1423,6 +1425,10 @@ server.listen(8088, function () {
 
 server.on('close', function () {
   console.log('server is closed...');
+});
+
+server.on('end', function () {
+  console.log('server is end...');
 });
 ```
 
