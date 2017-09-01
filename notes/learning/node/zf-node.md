@@ -1272,6 +1272,81 @@ function writeMillion(writer, data, encoding, callback) {
 
 ![node-writeStream-drain.png-51.3kB][4]
 
+- pipe
+  - 流，尤其是pipe()方法的初衷，是将数据的 **滞留量** 限制到一个可接受的水平，以使得不同速度的来源和目标不会 **淹没** 可用内存。 
+  - `rs.pipe(writeStream, [options]);`
+  - 以下是pipe的小栗子，也是pipe的运行原理：
+
+```javascript
+var fs = require('fs');
+process.chdir(__dirname);
+var rs = fs.createReadStream('./read.txt');
+var ws = fs.createWriteStream('./write.txt');
+
+// pipe的简单实用
+// rs.pipe(ws);
+
+// pipe的运行原理
+rs.on('data', function(data) {
+  var flag = ws.write(data);
+  if (!flag) {
+    // 诶，ws那边写满缓存区了，rs这边暂停一下，等着ws将缓存区内数据全部写入对象再说
+    rs.pause();
+  }
+});
+
+ws.on('drain', function() {
+  // 欧耶，ws这边已经缓存区内容全部写完，回复rs为流通模式，打开pipe上游的小阀门
+  rs.resume();
+});
+```
+
+![node-stream-pipe.png-41.9kB][5]
+
+- unshift小栗子
+
+```javascript
+var fs = require('fs');
+process.chdir(__dirname);
+var rs = fs.createWriteStream('./request.txt'); // 等会这里改最高水位线测试
+
+// 解析头部
+var StringDecoder = require('string_decoder').StringDecoder;
+function parseHeader(callback) {
+  var headers = '';
+  rs.on('readable', onReadable);
+  var decoder = new StringDecoder();
+  function onReadable() {
+    var chunk;
+    while (null != (chunk = rs.read())) { // 将缓存区所有内容一次读出
+      var str = decoder.write(chunk);
+      console.log('从可读流缓存区读到的内容:', str);
+      if (str.match(/\r\n\r\n/)) { // 如果读到的这个内容包含两个回车换行，说明到分界线了
+        // 到分界线后就不消再监听了
+        rs.removeListener('readable', onReadable);
+        var splits = str.split(/\r\n\r\n/);
+        headers += splits.shift(); // 将数组索引0的内容移出给headers
+        var remain = splits.join(/\r\n\r\n/);
+        var buf = new Buffer(remain, 'utf8');
+        if (buf.length) {
+          rs.unshift(buf);
+        }
+        callback(headers);
+      } else {
+        headers += str;
+      }
+    }
+  }
+}
+console.trace();
+parseHeader(function (h) {
+  console.log(h);
+  console.log('======');
+  rs.on('data', function (data) {
+    console.log(data);
+  });
+});
+```
 
 ----------
 
@@ -1283,4 +1358,4 @@ function writeMillion(writer, data, encoding, callback) {
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
   [3]: http://static.zybuluo.com/szy0syz/e84ucok5rm265ybau1al8h85/node-stream-readable.png
   [4]: http://static.zybuluo.com/szy0syz/hrhqghcddn7xvdxdg6wo3hxf/node-writeStream-drain.png
-
+  [5]: http://static.zybuluo.com/szy0syz/6fljk5vzqpcpd4anihvfxz2u/node-stream-pipe.png
