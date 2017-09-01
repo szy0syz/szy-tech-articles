@@ -1350,6 +1350,77 @@ parseHeader(function (h) {
 
 ----------
 
+## 课时14：tcp
+
+- 1.分层模型
+![image.png-77kB][6]
+
+- 8.tcp建立连接的三次握手
+![image.png-83.7kB][7]
+
+- 9.tcp四次退出
+![image.png-81.2kB][8]
+
+- 12.tcp传输示例
+![image.png-82.4kB][9]
+
+- http抓包
+![image.jpg-314.6kB][10]
+
+- tcp抓包
+![tcp抓包.jpg-184.3kB][11]
+
+- TCP (Transmission Control Protocol 传输控制协议)是一个可靠的 面向连接 的传输层协议。
+- 它可以让你将数据从一台计算机完整 **有序** 地传输到另一台计算机，内置机制能够控制数据包的延迟率及 **丢包率** 不会太高
+- 发送放将数据转换为 **字节流** 分成，将数据交给IP层。接收方接收后重新装配成原始的数据
+- TCP对字符和字节编码是完全 **无知** 的，不同编码会导致传输的字节数不同
+- TCP使用 **流控制** 来确保两点之间传输数据的平衡，以防止快速的发送方淹没慢速的接收方(用包里的窗口控制)
+- TCP在传输前经过3次握手才能形成会话，只有会话形成后，服务端和客户端之间才能相互发送数据
+- 在会话过程中，服务器和客户端分别提供一个 **套接字** ，这两个套接字共同形成一个连接。服务端和客户端通过这个套接字进行通信
+
+### TCP服务器
+
+> net模块用于实现TCP服务器和客户端之间的通信
+
+- options 参数
+  - `allowHalfOpen`属性值为false时，TCP服务器收到客户端的`FIN`包时会回发`FIN`包；为true时，服务器收到客户端`FIN`包不回发`FIN`包;
+- `connectionListener = function(socket) {...}`客户端`连接`时的回调函数
+  - socket 表示服务器监听的`socket`端口对象
+- 返回被创建的服务器server
+- listen(port, [host], [backlog], [callback])
+  - port 监听的端口号
+  - host 监听的IP地址或主机名
+  - backlog 等待队列中的最大数量
+
+```javascript
+var net = require('net');
+var util = require('util');
+
+var server = net.createServer(function(socket){
+  console.log(util.inspect(socket.address()));
+  // 查看当前连接数量
+  server.getConnections(function(err, count) {
+    console.log('TCPs:' ,count);
+  });
+  socket.on('error', function(err) {
+    console.log(err);
+    socket.destroy();
+  })
+});
+
+server.on('error', function(err) {
+  console.log(err);
+});
+
+server.listen(8088, function() {
+  console.log(util.inspect(server.address()));
+});
+```
+
+
+
+----------
+
 
 ----------
 
@@ -1359,3 +1430,9 @@ parseHeader(function (h) {
   [3]: http://static.zybuluo.com/szy0syz/e84ucok5rm265ybau1al8h85/node-stream-readable.png
   [4]: http://static.zybuluo.com/szy0syz/hrhqghcddn7xvdxdg6wo3hxf/node-writeStream-drain.png
   [5]: http://static.zybuluo.com/szy0syz/6fljk5vzqpcpd4anihvfxz2u/node-stream-pipe.png
+  [6]: http://static.zybuluo.com/szy0syz/5hxd38laenzk9qn9az9ivzvm/image.png
+  [7]: http://static.zybuluo.com/szy0syz/2p7xq7i734p7ncbqe8k5uoyq/8.tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png
+  [8]: http://static.zybuluo.com/szy0syz/abv0suczg8rglrarvcc6as4c/9.tcp%E5%9B%9B%E6%AC%A1%E9%80%80%E5%87%BA.png
+  [9]: http://static.zybuluo.com/szy0syz/yw5vk4ehui2w64xrcb094y03/12.tcp%E4%BC%A0%E8%BE%93%E7%A4%BA%E4%BE%8B.png
+  [10]: http://static.zybuluo.com/szy0syz/dv0kdqlxfhpabxpsipdl7y2f/http%E6%8A%93%E5%8C%85.jpg
+  [11]: http://static.zybuluo.com/szy0syz/07t218mlc69y5lk2m4xzwmyn/tcp%E6%8A%93%E5%8C%85.jpg
