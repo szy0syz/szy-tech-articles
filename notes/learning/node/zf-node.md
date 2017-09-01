@@ -1510,8 +1510,37 @@ UDP发送数据
   - bytes **发送数据的字节数**
 - 
 
-```javascript
+### UPD服务端和客户端demo
 
+```javascript
+// server
+var dgram = require('dgram');
+var socket = dgram.createSocket('udp4');
+socket.on('message', function (msg, rinfo) {
+  console.log('=====server=====');
+  console.log('msg', msg.toString());
+  console.log('rinfo', rinfo);
+  console.log('=====server=====');
+  socket.send(new Buffer('upd_ok'), 0, 12, rinfo.port, rinfo.address);
+});
+socket.bind(41234, '127.0.0.1');
+
+// client
+var dgram = require('dgram');
+var socket = dgram.createSocket('udp4');
+
+socket.on('message', function (msg, rinfo) {
+  console.log('===client===');
+  console.log('msg', msg.toString());
+  console.log('rinfo', rinfo);
+  console.log('===client===');
+});
+
+socket.send(new Buffer('jerry shi'), 0,9,41234,'127.0.0.1', function(err, bytes) {
+  console.log('===client===');
+  console.log('发送了%d个字节', bytes);
+  console.log('===client===');
+});
 ```
 
 ----------
