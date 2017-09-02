@@ -1715,7 +1715,81 @@ response http.serverResponse代表服务器相应对象
   - sendDate 是否发送 **响应时间**
   - statusCode 设置 **响应码**
 
+### 创建HTTP客户端
 
+request方法可以向其它网站发送请求
+
+- options
+  - host 域名 或目标主机IP
+  - hostname 域名 或目标主机IP，优先级比host高
+  - port 端口号
+  - method 请求方法
+  - path 请求 路径，默认为/
+  - headers 客户端**请求头对象**
+  - auth 认证
+- `callback = function(response) {};` 当 获取 到目标网站所返回 响应 时的回调函数
+  - reponse 是一个 **http.IncomingMessage** 对象，可以从中**读取响应流数据** 
+
+### 写入请求并发送请求
+
+- write 方法向目标服务器 **发送** 数据，write方法可以调用多次，`request.write(chunk, [encoding]);`
+
+- 使用http模块编写服务端和客户端交互小demo
+
+```javascript
+// server
+var http = require('http');
+http.createServer(function (req, res) {
+  req.setEncoding('utf8');
+  var result = '';
+  //因为req和res都是流
+  req.on('data', function (data) {
+    result += data;
+  });
+  req.on('end', function (data) {
+    console.log('Server:', JSON.parse(result));
+    res.end(result);
+  })
+}).listen(8080, function () {
+  console.log('server is running...');
+});
+///// 服务端输出结果
+// server is running...
+// Server: { name: 'jerry', age: '18' }
+
+///////////////////////
+
+// client
+var http = require('http');
+var options = {
+  hostname: '127.0.0.1',
+  port: 8080,
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  path: '/',
+  method: 'POST'
+};
+var req = http.request(options, function (res) {
+  // res.setEncoding('utf8');
+  var result = '';
+  //因为req和res都是流
+  res.on('data', function(data) {
+    result += data;
+  });
+  res.on('end', function(data) {
+     console.log('Client:' ,JSON.parse(result));
+  })
+});
+
+req.write(JSON.stringify({ name: 'jerry', age: '18' }));
+req.end();
+///////客户端输出结果
+//╭─jerry@JerrydeiMac  ~/Git/zhufeng-node-practice/lesson16_httpUpload  //‹master*›
+//╰─$ node ./client.js
+//Client: { name: 'jerry', age: '18' }
+
+```
 
 ----------
 
