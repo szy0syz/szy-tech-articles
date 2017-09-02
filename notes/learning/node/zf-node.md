@@ -1827,9 +1827,13 @@ var req = http.request(options, function (res) {
 
 req.write(querystring.stringify({ name: 'jerry', age: '18' }));
 req.end();
-
-
 ```
+
+- 以上demo小结：
+  - 流需要结束方法.end()
+  - util.inspect(obj)不知obj格式，可以使用此方法转换字符串
+  - 服务端判断content-type判断
+
 
 ----------
 
