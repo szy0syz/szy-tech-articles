@@ -1737,18 +1737,29 @@ request方法可以向其它网站发送请求
 - 使用http模块编写服务端和客户端交互小demo
 
 ```javascript
-// server
+// server V2
 var http = require('http');
+var querystring = require('querystring');
+var util = require('util');
 http.createServer(function (req, res) {
+  // headers的属性全部都是小写
+  var contentType = req.headers['content-type'];
   req.setEncoding('utf8');
   var result = '';
-  //因为req和res都是流
+  //因为req和res都是流 
   req.on('data', function (data) {
     result += data;
   });
   req.on('end', function (data) {
-    console.log('Server:', JSON.parse(result));
-    res.end(result);
+    var obj;
+    if(contentType === 'application/json') {
+      obj = JSON.parse(result);
+    }
+    if (contentType === 'application/x-www-form-urlencoded') {
+      obj = querystring.parse(result);
+    }
+    console.log('发送客户端数据');
+    res.end(util.inspect(obj));
   })
 }).listen(8080, function () {
   console.log('server is running...');
@@ -1759,7 +1770,7 @@ http.createServer(function (req, res) {
 
 ///////////////////////
 
-// client
+// client-json
 var http = require('http');
 var options = {
   hostname: '127.0.0.1',
@@ -1788,6 +1799,35 @@ req.end();
 //╭─jerry@JerrydeiMac  ~/Git/zhufeng-node-practice/lesson16_httpUpload  //‹master*›
 //╰─$ node ./client.js
 //Client: { name: 'jerry', age: '18' }
+
+///////////////////////
+// client-form
+var querystring = require('querystring');
+var http = require('http');
+var options = {
+  hostname: '127.0.0.1',
+  port: 8080,
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  path: '/',
+  method: 'POST'
+};
+var req = http.request(options, function (res) {
+  // res.setEncoding('utf8');
+  var result = '';
+  //因为req和res都是流
+  res.on('data', function(data) {
+    result += data;
+  });
+  res.on('end', function(data) {
+     console.log('Client:' ,JSON.stringify(result));
+  })
+});
+
+req.write(querystring.stringify({ name: 'jerry', age: '18' }));
+req.end();
+
 
 ```
 
