@@ -1625,6 +1625,100 @@ server.listen(8090, function () {
 
 ----------
 
+## 课时16：http文件上传
+
+- http服务器：创建服务端并指定监听请求处理函数
+
+    var server = http.createServer(requestListener(request, response));
+
+- request http.IncomingMessage 客户端请求
+- 服务器监听
+  - `server.listen(port, [host], [backlog], [callback]);`
+  - backlog 等待 中的队列数量，默认值是511
+  - callback 请求到来的时候服务器调用的函调函数
+
+- http接收客户端数据
+  - http接收客户端的请一个参数为`http.IncomingMessage`对象，有如下属性：
+  - method 客户端请求的方法类型
+  - url 请求时使用的 url 参数字符串
+  - headers 请求 头对象，包括客户端所有请求头信息，包括cookie
+  - httpVersion HTTP版本
+
+- 常见请求头信息：从客户端发往服务端请求报文所使用的字段，用于补充请求的附加信息 
+  - host 请求的服务器主机
+  - connection 客户端和服务端的 连接 选项
+  - accept 告诉服务器客户端能够处理的内容类型和优先级 q=表示权重，用分号；隔开，范围是0-1，不指定时权重默认为1
+  - user-agent **用户代理**，是指浏览器，它的信息包括硬件平台、系统软件、应用软件和用户个人偏好
+  - accept-encoding 告诉服务器客户端支持的 **内容编码** 及内容编码的 **优先级** 顺序
+  - accept-language 告诉服务器能够处理 语言 及优先级
+
+- 把原始URL转成对象及属性
+  - `var urlObj = url.parse('原始url');`
+  - href 被转换的 **原url** 字符串
+  - protocal 客户端请求时的 **协议**
+  - slashes 在协议与路径中是否使用`//`分隔符
+  - host url字符串中完整的 地址及端口号，可能为IP也可能域名
+  - auth 认证 部分
+  - hostname 主机名或者IP
+  - port
+  - pathname 路径 不包括查询字符串
+  - query 不包含起始字符`?`的查询字符串，或根据查询字符串转换而成的对象
+
+### 查询字符串
+
+```javascript
+var queryObj = querystring.parse(str, [sep], [eq], [options]); //字符串转对象
+var queryStr = querystring.stringify(obj, [sep], [eq]); // 对象转字符串
+```
+
+- str 需要被转换的 **查询字符串**
+- sep 查询字符串中 **分割** 字符，默认为&
+- eq  查询字符串中 **分配** 字符，默认为=
+- options 对象参数，可以设置maxKeys属性指定转换后的属性个数，默认不限定
+
+```javascript
+var qs = require('querystring');
+var obj = qs.parse('name=szy&age=18&sex=1');
+console.log(obj);
+// 参数1指定分隔符，参数2指定key和val的连接符，最大转换参数个数
+obj = qs.parse('name#szy;age#18', ';', '#', { maxKeys: 2 });
+console.log(obj);
+console.log(qs.stringify(obj));
+```
+
+### 响应
+
+response http.serverResponse代表服务器相应对象
+
+    response.writeHead(statusCode, [reasonPhase], [headers]);
+
+- statusCode **状态码**
+- reasonPhrase 状态码 **描述** 信息
+- headers 响应头对象
+  - content-type 内容类型
+  - location 重定向 到的url地址
+  - content-disposition 下载的**文件名**
+  - content-length 响应内容的**字节数**
+  - set-cookie 写入客户端的**cookie**
+  - content-encoding 响应内容的**编码**方式
+  - Cache-Control 缓存
+  - Expires 指定缓存 过期时间
+  - Etag 服务器响应的 **内容没有变化** 时不重新下载数据
+  - connection 默认是keep-alive **保持连接** 想断开连接用close 
+- 设置响应头
+  - setHeaders方法可以单独设置响应头 `response.setHeader(name, value);`
+  - 如果多个响应头的话可以使用数组 `response.setHeader('Set-Cookie', ['name=jerry', 'age=19']);`
+- 其它响应设置
+  - getHeader **获取** 响应头
+  - removeHeader **移除** 响应头
+  - headerSent 响应头是否 **已经发送**
+  - sendDate 是否发送 **响应时间**
+  - statusCode 设置 **响应码**
+
+
+
+----------
+
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
