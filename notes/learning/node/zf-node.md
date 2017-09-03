@@ -1733,6 +1733,9 @@ request方法可以向其它网站发送请求
 ### 写入请求并发送请求
 
 - write 方法向目标服务器 **发送** 数据，write方法可以调用多次，`request.write(chunk, [encoding]);`
+  - chunk 要发送的数据，可以是Buffer或者字符串
+  - encoding 编码，不指定默认是utf8
+- end方法用来 **结束** 本次请求 `request.end(chunk, [encoding]);`
 
 - 使用http模块编写服务端和客户端交互小demo
 
@@ -1833,6 +1836,78 @@ req.end();
   - 流需要结束方法.end()
   - util.inspect(obj)不知obj格式，可以使用此方法转换字符串
   - 服务端判断content-type判断
+
+- 关于http中流的应用demo
+
+```javascript
+// serverV3.js
+fs.createReadStream('./index.html').pipe(res);
+```
+
+### 用HTML5上传文件
+
+- DEMO需求:
+  - 选中文件后显示上传的文件信息，比如文件名、类型、大小
+  - 一个能够显示 **真实** 进度的 进度条
+  - 上传的速度
+  - 剩余时间的估算
+  - 已上传的数据量
+  - 上传结束后服务器返回上传后保存的图片并在页面中 **显示** 出来
+
+```html
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5-upload</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="fileUpload">请选择上传的文件</label>
+                <input class="form-control" type="file" id="fileUpload" name="fileUpload" onchange="fileSelect()">
+            </div>
+            <div class="form-group">
+                <input type="button" onclick="uploadFile()" class="btn btn-default" value="上传">
+            </div>
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <td>文件名</td>
+                        <td>文件大小</td>
+                        <td>文件类型</td>
+                    </tr>
+                    <tr>
+                        <td id="fileName"></td>
+                        <td id="fileSize"></td>
+                        <td id="fileType"></td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    function fileSelect() {
+        var file = document.querySelector('#fileUpload').files[0];
+        if (file) {
+            var fileSize = 0;
+            document.querySelector('#fileName').innerHTML = file.name;
+            document.querySelector('#fileSize').innerHTML = file.size;
+            document.querySelector('#fileType').innerHTML = file.type;
+        }
+    }
+</script>
+
+</html>    
+```
 
 
 ----------
