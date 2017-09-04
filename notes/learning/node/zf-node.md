@@ -1854,6 +1854,8 @@ fs.createReadStream('./index.html').pipe(res);
   - 已上传的数据量
   - 上传结束后服务器返回上传后保存的图片并在页面中 **显示** 出来
 
+- 前端部分
+
 ```html
 <html lang="en">
 
@@ -1891,6 +1893,24 @@ fs.createReadStream('./index.html').pipe(res);
                     </tr>
                 </table>
             </div>
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <td>传输速度</td>
+                        <td>当前进度</td>
+                        <td>剩余量</td>
+                    </tr>
+                    <tr>
+                        <td id="speed"></td>
+                        <td id="stage"></td>
+                        <td id="remaining"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="progress">
+                <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                </div>
+            </div>
         </form>
     </div>
 </body>
@@ -1898,16 +1918,106 @@ fs.createReadStream('./index.html').pipe(res);
     function fileSelect() {
         var file = document.querySelector('#fileUpload').files[0];
         if (file) {
-            var fileSize = 0;
             document.querySelector('#fileName').innerHTML = file.name;
-            document.querySelector('#fileSize').innerHTML = file.size;
+            document.querySelector('#fileSize').innerHTML = changeSize(file.size);
             document.querySelector('#fileType').innerHTML = file.type;
         }
     }
+
+    function changeSize(size) {
+        // GB级别的文件就算了，服务器伤不起！
+        var fileSize = 0;
+        if (size > 1024 * 1024) {
+            fileSize = Math.round(size / (1024 * 1024)) + 'MB';
+        } else {
+            fileSize = Math.round(size / (1024)) + 'KB';
+        }
+        return fileSize;
+    }
+
+    var success = error = abort = function () { };
+    var last = 0;
+    function progress(event) {
+        var percent = Math.round(event.loaded * 100 / event.total); // 计算上传进度
+        var pb = document.querySelector('#progressBar');
+        pb.style.width = percent + '%';
+        pb['aria-valuenow'] = percent;
+        var diff = Math.round(event.loaded - last);
+        last = event.loaded;
+        document.querySelector('#speed').innerHTML = changeSize(diff) + '/s';
+        document.querySelector('#stage').innerHTML = changeSize(event.loaded);
+        document.querySelector('#remaining').innerHTML = changeSize(event.total - event.loaded);
+
+    }
+
+    function uploadFile() {
+        var file = document.querySelector('#fileUpload').files[0];
+        if (!file) {
+            return;
+        }
+        var fd = new FormData();
+        fd.append('fileUpload', file);
+        var xhr = new XMLHttpRequest();
+        xhr.upload.addEventListener('progress', progress, false); //上传进度监听
+        xhr.addEventListener('load', success, false); //上传成功
+        xhr.addEventListener('error', error, false); //上传出错
+        xhr.addEventListener('abort', abort, false); //上传中断
+        xhr.onreadystatechange = function () {
+            // 不仅判断xhr.status==2xx还要判断xhr.readyState==4，否则响应头也是200啊
+            if (/^2\d\d$/.test(xhr.status) && xhr.readyState === 4) {
+                console.log(xhr.response);
+            }
+        }
+        xhr.open('POST', '/post');
+        xhr.send(fd);
+    }
+
 </script>
 
-</html>    
+</html>  
 ```
+
+- 后端部分
+
+```javascript
+var querystring = require('querystring');
+var http = require('http');
+var util = require('util');
+var url = require('url');
+var formidable = require('formidable');
+// var mine = require('mine');
+var url = require('url');
+var fs = require('fs');
+process.chdir(__dirname);
+var app = http.createServer(function(req, res) {
+  var urlObj = url.parse(req.url, true); // 确定转换为对象方式
+  var pathname = urlObj.pathname;
+  if(pathname === '/') {
+    fs.createReadStream('./index.html').pipe(res);
+  } else if (pathname === '/post') {
+    var parse = new formidable.IncomingForm();
+    parse.parse(req, function(err, fields, files) {
+      if(err) {
+        res.end('file error');
+      }
+      console.log(files);
+      res.end('file ok');
+    })
+  } else {
+    res.end('404');
+  }
+
+}).listen(8088, function() {
+  console.log('server is running...');
+});
+``
+
+### 用HTML5分片上传大文件demo
+
+> 项目原理：
+    前端，将文件分片(chunk, size=4MB)，分片数量为Math.ceil()向上取整。根据分片数建立ajax批量上传，在传输过程中需要分片具体属性附在forms里一并上传，方便服务端计算合并。
+    后端，批量接收分片文件。使用可读流读取所有分片文件，读取时需注意偏移量pos，再用可写流将文件写入目标对象。
+
 
 
 ----------
