@@ -2420,6 +2420,8 @@ app.listen(8080, function() {
 - 升级5：改造路由
   - 还是改造use方法，那得将原来use()的一个参数升级到两个参数
   - 主要需要动的函数就两个：use和handle
+  - 改造use方法时，不再是只存handle函数，而是改存`{path,handle}`对象了，因为需要判断路由嘛
+  - 其实我看过express的route部分源码，这里还少了一步，那就是第一个参数是字符串而第二个参数也是字符串的情况时为单纯的存储键值对，后期补上。
 
 ```javascript
 proto.use = function (route, fn) {
@@ -2495,7 +2497,70 @@ app.listen(8080, function() {
 })
 ```
 
+- 升级7：模板
+  - 定义：模板引擎是为了使用户界面与业务数据分离而产生的，用于网站的模板引擎就会生成一个标准的HTML文档
+  - 原理：置换型模板引擎是将指定模板内容(字符串)中的特定标记(子字符串)替换一下便生成了最终需要的业务数据(比如网页)
 
+- 模板原理
+  - 模板分为普通字符串和表达式，表达式需要继续chu里，与shu局关联后变成一个具体的值，最终将字符串和变量连成一个最终的字符串。
+
+> 我靠，教程里写模板引擎竟然用了`Function()`构造函数，太危险了吧。还好我看了es6，也看过《JS语言精粹》打死不用，换个es6的写法，我就是不按套路出牌。
+
+- 模板引擎工作要求：
+  - 读模板文件
+  - 遇到`<% xxx... %>`视作为执行JavaScript代码
+  - 遇到`<%= ... %>`则输出JavaScript表达式的值
+
+```javascript
+///// render.js
+var fs = require('fs');
+
+module.exports = function redner(app) {
+  app.use(function(req, res, next) {
+    res.render = function(filename, obj) {
+      fs.readFile(filename, 'utf8', function(err, str) {
+        res.send(compile(str, obj));
+      });
+    }
+    next(); // 继续下一个中间件
+  });
+}
+
+function compile(template, obj) {
+  var evalExpr = /<%=(.+?)%>/g;
+  var expr = /<%([\s\S]+?)%>/g;
+
+  template = template // 这里预置替换内容中$表示正则匹配的到索引为1的字符串,其实也就是表达式
+    .replace(evalExpr, '`); \n  echo( $1 ); \n  echo(`')
+    .replace(expr, '`); \n $1 \n  echo(`');
+
+  template = 'echo(`' + template + '`);';
+
+  var script =
+    `(function parse(data){
+    var output = "";
+
+    function echo(html){
+      output += html;
+    }
+
+    ${ template }
+
+    return output;
+  })`;
+
+  return eval(script)(obj);
+}
+
+////////注册模板引擎
+require('./2.render')(app);
+
+////////使用模板引擎
+res.render('./index.szy', { articles: articles })
+```
+
+  
+  
 ----------
 
 
