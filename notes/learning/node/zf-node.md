@@ -2401,8 +2401,21 @@ module.exports = function (app) {
 require('./2.middle')(app);
 ```
 
+- 升级4：在中间件app上创建listen()方法，创建服务器并将启动
 
+```javascript
+// connect.js: 新增 listen() 创建并启动服务
+proto.listen = function (port, callback) {
+  console.log(this);
+  var server = http.createServer(this); 
+  server.listen(port,callback); // app.listen(8080) -> this == app
+}
 
+// main.js: 使用listen()方法
+app.listen(8080, function() {
+  console.log('server in running at %d port.' ,8080);
+})
+```
 
 ----------
 
