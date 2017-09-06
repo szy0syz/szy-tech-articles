@@ -2284,9 +2284,10 @@ function send(data) {
 ![connect-middleware.png-71kB][12]
 
 - 升级2：建立中间件模式
-  - 1
-  - 2
-  - 3
+  - 构建app.use方法，所有中间件都使用use方法封装
+  - 构建connect中间件时在app实例上构建stack数据存放所有中间件
+  - 每当来一个请求时，都会应要按顺序执行所有存在stack中的中间件
+  - 在执行每个中间件时，都会把next函数指针地址传入，如果调用就index+1，递归的执行下一个中间件直到没有中间件可执行为止
 
 ```javascript
 // connect.js
@@ -2367,8 +2368,40 @@ var server = http.createServer(app);
 server.listen(8080, function () {
   console.log('server is running...');
 });
-
 ```
+
+- 升级3：将非业务中间件提取单独建立文件后导出使用
+
+```javascript
+// middle.js
+var url = require('url');
+
+module.exports = function (app) {
+    app.use(function (req, res, next) {
+        var urlObj = url.parse(req.url, true);
+        var pathname = urlObj.pathname;
+        var query = urlObj.query;
+        // 为方便使用者在req中添加两个属性
+        req.path = pathname;
+        req.query = query;
+        next();
+    });
+
+    app.use(function (req, res, next) {
+        // 给res添加一个业务方法
+        res.send = function (data) {
+            res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
+            res.end(data);
+        }
+        next();
+    });
+}
+
+// main.js 中使用中间件时导出即执行传入参数
+require('./2.middle')(app);
+```
+
+
 
 
 ----------
