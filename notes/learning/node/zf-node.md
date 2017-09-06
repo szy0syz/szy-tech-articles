@@ -2272,6 +2272,104 @@ http.createServer(function(req, res) {
 });
 ```
 
+- 升级1：提取公共业务逻辑，重构成一个函数
+
+```javascript
+function send(data) {
+    res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
+    res.end(data);
+}
+```
+
+![connect-middleware.png-71kB][12]
+
+- 升级2：建立中间件模式
+  - 1
+  - 2
+  - 3
+
+```javascript
+// connect.js
+var http = require('http');
+var proto = {};
+
+function createServer() {
+  function app(req, res) {
+    app.handle(req, res);
+  }
+  // 把proto对象的属性拷贝到app中一份
+  Object.assign(app, proto);
+  app.stack = [];
+  return app;
+}
+
+proto.use = function(handle) {
+  this.stack.push(handle);
+}
+
+proto.handle = function (req, res) {
+  var stack = this.stack;
+  var index = 0;
+  function next() {
+    stack[index++](req, res,next);
+  }
+  next();
+}
+
+module.exports = createServer;
+```
+
+```javascript
+// main.js
+var http = require('http');
+var url = require('url');
+var path = require('path');
+var querystring = require('querystring');
+var connect = require('./2.connect');
+var articles = {
+  1: '第一篇文章的详情',
+  2: '第二篇文章的详情',
+  3: '第三篇文章的详情'
+}
+
+var app = connect();
+app.use(function (req, res, next) {
+  var urlObj = url.parse(req.url, true);
+  var pathname = urlObj.pathname;
+  var query = urlObj.query;
+  // 为方便使用者在req中添加两个属性
+  req.path = pathname;
+  req.query = query;
+  next();
+});
+
+app.use(function (req, res, next) {
+  // 给res添加一个业务方法
+  res.send = function (data) {
+    res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
+    res.end(data);
+  }
+  next();
+});
+
+app.use(function(req, res) {
+  if (req.path === '/') {
+    res.send('<ul><li><a href="/article?id=1">第一篇</a></li><li><a href="/article?id=2">第二篇</a></li><li><a href="/article?id=3">第三篇</a></li></ul>');
+  } else if (req.path === '/article') {
+    res.send(articles[req.query.id]);
+  } else {
+    res.end('404');
+  }
+})
+
+var server = http.createServer(app);
+
+server.listen(8080, function () {
+  console.log('server is running...');
+});
+
+```
+
 
 ----------
 
@@ -2287,3 +2385,4 @@ http.createServer(function(req, res) {
   [9]: http://static.zybuluo.com/szy0syz/yw5vk4ehui2w64xrcb094y03/12.tcp%E4%BC%A0%E8%BE%93%E7%A4%BA%E4%BE%8B.png
   [10]: http://static.zybuluo.com/szy0syz/dv0kdqlxfhpabxpsipdl7y2f/http%E6%8A%93%E5%8C%85.jpg
   [11]: http://static.zybuluo.com/szy0syz/07t218mlc69y5lk2m4xzwmyn/tcp%E6%8A%93%E5%8C%85.jpg
+  [12]: http://static.zybuluo.com/szy0syz/owlfck6o8go5aehyw0lskykr/connect-middleware.png
