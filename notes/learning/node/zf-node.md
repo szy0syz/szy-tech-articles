@@ -2417,6 +2417,85 @@ app.listen(8080, function() {
 })
 ```
 
+- 升级5：改造路由
+  - 还是改造use方法，那得将原来use()的一个参数升级到两个参数
+  - 主要需要动的函数就两个：use和handle
+
+```javascript
+proto.use = function (route, fn) {
+  var handle = fn;
+  var path = route;
+  // 如果第一个参数不是字符串，那么可能是函数。
+  // 那就说明没传路由，直接传业务操作函数
+  if (typeof route !== 'string') {
+    // 那么就让第一个参数等于handle
+    handle = route;
+    // 默认为根目录
+    path = '/';
+  }
+  this.stack.push({ handle: handle, path: path });
+}
+
+proto.handle = function (req, res) {
+  var stack = this.stack;
+  var index = 0;
+  function next() {
+    var layer = stack[index++];
+    var route = layer.path;
+    var handle = layer.handle;
+
+    var path = url.parse(req.url).pathname;
+    // 这里只能startWith，因为还有查询参数之类的
+    // 但有个问题，如果是访问根目录/，则所有都匹配上了
+    if (path.startsWith(route)) {
+      handle(req, res, next);
+    } else {
+      next();
+    }
+  }
+  next();
+}
+```
+
+- 升级6：将所有路由中间件单独建立文件后导出使用
+
+```javascript
+// 2.route.js
+module.exports = function (app) {
+  //////测试数据
+  var articles = {
+    1: '第一篇文章的详情',
+    2: '第二篇文章的详情',
+    3: '第三篇文章的详情'
+  }
+  ////////////
+
+  app.use('/list', function (req, res) {
+    res.send('<ul><li><a href="/article?id=1">第一篇</a></li><li><a href="/article?id=2">第二篇</a></li><li><a href="/article?id=3">第三篇</a></li></ul>');
+  })
+
+  app.use('/article', function (req, res) {
+    res.send(articles[req.query.id]);
+  })
+
+  app.use(function (req, res) {
+    res.end('404');
+  })
+}
+
+// 精简后的main.js文件 好清爽！
+var connect = require('./2.connect');
+
+var app = connect();
+require('./2.middle')(app);
+require('./2.route')(app);
+
+app.listen(8080, function() {
+  console.log('server in running at %d port.' ,8080);
+})
+```
+
+
 ----------
 
 
