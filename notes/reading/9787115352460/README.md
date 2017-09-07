@@ -30,7 +30,7 @@ Node在多个平台默认提供了DIRT方式，包括各种Windows和类UNIX系�
 
 ----------
 
-## 第2章
+## 第2章：构建有多个房间的聊天室程序
 
 > 这章是真实操，貌似记的不多。
 
@@ -50,6 +50,24 @@ Node在多个平台默认提供了DIRT方式，包括各种Windows和类UNIX系�
   - 发送聊天消息；
   - 房间创建；
   - 用户断开连接。
+
+----------
+
+## 第3章：Node编程基础
+
+> 关于require和同步I/O
+  require是Node中少数几个同步I/O才做之一。因为经常用到模块，并且一般都是在文件顶端引入，所以把require做成同步的有助于保持代码的整洁、有序，还能增加可读性。但在程序中I/O密集的地方尽量不要用require。所有同步调用都会阻塞Node，直到调用完成才能做其他事情。比如你正在运行一个HTTP服务器，如果再每个进入的请求上都用了require，就会遇到性能问题。所以通常都只在程序最初加载时才使用require和其它同步操作。
+  
+- 关于`module.exports` 和 `exports` 导出的究竟是什么
+  - **最终在程序里导出的还是`module.exports`。**`exports`只是对`module.exports`的一个全局引用，最初定义为一个可以添加属性的空对象。所以`exports.myFunc`只是`module.exports.myFunc`的简写。
+  - 所以，如果把exports设定为别的(引用型)，就打破了module.exports和exports之间的引用关系。可是因为真正导出的是module.exports，那样exports就不能用了，因为它不再指向module.exports了。如果你想维持那个链接，可以像下面这样让module.exports再次引用exports：`module.exports = exports = Currency`。
+
+> Node的异步回调惯例
+  Node中的大多数内置模块在使用回调时都会带两个参数：第一个是用来存放可能发生的错误，第二个是放结果的。
+  
+- 在Node中优化回调的方法
+  - 创建中间函数以减少嵌套
+  - 通过今早返回减少嵌套
 
 
 ----------
