@@ -2625,6 +2625,84 @@ proto.handle = function (req, res) {
 
 ----------
 
+## 课时18：express
+
+- Express是一个简洁、灵活的node.js Web应用开发框架，它提供yi系列强大de 功能。
+  - 模板解析
+  - 静态文件服务
+  - 中间件
+  - 路由控制
+
+- 路由控制
+  - `get()`方法：根据请求路径来处理客户端发出的GET方法`app.get(path, function(req, res));`
+  - `app.all()`方法：可以匹配到所有的HTTP方法，也就是说它可以过滤s偶有路径的请求
+
+- 中间件
+  - 中间件(middleware)就是处理HTTPS请求的**函数**
+
+```javascript
+var express = require('express');
+var app = express();
+
+////////express 中间件测试
+
+// 中央发100元红包
+app.use(function(req, res, next) {
+  req.redbag = 100;
+  next();
+});
+
+// 过到省级关卡时被扣20元
+app.use(function(req, res, next) {
+  req.redbag -= 20;
+  next();
+});
+
+// 过到市级关卡时被扣30元
+app.use(function(req, res, next) {
+  req.redbag -= 30;
+  next();
+});
+
+// 过到村级关卡时被扣40元
+app.use(function(req, res, next) {
+  req.redbag -= 40;
+  next();
+});
+
+app.all('*', function(req, res) {
+  res.send('到你手上的红包：￥' + req.redbag + '.00元');
+})
+
+app.listen(8080, function() {
+  console.log('server is running at %d port.', 8080);
+})
+```
+
+- express中间件特点：
+  1. 每个中间件都可以控制流程是否继续执行；
+  2. req、res 对于不同中间件中都是相同对象
+  4. 如果出错了，转交错误处理中间件执行权(不再执行后续正常的中间件)。
+
+----------
+
+
+----------
+
+
+  [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
+  [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
+  [3]: http://static.zybuluo.com/szy0syz/e84ucok5rm265ybau1al8h85/node-stream-readable.png
+  [4]: http://static.zybuluo.com/szy0syz/hrhqghcddn7xvdxdg6wo3hxf/node-writeStream-drain.png
+  [5]: http://static.zybuluo.com/szy0syz/6fljk5vzqpcpd4anihvfxz2u/node-stream-pipe.png
+  [6]: http://static.zybuluo.com/szy0syz/5hxd38laenzk9qn9az9ivzvm/image.png
+  [7]: http://static.zybuluo.com/szy0syz/2p7xq7i734p7ncbqe8k5uoyq/8.tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png
+  [8]: http://static.zybuluo.com/szy0syz/abv0suczg8rglrarvcc6as4c/9.tcp%E5%9B%9B%E6%AC%A1%E9%80%80%E5%87%BA.png
+  [9]: http://static.zybuluo.com/szy0syz/yw5vk4ehui2w64xrcb094y03/12.tcp%E4%BC%A0%E8%BE%93%E7%A4%BA%E4%BE%8B.png
+  [10]: http://static.zybuluo.com/szy0syz/dv0kdqlxfhpabxpsipdl7y2f/http%E6%8A%93%E5%8C%85.jpg
+  [11]: http://static.zybuluo.com/szy0syz/07t218mlc69y5lk2m4xzwmyn/tcp%E6%8A%93%E5%8C%85.jpg
+  [12]: http://static.zybuluo.com/szy0syz/owlfck6o8go5aehyw0lskykr/connect-middleware.png
+
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
