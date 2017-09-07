@@ -2717,11 +2717,39 @@ app.listen(8080, function() {
 
 4. 原理：模板中能执行js表达式，还是输出js表达式的值
 
+```javascript
+// 如果想用ejs去渲染html文件也可以，或者说用ejs后缀的文件写代码没提示改html
+var express = require('express');
+var path = require('path');
+var app = express();
+
+// app.set('view engine', 'ejs');
+app.set('view engine', 'html');
+app.engine('html', require('ejs').__express);
+app.set('views', path.join(__dirname, '/views'));
+app.get('/', function(req, res) {
+  res.render('05', {name: 'jerry', age: 88});
+})
+
+app.listen(8088);
+```
+
 ### 静态文件服务中间件
 
 `express.static`是 `Express` 内置的唯一一个中间件。是基于serve-static开发的，负责托管Express应用内的静态资源文件。 
 
+- `app.use(express.static(path.join(__dirname, 'public')));`
+- 简单模拟Express.static中间件的实现代码
 
+```javascript
+app.use(function(req, res, next) {
+  var rs = fs.createReadStream(path.join(__dirname, 'public', req.path));
+  rs.on('error', function() {
+    next();
+  })
+  rs.pipe(res);
+});
+```
 
 ----------
 
