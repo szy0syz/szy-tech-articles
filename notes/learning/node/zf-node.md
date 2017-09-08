@@ -2882,6 +2882,37 @@ function myCookie(name, val, options) {
 app.listen(8080);
 ```
 
+- res.redirect()方法原理
+
+```js
+res.statusCode = 302;
+res.setHeader('Location', '/');
+res.end();
+```
+
+- 手写前端版cookie的set与get
+
+- 关于`cookie-parser`中间件开启后，有关singed属性的demo
+  - 当设置某个cookie的键值对时，启用的`{ signed: true }`属性后，原req.cookies就不再存这个加密型cookie的键值对了
+  - 而是在req.singedCookies里存放
+
+```js
+app.get('/login', function (req, res) {
+  res.cookie('username', req.query.username, { signed: true });
+  res.cookie('isLogin', 1);
+  res.redirect('/user');
+});
+
+app.get('/user', function (req, res) {
+  if (req.cookies.isLogin === '1') {
+    res.end(req.signedCookies.username);
+  } else {
+    res.statusCode = 302;
+    res.setHeader('Location', '/');
+    res.end();
+  }
+});
+```
 
 
 ----------
