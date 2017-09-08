@@ -2623,7 +2623,29 @@ proto.handle = function (req, res) {
 }
 ```
 
-- 升级8：路由升级改造
+- 升级8：静态资源服务中间件
+  - 在项目根目录下新建public文件夹，客户端请求过来先过public文件夹里找文件，没有再`next()`下一个中间件。
+  - 读取文件是用可读流读文件，如果触发可写流的`error`事件就next，否则就pipe到res里。
+
+```javascript
+"use strict";
+
+var fs = require('fs');
+var path = require('path');
+
+module.exports = function (app) {
+  app.use(function (req, res, next) {
+    var rs = fs.createReadStream(path.join(__dirname, 'public', req.path));
+    rs.on('error', function () {
+      // 如果取静态文件夹读文件没读到触发error事件，则调用next()方法
+      next();
+    });
+    rs.pipe(res);
+  });
+}
+```
+
+- 升级9：路由升级改造
   - 再次升级handle方法，添加错误处理中间件，其运行原理是只要在数组中某个索引中间件报错后在next(arg)方法传递错误信息后，不再执行后续的正常中间件而是找到最近一个错误处理中间件。
 
 ```javascript
@@ -2750,25 +2772,11 @@ app.use(function(req, res, next) {
   rs.pipe(res);
 });
 ```
-
+50：40
 ----------
 
 
 ----------
-
-
-  [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
-  [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
-  [3]: http://static.zybuluo.com/szy0syz/e84ucok5rm265ybau1al8h85/node-stream-readable.png
-  [4]: http://static.zybuluo.com/szy0syz/hrhqghcddn7xvdxdg6wo3hxf/node-writeStream-drain.png
-  [5]: http://static.zybuluo.com/szy0syz/6fljk5vzqpcpd4anihvfxz2u/node-stream-pipe.png
-  [6]: http://static.zybuluo.com/szy0syz/5hxd38laenzk9qn9az9ivzvm/image.png
-  [7]: http://static.zybuluo.com/szy0syz/2p7xq7i734p7ncbqe8k5uoyq/8.tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png
-  [8]: http://static.zybuluo.com/szy0syz/abv0suczg8rglrarvcc6as4c/9.tcp%E5%9B%9B%E6%AC%A1%E9%80%80%E5%87%BA.png
-  [9]: http://static.zybuluo.com/szy0syz/yw5vk4ehui2w64xrcb094y03/12.tcp%E4%BC%A0%E8%BE%93%E7%A4%BA%E4%BE%8B.png
-  [10]: http://static.zybuluo.com/szy0syz/dv0kdqlxfhpabxpsipdl7y2f/http%E6%8A%93%E5%8C%85.jpg
-  [11]: http://static.zybuluo.com/szy0syz/07t218mlc69y5lk2m4xzwmyn/tcp%E6%8A%93%E5%8C%85.jpg
-  [12]: http://static.zybuluo.com/szy0syz/owlfck6o8go5aehyw0lskykr/connect-middleware.png
 
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
