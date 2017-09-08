@@ -2791,6 +2791,38 @@ app.use(bodyParser.urlencoded({extended: true})); // 解析form表单请求体�
 
 ----------
 
+## 课时19：cookie
+
+- http特点：web应用是基于HTTP协议的，而HTTP协议恰恰是一种无状态协议
+- cookie：是一种网站为了辨别用户身份，进行绘画跟踪而存储在客户端上的数据
+  - 通过响应头向客户端设置cookie `Set-Cookie: name=jerry`
+  - 读取客户端过来的cookie `Cookie：key1=val1;key2=val2`
+
+```js
+var express = require('express');
+var cookieParser = require('cookie-parser');
+
+var app = express();
+app.use(cookieParser());
+
+app.get('/', function (req, res) {
+  if (req.cookies.visited) {
+    res.send('欢迎老朋友');
+  } else {
+    res.cookie('visited', 1, { maxAge: 10 * 60 * 1000 });
+    res.send('欢迎新朋友');
+  }
+});
+
+app.listen(8080);
+```
+
+- 手写实现Express_cookieParser中间件
+
+```js
+
+```
+
 
 ----------
 
