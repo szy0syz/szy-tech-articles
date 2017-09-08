@@ -2760,6 +2760,8 @@ app.listen(8088);
 
 `express.static`是 `Express` 内置的唯一一个中间件。是基于serve-static开发的，负责托管Express应用内的静态资源文件。 
 
+- 如果要在网页中加载静态资源文件(js/css/img)，就需要另外指定一个 存放静态文件的目录`public`。
+- 每个应用可配置有多个静态目录
 - `app.use(express.static(path.join(__dirname, 'public')));`
 - 简单模拟Express.static中间件的实现代码
 
@@ -2772,7 +2774,21 @@ app.use(function(req, res, next) {
   rs.pipe(res);
 });
 ```
-50：40
+
+### 请求体参数处理中间件
+
+- req.body 属性解析客户端的post请求参数，通过它可以获取请求路径携带的参数值。
+  -  在`body-parser`中间件里有不同解析函数对应不同的格式，如form表单，json等
+
+```js
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());  // 解析json请求体
+app.use(bodyParser.urlencoded({extended: true})); // 解析form表单请求体，extended表示继承node默认querystring解析器
+```
+
+- 在post请求如果用`form-data`格式传输时，`body-parser`无法解析，因为`res.headers['content-type']`格式为`multipart/form-data`。
+- 但是`x-www-urlencoded`是可以处理
+
 ----------
 
 
@@ -2791,3 +2807,4 @@ app.use(function(req, res, next) {
   [10]: http://static.zybuluo.com/szy0syz/dv0kdqlxfhpabxpsipdl7y2f/http%E6%8A%93%E5%8C%85.jpg
   [11]: http://static.zybuluo.com/szy0syz/07t218mlc69y5lk2m4xzwmyn/tcp%E6%8A%93%E5%8C%85.jpg
   [12]: http://static.zybuluo.com/szy0syz/owlfck6o8go5aehyw0lskykr/connect-middleware.png
+
