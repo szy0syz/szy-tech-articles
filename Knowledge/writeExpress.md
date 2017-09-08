@@ -2,12 +2,11 @@
 
 [TOC]
 
-> Express - 基于 Node.js 平台的 web 应用开发框架。为了更好的了解Express的运行原理和向偶像TJ大神致敬，撸撸Expres的源码再好不过了。
+> Express - 基于 Node.js 平台的 web 应用开发框架。为了更好的了解Express运行原理和向偶像TJ大神致敬，撸撸Expres的源码再好不过了。
 
 ## 第0节 原生node web应用
 
 - 业务需求
-  - 简单路由判断：
   - 路径`/`为首页，发送html代码，
   - 路径`/artcile`为文字详情页，需解析请求参数后返回不同内容
   - 其余均返回404字符到客户端
@@ -55,7 +54,7 @@ http.createServer(function (req, res) {
   - 创建connect模块，负责处理创建Express应用实例；
   - 在模块中，导出createServer()方法，作为新建实例的构造方法，其内部定义app函数传入`req和res`并返回该函数地址，且app函数内运行handle()方法；
   - 在模块中，定义stack数组，按顺序存放所有中间件；
-  - 在模块中，创建`use()`和`stack()方法`，前者用来添加中间件，后者用来调用中间件；
+  - 在模块中，创建`use()`和`handle()方法`，前者用来添加中间件，后者用来调用中间件；
 
 ```js
 ////////connect.js/////////
