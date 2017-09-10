@@ -3087,9 +3087,10 @@ module.exports = function (session) {
 
 - 关于session-store中间件实现步骤及原理
   1. 第一步，说什么写扩展中间件，我咋直到怎么写，看看express-session中间件的readme.md，一切答案都在其中！
-  2. 我们看到原文 `Session Store Implementation` 这个h2章节中，它是这么说道的：Every session store must be an EventEmitter and implement specific methods，大概是说每个session-store需继承`EventEmitter`，且还需实现一些特殊的方法，说白了它就是个接口。
+  2. 我们看到原文 `Session Store Implementation` 这个h2章节中，它是这么说道的：Every session store must be an EventEmitter and implement specific methods，大概是说每个session-store需继承`EventEmitter`，且还需实现一些特殊的方法，说白了我们写的这个中间件要实现这个接口
+  3. 又是`EventEmitter`，又要实现特殊方法，好麻烦，我们直接弄个构造函数，把它原型Function的原型上指向Object的连接(`FileStore.prototype.__proto__`)剪短了，拼接上`require('express-session').session`的原型链就完成了，妥妥的
   3. 按照文档指示，我们分别实现三个方法：`store.get(sid, callback)`、`store.set(sid, session, callback)`、`store.destroy(sid, callback)`
-  4. 对了在get方法时，我们读取到的数据一定要转换成对象后再交给`express-session`否则抛异常
+  4. 对了，在get方法时，我们读取到的数据一定要转换成对象后再交给`express-session`否则抛异常
 
 - 图片防盗链
   - 盗链是指服务提供商自己不提供服务的内容，直接在自己的网站上向最终用户提供其它服务提供商的服务内容
