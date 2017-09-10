@@ -3005,7 +3005,85 @@ function mySession(options) {
   }
 }
 ```
+- Demo3: 手写实现Session扩展插件，文件型存储的Store
 
+```js
+///////app.js
+var express = require('express');
+var session = require('express-session');
+var FileStore = require('./fileStore')(session);
+
+var app = express();
+
+app.use(session({
+  secret: 'szy20170909',
+  cookie: { maxAge: 60 * 1000 * 30 },
+  resave: true,
+  saveUninitialized: true,
+  store: new FileStore({ dir: './sessions' })
+}));
+
+app.get('/', function (req, res) {
+  if (req.session.sign) {
+    req.session.count = req.session.count + 1;
+    res.send('welcome <strong>' + req.session.name + '</strong>, 欢迎你第' + req.session.count + '次登陆。');
+  } else {
+    req.session.sign = true;
+    req.session.name = 'jerry';
+    req.session.count = 1;
+    res.send('欢迎登陆!');
+  }
+});
+
+app.listen(8080);
+///////////////
+
+//fileStore.js
+var fs = require('fs');
+var path = require('path');
+var mkdirp = require('mkdirp');
+
+// 关于如何实现express-session中的抽象接口需要看源码readme
+module.exports = function (session) {
+  var Store = session.Store;
+  function FileStore(opts) {
+    var options = Object.assign({}, { dir: '.' }, opts);
+    this._dir = options.dir;
+    mkdirp.sync(this._dir); // 没有就创建
+  }
+  // 第一版fileStore为内存型
+  // var data = {};
+
+  // 拼接FileStore的原型链
+  FileStore.prototype.__proto__ = Store.prototype;
+  FileStore.prototype.get = function (sid, callback) {
+    // callback(null, data[sid]);
+    // 第二版：升级为文件型fileStore
+    var pathname = path.join(this._dir, sid);
+    fs.exists(pathname, function (exists) {
+      if (exists) {
+        fs.readFile(pathname,{encoding:'utf8'},function(err, data) {
+          // 需要以utf8读取后转对象回传
+          callback(null, JSON.parse(data));
+        })
+      } else {
+        callback(null,null);
+      }
+    })
+  }
+  FileStore.prototype.set = function (sid, session, callback) {
+    // data[sid] = session;
+    // callback();
+    fs.writeFile(path.join(this._dir,sid),JSON.stringify(session),callback)
+  }
+  FileStore.prototype.destroy = function (sid, callback) {
+    // delete data[sid];
+    // callback();
+    fs.unlink(path.join(this._dir, sid), callback);
+  }
+  return FileStore;
+}
+```
 
 - 图片防盗链
   - 盗链是指服务提供商自己不提供服务的内容，直接在自己的网站上向最终用户提供其它服务提供商的服务内容
