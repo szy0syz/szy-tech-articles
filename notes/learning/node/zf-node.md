@@ -3092,11 +3092,6 @@ module.exports = function (session) {
   3. 按照文档指示，我们分别实现三个方法：`store.get(sid, callback)`、`store.set(sid, session, callback)`、`store.destroy(sid, callback)`
   4. 对了，在get方法时，我们读取到的数据一定要转换成对象后再交给`express-session`否则抛异常
 
-- 图片防盗链
-  - 盗链是指服务提供商自己不提供服务的内容，直接在自己的网站上向最终用户提供其它服务提供商的服务内容
-  - 从一个网页跳转，或者网页引用到某个资源文件时，HTTP请求中带有Referer表示来源网页的URL
-  -  用浏览器直接访问图片网址时是没有Referer的
-
 - 客户端检测
   - User Agent中文名为用户代理，是HTTP协议中的一部分
   - 是一种向访问网站提供你所使用的浏览器类型及版本、操作系统及版本、浏览器内核等信息的识别
@@ -3139,6 +3134,44 @@ module.exports = function (session) {
 
 ----------
 
+## 课时21： Referer
+
+- 图片防盗链
+  - 盗链是指服务提供商自己不提供服务的内容，直接在自己的网站上向最终用户提供其它服务提供商的服务内容
+  - 从一个网页跳转，或者网页引用到某个资源文件时，HTTP请求中带有Referer表示来源网页的URL
+  -  用浏览器直接访问图片网址时是没有Referer的
+
+- Referer小栗子一个：
+```js
+var express = require('express');
+var path = require('path');
+
+var app = express();
+
+app.use('/imgs', function (req, res, next) {
+  var referer = req.headers.referer;
+  var whiteList = ['a.szy.com']; // 白名单功能
+  // 在Express中，如果访问本域的本地文件时referer是undefined的
+  // 那就允许访问资源文件
+  if (!referer) {
+    return next();
+  }
+  var refererHost = require('url').parse(referer).host.split(':')[0];
+  // 如果静态资源域名与请求地址域名相同就给访问了
+  if (refererHost === req.host || whiteList.indexOf(refererHost) !== -1) {
+    return next();
+  }
+  res.sendFile(path.join(__dirname, 'imgs', 'xx.jpg'));
+});
+
+app.use(express.static(__dirname));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'img.html'));
+});
+
+app.listen(8080);
+```
 
 ----------
 
