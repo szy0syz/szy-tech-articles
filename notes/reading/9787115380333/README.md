@@ -342,8 +342,8 @@ var handlebars = require('express3-handlebars').create({
 
 - 无论使用寿命路径来处理表单，必须决定如何响应浏览器，选择如下：
   - 直接响应HTML
-  - 302重定向
-  - 303重定向
+  - 302重定向: Found  暂时性转移(Temporarily Moved) 已被303代替
+  - 303重定向: See Other 响应表单是推荐使用此重定向
   - 重定向到专用的成功或失败页面
   - 运用flash消息重定向到原来位置
   - 运用flash消息重定向到新位置
