@@ -3092,12 +3092,6 @@ module.exports = function (session) {
   3. 按照文档指示，我们分别实现三个方法：`store.get(sid, callback)`、`store.set(sid, session, callback)`、`store.destroy(sid, callback)`
   4. 对了，在get方法时，我们读取到的数据一定要转换成对象后再交给`express-session`否则抛异常
 
-- 客户端检测
-  - User Agent中文名为用户代理，是HTTP协议中的一部分
-  - 是一种向访问网站提供你所使用的浏览器类型及版本、操作系统及版本、浏览器内核等信息的识别
-  - 通过这个标识，用户所访问的网站可以显示不同的排版从而为用户提供更好的体验或者进行信息统计
-  - 识别是为手机客户端的 只要识别User-Agent中是否有"Mobile"字段即可
-
 - 多个域名公用80端口
   - 虚拟主机是把一台真实的物理电脑主机分割成多个逻辑存储单元，每个单元都具有单独域名和相同的端口
   - 代理一般分为正向代理和反向代理
@@ -3229,6 +3223,10 @@ app.get('/', function (req, res) {
 app.listen(8080);
 ```
 
+> 测试: 
+    `curl -H 'Accept-Language: zh-CN' -v http://127.0.0.1:8080/`
+    `curl -H 'Accept-Language: en' -v http://127.0.0.1:8080/`
+
 - 算法实现原理：
   1. 1
   2. 2
@@ -3239,6 +3237,42 @@ app.listen(8080);
 
 ----------
 
+## 课时23 用户代理
+
+- 客户端检测
+  - User Agent中文名为用户代理，是HTTP协议中的一部分
+  - 是一种向访问网站提供你所使用的浏览器类型及版本、操作系统及版本、浏览器内核等信息的识别
+  - 通过这个标识，用户所访问的网站可以显示不同的排版从而为用户提供更好的体验或者进行信息统计
+  - 识别是为手机客户端的 只要识别User-Agent中是否有"Mobile"字段即可
+
+- 栗子一枚：
+
+```js
+var express = require('express');
+var path = require('path');
+var agentParser = require('user-agent-parser');
+var app = express();
+var visit = {mobile:0,other:0};
+
+// "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36"
+
+app.use(function(req,res,next){
+   req.agent = agentParser(req.headers['user-agent']||'');
+    next();
+});
+
+app.get('/',function(req,res){
+    console.log(req.agent);
+   if(req.agent.device.type == 'mobile'){
+       visit.mobile = visit.mobile+1;
+   }else{
+       visit.other = visit.other+1;
+   }
+   res.send(visit);
+});
+
+app.listen(8080);
+```
 
 ----------
 
