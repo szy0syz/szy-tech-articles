@@ -85,7 +85,8 @@ proto.handle = function (req, res) {
 }
 
 module.exports = createServer;
-///////////////////////////
+
+///////////////////////////////
 
 
 ////////app.js/////////
@@ -175,6 +176,30 @@ module.exports = function (app) {
     });
 }
 
-// 使用时需传入app实例
+//////////////////////////////////
+
+// 在main.js中使用时需传入app实例
 require('./2.middle')(app);
+```
+
+----------
+
+## 第3节 在connect类新增listen()方法
+
+Express不是带了个app.listen()方法听方便的，我们也整一个。对了，记得返回实例，要链式编程不是嘛。
+
+```js
+// connect.js: 新增 listen() 创建并启动服务
+proto.listen = function (port, callback) {
+  console.log(this);
+  var server = http.createServer(this); 
+  return server.listen(port,callback);  // app.listen(8080) -> this == app
+}
+
+//////////////////////////////////
+
+// main.js: 使用listen()方法
+app.listen(8080, function() {
+  console.log('Server in running on %d port.' ,8080);
+})
 ```
