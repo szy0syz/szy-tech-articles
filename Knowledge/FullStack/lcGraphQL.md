@@ -26,7 +26,7 @@
 9. 编写代码后启动: `yarn start`
 10. 安装graphql: `yarn add graphql express-graphql`
 
-## 第一例 使用schema
+## 第1例 使用schema
 
 ```js
 //////// schema.js
@@ -64,8 +64,47 @@ app.use('/graphql', graphqlHTTP({
 app.listen(8080, () => console.log('Running server on localhost:8080/graphql'));
 ```
 
+----------
 
+## 第2例 自定义schema
 
+- https://github.com/sogko/graphql-schema-language-cheat-sheet
+
+```js
+////// schema.js
+import { buildSchema } from 'graphql';
+
+const schema = buildSchema(`
+  type Friend {
+    id: ID
+    firstName: String
+    lastName: String
+    gender: String
+    language: String
+    email: String
+  }
+
+  type Query {
+    friend: Friend
+  }
+`);
+
+export default schema;
+```
+
+```js
+////// server.js
+const root = { friend: () => {
+  return {
+      "id": 9527,
+      "firstName": "Jerry",
+      "lastName": "Shi",
+      "gender": "Male",
+      "language": "Chinexe",
+      "email": "szy0syz@gmail.com",
+  }
+}};
+```
 
 
   [1]: https://www.lynda.com/GraphQL-tutorials/GraphQL-Data-Fetching-Relay/595829-2.html
