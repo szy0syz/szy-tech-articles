@@ -3314,11 +3314,6 @@ app4000.listen(4000);
   - 服务端收到请求，将服务端中的此文件的ETag和请求头中的 `If-None-Match` 相比较，如果值时一样的，说明缓存还是最新的，Web服务端将发送 `·`304 Not Modified`响应码给客户端表示缓存过未改动，可以继续使用。
   - 如果不一样，则Web服务端将发送该文件的最新版本给浏览器客户端
 
-- 如果干脆不发请求
- - 浏览器会将文件缓存到Cache目录，第二次请求时浏览器会先检查Cache目录下是否含有该文件，如果有，并且还没到 `Expires` 设置的时间，及文件还没过期，那么此时浏览器将直接从 `Cache` 目录中读取该文件，而不再发送请求
- - `Expires`是服务器响应消息头字段，在响应 htpp 请求时告诉浏览器在过期时间前浏览器可以直接从浏览器缓存读取数据，而无需再次请求
- - `Cache-Control` 与 `Expires` 的作用一致，都是致命当前资源的有效期，控制浏览器是否直接从浏览器缓存读取数据还是重新发送请求到服务端取数据，如果设置相同设置的话，其优先级高于 `Expires` 
-
 - 关于使用`Last-Modified`的小栗子：
   1. 截取请求头中的'if-modified-since'
   2. 使用异步获取请求文件mtime后比较
@@ -3411,6 +3406,44 @@ http.createServer(function (req, res) {
   }
 }).listen(8080);
 ```
+
+- 如果干脆不发请求
+ - 浏览器会将文件缓存到Cache目录，第二次请求时浏览器会先检查Cache目录下是否含有该文件，如果有，并且还没到 `Expires` 设置的时间，及文件还没过期，那么此时浏览器将直接从 `Cache` 目录中读取该文件，而不再发送请求
+ - `Expires`是服务器响应消息头字段，在响应 htpp 请求时告诉浏览器在过期时间前浏览器可以直接从浏览器缓存读取数据，而无需再次请求
+ - `Cache-Control` 与 `Expires` 的作用一致，都是致命当前资源的有效期，控制浏览器是否直接从浏览器缓存读取数据还是重新发送请求到服务端取数据，如果设置相同设置的话，其优先级高于 `Expires` 
+
+- `Cache-Control`是指请求和响应遵循的缓存机制，以秒为单位，0表示不缓存
+- `Expires` 缓存过期的时间（绝对时间）
+
+----------
+
+## 课时25 Basic认证
+
+- 小栗子一个，感觉不是很实用了
+
+```js
+var http = require('http');
+
+http.createServer(function(req, res) {
+  var auth = req.headers['authorization'];
+  if (auth) {
+    var area = auth.slice(6);
+    var parts = new Buffer(area, 'base64').toString().split(':');
+    if(parts[0] + parts[1] === 'admin123') {
+      return res.end('welcome');
+    }
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8;');
+    res.end('认证失败');
+  } else {
+    res.setHeader('WWW-Authenticate', 'Basic realm="secure Area"');
+    res.writeHead(401);
+    return res.end();
+  }
+}).listen(8080);
+```
+
+----------
+
 
 ----------
 
