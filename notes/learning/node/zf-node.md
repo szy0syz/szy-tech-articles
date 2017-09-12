@@ -3319,6 +3319,98 @@ app4000.listen(4000);
  - `Expires`是服务器响应消息头字段，在响应 htpp 请求时告诉浏览器在过期时间前浏览器可以直接从浏览器缓存读取数据，而无需再次请求
  - `Cache-Control` 与 `Expires` 的作用一致，都是致命当前资源的有效期，控制浏览器是否直接从浏览器缓存读取数据还是重新发送请求到服务端取数据，如果设置相同设置的话，其优先级高于 `Expires` 
 
+- 关于使用`Last-Modified`的小栗子：
+  1. 截取请求头中的'if-modified-since'
+  2. 使用异步获取请求文件mtime后比较
+  3. 相同的话就发304
+  4. 不相同就先设置'Last-Modified'响应头再发文件
+
+```js
+var fs = require('fs');
+var express = require('express');
+process.chdir(__dirname);
+var http = require('http');
+
+/**
+ * @param {string} filename 
+ * @param {IncomingMessage} req 
+ * @param {stream} res 
+ */
+function send(filename,req, res) {
+  // 取得文件最后修改时间
+  var lastModifiedSince = new Date(req.headers['if-modified-since']); // 注意，服务端取键名要全小写！
+  fs.stat(filename, function(err, stat) {
+    if(stat.mtime.getTime() === lastModifiedSince.getTime()) {
+      // res.sendStatus(304).end(); // 又不是express
+      res.statusCode = 304;
+      res.end();
+    } else {
+      res.writeHead(200, {'Last-Modified': stat.mtime.toGMTString()});
+      fs.createReadStream(filename).pipe(res);
+    }
+  })
+}
+
+http.createServer(function(req, res) {
+  if(req.url !== '/favicon.ico') {
+    var filename = req.url.slice(1) || 'index.html'; // index.html 不要那个横杠杠
+    send(filename, req, res);
+  } else {
+    res.statusCode = 404;
+    res.end('404');
+  }
+}).listen(8080);
+```
+
+- 关于使用Etag的小栗子：
+  1. 创建计算hash的方法
+  2. 在send方法前设卡并获取`if-none-match`的值
+  3. 如果相等就转发304
+  4. 如果不相等先设置响应头`Etag`后再向客户端发送静态文件
+
+```js
+var fs = require('fs');
+var http = require('http');
+var crypto = require('crypto');
+var express = require('express');
+
+process.chdir(__dirname);
+
+function getHash(str) {
+  var shasum = crypto.createHash('sha1');
+  return shasum.update(str).digest('base64');
+}
+/**
+ * @param {string} filename 
+ * @param {IncomingMessage} req 
+ * @param {stream} res 
+ */
+function send(filename, req, res) {
+  // 取得文件最后修改时间
+  var ifNoneMAtch = req.headers['if-none-match']; // 注意，服务端取键名要全小写！
+
+  fs.readFile(filename, function (err, data) {
+    var sha1 = getHash(data.toString());
+    if (sha1 === ifNoneMAtch) {
+      res.statusCode = 304;
+      res.end();
+    } else {
+      res.writeHead(200, { 'Etag': sha1, 'Cache-Control': 'max-age=3600' });
+      fs.createReadStream(filename).pipe(res);
+    }
+  })
+}
+
+http.createServer(function (req, res) {
+  if (req.url !== '/favicon.ico') {
+    var filename = req.url.slice(1) || 'index.html'; // index.html 不要那个横杠杠
+    send(filename, req, res);
+  } else {
+    res.statusCode = 404;
+    res.end('404');
+  }
+}).listen(8080);
+```
 
 ----------
 
