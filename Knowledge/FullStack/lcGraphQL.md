@@ -24,8 +24,45 @@
 7. 修改package.json中"script"的值：`{ "start": "babel-node ./server.js" }`
 8. 配置babel的`.babelrc`文件 ` { "presets": ["es2015", "stage-0"], "plugins": [] }`
 9. 编写代码后启动: `yarn start`
+10. 安装graphql: `yarn add graphql express-graphql`
 
+## 第一例 使用schema
 
+```js
+//////// schema.js
+import { buildSchema } from 'graphql';
+
+const schema = buildSchema(`
+  type Query {
+    hello: String
+  }
+`);
+
+export default schema;
+```
+
+```js
+//////// server.js
+import express from 'express';
+import graphqlHTTP from 'express-graphql'
+import schema from './schema';
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('GraphQL & Relay modern is cool!!!');
+});
+
+const root = {hello: () => "Hi, I'm Jerry."};
+
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true // 开启后会有graphql专享界面，否者直接返回rootValue的值
+}));
+
+app.listen(8080, () => console.log('Running server on localhost:8080/graphql'));
+```
 
 
 
