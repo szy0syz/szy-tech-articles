@@ -3526,6 +3526,24 @@ http.createServer(function(req, res) {
 
 - mongoose是MongoDB的一个对象模型工具，是基于node-mongodb-native开发的MongoDB nodejs驱动，可以异步的环境下执行。同时它也是针对MongoDB操作的一个对象模型库ORM，封装了nodejs驱动，可以异步的环境下执行。同时它也是针对MongoDB对文档的一些增删改查等常用方法，让NodeJS操作MongoDB数据库变得非常灵活简单。
 
+1. install
+2. `var mongoose = require('mongoose');`
+3. `var db = mongoose.connect('mongodb://user:pwd@host:port/database');`
+4. 监听`open`事件判断是否连接成功
+
+### 集合
+
+MongoDB是一个对象数据库，没有表、行的概念，也没有固定的模式和结构，所有的数据以Document(以下简称文档)的形式存储(Document，就是一个关联数组式的对象，它的内部由属性组成，一个属性对应的值可能是一个数、字符串、日期、数组、甚至是一个嵌套的文档)。
+
+在MongoDB中，多个Docu可以组成Collection(简称集合)，多个集合又可以组成数据库。
+
+我们想要操作MongoDB数据，那就得先要具备上面所说的包含数据的“文档”，文档又是什么意思呢？
+
+文档----是MongoDB的核心概念，是键值对的一个有序集，在JavaScript里文档被表示成对象。同时它也是MongoDB中数据的基本单位，非常类似于关系型数据库中的行，但更具表现力。
+
+集合----由一组文档组成，如果将MongoDB中的一个文档比喻成关系型数据库中的一行，那么一个集合就相当于一张表。
+
+如果我们要通过mongoose去创建一个“集合”并对其进行增删改查，该怎么实现呢，那就得先了解Schema(数据属性模型)、Model、Entity。
 
 
 ----------
