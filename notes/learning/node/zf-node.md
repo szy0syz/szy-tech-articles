@@ -3518,6 +3518,16 @@ http.createServer(function(req, res) {
 
 > MongoDB 我在WinSer2008R2、阿里云Ubtune都配过，就这样。
 
+> MongoDB 我在WinSer2008R2、阿里云Ubtune都配过，就这样。
+
+----------
+
+## 课时27 mongoose
+
+- mongoose是MongoDB的一个对象模型工具，是基于node-mongodb-native开发的MongoDB nodejs驱动，可以异步的环境下执行。同时它也是针对MongoDB操作的一个对象模型库ORM，封装了nodejs驱动，可以异步的环境下执行。同时它也是针对MongoDB对文档的一些增删改查等常用方法，让NodeJS操作MongoDB数据库变得非常灵活简单。
+
+
+
 ----------
 
 
