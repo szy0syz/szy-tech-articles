@@ -3496,7 +3496,7 @@ http.createServer(function(req, res) {
         3. 集合名不能以"system."开头，这是为系统集合保留的前缀
         4. 用户创建的集合名字不能包含保留字符。有些驱动程序的确支持在集合名里包含，这是因为某些系统生成的集合中包含该字符。除非你要访问这种系统创建的集合，否否则千万不要在名字里出现`$`
 
-- MongoDB 的数据类型
+-  MongoDB 的数据类型
 
 |  name        |         description        |
 | :--:         |            :--:            |
@@ -3511,6 +3511,12 @@ http.createServer(function(req, res) {
 | Null         | 用于创建空值 |
 | Symbol       | 符号。该数据类型基本上等同于字符串类型，但不同的是，它一般用于采用特殊符号类型的语言。 |
 | Date         | 日期时间。用 UNIX 时间格式来存储当前的日期或事件。 |
+
+- MongoDB
+  - db.collection.save() 和 db.collection.insert() 区域在于前者保存或添加，后者仅添加如有重复报错
+  - 查询条件 and 直接填值，or 需用 `$or` 操作符
+
+> MongoDB 我在WinSer2008R2、阿里云Ubtune都配过，就这样。
 
 ----------
 
@@ -3527,4 +3533,3 @@ http.createServer(function(req, res) {
   [10]: http://static.zybuluo.com/szy0syz/dv0kdqlxfhpabxpsipdl7y2f/http%E6%8A%93%E5%8C%85.jpg
   [11]: http://static.zybuluo.com/szy0syz/07t218mlc69y5lk2m4xzwmyn/tcp%E6%8A%93%E5%8C%85.jpg
   [12]: http://static.zybuluo.com/szy0syz/owlfck6o8go5aehyw0lskykr/connect-middleware.png
-
