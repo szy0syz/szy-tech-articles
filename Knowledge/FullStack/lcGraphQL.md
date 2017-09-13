@@ -25,6 +25,11 @@
 8. 配置babel的`.babelrc`文件 ` { "presets": ["es2015", "stage-0"], "plugins": [] }`
 9. 编写代码后启动: `yarn start`
 10. 安装graphql: `yarn add graphql express-graphql`
+11. 安装开发依赖项relay: `yarn add relay-compiler -D`
+12. 继续安装babel: `yarn add babel-core babel-loader babel-plugin-relay babel-plugin-transform-runtime babel-preset-react babel-runtime classnames graphql-relay react-relay webpack@1.13.2 webpack-dev-server@1.16.1 whatwg-fetch -S`
+13. 新增package.json中"script"的值: `{ "relay": "relay-compiler --src ./src --schema ./data/schema.graphql" }`
+14. 新增.babelrc中presets数组的值: `["react" ,"es2015", "stage-0"]`、plugins的值: `["relay", "transform-runtime"]`
+
 
 ## 第1例 使用schema
 
@@ -248,5 +253,9 @@ mutation{
 }
 ```
 
+
+<!-- peerDependencies WARNING babel-loader@^7.0.0 requires a peer of webpack@2 || 3 but webpack@1.13.2 was installed
+peerDependencies WARNING react-relay@^1.0.0 requires a peer of react@^16.0.0-a || ^15.0.0 || ^0.14.0 but none was installed
+peerDependencies WARNING react-relay@1.3.0 › react-static-container@^1.0.1 requires a peer of react@^0.13.0 || ^0.14.0 || ^15.0.0 but none was installed -->
 
   [1]: https://www.lynda.com/GraphQL-tutorials/GraphQL-Data-Fetching-Relay/595829-2.html
