@@ -209,5 +209,44 @@ class Friend {
 }
 ```
 
+- 创建、查询、修改
+  - 感觉好像清晰一点了
+
+```js
+mutation{
+  createFriend (input: {
+    firstName: "jerry"
+    lastName: "shi"
+    gender: "male"
+    language: "Chinese"
+    email: "szy0syz@gmail.com"
+  }) {
+    id
+  }
+}
+
+query {
+  getFriend(id: "d1c4a53f8cc9f2564fe6"){
+    firstName
+    lastName
+    email
+  }
+}
+
+mutation{
+  updateFriend(id: "d1c4a53f8cc9f2564fe6", input: {
+    firstName: "zhenyu"
+    lastName: "shi"
+    gender: "female"
+    language: "english"
+    email: "szy0syz@gmail.com"
+  }) {
+    firstName
+    gender
+    email
+  }
+}
+```
+
 
   [1]: https://www.lynda.com/GraphQL-tutorials/GraphQL-Data-Fetching-Relay/595829-2.html
