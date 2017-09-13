@@ -100,11 +100,55 @@ const root = { friend: () => {
       "firstName": "Jerry",
       "lastName": "Shi",
       "gender": "Male",
-      "language": "Chinexe",
+      "language": "Chinese",
       "email": "szy0syz@gmail.com",
   }
 }};
 ```
+
+----------
+
+## 第3例 带参数的查询
+
+- 在schema的Query中定义哪些参数是必填字段，加`!`为必填
+
+```js
+////  schema.js
+const schema = buildSchema(`
+  type Friend {
+    id: ID
+    firstName: String
+    lastName: String
+    gender: String
+    language: String
+    email: String
+    IDTyped: String
+  }
+
+  type Query {
+    friend (id: ID!): Friend
+  }
+`);
+```
+
+- 在root中可以获取传来的过滤参数
+
+```js
+const root = { friend: (args) => {
+  return {
+      "id": 9527,
+      "firstName": "Jerry",
+      "lastName": "Shi",
+      "gender": "Male",
+      "language": "Chinese",
+      "email": "szy0syz@gmail.com",
+      "IDTyped": args.id
+  }
+}};
+```
+
+
+----------
 
 
   [1]: https://www.lynda.com/GraphQL-tutorials/GraphQL-Data-Fetching-Relay/595829-2.html
