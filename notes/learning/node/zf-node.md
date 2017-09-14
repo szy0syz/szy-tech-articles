@@ -4050,6 +4050,70 @@ gulp.wath('js/**.*.js', function(event) {
 
 ----------
 
+## 课时52 gulp插件
+
+### 复制单个文件
+
+任务需要把我们项目里的app下的index.html这个文件，复制到一个叫dist的目录里，这个dist目录表示的是distribution，也就是正式发布版。
+
+### 复制多个文件
+
+创建一个任务，把 imgs 目录里的文件复制到 dist这个目录下
+
+### 组合任务
+
+在创建 gulp 任务的时候，我们可以去给任务指定它依赖的其他任务
+比如，我们创建了三个任务，`copu-html` `copy-imgs` `copy-other`。
+我们想再创建一个 `build` 的任务，这个任务依赖这三个任务。
+
+### 监听任务
+
+使用 gulp 的 watch 方法，我们可以监听一些文件，当这些文件发生变化时，立即去执行一些指定的任务。
+
+### gulp插件
+
+gulp提供了一些很实用的接口，但本身不能做太多的事情。
+可以读取文件、写入文件以及监控文件等一少部分功能。
+其它使用的功能都依靠插件来进行扩展，比如：
+
+- 编译Sass：gulp-sass
+- 编译Less：gulp-less
+- 合并文件：gulp-concat
+- 压缩js文件：gulp.ugligy
+- 重命名js文件：gulp-rename
+- 优化图像大小：gulp-imagemin
+- 压缩css文件：gulp-minify-css
+- 创建本地服务器：gulp-connect
+- 实时预览：gulp-connect
+
+### 自动加载
+
+`gulp.load-plugins`这个插件能自动帮你加载 `package.json` 文件里的gulp插件。
+假设你的package.json文件里的依赖是这样的：
+
+```js
+"devDependencies": {
+  "gulp": "^3.9.1",
+  "gulp-concat": "^2.6.0",
+  "gulp-connect": "^2.2.0",
+  "gulp-imagemin": "^2.3.0",
+}
+```
+然后我们可以在gulpfile.js中使用gulp-load-plugins来帮助我们加载插件：
+
+```js
+var gulp = require('gulp');
+// 加载gulp.load-plugins插件并实例化
+var $ = require('gulp.load-plugins')();
+//之后我们就可以使用gulp-rename和gulp-ruby-sass这连个插件时，就可以使用 $.concat 和 $.connect来代替了，也就是所插件名去掉了 gulp- 前缀，之后再传唤为驼峰命名。
+```
+
+09：50
+
+----------
+
+
+
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
