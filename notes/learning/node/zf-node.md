@@ -3769,25 +3769,25 @@ PersonModel.findByName('hello', function(err, docs) {
 
 ----------
 
-## 课时52 Gulp API
+## 课时52 gulp API
 
-- Gulp是可以自动化执行任务的工具。在平时开发的流程中，一定有一些任务需要手工的重复地执行，比如：
+- gulp是可以自动化执行任务的工具。在平时开发的流程中，一定有一些任务需要手工的重复地执行，比如：
     - 把一个稳健拷贝到另一个位置
     - 把多个JS或CSS文件合并压缩，以减少网络请求数和网络流量
     - 把Sass或Less文件编译成CSS
     - 压缩图像文件，以减少网络浏览
     - 创建一个可以实现实时刷新页面内容的本地服务器等等
 
-只要你觉得有些动作是要重复去做的，一般你就可以把这些动作创建成一个Gulp任务，然后在指定的条件下，比如文件发生变化后，自动去执行这些任务。
+只要你觉得有些动作是要重复去做的，一般你就可以把这些动作创建成一个gulp任务，然后在指定的条件下，比如文件发生变化后，自动去执行这些任务。
 
-### Gulp特点
+### gulp特点
 
-- `易于使用` 通过代码优于配置的策略，Gulp会让简单的任务变简单，复杂的任务可管理。
+- `易于使用` 通过代码优于配置的策略，gulp会让简单的任务变简单，复杂的任务可管理。
 - `快速构建` 利用 node.js 流的威力，你可以快速构建项目并减少频繁的IO操作。前一级的输出，直接变成后一级的输入，使得操作上非常简单。
-- `高质量的插件` Gulp严格的插件指南保证插件如你期望那样简洁地工作。
-- `易于学习` 通过最少的API、掌握Gulp毫不费力，构建工作尽在掌握。
+- `高质量的插件` gulp严格的插件指南保证插件如你期望那样简洁地工作。
+- `易于学习` 通过最少的API、掌握gulp毫不费力，构建工作尽在掌握。
 
-![Gulp & grunt diff.png-81.8kB][13]
+![gulp & grunt diff.png-81.8kB][13]
 
 ### 流的概念
 
@@ -3801,16 +3801,16 @@ PersonModel.findByName('hello', function(err, docs) {
 
 ![image.png-170.2kB][14]
 
-### Gulp中的流
+### gulp中的流
 
-- Gulpz正是通过流和代码优于配置的策略来尽量简化任务便携的工作。
+- gulpz正是通过流和代码优于配置的策略来尽量简化任务便携的工作。
 - 类似jquery里的链式操作，把各个方法串联起来构建完成的任务。
-- 用Gulp便携任务也可以看做是用Node.js编写任务。
-- 当使用流时，Gulp不需要生成大量的中间文件，只将最后的输出写入磁盘，整个过程因此变得非常快。
+- 用gulp便携任务也可以看做是用Node.js编写任务。
+- 当使用流时，gulp不需要生成大量的中间文件，只将最后的输出写入磁盘，整个过程因此变得非常快。
 
 > 安装： `npm install gulp -g --registry=http://registry.npm.taobao.org`
 
-### Gulp运行
+### gulp运行
 
 1. 创建配置文件
 
@@ -3821,24 +3821,24 @@ gulp的任务要放在一个叫gulpfile.js的文件里，先在项目的根目�
 
 2. 创建gulp的任务
 
-可以使用`gulp`的`task`方法。同样我们去创建一个叫default的任务，它要做的事情就是在控制台上输出“Gulp is cool!”这个两个字。第一个参数是任务的名称，第二个参数是任务的定义，它是一个匿名函数。
+可以使用`gulp`的`task`方法。同样我们去创建一个叫default的任务，它要做的事情就是在控制台上输出“gulp is cool!”这个两个字。第一个参数是任务的名称，第二个参数是任务的定义，它是一个匿名函数。
 
 ```js
 // gulpfile.js
 var gulp = require('gulp');
 
 gulp.task('default', function() {
-  console.log('Gulp is cool!')
+  console.log('gulp is cool!')
 });
 ```
-执行Gulp的任务: `gulp`
+执行gulp的任务: `gulp`
 
 最后会返回：
 
 ```bash
 [16:12:13] Using gulpfile ~/Git/zhufeng-node-practice/lesson52_gulp/gulpfile.js
 [16:12:13] Starting 'default'...
-Gulp is cool!
+gulp is cool!
 [16:12:13] Finished 'default' after 204 μs
 ```
 在`gulp`命令后可以跟任务的名称，不输入任务名称则模块会找defaule任务。
@@ -3872,6 +3872,74 @@ gulp.src('script/src.js')    // 获取文件的流的api
     .pipe(gulp.dest('dist/dest.js'));  // 写文件的api
 ```
 
+### gulp.src
+
+使用gulp，仅需知道4个API即可：gulp.task(), gulp.src(), gulp.dest(), gulp.watch()，所以很容易掌握。
+
+- gulp.src()
+
+在gulp中，使用的是Node.js中的stream，首先获取到需要的stream，然后可以通过stream的pipe()方法把stream导入到你想导的地方，比如gulp的插件中，经过插件处理后的流又可以继续导入到其它插件中，当然也可以把流写入到文件中。所以gulp是以stream，
+为媒介的，他不需要频繁的生成临时文件，这也是gulp的速度比grunt快的一个原因。再回到正题上来，gulp.src()方法正是用来获取流的，但要注意这个流里的内容不是原始的文件流，而是一个虚拟文件对象流（vinyl-file），这个虚拟文件对象中存储着原始文件的路径、文件名。内容等信息，这个我们暂时不用深入理解，你只需要简单的理解可以用这个方法来读取你需要操作的文件就行了。
+
+`gulp.src(globs, [, options]);`
+
+**globs**参数是文件匹配模式(类似正则表达式)，用来匹配文件路径(包括文件名)，当然这里也可以直接指定某个具体的文件路径。当有多个匹配模式时，该参数可以为一个数组。
+**options**为可选参数。通常很不用。
+
+### glob
+
+- gulp内部使用了node-glob模块来实现其文件匹配功能。我们可以使用下面这些特殊的字符串来匹配我们想要的文件：
+
+|  匹配符  |   说明  |
+|  :--: |  :----   |
+|    *    |  匹配文件路径中的0个或多个字符，但不会匹配路径分隔符，除非路径分隔符出现在末尾 |
+|     **  |  匹配路径中0个或多个目录及其子目录，需要单独出现，即它左右不能又其它东西了。如果出现在末尾，也能匹配文件。
+|  ？     |  匹配文件路径中一个字符(不会匹配路径分隔符) |
+|  [...]  |  匹配方括号中出现的字符中的任意一个，当方括号中第一个字符为`^`或者`!`时，则表示不匹配方括号中出现的其他字符中的任意一个，类似js正则的语法  |
+| !(pattern\|pattern\|pattern) | 匹配任何与括号中给定的任一模式都不匹配的  |
+| ?(pattern\|pattern\|pattern) | 匹配括号中给定的任一模式0次或者1次，类似于js正则中的(pattern\|pattern\|pattern)? |
+| +(pattern\|pattern\|pattern) | 匹配括号中给定的任一模式至少1次，类似于js正则中的(pattern\|pattern\|pattern)+ |
+| \*(pattern\|pattern\|pattern) | 匹配括号中给定的任一模式0次或者1次，类似于js正则中的(pattern\|pattern\|pattern)\* |
+| @(pattern\|pattern\|pattern) | 匹配括号中给定的任一模式1次，类似于js正则中的(pattern\|pattern\|pattern) |
+
+### gulp.dest()
+
+gulp.dest()方法是用来写文件的，其语法为：`gulp.dest(path, [,options])`
+
+**path**为写入文件的路径
+**options**为一个可选参数对象，一般很不用
+
+想要使用好gulp.dest()这个方法，就要理解给它传入的路径参数与最终生成的文件的关系。
+
+gulp的使用流程一般是这样子的： 首先通过 `gulp.src()`方法获取到我们想要处理的文件流，然后把文件流通过 `pipe` 方法导入到 gulp 的插件中，最后把经过处理后的流再通过 pipe 方法导入到 `gulp.dest()`中。
+
+`gulp.dest()`方法则把六种的内容写入到文件中，这里首先需要弄清楚一点是，我么给 `gulp.dest()` 传入的路径参数，只能用来指定要生成的文件的**目录**，而不能指定生成文件的文件名，它生成的文件的文件名使用的是导入到它的文件流自身的文件名，所以生成的文件名是由导入到它的文件流决定的，即使我们给它传入一个带有文件名的路径参数，最终它也会把这个文件名当做是目录名。
+
+### gulp.task()
+
+gulp.task方法用来定义任务： `gulp.task(name, [,deps], fn);`
+**name**任务名
+**deps**为当前定义的任务需要依赖的其他任务，为一个数组。当前定义的任务会在所有依赖的任务执行完毕后才开始执行。如果没有依赖，则可省略这个参数。
+**fn**为任务函数，我们把任务要执行的代码都写在里面，该参数可选。
+
+```js
+gulp.task('mytask', ['array', 'of', 'task', 'name'], function() {
+  // 定义一个有依赖的任务
+});
+```
+
+`gulp.task()`这个API没什么东西，但需要知道执行多个任务时怎么来控制任务执行的顺序。
+gulp中执行多个任务，可以通过依赖来实现。例如我们想要执行one、two、three这三个任务，那我们就可以定义一个空的任务，然后把那三个任务当做这个空的任务的依赖就行：
+
+```js
+// 只要执行default任务，就相当于把one two three这三个任务执行了
+gulp.task('deafule', ['one', 'two', 'three']);
+```
+
+如果任务相互没有依赖，任务会按你书写的顺序来执行，如果有依赖的话则会先执行依赖的任务。但如果某个任务所依赖的任务是异步的，就要注意了，gulp并不会等待那个所依赖的异步任务完成，而是会接着执行后续的任务。例如：
+
+
+
 
 ----------
 
@@ -3888,4 +3956,4 @@ gulp.src('script/src.js')    // 获取文件的流的api
   [10]: http://static.zybuluo.com/szy0syz/dv0kdqlxfhpabxpsipdl7y2f/http%E6%8A%93%E5%8C%85.jpg
   [11]: http://static.zybuluo.com/szy0syz/07t218mlc69y5lk2m4xzwmyn/tcp%E6%8A%93%E5%8C%85.jpg
   [12]: http://static.zybuluo.com/szy0syz/owlfck6o8go5aehyw0lskykr/connect-middleware.png
-  [13]: http://static.zybuluo.com/szy0syz/mqgonnyhrzyx4b5ufoh2h42x/Gulp%20&%20grunt%20diff.png
+  [13]: http://static.zybuluo.com/szy0syz/mqgonnyhrzyx4b5ufoh2h42x/gulp%20&%20grunt%20diff.png
