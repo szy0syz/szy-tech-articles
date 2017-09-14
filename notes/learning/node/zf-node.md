@@ -3638,11 +3638,134 @@ personEntity.save(function(err, doc) {
 2. Model: 通过Schema构造而成，除了具有Schema定义的数据库骨架外，还可以具体的操作数据库；
 3. Entity: 通过Model创建的实例，它也可以操作数据库。
 
-### 查询
+### 基础操作
 
-查询分很多种类型，如条件查询，过滤查询等等，先学find查询。
+- 查询: `obj.find(conditions, field, callback);`返回符合条件的一个、多个或空数组文档结果；
+- 保存: Model调用`create()`方法，Entity调用`save()`方法；
+- 更新: `obj.update(conditions, obj, callback)`，根据条件更新相关数据；
+- 删除: `obj.remove(conditons, callback)`，更具条件删除相关数据。
 
-- find()查询：obj.find(condi);
+### 简单查询
+
+- find过滤查询：find查询时我们可以过滤返回结果所显示的属性个数
+- findOne查询：只返回符合条件的首条文档数据
+- findById查询：根据文档`_id`来查询文档
+
+### 高级查询
+
+- $gt/$lt(大于、小于)
+- $ne(不等于)：其含义相当于不等于、不包含。$ne可以匹配到单个值，也可以匹配不同类型的值
+- $in(包含)：和$ne操作符相反，$in相当于包含、等于
+- $exists(是否存在)
+
+### 游标操作
+
+数据库使用游标返回find的执行结果。
+
+客户端对游标的实现通车能够对最终结果进行有效的控制。可以限制结果的数量，略过部分结果，根据任意键按任意顺序的组合对结果进行各种排序，或者是执行其他操作。
+
+最常用的查询选择就是限制返回结果的数量(limit函数)、忽略一点数量的结果(skip函数)以及排序(sort函数)。所有这些选项一定要在查询被发送到服务器之前指定。
+
+- limit函数：在查询操作中，又是数据了很大，这时我们就需要对返回结果的数量进行限制，那么我们就可以使用limit函数，通过它来限制结果数量。
+
+```js
+// 限制数量：find(conditions, fields, options, callback);
+Model.find({}, nullm {limit: 20}, function(err, docs) {
+  console.log(docs.length);
+});
+// 如果匹配到的结果不到20个，则返回匹配数量的结果，也就是说limit函数指定的是上限而非下限。
+```
+
+- skip函数：skip函数和limit类似，都是对返回结果数量进行操作，不同的是skip函数的功能是略过指定数量的匹配结果，返回余下的查询结果。
+
+```js
+// 跳过数量：find(conditions, fields, options, callback);
+Model.find({}, null, {skip: 4}, function(err, docs) {
+  console.log(docs);
+});
+// 如果查询结果数量中少于4个的话，则不会返回任何结果。
+```
+
+- sort函数：将查询结果数据进行排序操作，该函数的参数是一个或多个键值对，键代表要排序的键名，值代表排序的方法，1是升序，-1是降序。
+
+```js
+// 结果排序：find(conditions, fields, options, callback);
+Model.find({}, null, {sort: {age: -1}}, function(err, docs) {
+  // 查询所有数据，并按照age降序返回docs
+});
+// sort函数可以根据用户自定义条件有选择性的来进行排序显示数据结果。
+```
+
+### 小节
+
+1. limit函数：限制返回结果的数量
+2. skip函数：略过指定的返回结果数量
+3. sort函数：对返回结果进行有效排序
+
+### 扩展方法
+
+- ObjectId
+
+存储在mongodb集合中的每个文档(document)都有一个默认的主键`_id`，这个主键名称是固定的，它可以是mongodb支持的任何数据类型，默认是ObjectId。该类型的值由系统自动生成，从某种意义上将是不会重复的。
+
+MySQL等关系型数据库的主键都是自增的。按在分布式环境下，这种方法是不可行的，因为会产生冲突。为此，MongoDB采用了一个称之为ObjectId的类型来做主键。ObjectId是一个12个字节的BSON类型字符串。按照自己饿顺序，一次代表：
+    - 4字节：UNIX时间戳
+    - 3字节：表示运行MongoDB的机器
+    - 2字节：表示生成此_id的进程
+    - 3字节：由一个随机数开始的计数器生成的值
+每一个文档都有一个特殊的键`_id`，这个键在文档所属的集合中是唯一的。
+
+- Schema添加属性值
+
+使用Schema时，我们可以先定义后添加属性
+
+```js
+var mongoose = require('mongoose');
+var PersonSchema = new mongoose.Schema;
+PersonSchema.add({name: 'String', email: 'String', age: 'Number'});
+```
+
+- Schema添加实例方法
+
+有的时候，我们创建的Schema不仅要为后面的Model和Entity提供公共属性，还要提供公共方法。那我们就给Schema添加一个实例方法把：
+
+```js
+var mongoose = require('mongoose');
+var personSchema = new mongoose.Schema({name: String});
+
+personSchema.method('greet', function() {
+  console.log('how are you');
+});
+
+var Person = mongoose.model('person', personSchema);
+var person = new Person();
+
+person.greet(); 
+```
+
+- Schema添加静态方法
+
+来吧，整个Schema的静态方法玩玩：
+
+```js
+var mongoose = require('mongoose');
+var db = mongoose.connect('mongodb://host:port/database');
+
+var PersonSchema = new mongoose.Schema({
+  name: {type: String},
+  age: {type: Number, default: 0}
+});
+
+// 记得要在Schema要添加静态方法，这和在构造函数上加静态方法有什么区别嘛。
+  return this.find({ name: name }, callback);
+});
+
+var PersonModel = db.model('person', PersonSchema);
+
+PersonModel.findByName('hello', function(err, docs) {
+  // docs
+})
+```
 
 ----------
 
