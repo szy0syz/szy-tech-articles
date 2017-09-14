@@ -3841,6 +3841,37 @@ gulp.task('default', function() {
 Gulp is cool!
 [16:12:13] Finished 'default' after 204 μs
 ```
+在`gulp`命令后可以跟任务的名称，不输入任务名称则模块会找defaule任务。
+可以顺序执行很多任务：`gulp <task <othertask>`
+
+### gulp命令行
+
+- gulp只有你需要熟知的参数标记，其他所有的参数标记只在一些任务需要的使用才使用。
+    - `-v` `--version`
+    - `--gulpfile path` 手动指定一个gulpfile的路径，在有很多个gulpfile时有用。这也会将CWD设置到该gulpfile所在目录
+    - `--cwd dirpath` 手动指定CWD。定义 gulpfile 查找的位置，此外，所有的响应的依赖(require)会从这里开始计算相对路径
+    - `T` `--tasks` 会显示所指定 gulpfile 的 task 依赖树
+    - `--tasks-simple` 会以纯文本的方式显示所载入的 fulpfile 中的 task 列表
+    - `--color` 强制gulp 和 gulp插件显示颜色，即便没有颜色支持
+    - `no-color` 强制不显示颜色，即便检测到有颜色支持
+    - `--silent` 禁止所有的gulp日志 
+
+### gulp的工作流程
+
+- gulp.js工作方式
+
+gulp的使用流程一般是：
+首先通过gulp.src()方法获取到想要处理的文件流，
+然后把文件铜鼓pipe方法导入到gulp的插件中，
+最后把经过插件处理后的流再通过pipe方法导入到gulp.dist()中，
+gulp.dest()方法则把流中的内容写入到文件中。
+
+```js
+var gulp = require('gulp');
+gulp.src('script/src.js')    // 获取文件的流的api
+    .pipe(gulp.dest('dist/dest.js'));  // 写文件的api
+```
+
 
 ----------
 
