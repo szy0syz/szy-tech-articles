@@ -3778,7 +3778,7 @@ PersonModel.findByName('hello', function(err, docs) {
     - 压缩图像文件，以减少网络浏览
     - 创建一个可以实现实时刷新页面内容的本地服务器等等
 
-只要你觉得有些动作是要重复去做的，一般你就可以把这些动作创建成一个Glup任务，然后在指定的条件下，比如文件发生变化后，自动去执行这些任务。
+只要你觉得有些动作是要重复去做的，一般你就可以把这些动作创建成一个Gulp任务，然后在指定的条件下，比如文件发生变化后，自动去执行这些任务。
 
 ### Gulp特点
 
@@ -3787,8 +3787,63 @@ PersonModel.findByName('hello', function(err, docs) {
 - `高质量的插件` Gulp严格的插件指南保证插件如你期望那样简洁地工作。
 - `易于学习` 通过最少的API、掌握Gulp毫不费力，构建工作尽在掌握。
 
+![Gulp & grunt diff.png-81.8kB][13]
+
+### 流的概念
+
+- `Stream` 是nodejs各种对象实现的抽象接口；
+- 比如标准输入是一个流，标准输出也是一个流；
+- 所有 Stream 对象都是 EventEmitter 的实例，可以发射事件；
+- 流是一种有起点和重点的数据传输手段。
+    - 上一个的输出，是下一个的输入
+    - 上一个的输出，是下一个的输入
+    - 上一个的输出，是下一个的输入
+
+![image.png-170.2kB][14]
+
+### Gulp中的流
+
+- Gulpz正是通过流和代码优于配置的策略来尽量简化任务便携的工作。
+- 类似jquery里的链式操作，把各个方法串联起来构建完成的任务。
+- 用Gulp便携任务也可以看做是用Node.js编写任务。
+- 当使用流时，Gulp不需要生成大量的中间文件，只将最后的输出写入磁盘，整个过程因此变得非常快。
+
+> 安装： `npm install gulp -g --registry=http://registry.npm.taobao.org`
+
+### Gulp运行
+
+1. 创建配置文件
+
+gulp的任务要放在一个叫gulpfile.js的文件里，先在项目的根目录下创建一个这样的文件。然后在这个文件的顶部添加如下这行代码：`var gulp = require('gulp');`
+
+通过`require`可以把`gulp`模块引入当前项目并赋值给`gulp`变量
+这样，`gulp`这个变量里面就会拥有`gulp`的所有方法
+
+2. 创建gulp的任务
+
+可以使用`gulp`的`task`方法。同样我们去创建一个叫default的任务，它要做的事情就是在控制台上输出“Gulp is cool!”这个两个字。第一个参数是任务的名称，第二个参数是任务的定义，它是一个匿名函数。
+
+```js
+// gulpfile.js
+var gulp = require('gulp');
+
+gulp.task('default', function() {
+  console.log('Gulp is cool!')
+});
+```
+执行Gulp的任务: `gulp`
+
+最后会返回：
+
+```bash
+[16:12:13] Using gulpfile ~/Git/zhufeng-node-practice/lesson52_gulp/gulpfile.js
+[16:12:13] Starting 'default'...
+Gulp is cool!
+[16:12:13] Finished 'default' after 204 μs
+```
 
 ----------
+
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
@@ -3802,3 +3857,4 @@ PersonModel.findByName('hello', function(err, docs) {
   [10]: http://static.zybuluo.com/szy0syz/dv0kdqlxfhpabxpsipdl7y2f/http%E6%8A%93%E5%8C%85.jpg
   [11]: http://static.zybuluo.com/szy0syz/07t218mlc69y5lk2m4xzwmyn/tcp%E6%8A%93%E5%8C%85.jpg
   [12]: http://static.zybuluo.com/szy0syz/owlfck6o8go5aehyw0lskykr/connect-middleware.png
+  [13]: http://static.zybuluo.com/szy0syz/mqgonnyhrzyx4b5ufoh2h42x/Gulp%20&%20grunt%20diff.png
