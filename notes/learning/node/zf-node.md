@@ -3932,14 +3932,121 @@ gulp.task('mytask', ['array', 'of', 'task', 'name'], function() {
 gulp中执行多个任务，可以通过依赖来实现。例如我们想要执行one、two、three这三个任务，那我们就可以定义一个空的任务，然后把那三个任务当做这个空的任务的依赖就行：
 
 ```js
-// 只要执行default任务，就相当于把one two three这三个任务执行了
-gulp.task('deafule', ['one', 'two', 'three']);
+var gulp = require('gulp');
+
+// 顺序执行目标任务
+gulp.task('1', function() {
+  console.log('task 1...');
+});
+
+gulp.task('2', function() {
+  console.log('task 2...');
+});
+
+gulp.task('3', function() {
+  console.log('task 3...');
+});
+
+gulp.task('default', ['1', '2', '3']);
 ```
 
 如果任务相互没有依赖，任务会按你书写的顺序来执行，如果有依赖的话则会先执行依赖的任务。但如果某个任务所依赖的任务是异步的，就要注意了，gulp并不会等待那个所依赖的异步任务完成，而是会接着执行后续的任务。例如：
 
+```js
+gulp.task('one', function() {
+  // one任务是一个异步任务
+  setTimeout(function() {
+    console.log('one is done');
+  }), 3000;
+});
 
+// two任务虽然依赖one任务，但并不会等到one任务中的异步操作完成后再执行
+gulp.task('two', ['one'], function() {
+  console.log('two is doen);
+});
+```
 
+上面的例子中我们执行two任务，会限制性one任务，但不回去等one任务中的异步操作完成后再执行任务，而是紧接着执行two任务。所以two任务会在one任务中异步操作完成之前就执行了。
+
+那如果我们想等待异步任务中的操作完成后再执行回去的任务，该怎么做呢？
+**我们有三种方法实现：**
+
+1. 在异步操作完成后执行一个回调函数来通知`gulp`这个异步已经完成，这个回调函数就是任务函数的第一个参数。
+
+```js
+gulp.task('one', function(cb) {  //cb为任务函数提供的回调，用来通知gulp任务已经完成了
+  //one是一个一步执行的任务
+  setTimeout(function() {
+    console.log('one is doen');
+    cb();   // 执行回调，表示这个异步任务已经完成
+  }, 3000);
+});
+
+gulp.task('two', ['one'], function() {
+  console.log('two is doen);
+});
+```
+
+2. 定义任务时返回一个流对象。适用于任务就是操作gulp.src获取到的流的情况。
+
+```js
+gulp.task('one', function(cb) {
+  var stream = gulp.src('client/**/*.js')
+    .pipe(dosomething())
+    .pipe(gulp.dest('build'));
+  return stream;
+});
+
+gulp.task('two', ['one'], function() {
+  console.log('two is doen);
+});
+```
+
+3. 返回一个promise对象。
+
+```js
+var Q = reuqire('q'); // 一个异步库
+gulp.task('one', function(cb) {
+  var deferred = Q.defer();
+  setTimeout(function() {
+    deferred.resolve('ok');
+  }, 3000);
+return deferred.promise;
+});
+
+gulp.task('two', ['one'], function() {
+  console.log('two is doen);
+});
+```
+
+### gulp.watch()
+
+`gulp.watch()`用来监视文件的变化，如果当文件发生变化时，我们可以利用它来执行响应的任务，例如文件枷锁等。
+`gulp.wath(glob, [, opts], tasks)`
+**glob**为要监视的文件匹配模式
+**opts**为一个可选的配置对象
+**tasks**为文件变化后要执行的任务，为一个数组
+
+```js
+gulp.task('uglify', function() {
+  // do something
+});
+gulp.task('reload', function() {
+  // do something
+});
+gulp.watch('js/**/*.js', ['uglify', 'reload']);
+```
+
+`gulp.watch()`还有另一个用法：`gulp.wath(glob, [, opts], cb)`
+
+**cb**参数为一个函数。每当监视的文件发生变化时，就会条用这个函数，并且会给它传入一个对象，该对象包含了文件变化的一些信息，type属性为变化的类型，可以是`added`，`changed`，`deleted`。`path`属性为发生变化的文件的路径。
+
+```js
+gulp.wath('js/**.*.js', function(event) {
+  console.log(event.type);  // 变化的类型
+  console.log(event.path);  // 变化的文件路径
+});
+```
 
 ----------
 
