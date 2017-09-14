@@ -4086,7 +4086,7 @@ gulp提供了一些很实用的接口，但本身不能做太多的事情。
 - 创建本地服务器：gulp-connect
 - 实时预览：gulp-connect
 
-### 自动加载 gulp.load-plugins
+### 自动加载插件 gulp-load-plugins
 
 `gulp.load-plugins`这个插件能自动帮你加载 `package.json` 文件里的gulp插件。
 假设你的package.json文件里的依赖是这样的：
@@ -4135,12 +4135,46 @@ gulp.task('default', function() {
 });
 ```
 
+- 成功后会输出：
+
 ```bash
 ╰─$ gulp
 [23:36:14] Using gulpfile ~/Git/zhufeng-node-practice/lesson53_gulp_plugins/load_plugin/gulpfile.js
 [23:36:14] Starting 'default'...
 [23:36:14] Finished 'default' after 5.55 ms
 ```
+
+### 自动编译less插件 gulp-less
+
+```js
+var gulp = require('gulp');
+var less = require('gulp-less');
+
+gulp.task('less',function(){
+    return gulp.src('app/less/*.less').pipe(less()).pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('default',['less']);
+```
+
+### 自动编译sass插件 gulp-sass
+
+安装gulp-sass前需要安装ruby。
+
+```js
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+
+gulp.task('sass',function(){
+    return gulp.src('app/sass/*.scss').pipe(sass()).pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('default',['sass']);
+```
+
+### 运行本地服务器插件 gulp-connect
+
+33:00
 
 ----------
 
