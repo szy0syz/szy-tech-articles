@@ -3769,6 +3769,26 @@ PersonModel.findByName('hello', function(err, docs) {
 
 ----------
 
+## 课时52 Gulp API
+
+- Gulp是可以自动化执行任务的工具。在平时开发的流程中，一定有一些任务需要手工的重复地执行，比如：
+    - 把一个稳健拷贝到另一个位置
+    - 把多个JS或CSS文件合并压缩，以减少网络请求数和网络流量
+    - 把Sass或Less文件编译成CSS
+    - 压缩图像文件，以减少网络浏览
+    - 创建一个可以实现实时刷新页面内容的本地服务器等等
+
+只要你觉得有些动作是要重复去做的，一般你就可以把这些动作创建成一个Glup任务，然后在指定的条件下，比如文件发生变化后，自动去执行这些任务。
+
+### Gulp特点
+
+- `易于使用` 通过代码优于配置的策略，Gulp会让简单的任务变简单，复杂的任务可管理。
+- `快速构建` 利用 node.js 流的威力，你可以快速构建项目并减少频繁的IO操作。前一级的输出，直接变成后一级的输入，使得操作上非常简单。
+- `高质量的插件` Gulp严格的插件指南保证插件如你期望那样简洁地工作。
+- `易于学习` 通过最少的API、掌握Gulp毫不费力，构建工作尽在掌握。
+
+
+----------
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
