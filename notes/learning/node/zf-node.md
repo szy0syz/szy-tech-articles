@@ -3787,7 +3787,7 @@ PersonModel.findByName('hello', function(err, docs) {
 - `高质量的插件` gulp严格的插件指南保证插件如你期望那样简洁地工作。
 - `易于学习` 通过最少的API、掌握gulp毫不费力，构建工作尽在掌握。
 
-![gulp & grunt diff.png-81.8kB][13]
+![glup & grunt diff.png-81.8kB][13]
 
 ### 流的概念
 
@@ -4193,4 +4193,6 @@ gulp.task('default',['sass']);
   [10]: http://static.zybuluo.com/szy0syz/dv0kdqlxfhpabxpsipdl7y2f/http%E6%8A%93%E5%8C%85.jpg
   [11]: http://static.zybuluo.com/szy0syz/07t218mlc69y5lk2m4xzwmyn/tcp%E6%8A%93%E5%8C%85.jpg
   [12]: http://static.zybuluo.com/szy0syz/owlfck6o8go5aehyw0lskykr/connect-middleware.png
-  [13]: http://static.zybuluo.com/szy0syz/mqgonnyhrzyx4b5ufoh2h42x/gulp%20&%20grunt%20diff.png
+  [13]: http://static.zybuluo.com/szy0syz/mqgonnyhrzyx4b5ufoh2h42x/glup%20&%20grunt%20diff.png
+  [14]: http://static.zybuluo.com/szy0syz/cnuz7dli90giqe66vyhlkeq2/image.png
+
