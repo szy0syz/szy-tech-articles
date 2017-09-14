@@ -4086,7 +4086,7 @@ gulp提供了一些很实用的接口，但本身不能做太多的事情。
 - 创建本地服务器：gulp-connect
 - 实时预览：gulp-connect
 
-### 自动加载
+### 自动加载 gulp.load-plugins
 
 `gulp.load-plugins`这个插件能自动帮你加载 `package.json` 文件里的gulp插件。
 假设你的package.json文件里的依赖是这样的：
@@ -4096,7 +4096,7 @@ gulp提供了一些很实用的接口，但本身不能做太多的事情。
   "gulp": "^3.9.1",
   "gulp-concat": "^2.6.0",
   "gulp-connect": "^2.2.0",
-  "gulp-imagemin": "^2.3.0",
+  "gulp-imagemin": "^2.3.0"
 }
 ```
 然后我们可以在gulpfile.js中使用gulp-load-plugins来帮助我们加载插件：
@@ -4108,7 +4108,39 @@ var $ = require('gulp.load-plugins')();
 //之后我们就可以使用gulp-rename和gulp-ruby-sass这连个插件时，就可以使用 $.concat 和 $.connect来代替了，也就是所插件名去掉了 gulp- 前缀，之后再传唤为驼峰命名。
 ```
 
-09：50
+- gulp-load-plugins的简单实现
+
+```js
+var fs = require('fs');
+var gulp = require('gulp');
+process.chdir(__dirname);
+var $ = load();
+
+// gulp-load-plugins原理函数
+function load() {
+  var devDeps = JSON.parse(fs.readFileSync('package.json'))['devDependencies'];
+  var $ = {};
+  for (var attr in devDeps) {
+    if (attr.indexOf('gulp-') === 0) {
+      $[attr.slice(5)] = require(attr);
+    }
+  }
+  return $;
+}
+
+gulp.task('default', function() {
+  gulp.src('app/*.js')
+      .pipe($.concat('all.js')) // 因为是合并文件，必须制定新文件的名字
+      .pipe(gulp.dest('dest'));
+});
+```
+
+```bash
+╰─$ gulp
+[23:36:14] Using gulpfile ~/Git/zhufeng-node-practice/lesson53_gulp_plugins/load_plugin/gulpfile.js
+[23:36:14] Starting 'default'...
+[23:36:14] Finished 'default' after 5.55 ms
+```
 
 ----------
 
