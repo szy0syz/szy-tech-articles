@@ -3632,6 +3632,18 @@ personEntity.save(function(err, doc) {
 });
 ```
 
+### 小节
+
+1. Schema: 数据库集合的模型骨架，或者是数据库属性模型传统意义的表结构；
+2. Model: 通过Schema构造而成，除了具有Schema定义的数据库骨架外，还可以具体的操作数据库；
+3. Entity: 通过Model创建的实例，它也可以操作数据库。
+
+### 查询
+
+查询分很多种类型，如条件查询，过滤查询等等，先学find查询。
+
+- find()查询：obj.find(condi);
+
 ----------
 
 
