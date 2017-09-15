@@ -4297,8 +4297,22 @@ Yeoman主要提供了三个工具：脚手架(yo)，构建工具(grunt)，包管
 
 ----------
 
-## 课时55 
+## 课时55 es6
 
+> es6已经刷得很6了，就整多余的了。
+
+- let
+- const
+- template
+- arrow function
+- babel
+    - `npm i babel-cli` `npm i babel-preset-es2015` `.babelrc`
+    - `-o` 出处到一个文件
+    - `-w` 提供watch方法
+    - `-s` 生成sourcemap
+    - `-d` 指定要编译的目录
+- class
+- 
 
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
