@@ -4174,7 +4174,107 @@ gulp.task('default',['sass']);
 
 ### 运行本地服务器插件 gulp-connect
 
-33:00
+```js
+var gulp = require('gulp');
+var connect = require('gulp-connect');
+
+gulp.task('copy-html',function(){
+    gulp.src('app/index.html')//指定源文件
+        .pipe(gulp.dest('dist'))//拷贝到dist目录
+        .pipe(connect.reload());//通知浏览器重启
+});
+
+gulp.task('watch',function(){
+    gulp.watch('app/index.html',['copy-html']);//当index.html文件变化时执行copy-html任务
+});
+
+gulp.task('server',function(){
+    connect.server({
+        root:'dist',//服务器的根目录
+        port:8080, //服务器的地址，没有此配置项默认也是 8080
+        livereload:true//启用实时刷新的功能
+    });
+});
+gulp.task('default',['server','watch']);//运行此任务的时候会在8080上启动服务器
+```
+
+> gulp-connect的livereload自动化新功能使用了WebSocket功能
+
+### 压缩JS gulp-concat & gulp-uglify
+
+- 使用`gulp-concat`合并js
+- 使用`gulp-uglify`压缩js
+
+```js
+var gulp = require('gulp');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+
+gulp.task('uglify', function() {
+  return gulp.src(['app/js/*.js', '!app/js/*.tmp.js'])
+    .pipe(concat('app.js'))       // 把多个js文件合并成一个文件
+    .pipe(uglify())               // 对合并后的app.js文件进行压缩
+    .pipe(gulp.dest('dest/js'));  // 输出到目标目录
+});
+
+gulp.task('default', ['gulify']);
+```
+
+### 压缩html gulp-minify-html
+
+```js
+var gulp = require('gulp');
+var minifyHtml = require('gulp-minify-html');
+
+gulp.task('minify-html', function() {
+  gulp.src('src/*.html')      // 要压缩的html
+    .pipe(minifyHtml())       // 进行压缩
+    .pipe(gulp.dest('dist/html'));  // 输出到目标目录
+});
+```
+
+### 重命名、压缩css gulp-rename gulp-minify-css'
+
+把处理好的文件存放到指定的位置之前，我们可以先给它重命名。
+
+```js
+var gulp = require('gulp');
+var less = require('gulp-less');
+var minify = require('gulp-minify-css');
+var rename = require('gulp-rename');
+gulp.task('less',function(){
+    return gulp.src('app/less/*.less')
+        .pipe(less())
+        //.pipe(gulp.dest('dist/css'))
+        .pipe(minify())
+        .pipe(rename(function (path) {
+            //path.dirname += "/ciao";//目录
+            path.basename += ".min";//文件名
+            //path.extname = ".css" //扩展名
+        }))
+        .pipe(gulp.dest('dist/css'))
+});
+
+gulp.task('default',['less']);
+```
+
+### 压缩图片 gulp.imagemin
+
+```js
+var gulp = require('gulp');
+var imagemin = require('gulp-imagemin');
+
+gulp.task('imagemin',function(){
+    return gulp.src('app/imgs/**/*.{jpg,png}')//指定要压缩的图片
+        .pipe(imagemin()) //进行图片压缩
+        .pipe(gulp.dest('dist'));//输出目的地
+});
+
+gulp.task('default',['imagemin']);
+```
+
+### js代码检查 gulp-jshint
+
 
 ----------
 
