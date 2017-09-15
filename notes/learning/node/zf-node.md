@@ -4327,14 +4327,81 @@ Yeoman主要提供了三个工具：脚手架(yo)，构建工具(grunt)，包管
     - 内置有`source map`，即使打包在一起依旧方便调试。
 
 - 安装webpack `npm install webpack -g`
-    - webpack -w
-    - webpack -p
-    - webpack -d
-    - webpack --config
-    - webpack --help
+    - webpack -w  提供watchfa方法，实时进行打包更新
+    - webpack -p  对打包后的文件j信息压缩
+    - webpack -d  提供source map，方便调试
+    - webpack --config  以某个config 作为打包
+    - webpack --help    更多命令
 
-08:08
+使用webpack时需要在本地项目中再装一次：`npm install webpack --save-dev`
 
+- 小demo初体验
+    - `index.html`
+    - `entry.js`
+    - `webpack ./entry.js bundle.js`
+
+打包后的输出结果如下：
+
+```bash
+╭─jerry@JerrydeiMac  ~/Git/zhufeng-node-practice/lesson56_webpack  ‹master*›
+╰─$ webpack ./entry.js bundle.js
+Hash: bbc16003c6e82717a367
+Version: webpack 3.6.0
+Time: 36ms
+    Asset    Size  Chunks             Chunk Names
+bundle.js  2.5 kB       0  [emitted]  main
+   [0] ./entry.js 24 bytes {0} [built]
+```
+
+> 说实话，这个webpack的这个bundle思想5年前我在.net平台就用了，只是人家闭源，自由度低点，但思路一样了。
+
+### 模块依赖
+
+- `webpack` 会分析入口文件，解析包含依赖关系的各个文件
+- 这些文件(模块)都打包到 `bundle.js` 文件中
+- `webpack` 会给每个模块分配一个唯一的 `id`(0,1,2,3,4) 并通过这个 `id` 索引和访问模块
+- 页面启动是时先执行 `entry.js` 代码，其它的模块会在 `require` 时懒加载
+
+### loader加载器
+
+- webpack 本身只能处理JavaScript模块，如果要处理其它类型的文件，就需要 `loader` 进行转换；
+- Loader 可以理解为模块和资源的转换器，可以转换任何类型的模块；
+- Loader 可以通过管道方式链式调用，每个 `loader` 可以把资源转换成任意格式并传递给下一个 `loader` ，但是最后一个`loader` 必须返回`JavaScript`；
+- Loader 可以接受参数，以此来传递配置项给 loader
+- Loader 可以通过 `npm` 安装
+- Loader 可以通过文件扩展名(或正则表达式)绑定不同的加载器
+
+### 加载css文件
+
+- 安装css的loader：
+    - `npm install css-loader style-loader`
+    - 首先将 `style.css` 也堪称一个模块
+    - `css-loader` 来读取它
+    - `style-loader` 把它插入到页面中
+
+```js
+// entry.js
+require('!style-loader!css-loader!./style.css');
+document.write('hello');
+```
+
+- 以上demo原理解读：
+    1. webpack将万物都模块来看待，所有就有了我们的`require()`引入
+    2. 跟 `gulp` 原理一样，第一行代码文件流是从又往左流的：首先最后边读取`style.css`文件，然后经过`css-loader` 进行转换，再经过 `style-loader` 转换成可以加载js代码，最后丢该webpack就行了
+
+```bash
+╭─jerry@JerrydeiMac  ~/Git/zhufeng-node-practice/lesson56_webpack  ‹master*›
+╰─$ webpack ./entry.js bundle.js                                            2 ↵
+Hash: 5ca73bf3c1cb9cf0ccac
+Version: webpack 3.6.0
+Time: 216ms
+    Asset   Size  Chunks             Chunk Names
+bundle.js  18 kB       0  [emitted]  main
+   [0] ./entry.js 132 bytes {0} [built]
+   [1] ./node_modules/style-loader!./node_modules/css-loader!./style.css 996 bytes {0} [built]
+   [2] ./node_modules/css-loader!./style.css 188 bytes {0} [built]
+    + 3 hidden modules
+```
 
 ----------
 
