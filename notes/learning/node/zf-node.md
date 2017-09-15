@@ -4403,6 +4403,28 @@ bundle.js  18 kB       0  [emitted]  main
     + 3 hidden modules
 ```
 
+### 配置文件
+
+- webpack在执行的时候可以通过制定的配置
+- 默认情况下会指向当前目录中的webpack.config.js
+- 配置文件是一个 node.js 模块，返回一个 json 格式的配置信息对象
+- 添加配置文件
+
+```js
+module.exports = {
+  entry: "./entry.js",
+  output: {
+    path: __dirname,
+    filename: "bundle.js"
+  },
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: "style!css" }
+    ]
+  }
+};
+```
+
 ----------
 
 ## 课时
