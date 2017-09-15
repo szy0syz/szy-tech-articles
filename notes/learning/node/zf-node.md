@@ -4289,18 +4289,15 @@ yeoman提供generator系统，一个generator使一个插件，在我们的一�
 
 Yeoman主要提供了三个工具：脚手架(yo)，构建工具(grunt)，包管理器(bower)。这三个工具是分别独立开发的，但是需要配合使用，来实现我们更高效的工作流模式。
 
-- 安装Yeoman
+- 安装Yeoman `npm install -g yo`
 
-`npm install -g yo`
+- 安装"webapp"生成器 `npm install -g generator-gulp-webapp`
 
-- Yeoman生成项目
+- 使用Yeoman的“webapp”模板生成项目 `yo gulp-webapp`
 
-```js
-mkdir gulpdemo
-cd gulpdemo
-npm install -g generator-gulp-webapp
-yo gulp-webapp gulpdemo
-```
+----------
+
+## 课时55 
 
 
 
