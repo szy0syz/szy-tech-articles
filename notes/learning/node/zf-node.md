@@ -4312,7 +4312,37 @@ Yeoman主要提供了三个工具：脚手架(yo)，构建工具(grunt)，包管
     - `-s` 生成sourcemap
     - `-d` 指定要编译的目录
 - class
-- 
+
+----------
+
+## 课时56 webpack
+
+> webpack是一个模块打包器。任何静态资源都可以视作模块，然后模块之间也可以相互依赖，通过webpack对模块进行处理后，可以打包成我们想要的静态资源。
+
+- webpack的特点
+    - 支持CommonJS和AMD模块，意思也就是我们基本可以无痛迁移旧项目；
+    - 支持模块加载器和插件机制，可以对模块灵活定制。特别是`babel-loader`，有效的支持es6；
+    - 可以通过配置，打包成多个文件。有效利用浏览器的缓存功能提升性能；
+    - 将样式文件和图片等静态资源也可以视为模块进行打包。配合`loader`加载器，可以支持`sass`、`less`等CSS预处理器；
+    - 内置有`source map`，即使打包在一起依旧方便调试。
+
+- 安装webpack `npm install webpack -g`
+    - webpack -w
+    - webpack -p
+    - webpack -d
+    - webpack --config
+    - webpack --help
+
+08:08
+
+
+----------
+
+## 课时
+
+
+----------
+
 
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
