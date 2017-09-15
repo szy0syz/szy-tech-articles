@@ -4275,9 +4275,32 @@ gulp.task('default',['imagemin']);
 
 ### js代码检查 gulp-jshint
 
-
 ----------
 
+## 课时54 gulp插件
+
+### yeoman
+
+yeoman帮助我们创建项目，提供更好的工具来使我们的项目变出花样。
+
+yeoman提供generator系统，一个generator使一个插件，在我们的一个完整项目上使用`yo`命令时，会运行该generator。通过这些官方的Generator，推出了Yeoman工作流，工作流时一个健壮、有自己特色的客户端堆栈，包含能快速构建漂亮的网络应用的工具和框架。Yeoman提供了负责开始项目开发的一切，没有任何让人头疼的手工配置。
+
+采用模块化结构，Yeoman利用几个开源社区网站学习到的成功和教训，亿确保栈开发人员越来越智能的进行开发。基于良好的文档基础以及深思熟虑的项目构建过程，Yeoman提供测试和其他更多技术，因此开发人员可以更专注于解决方案而不用去担心其他小事。
+
+Yeoman主要提供了三个工具：脚手架(yo)，构建工具(grunt)，包管理器(bower)。这三个工具是分别独立开发的，但是需要配合使用，来实现我们更高效的工作流模式。
+
+- 安装Yeoman
+
+`npm install -g yo`
+
+- Yeoman生成项目
+
+```js
+mkdir gulpdemo
+cd gulpdemo
+npm install -g generator-gulp-webapp
+yo gulp-webapp gulpdemo
+```
 
 
 
