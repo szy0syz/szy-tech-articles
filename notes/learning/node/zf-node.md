@@ -4492,7 +4492,6 @@ require("jquery");
 - `npm i babel-core --save-dev`
 - `npm i babel-loader --save-dev`
 - `npm i babel-preset-es2015 --save-dev`
-- `{  }`
 
 ```js
 module: {
@@ -4501,9 +4500,27 @@ module: {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        // query:loader参数的第二种使用方式;第一种是直接?limit=1000
         query: { compact: false, presets: ['es2015] }
       }
     ]
+}
+```
+### 打包成多个文件
+
+- entry属性可以打包成一个对象，而对象名也就是key回座位下面output的filename属性的[name]
+
+```js
+module.exports = {
+  entry: {
+    bundle1: './entry1.js',
+    bundle2: './entry2.js'
+  },
+  output: {
+    path: __dirname,
+    filename: '[name].js' // 因为有多个入口，输出也需多个出口
+    // [name] === entry[key]
+  }
 }
 ```
 
