@@ -4477,6 +4477,15 @@ resolve: {
 require("jquery");
 ```
 
+### expose
+
+- 如果想在前台用打包的jquery需要把jquery暴露出来(如果不用expose处理，单单`require('jquery')`前台是没法用的)
+    - `npm install expose-loader --save-dev`
+
+- 把`$`作为别名为jqyery的编码暴露到全局上下文中
+    - `require('expose-loader?$!jquery')`
+    - 再一次体现了流思想，从右到左的方向
+    - 1.导入`jquery`文件流; 2.绑定`$`对象上; 3.流向`expose-loader`中; 4.最后流到前台js的全局对象上
 
 ----------
 
