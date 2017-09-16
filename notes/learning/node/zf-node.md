@@ -4406,7 +4406,7 @@ bundle.js  18 kB       0  [emitted]  main
 ### 配置文件
 
 - webpack在执行的时候可以通过制定的配置
-- 默认情况下会指向当前目录中的webpack.config.js
+- 默认情况下会指向当前目录中的 `webpack.config.js`
 - 配置文件是一个 node.js 模块，返回一个 json 格式的配置信息对象
 - 添加配置文件
 
@@ -4417,12 +4417,22 @@ module.exports = {
     path: __dirname,       // 定义输出的文件夹
     filename: "bundle.js" // 定义了打包结果文件的名称
   },
-  module: {     // 定义模块的加载逻辑
-    loaders: [  /  定义了一系列的加载器
-      { test: /\.css$/, loader: "style!css" } // 每当需要加载的文件匹配对`test`的正则时，就是后面的loader加载并转换
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
     ]
   }
 };
+
+// 需要在entry.js加入
+// require('./style.css');
 ```
 
 ----------
