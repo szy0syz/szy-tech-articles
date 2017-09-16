@@ -4403,7 +4403,7 @@ bundle.js  18 kB       0  [emitted]  main
     + 3 hidden modules
 ```
 
-### 配置文件
+### 配置文件demo
 
 - webpack在执行的时候可以通过制定的配置
 - 默认情况下会指向当前目录中的 `webpack.config.js`
@@ -4434,6 +4434,49 @@ module.exports = {
 // 需要在entry.js加入
 // require('./style.css');
 ```
+
+### webpack插件
+
+插件的使用一般是在webpack的配置信息`plugins`选项中指定，我们可以向生成的打包文件头部插入一些信息。
+
+```js
+var webpack = require('webpack');
+
+// config
+  plugins: [ new webpack.BannerPlugin('// 写店点注释要这么麻烦?') ]
+```
+
+### webpack url-loader
+
+- `url-loader`会将样式中引用到文件(图片)转为模块来处理
+    - `limit`参数可以指定文件长度小于限制时(单位 bytes)可以返回一个`Data Url`的base64编码
+    - `mimetype`参数可以文件格式(通过后缀)
+
+```js
+module: {
+    rules: [
+      // 如果文件长度小于4000 bytes时返回Data Url
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=4000' }
+    ]
+}
+```
+
+### 别名
+
+别用的作用是把用户的一个请求重定向到另一个路径。图方便了！
+
+```js
+// config
+resolve: {
+  alias: {
+    jquery: ".lib/js/jquery.js"
+  }
+}
+
+// 此后如果再entry.js中使用就可以直接
+require("jquery");
+```
+
 
 ----------
 
