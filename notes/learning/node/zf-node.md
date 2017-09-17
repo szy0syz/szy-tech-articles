@@ -4564,8 +4564,65 @@ gulp.task('default', function() {
 
 ----------
 
-## 课时
+## 课时 57 es6
 
+- 模块：ES6在言语规格的层面上，实现了模块功能
+    - export 导出接口
+    - import 导入接口
+    - 一个模块就是一个独立的文件。该文件内部的所有变量，外部都无法获取
+    - 如果你希望外部能读取模块内部的某个变量，就必须使用export关键字输出该变量
+
+- import
+    - 其他JS文件就可以通过import命令加载这个模块
+    - import命令接收一个对象，里面指定要从其他模块导入的变量名
+    - 模块的整体加载  `import * as util from '.util';`
+    - export default 命令为导出模块指定的默认输出 `export default function(){}` `import abc from exportDefault;`
+    - export default 对应的 import语句不需要使用大括号，不适用小export default对应的import语句需要使用大括号
+    - 一个模块只能有一个默认的输出
+
+- export
+    - 导出变量
+    - 导出变量为一个对象
+    - 函数或类(class)
+
+- Iterator 迭代器
+
+简单模拟ES6中的迭代器
+
+```js
+'use strict'
+function say(words) {
+  var i = 0;
+  return {
+    next: function() {
+      return {
+        value: words[i],
+        done: i++ >= words.length
+      }
+    }
+  }
+}
+
+var says = say(['hello', 'world']);
+console.log(says.next());  // {value: 'hello', doen: 'false'}
+console.log(says.next());  // {value: 'world', doen: 'false'}
+console.log(says.next());  // {value: 'undefined', doen: 'true'}
+```
+
+- Generator 生成器
+    - `yield`好比`put`变量到一个返回结果的数组里，`.next()`时按序返回
+
+```js
+function* say() {
+  yield 'a';
+  yield 'b';
+}
+
+var says = say();
+console.log(says.next());  // {value: "a", done: false}
+console.log(says.next());  // {value: "b", done: false}
+console.log(says.next());  // {value: undefined, done: true}
+```
 
 ----------
 
