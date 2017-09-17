@@ -4564,7 +4564,7 @@ gulp.task('default', function() {
 
 ----------
 
-## 课时 57 es6
+## 课时57 es6
 
 - 模块：ES6在言语规格的层面上，实现了模块功能
     - export 导出接口
@@ -4623,6 +4623,17 @@ console.log(says.next());  // {value: "a", done: false}
 console.log(says.next());  // {value: "b", done: false}
 console.log(says.next());  // {value: undefined, done: true}
 ```
+
+----------
+
+## 课时57 pug
+
+> 话说jade因为版权改pug了
+
+- 特点
+    1. 不同层级元素之间通过缩进进行分隔，标签名和内容之间要加空格
+    2. 编译模板
+    3. 
 
 ----------
 
