@@ -4524,6 +4524,44 @@ module.exports = {
 }
 ```
 
+### 公共模块
+
+我们利用插件就可以智能提取公共部分，以提供我们浏览器的缓存复用
+
+```js
+plugins: [
+  new webpack.optimize.CommonsChunkPlugin('common.js')
+]
+```
+
+- **我们需要手工在html上去加载common.js，并且是必须要最先加载！**
+
+### gulp
+
+使用gulp和webpack混合使用
+
+```js
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var webpack = require('webpack');
+var webpackConfig = require('./webpack.config.js');
+
+gulp.task('webpack', function(callback) {
+  var myConfig = Object.create(webpackConfig);
+  webpack(myConfig, function (err, stats) {
+      callback();
+  });
+});
+
+gulp.task('default', function() {
+  gulp.watch('./**', ['webpack']);
+});
+```
+
+### webpack-dev-server
+
+- `npm install webpack-dev-server -g`
+
 ----------
 
 ## 课时
