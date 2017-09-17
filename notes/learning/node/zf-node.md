@@ -4689,7 +4689,14 @@ html
 
 ----------
 
+##59 项目构建
 
+- `npm install express-generator -g`
+- `express mock-server`
+- install
+
+
+----------
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
