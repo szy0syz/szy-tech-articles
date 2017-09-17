@@ -4634,8 +4634,12 @@ console.log(says.next());  // {value: undefined, done: true}
     1. 不同层级元素之间通过缩进进行分隔，标签名和内容之间要加空格
     2. 编译模板 `pug index.jade`
     3. `pug -P -w index.jade`
+    4. div标签名可以省略
+    5. `|`后跟直接显示的文本
+    6. pug中也可以只用html正规标签
+    7. 单行注释`//`，块注释`//-`
 
-```html
+```pug
 doctype html
 html
     head
@@ -4646,7 +4650,42 @@ html
             var name = 'jerry shi'
     body
         h1#myh1.myclass.myclass2(data-xname='myname',data-xage="6") jerry shi
+        #testDiv.testDiv
+            a(href="http://jerryshi.com") my blog
+            input(name='name', type='text', value='blog')
+            #content(style="border:1px solid red;")
+                | hello
+                input(value='hello')
+                <input value='world'>
+                | world
+            #content2
+                // i am a comment
+                //-
+                    i am buffer comment
+                    test
+                    test2
 ```
+
+- 模板使用变量
+    - `-` 表示模板内的对象，可在模板内任意引用 
+
+```pug
+html
+    head
+        title Pug Document
+        style.
+            body {color:red}
+        script.
+            var name = 'jerry shi'
+        - var lesson = 'node.js'
+    body
+        h1 #{lesson.toUpperCase() + "like"}
+```
+
+- 使用外部传递的数据源
+    - `pug -P -w index.jade -O obj.json`
+
+> 剩下的看官网文档了，意思不有啊！
 
 ----------
 
