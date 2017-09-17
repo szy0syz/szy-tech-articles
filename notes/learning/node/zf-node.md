@@ -4632,8 +4632,21 @@ console.log(says.next());  // {value: undefined, done: true}
 
 - 特点
     1. 不同层级元素之间通过缩进进行分隔，标签名和内容之间要加空格
-    2. 编译模板
-    3. 
+    2. 编译模板 `pug index.jade`
+    3. `pug -P -w index.jade`
+
+```html
+doctype html
+html
+    head
+        title Pug Document
+        style.
+            body {color:red}
+        script.
+            var name = 'jerry shi'
+    body
+        h1#myh1.myclass.myclass2(data-xname='myname',data-xage="6") jerry shi
+```
 
 ----------
 
