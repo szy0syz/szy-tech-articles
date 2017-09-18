@@ -4694,9 +4694,18 @@ html
 - `npm install express-generator -g`
 - `express mock-server`
 - install
-
+- webpack中在js中`require('module-name')`时，不能省略`-loader`后缀
 
 ----------
+
+## 课时60 初始化首页
+
+后续教程不看了，毕竟对angular就没打算学。
+
+----------
+
+
+
 
   [1]: http://static.zybuluo.com/szy0syz/xj1bef58jsvxsmsmc9ps6fnt/node-require-logic.png
   [2]: http://static.zybuluo.com/szy0syz/uomz7siv193etc4d65tu1g4n/node-module-find-files.png
