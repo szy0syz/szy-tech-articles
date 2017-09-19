@@ -27,6 +27,7 @@ window.$docsify = {
       '/notes/learning/html/_sidebar.md': '/_sidebar.md',
       '/notes/learning/wxapp/_sidebar.md': '/_sidebar.md',
       '/notes/learning/excel/_sidebar.md': '/_sidebar.md',
+      '/notes/learning/react/_sidebar.md': '/_sidebar.md',
       '/notes/learning/English/_sidebar.md': '/_sidebar.md',
       '/notes/learning/node/_sidebar.md': '/_sidebar.md',
       '/notes/reading/_sidebar.md': '/_sidebar.md',
@@ -43,6 +44,7 @@ window.$docsify = {
       '/notes/reading/9787115385734/_sidebar.md': '/_sidebar.md',
       '/notes/reading/9787115390592/_sidebar.md': '/_sidebar.md',
       '/notes/reading/9787111203261/_sidebar.md': '/_sidebar.md',
+      '/notes/reading/9787121022982/_sidebar.md': '/_sidebar.md',
       '/Knowledge/FullStack/_sidebar.md': '/_sidebar.md'
     },
     plugins: [
