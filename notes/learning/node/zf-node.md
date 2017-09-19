@@ -3962,7 +3962,7 @@ gulp.task('one', function() {
 
 // two任务虽然依赖one任务，但并不会等到one任务中的异步操作完成后再执行
 gulp.task('two', ['one'], function() {
-  console.log('two is doen);
+  console.log('two is doen');
 });
 ```
 
