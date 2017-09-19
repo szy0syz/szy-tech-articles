@@ -67,6 +67,11 @@
 - 环境初始化：
   - `sudo npm i -S react react-dom babelify babel-preset-react`
   - `npm install babel-preset-es2015 -S`
+  - `sudo npm i webpack -g`
+  - `sudo npm i webpack-dev-server -g`
+  - `cd xxx-project && npm i webpack -S && npm i webpack-dev-server -S`
+  - `sudo npm i babel-loader -S`
+  - `webpack` 大功告成
 
 ----------
 
