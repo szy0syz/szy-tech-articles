@@ -73,6 +73,10 @@
   - `sudo npm i babel-loader -S`
   - `webpack` 大功告成
 
+- 使用webpack监视、自编译、热加载
+  - `webpack`为根据config单据编译
+  - `webpack --wathch`监视文件变化并自动编译`bundle.js`
+
 ----------
 
 ## 第6章 开发工具与必要组件
