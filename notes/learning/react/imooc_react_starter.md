@@ -72,6 +72,7 @@
   - `cd xxx-project && npm i webpack -S && npm i webpack-dev-server -D`
   - `sudo npm i babel-loader -S`
   - `webpack` 大功告成
+  - chrome 安装 `React Developer Tools` 开发辅助插件
 
 - 使用webpack监视、自编译、热加载
   - `webpack`为根据config单据编译
@@ -90,15 +91,80 @@
 
 ## 第6章 开发工具与必要组件
 
+> atom ~~~
 
 ----------
 
 ## 第7章 React组件基础
 
+- 开源算法：https://github.com/Matt-Esch/virtual-dom
+- 官方解释: https://facebook.github.io/react/docs/react-api.html
+- 简单实例：http://requirebin.com/?gist=5492847b9a9025e64bab
+
+```js
+// virtual-dom 的简单实例
+var h = require('virtual-dom/h');
+var diff = require('virtual-dom/diff');
+var patch = require('virtual-dom/patch');
+var createElement = require('virtual-dom/create-element');
+
+// 1: Create a function that declares what the DOM should look like
+function render(count)  {
+    return h('div', {
+        style: {
+            textAlign: 'center',
+            lineHeight: (100 + count) + 'px', 
+            border: '1px solid red',
+            width: (100 + count) + 'px',
+            height: (100 + count) + 'px'
+        }
+    }, [String(count)]);
+}
+
+// 2: Initialise the document
+var count = 0;      // We need some app data. Here we just store a count.
+
+var tree = render(count);               // We need an initial tree
+var rootNode = createElement(tree);     // Create an initial root DOM node ...
+document.body.appendChild(rootNode);    // ... and it should be in the document
+
+// 3: Wire up the update logic
+setInterval(function () {
+      count++;
+      
+      var newTree = render(count);
+      var patches = diff(tree, newTree);
+      rootNode = patch(rootNode, patches);
+      tree = newTree;
+}, 300);
+```
+### React组件
+
+- 类里有`render()`用于解析类的输出
+- 每一个组件return函数最终只能返回一个“HTML”节点，这点和Vue一致
+- 组件导出定义: `export default class ComponentHeader extends React.Component {  }`
+- 组件入口定义: `ReactDom.render(<Index />, document.getElementById('example'));`
+
+### React多组件嵌套
+
+- 组件也可以通过参数的方式进行传递
+- Vue和React大体差不多了，关于套用的话
+- 在render()函数内可以将组件定义为变量，方便逻辑操作 `var Header = <ComponentHeader />;`
+- 注意项目命令的规范与文件的结构化
+
+### JSX内置表达式
+
+- 三元表达式
+- bool值绑定
+- 注释`{/*一些注释*/}`
+- 解析: 后台解析html字符串，
+  - 方法一：用Unicode转码
+  - 方法二：`<p dangerouslySetInnerHTML={{ __html: html2 }}></p>`
 
 ----------
 
 ## 第8章 React属性与事件
+
 
 
 ----------
