@@ -69,13 +69,22 @@
   - `npm install babel-preset-es2015 -S`
   - `sudo npm i webpack -g`
   - `sudo npm i webpack-dev-server -g`
-  - `cd xxx-project && npm i webpack -S && npm i webpack-dev-server -S`
+  - `cd xxx-project && npm i webpack -S && npm i webpack-dev-server -D`
   - `sudo npm i babel-loader -S`
   - `webpack` 大功告成
 
 - 使用webpack监视、自编译、热加载
   - `webpack`为根据config单据编译
   - `webpack --wathch`监视文件变化并自动编译`bundle.js`
+  - 按教程走，将bundle.js放`src`，将index.html放`./`，根本不行。全部移到`/dist`就好了，坑啊，难道是`webpack v3.6`的问题。
+
+```js
+{
+  "watch": "webpack --progress --watch",
+  "start": "webpack-dev-server --content-base dist --inline --hot --open",
+  "build": "webpack"
+}
+```
 
 ----------
 
