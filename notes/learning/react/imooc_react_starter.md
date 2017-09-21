@@ -161,6 +161,11 @@ setInterval(function () {
   - 方法一：用Unicode转码
   - 方法二：`<p dangerouslySetInnerHTML={{ __html: html2 }}></p>`
 
+### 生命周期
+
+- `componentWillMount()`
+- `componentDidMount()`
+
 ----------
 
 ## 第8章 React属性与事件
