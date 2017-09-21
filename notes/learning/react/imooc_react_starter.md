@@ -170,7 +170,12 @@ setInterval(function () {
 
 ## 第8章 React属性与事件
 
+### React属性与事件 -- State属性
 
+- 初始化 `state`：`this.state = { username: 'Jerry' };`
+- 初始化可以放置在构造函数 `constructor()`里
+- 修改 `state`：`this.setState({ username: 'afei233' });`
+- state的作用域只属于当前的类，不污染其它模块
 
 ----------
 
