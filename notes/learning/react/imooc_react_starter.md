@@ -170,12 +170,30 @@ setInterval(function () {
 
 ## 第8章 React属性与事件
 
-### React属性与事件 -- State属性
+### State属性
 
 - 初始化 `state`：`this.state = { username: 'Jerry' };`
 - 初始化可以放置在构造函数 `constructor()`里
 - 修改 `state`：`this.setState({ username: 'afei233' });`
 - state的作用域只属于当前的类，不污染其它模块
+- state对于模块属于 `自身` 属性
+
+### Props属性
+
+- props对于模块属于 `外来` 属性
+- 传递props参数: `<BodyIndex username="Jerry" />`
+- 接收props参数: `this.props.username`
+
+### 事件与数据的双向绑定
+
+- 事件绑定
+  - 可以在构造函数里绑定 this: `this.forceUpdateHandler = this.forUpdateHandler.bind(this);`
+  - 或者调用时绑定: `onClick={this.changeUserInfo.bind(this, 50)}`
+  - `<inpit type="button" value="submit" onClick={this.changeUserInfo.bind(this, 50)} />`
+
+- 子页面向父页面传递参数的方法
+  - 在子页面中调用父页面传递过来的事件 props 进行组件间的传递参数
+  - 为什么onClick事件呢，因为每次都触发，onBlur只触发一次
 
 ----------
 
