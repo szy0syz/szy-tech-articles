@@ -206,8 +206,8 @@ setInterval(function () {
 
 ```js
 BodyIndex.propTypes = {
-  userid: React.propTypes.isRequired,
-  userage: React.propTypes.number
+  userid: React.PropTypes.string.isRequired,
+  userage: React.PropTypes.number
 }
 
 <BodyIndex userage={1O} />
