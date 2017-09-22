@@ -227,6 +227,38 @@ BodyIndex.defaultProps = defaultProps;
 // 当父组件调用子组件没定义属性是用属性默认值
 ```
 
+### Refs
+
+- 原始获取dom元素方法：
+
+```js
+var myDiv = document.getElementById('myDiv');
+RaectDOM.findDOMNode(myDiv).style.color = 'green';
+```
+
+- 方法二：React.refs
+
+```js
+// <input ref="myInput" />
+this.refs.myInput
+```
+
+- Refs是访问组件内部DOM节点唯一可靠的方法
+- Refs会自动销毁对子组件的引用
+- 不要在render里面或render之前对Refs进行调用(DidMount后调用)
+- 不要滥用Refs(违背了state改变的原则)
+
+### 独立组件间共享Mixins
+
+- Mixins：组件间用作事件的共享
+- 不同组件之间公用功能、共享代码
+- 官方文档：https://facebook.github.io/react/docs/reusable-components.html#mixins
+- 和页面具有类似的生命周期
+- ES6下的使用需要安装插件: `react-mixin@2`
+- 关于Mixins的讨论文章：https://facebook.github.io/react/blog/2016/07/13/mixins-considered-harmful.html
+
+
+
 ----------
 
 ## 第9章 React样式
