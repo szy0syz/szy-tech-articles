@@ -195,6 +195,38 @@ setInterval(function () {
   - 在子页面中调用父页面传递过来的事件 props 进行组件间的传递参数
   - 为什么onClick事件呢，因为每次都触发，onBlur只触发一次
 
+### 复用组件
+
+- Prop验证
+  - https://facebook.github.io/react/docs/reusable-components.html
+  - `const propTypes = {id: PropTypes.number.isRequired, url: PropTypes.string}`
+- 默认Prop值
+  - `const defaultProps = {userDesc: '小伙子什么都没留下'};`
+- 传递所有父组件props参数的快捷方式 `<Component {...this.props} more='val' />` 这就是ES6扩展运算符嘛
+
+```js
+BodyIndex.propTypes = {
+  userid: React.propTypes.isRequired,
+  userage: React.propTypes.number
+}
+
+<BodyIndex userage={1O} />
+
+// ERROR in ./src/js/index.js
+// Module build failed: SyntaxError: C:/git/imooc-react-starter/CH08/03_reusable/src/js/index.js: Identifier directly after number (12:31)
+// Uncaught TypeError: Cannot read property 'isRequired' of undefined
+// userid 是必须传递的参数，不传递就报错
+// userage 是number类型的参数，传字符串报错
+
+/////////////////////////////
+const defaultProps = {
+  username: 'Defaule-123'
+}
+
+BodyIndex.defaultProps = defaultProps;
+// 当父组件调用子组件没定义属性是用属性默认值
+```
+
 ----------
 
 ## 第9章 React样式
