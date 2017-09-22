@@ -257,11 +257,40 @@ this.refs.myInput
 - ES6下的使用需要安装插件: `react-mixin@2`
 - 关于Mixins的讨论文章：https://facebook.github.io/react/blog/2016/07/13/mixins-considered-harmful.html
 
-
-
 ----------
 
 ## 第9章 React样式
+
+### 内联样式
+
+- CSS命名规范：`dialog__confirm-button--highlight`
+
+```js 
+// 必须在render函数里定义
+const styleComponentHeader = {
+  header: {
+    backgroundColor: "#333333",
+    color: "red",
+    // "padding-top": "15px", // 可以用但不推荐
+    "paddingTop": "15px",
+    paddingBottom: "15px"
+  }
+}
+
+- 注意样式的驼峰写法
+- `style={styleComponentHeader.header}`
+- 文件中引用css的形式
+- 注意 `class` 徐改成 className
+- 缺点是动画、伪类(`hover`)等不能使用
+
+```
+
+> 说来说去就是整转换成行内样式了！
+
+### 内联样式中的表达式
+
+- `paddingBottom: (this.state.isMini) ? "3px" : "18px"`
+- 注意好好理解这里的 state 引起样式的及时变化
 
 
 ----------
