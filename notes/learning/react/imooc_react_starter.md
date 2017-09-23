@@ -292,7 +292,36 @@ const styleComponentHeader = {
 - `paddingBottom: (this.state.isMini) ? "3px" : "18px"`
 - 注意好好理解这里的 state 引起样式的及时变化
 
+### CSS模块化
 
+- CSS模块化的缺点
+  - 全局污染
+  - 命令混乱
+  - 依赖管理不彻底
+  - 无法共享变量
+  - 代码压缩不彻底
+- CSS Modules 模块化
+- babel-plugin-react-html-attrs
+- style-loader
+- css-loader
+- 导入：`var footerCss = require('../../css/fotter.css');`
+- 使用：`<footer class={footerCss.miniFooter}>`
+- `:local(.normal){color: red;}`
+- `:global(.btn){color：red;}`
+- CSS模块化的优点
+  - 所有的样式都是 local 的，解决了命名冲突和全局污染问题(名称格式在weppck中配置)
+  - class 名生成规则配置灵活，可以以此来压缩 class 名
+  - 只需引用组件的 JS 就能搞定组件所有的JS和CSS
+  - 依然是CSS，几乎零学习成本
+
+
+- npm i babel-plugin-react-html-attrs -S
+- npm i style-loader css-loader -S
+- webpack.config.js
+  - `test: /\.css?$/,`
+  - `loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'` 
+- .babelrc
+  - "plugins": [ "react-html-attrs" ]
 ----------
 
 ## 第10章 React Router
