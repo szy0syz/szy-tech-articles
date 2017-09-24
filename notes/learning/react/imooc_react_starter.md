@@ -327,7 +327,9 @@ const styleComponentHeader = {
 
 - 在线转换: http://staxmanade.com/CssToReact
 
-### Ant Design 样式框架介绍
+### Ant Design 样式框架
+
+> 一样一样的~
 
 ----------
 
