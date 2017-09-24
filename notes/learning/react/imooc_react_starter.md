@@ -357,10 +357,13 @@ const styleComponentHeader = {
 
 ## 第11章 项目实战-开发环境初始化
 
-
+...
 
 ## 第12章 项目实战-页头页脚模块
 
+- https://www.iconfinder.com
+- 项目采用FLEX布局
+- 导航使用antd的Memu控件
 
 ----------
 
