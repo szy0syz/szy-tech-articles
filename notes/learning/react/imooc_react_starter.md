@@ -335,6 +335,15 @@ const styleComponentHeader = {
 
 ## 第10章 React Router
 
+- `npm install -S react-router`
+- 控制页面的层级关系
+- 单页面构建 Router 控制
+- https://reacttraining.com/react-router/
+- 底层机制
+  - React: state/props -> Components -> UI
+  - React: location -> Router -> UI
+
+> 这尼玛才几个月就翻天覆地的变化API！
 
 ----------
 
