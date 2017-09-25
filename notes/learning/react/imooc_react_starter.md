@@ -387,6 +387,8 @@ const styleComponentHeader = {
 - `var formDAta = form.getFieldValue();`已经行不通了，必须加具体FieldName`var formDAta = form.getFieldValue('r_password');`
 - 真尼玛，antd越来越严谨了，提交个表单都要验证后再拿值，服了。
 - 真奇怪有些ES6语法竟然行不通，我得再配下babel才行？
+- 网络的请求使用组件使fetch
+- 样式的组件还是使用antd
 
 ----------
 
