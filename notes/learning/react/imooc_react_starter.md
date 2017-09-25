@@ -364,6 +364,18 @@ const styleComponentHeader = {
 - https://www.iconfinder.com
 - 项目采用FLEX布局
 - 导航使用antd的Memu控件
+- `"react-responsive": "^1.3.4"`
+
+```js
+<div>
+  <MediaQuery query="(min-device-width: 1224px)">
+    <PCIndex></PCIndex>
+  </MediaQuery>
+  <MediaQuery query="(max-device-width: 1224px)">
+    <MobileIndex></MobileIndex>
+  </MediaQuery>
+      </div>
+```
 
 ----------
 
