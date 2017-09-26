@@ -389,10 +389,13 @@ const styleComponentHeader = {
 - 真奇怪有些ES6语法竟然行不通，我得再配下babel才行？
 - 网络的请求使用组件使fetch
 - 样式的组件还是使用antd
+- antd的Tab组件操作数都是字符串
 
 ----------
 
 ## 第14章 项目实战-首页模块
+
+- 将首页body每个部分都模块化product、newContainer、newslist等
 
 
 ----------
