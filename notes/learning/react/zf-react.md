@@ -8,7 +8,7 @@
 
 ## React Router v4
 
-### 初始项目
+### CH00：初始项目
 ```bash
 creact-react-app router
 cd router
@@ -17,7 +17,7 @@ touch .gitignore
 yarn add react-router-dom
 ```
 
-### 跑通路由
+### CH01：跑通路由
 
 ```js
 import React, { Component } from 'react';
@@ -71,6 +71,15 @@ export default App;
 - 竟然可以路径的重复后组件堆叠，意思就是前端匹配到x个route后，拿x个route对应的“组件”堆叠显示。
 
 > 感觉Vue和React都是一个套路：每个组件仅能返回一个元素！
+
+- 怪不得React-Router要重构，再次感受到React的万物皆组件的原理。
+
+### CH02：完成组件简单模块化和引入bootstrap
+
+
+### CH03：嵌套路由
+
+![CH03](http://ofx24fene.bkt.clouddn.com//img/react/zf_router03.gif)
 
 ----------
 
