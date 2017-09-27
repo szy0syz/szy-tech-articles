@@ -1,0 +1,53 @@
+# 大前端知识梳理
+
+## 关于我的前端
+
+- `.net`中的前端
+  - html
+  - css
+  - javasctipt
+  - jQuery
+  - jQuery Mobile
+  - OA
+- node.js
+  - I/O
+  - http
+- Vue.js
+- express.js
+- sequlie.js
+- javasctipt基础
+  - 预解释
+  - 作用域链
+  - 面向对象编程：单例模式、工厂模式
+  - 原型链
+  - js中的函数
+  - call、apply、bind
+  - 数组、json
+  - 数据绑定、DOM回流、DOM映射
+  - this、ajax
+  - 正则
+  - 四种数据检测
+  - 盒子模型(最重要的8个api)
+  - 伪类、偏移量
+  - 回到顶部、导航栏、跑马灯
+  - JS的异步编程
+  - 封装DOM操作
+  - 封装动画库
+  - 封装轮播图
+  - DOM零级、二级事件
+  - 拖拽
+  - ajax和jsonp原理
+  - 基本node原理、增删改查
+  - 六种继承
+  - 回调深入
+  - js柯里化函数及bind的实现
+- h5、css3和webapp
+  - html5新特性
+  - less
+  - hybird模式
+  - 响应式布局
+  - rem
+  - 移动端事件基础
+  - 封装移动端事件
+  - 移动端轮播图
+  - 移动端小项目
