@@ -396,7 +396,8 @@ const styleComponentHeader = {
 ## 第14章 项目实战-首页模块
 
 - 将首页body每个部分都模块化product、newContainer、newslist等
-
+- antd中的轮播图`carousel`其实和我自己写的一样的，首先得固定个宽度(设置为图片默认宽度)，然后还要在样式中设置一个`overflow: hidden;`为了溢出隐藏；其实div们还是一横排(很大的宽度在那堆呢着)，这尼玛和自己写的是一样一样的，终于感到基础的重要性了。
+- 好乱啊原来的布局，还是按grid再分一个子布局出来。
 
 ----------
 
