@@ -4,7 +4,7 @@
 
 > Express - 基于 Node.js 平台的 web 应用开发框架。为了更好的了解Express运行原理和向偶像TJ大神致敬，撸撸Expres的源码再好不过了。
 
-## 第0节 原生node web应用
+## 第00节 原生node web应用
 
 - 业务需求
   - 路径`/`为首页，发送html代码，
@@ -48,7 +48,7 @@ http.createServer(function (req, res) {
 
 ----------
 
-## 第1节 初代connect中间件
+## 第01节 初代connect中间件
 
 - 升级1：
   - 创建connect模块，负责处理创建Express应用实例；
@@ -88,13 +88,12 @@ module.exports = createServer;
 
 ///////////////////////////////
 
-
 ////////app.js/////////
 var http = require('http');
 var url = require('url');
 var path = require('path');
 var querystring = require('querystring');
-var connect = require('./2.connect');
+var connect = require('./connect');
 var articles = {
   1: '第一篇文章的详情',
   2: '第二篇文章的详情',
@@ -103,11 +102,10 @@ var articles = {
 
 var app = connect();
 app.use(function (req, res, next) {
-  var pathname = url.parse(req.url, true).pathname;
-  var query = urlObj.query;
+  var urlObj = url.parse(req.url, true)
   // 为方便使用者在req中添加两个属性
-  req.path = pathname;
-  req.query = query;
+  req.path = urlObj.pathname;
+  req.query = urlObj.query;
   next();
 });
 
@@ -133,7 +131,7 @@ app.use(function(req, res) {
 var server = http.createServer(app);
 
 server.listen(8080, function () {
-  console.log('server is running...');
+  console.log('Server is running on %d port.', 8080);
 });
 //////////////////////////
 ```
@@ -145,7 +143,7 @@ server.listen(8080, function () {
 
 ----------
 
-## 第2节 提取非业务中间件
+## 第02节 提取非业务中间件
 
 - 我们将为req和res封装属性的中间件单独提取出来，取名为middle.js。
     - req封装属性有：`req.path` 和 `req.query`
@@ -184,7 +182,7 @@ require('./2.middle')(app);
 
 ----------
 
-## 第3节 在connect类新增listen()方法
+## 第03节 在connect类新增listen()方法
 
 Express不是带了个app.listen()方法听方便的，我们也整一个。对了，记得返回实例，要链式编程不是嘛。
 
@@ -203,3 +201,59 @@ app.listen(8080, function() {
   console.log('Server in running on %d port.' ,8080);
 })
 ```
+
+----------
+
+## 第04节 构建路由
+
+看看业务核心函数中的逻辑判断，我也是醉了，赶紧操刀改造吧！
+
+```js
+if (req.path === '/') {
+    ...
+} else if (req.path === '/articles') {
+    ...
+} else {
+    ...
+}
+```
+
+1. 在connect.js中的use方法下手(后续会再次升级)，原来只能传入一个参数，现在我们升级成能传入两个参数`route`和`fn`
+2. use()方法中判断第一个参数传的是路由不，不是就当纯中间件处理，且推入stack存储时要存俩个参数了
+
+```js
+proto.use = function (route, fn) {
+  var handle = fn;
+  var path = route;
+  // 那就说明没传路由，视为中间件
+  if (typeof route !== 'string') {
+    // 那么就让第一个参数等于handle
+    handle = route;
+    // 默认为根目录
+    path = '/';
+  }
+  this.stack.push({ handle: handle, path: path });
+}
+
+proto.handle = function (req, res) {
+  var stack = this.stack;
+  var index = 0;
+  function next() {
+    var layer = stack[index++];
+    var route = layer.path;
+    var handle = layer.handle;
+
+    var path = url.parse(req.url).pathname;
+    // 用startsWith有bug，后面二次改造
+    if (path.startsWith(route)) {
+      // 调用中间件
+      handle(req, res, next);
+    } else {
+      next();
+    }
+  }
+  next();
+}
+```
+
+----------
