@@ -257,3 +257,45 @@ proto.handle = function (req, res) {
 ```
 
 ----------
+
+## 第05节 构建路由中间件
+
+经改造路由后，提出很啰嗦的业务代码
+
+```js
+///////////route.js//////////////
+module.exports = function (app) {
+    ///////测试数据/////////
+    var articles = {
+        1: '第一篇文章的详情',
+        2: '第二篇文章的详情',
+        3: '第三篇文章的详情'
+    }
+    ///////////////////////
+
+    app.use('/list', function (req, res) {
+        res.send('<ul><li><a href="/article?id=1">第一篇</a></li><li><a href="/article?id=2">第二篇</a></li><li><a href="/article?id=3">第三篇</a></li></ul>');
+    })
+
+    app.use('/article', function (req, res) {
+        res.send(articles[req.query.id]);
+    })
+
+    app.use(function (req, res) {
+        res.end('404');
+    })
+}
+
+///////////app.js//////////
+// 精简后的app.js好舒爽
+var app = connect();
+
+require('./middle')(app);
+require('./route')(app);
+
+http.createServer(app).listen(8080, function () {
+  console.log('Server is running on %d port.', 8080);
+});
+```
+
+----------
