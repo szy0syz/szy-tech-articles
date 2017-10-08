@@ -299,3 +299,115 @@ http.createServer(app).listen(8080, function () {
 ```
 
 ----------
+
+## 第06节 模板引擎
+
+- 定义：模板引擎是为了使用户界面与业务数据分离而产生的，用于网站的模板引擎就会生成一个标准的HTML文档
+- 原理：置换型模板引擎是将指定模板内容(字符串)中的特定标记(子字符串)替换一下便生成了最终需要的业务数据(比如网页)
+- 要求：
+  - 读模板文件
+  - 遇到`<% ... %>`视作为可执行JavaScript代码 
+  - 遇到`<%= ... %>`则输出JavaScript表达式的文本值
+- 流程：
+  1. 创建`render.js`，写成中间件模式，给res上新增属性`render`
+  2. 在`app.js`注册该中间件
+  3. 获取数据，在返回前用`res.render()`输出模板
+- 备注：
+  - 实现参考了阮一峰es6书中的demo
+
+```js
+///// render.js
+var fs = require('fs');
+
+module.exports = function redner(app) {
+  app.use(function(req, res, next) {
+    res.render = function(filename, obj) {
+      fs.readFile(filename, 'utf8', function(err, str) {
+        res.send(compile(str, obj));
+      });
+    }
+    next(); // 继续下一个中间件
+  });
+}
+
+function compile(template, obj) {
+  var evalExpr = /<%=(.+?)%>/g;
+  var expr = /<%([\s\S]+?)%>/g;
+
+  template = template // 这里预置替换内容中$表示正则匹配的到索引为1的字符串,其实也就是表达式
+    .replace(evalExpr, '`); \n  echo( $1 ); \n  echo(`')
+    .replace(expr, '`); \n $1 \n  echo(`');
+
+  template = 'echo(`' + template + '`);';
+
+  var script =
+    `(function parse(data){
+    var output = "";
+
+    function echo(html){
+      output += html;
+    }
+
+    ${ template }
+
+    return output;
+  })`;
+
+  return eval(script)(obj);
+}
+
+////////注册模板引擎
+require('./render')(app);
+
+////////使用模板引擎
+res.render('./index.szy', { articles: articles })
+```
+
+- 创建模板
+
+```html
+<!-- filename: index.szy -->
+<ul>
+    <% for(var i=0; i < data.articles.length; i++) { %>
+        <li>
+            <a href="/article?id=<%= data.articles[i].id %>">
+                <%= data.articles[i].title %>
+            </a>
+        </li>
+    <% } %>
+</ul>
+```
+
+- 修改路由文件
+
+```js
+///////测试数据/////////
+var articles = [
+  {
+    id: 1,
+    title: '第一篇文章',
+    detail: '第一篇文章内容在此'
+  },
+  {
+    id: 2,
+    title: '第二篇文章',
+    detail: '第二篇文章内容在此'
+  },
+  {
+    id: 3,
+    title: '第三篇文章',
+    detail: '第三篇文章内容在此'
+  }
+];
+///////////////////////
+
+app.use('/list', function (req, res) {
+  res.render('./index.szy', { articles: articles })
+})
+
+app.use('/article', function (req, res) {
+  res.send(articles[req.query.id - 1].detail);
+})
+```
+
+----------
