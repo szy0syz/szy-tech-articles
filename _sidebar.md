@@ -47,6 +47,7 @@
   - [TED演讲笔记](/notes/ted/ted.md)
   - [珠峰Node.js全栈开发教程](/notes/learning/node/zf-node.md)
   - [《React.js入门基础与案例开发》](/notes/learning/react/imooc_react_starter.md)
+  - [珠峰React基础学习笔记](/notes/learning/react/zf-react-base.md)
   - [珠峰React-Router-v4学习笔记](/notes/learning/react/zf-react-router.md)
 
 - 读书笔记
