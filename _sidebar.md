@@ -46,8 +46,8 @@
   - [css3学习笔记](/notes/learning/css/css3.md)
   - [TED演讲笔记](/notes/ted/ted.md)
   - [珠峰Node.js全栈开发教程](/notes/learning/node/zf-node.md)
-  - [《React.js入门基础与案例开发》](/notes/react/imooc_react_starter.md)
-  - [珠峰React教程(2017)](/notes/react/zf-react.md)
+  - [《React.js入门基础与案例开发》](/notes/learning/react/imooc_react_starter.md)
+  - [珠峰React-Router-v4学习笔记](/notes/learning/react/zf-react-router.md)
 
 - 读书笔记
   - [《JavaScript权威指南（第6版）》](/notes/reading/9787111376613/README.md)
