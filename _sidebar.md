@@ -66,6 +66,7 @@
   - [《离散数学及其应用(第5版)》[计划]](/notes/reading/9787111203261/README.md)
   - [《剑指Offer(第2版)》](/notes/reading/9787121310928.md)
   - [《JavaScript高级程序设计(第3版)》](/notes/reading/9787115275790.md)
+  - [《CSS权威指南(第3版)》读书笔记](/notes/reading/9787508355948.md)
 
 
 - 干货店铺
