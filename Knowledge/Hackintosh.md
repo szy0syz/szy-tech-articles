@@ -42,4 +42,6 @@
 
 ![CloverConfigurator](http://ofx24fene.bkt.clouddn.com//img/book/screenshot-CloverConfigurator.png)
 
+## 黑苹果日常
 
+- 2017-10-19 14:35：I3的黑苹果体验太差了，4790K开个WebStorm速度干干的，6100开的话风扇要死的装10秒；4790K开Teamviewer基本不占CPU，6100开竟然占用20%~30%。
