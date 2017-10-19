@@ -46,8 +46,9 @@
   - [css3学习笔记](/notes/learning/css/css3.md)
   - [TED演讲笔记](/notes/ted/ted.md)
   - [珠峰Node.js全栈开发教程](/notes/learning/node/zf-node.md)
-  - [《React.js入门基础与案例开发》](/notes/react/imooc_react_starter.md)
-  - [珠峰React教程(2017)](/notes/react/zf-react.md)
+  - [《React.js入门基础与案例开发》](/notes/learning/react/imooc_react_starter.md)
+  - [珠峰React基础学习笔记](/notes/learning/react/zf-react-base.md)
+  - [珠峰React-Router-v4学习笔记](/notes/learning/react/zf-react-router.md)
 
 - 读书笔记
   - [《JavaScript权威指南（第6版）》](/notes/reading/9787111376613/README.md)
@@ -63,6 +64,9 @@
   - [《代码整洁之道》[计划]](/notes/reading/9787115216878/README.md)
   - [《C Primer Plus (第6版)》[计划]](/notes/reading/9787115390592/README.md)  
   - [《离散数学及其应用(第5版)》[计划]](/notes/reading/9787111203261/README.md)
+  - [《剑指Offer(第2版)》](/notes/reading/9787121310928.md)
+  - [《JavaScript高级程序设计(第3版)》](/notes/reading/9787115275790.md)
+  - [《CSS权威指南(第3版)》读书笔记](/notes/reading/9787508355948.md)
 
 
 - 干货店铺
