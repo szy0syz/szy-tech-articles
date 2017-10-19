@@ -9,3 +9,7 @@
 - Disk drill 3：超能文件恢复软件，经实践，可恢复手机已删的资料，而且扫描结果很直观。
 
 ![DiskDrill](http://ofx24fene.bkt.clouddn.com//img/book/Disk%20Drill%203.png)
+
+- Downie: 视频解析下载神器。
+
+- IINA: 新一代开源的MAC视频播放器。
