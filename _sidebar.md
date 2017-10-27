@@ -49,7 +49,7 @@
   - [《React.js入门基础与案例开发》](/notes/learning/react/imooc_react_starter.md)
   - [珠峰React基础学习笔记](/notes/learning/react/zf-react-base.md)
   - [珠峰React-Router-v4学习笔记](/notes/learning/react/zf-react-router.md)
-  - [达内前端培训](/notes/learning/danei/01.md)
+  - [达内前端培训CH02_CSS3Basic](/notes/learning/danei/01.md)
 
 - 读书笔记
   - [《JavaScript权威指南（第6版）》](/notes/reading/9787111376613/README.md)
@@ -61,7 +61,7 @@
   - [《你不知道的JavaScript》[在读]](/notes/reading/9787115385734/README.md)
   - [《JavaScript语言精粹》](/notes/reading/9787121177408/README.md)
   - [《JavaScript模式》[在读]](/notes/reading/9787512329232/README.md)
-  - [《Eloquent JavaScript》[计划]](/notes/reading/9781593275846/README.md)
+  - [《Eloquent JavaScript》[计划]](/notes/reading/9781593275846/README.md)
   - [《代码整洁之道》[计划]](/notes/reading/9787115216878/README.md)
   - [《C Primer Plus (第6版)》[计划]](/notes/reading/9787115390592/README.md)  
   - [《离散数学及其应用(第5版)》[计划]](/notes/reading/9787111203261/README.md)
