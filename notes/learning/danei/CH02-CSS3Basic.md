@@ -446,8 +446,6 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
 
 ### 背景属性
 
--  背景
-
 - 背景颜色
   - 属性：`background-color`
   - 取值：任意合法颜色 或 transparent
