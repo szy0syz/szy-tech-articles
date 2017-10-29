@@ -1,6 +1,6 @@
 # 大前端知识梳理
 
-## 关于我的前端
+## 我的前端路线
 
 - `.net`中的前端
   - html
@@ -10,8 +10,9 @@
   - jQuery Mobile
   - OA
 - node.js
-  - I/O
+  - net
   - http
+  - stream
 - Vue.js
 - express.js
 - sequlie.js
@@ -62,3 +63,4 @@
   - webpack
   - pug
 - react
+- css
