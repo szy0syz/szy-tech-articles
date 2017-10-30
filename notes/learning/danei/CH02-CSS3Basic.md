@@ -446,6 +446,8 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
 
 ### 背景属性
 
+-  背景
+
 - 背景颜色
   - 属性：`background-color`
   - 取值：任意合法颜色 或 transparent
@@ -494,6 +496,11 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
   - 步骤：
     1. 根据要看的图片大小，创建一个元素
     2. 将“雪碧图”作为元素的背景图，再通过背景图像位置 实现位置偏移，将用户要看的图象，显示在 元素中
+
+- 背景属性
+  - 属性：background
+  - 取值：`color url() repeat attachment position`
+  - 注意：如果不要设置其中的某个值，将采用默认值。
 
 ----------
 
