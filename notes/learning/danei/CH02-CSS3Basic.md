@@ -630,8 +630,26 @@ background-image: -o-linear-gradient();
   - 属性：`text-decoration`
   - 取值：
     1. `none` 没有线条显示 
+    2. `underline` 下划线 `<u></u>`
+    3. `overline` 上划线
+    4. `line-through` 删除线 `<s></s>`
 
+- 行高
+  - 作用：指定元素中一行数据的高度。如果行高的高度高于文字高度本身，那么该行文本将在行高的范围内，呈现出 **垂直居中** 的显示效果。
+  - 应用场景：
+    1. 控制一行文本 垂直居中对齐
+    2. 设置行间距
+  - 属性：`line-height`
+  - 取值：以 px 为单位的数值
+  - 注意：仅适用于一行文本的情况，不适合多行文本。
 
+- 首行文本缩进
+  - 属性：`text-indent`
+  - 取值：缩进的距离，以px为单位的数值
+
+- 文本阴影
+  - 属性：`text-shadow`
+  - 取值：`h-shadow v-shadow blur color;`
 
 ### 表格
 
