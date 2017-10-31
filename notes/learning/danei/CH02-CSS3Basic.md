@@ -508,7 +508,7 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
 
 ### 渐变
 
-1.什么是渐变？
+#### 什么是渐变？
 两种或多种颜色间平滑过度的效果
 
 - 分类
@@ -516,8 +516,35 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
   - 镜像渐变
   - 重复渐变
 
-2.渐变的组成(元素)
+#### 渐变的组成(元素)
 色标：决定了渐变的每种颜色及其出现的位置
+
+每一种渐变效果都是由多个 **色标** 组成的(2个及两个以上)
+
+#### 渐变的语法
+
+- 语法
+  - 属性：background-image
+  - 值：
+    1. linear-gradient(): 线性渐变
+    2. radial-gradient(): 径向渐变
+    3. repeating-linear-gradient(): 重复线性渐变
+    4. repeating-radial-gradient(): 重复径向渐变
+
+- 线性渐变
+  - 语法: `background-image: linear-gradient(angle, color-point, color-point, color-point, ...);`
+  - `angle`：方向或角度，即渐变的填充方向。值：
+    1. 关键字：`to top`从下向下填充；`to right`从左到右填充；`to bottom`从上往下填充；`to left`从右向左填充
+    2. 角度：`0deg`to top ；`90deg`to right；`180deg`to bottom；`270deg`to left
+  - color-point：色标，表示每个颜色值，及其出现的位置，多个色标之间用逗号(,)分割
+
+![image.png-23.6kB][6]
+
+- 径向渐变
+  - 语法：`background-image: radial-gradient([size at position], color-point, color-point, ...);`
+  - size at position：径向渐变的半径 以及 圆心位置
+  - size：园的半径，px为单位
+  - position：圆心的位置，`0px 0px` 将圆心设置在元素的左上角，`50% 50%`将圆心设置在元素的中间位置，`right bottom`关键字，将圆心设置在元素的右下角
 
 
 ### 文本格式化
