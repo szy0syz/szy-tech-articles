@@ -653,6 +653,22 @@ background-image: -o-linear-gradient();
 
 ### 表格
 
+#### 表格的常用属性
+
+- 边距的属性：padding
+
+- 尺寸属性：width，height
+- 文本格式化属性
+  - font-*
+  - text-alitn, color, text-indent, ... ... 
+- 背景属性
+  - 背景色，背景图，渐变
+- border属性
+
+
+#### 表格的特有属性
+
+
 
 ### 浮动
 
