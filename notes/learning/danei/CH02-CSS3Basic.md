@@ -502,6 +502,8 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
   - 取值：`color url() repeat attachment position`
   - 注意：如果不要设置其中的某个值，将采用默认值。
 
+- 注意：在使用独立属性和综合属性的背景时，先独立后综合时，综合(简写)属性会把没有赋值的属性用默认值替换，所以最好用独立属性修改原属性。
+
 ----------
 
 ## Day3：文本格式化、表格、浮动
@@ -546,6 +548,32 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
   - size：园的半径，px为单位
   - position：圆心的位置，`0px 0px` 将圆心设置在元素的左上角，`50% 50%`将圆心设置在元素的中间位置，`right bottom`关键字，将圆心设置在元素的右下角
 
+- 浏览器的兼容性
+
+各主流浏览器的主流版本，均支持渐变效果。对于不支持的浏览器，可以尝试增加 浏览器前缀 去实现渐变的显示。
+
+- 浏览器前缀：
+  - FireFox: `-moz-`
+  - Chrome/Safari: `-webkit-`
+  - Opera: `-o-`
+
+- 前缀的加载位置
+  - 如果浏览器不支持属性的话，则将前缀加载到属性名称前。
+  - 如果浏览器支持属性，但不支持值的话，则将前缀加载到属性值的前面
+
+```css
+/*如果浏览器不支持属性的话，则将前缀加载到属性名称前*/
+animation: scroll 5s;
+-moz-animation: scroll 5s;
+-webkit-animation: scroll 5s;
+-o-animation: scroll 5s;
+
+/*如果浏览器支持属性，但不支持值的话，则将前缀加载到属性值的前面*/
+background-image: linear-gradient();
+background-image: -moz-linear-gradient();
+background-image: -webkit-linear-gradient();
+background-image: -o-linear-gradient();
+```
 
 ### 文本格式化
 
@@ -560,10 +588,16 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
 ----------
 
 
+  
+
+
   [1]: http://static.zybuluo.com/szy0syz/jhblh4okvj5z0mo76gwh3ji4/image.png
   [2]: http://static.zybuluo.com/szy0syz/115pn5wk168lmrm1u8jw0qbe/image.png
   [3]: http://static.zybuluo.com/szy0syz/9p3kic8ayksckfgb2lcyuvwd/TEDU-outbox.png
   [4]: http://static.zybuluo.com/szy0syz/jie63ul0vkjvl6w5fegsxsto/image.png
   [5]: http://static.zybuluo.com/szy0syz/gcg0vk4pchszka3dw902vl7i/image.png
-  
-  
+  [6]: http://static.zybuluo.com/szy0syz/25g6j7dnxfngg2d89hevgdzo/image.png
+
+
+
+
