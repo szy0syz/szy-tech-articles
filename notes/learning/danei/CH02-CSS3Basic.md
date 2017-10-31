@@ -577,13 +577,68 @@ background-image: -o-linear-gradient();
 
 ### 文本格式化
 
+#### 字体属性
+
+- 指定字体系列
+  - 属性：`font-family`
+  - 取值：`value1, value2, value2`
+  - 注意：字体取值包含 中文或特殊符号 时，使用双引号引起来
+
+- 字体大小
+  - 属性：`font-size`
+  - 取值：`px` `pt` `em`
+
+- 字体加粗
+  - 属性：`font-weight`
+  - 取值：
+    1. normal 正常体
+    2. bold 加粗
+    3. 400~900 400=normal 900=bold
+
+- 字体样式
+  - 属性：`font-style`
+  - 取值：
+    1. normal 正常体
+    2. italic 斜体
+
+- 小型大写字母
+  - 作用：针对英文字符，将小写字符变成大写字符，但是大小与x小写一样
+  - 属性：`font-variant`
+  - 取值：
+    1. normal
+    2. small-caps
+
+- 字体属性
+  - 属性：`font`
+  - 取值：style varaint weight size family
+  - 注意：使用简写属性时，必须设置family的值，否则无效！
+  - ex：`font: 12px;` -> 无效
+  
+#### 文本属性
+
+- 文本颜色
+  - 属性：color
+  - 取值：任意合法颜色
+
+- 文本排列方式
+  - 作用：指定当前元素中的**文本、行内元素、行内块级元素** 的 **水平对齐方式**
+  - 属性：`text-align`
+  - 取值：left、center、right
+
+- 文本修饰
+  - 作用：指定文本的线条样式
+  - 属性：`text-decoration`
+  - 取值：
+    1. `none` 没有线条显示 
+
+
 
 ### 表格
 
 
 ### 浮动
 
-00:24:23
+
 
 ----------
 
