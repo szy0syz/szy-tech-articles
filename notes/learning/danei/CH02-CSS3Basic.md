@@ -770,10 +770,19 @@ background-image: -o-linear-gradient();
 
 ![image.png-17.7kB][7]
 
+![image.png-3.2kB][8]
+
+> 浮动只在当前行浮动！
+
+**清除浮动**
+
+元素浮动起来之后，除了影响自己的位置以外，还会影响后续元素。
+
+
+
+01:46:00
+
 ----------
-
-
-  
 
 
   [1]: http://static.zybuluo.com/szy0syz/jhblh4okvj5z0mo76gwh3ji4/image.png
@@ -783,6 +792,7 @@ background-image: -o-linear-gradient();
   [5]: http://static.zybuluo.com/szy0syz/gcg0vk4pchszka3dw902vl7i/image.png
   [6]: http://static.zybuluo.com/szy0syz/25g6j7dnxfngg2d89hevgdzo/image.png
   [7]: http://static.zybuluo.com/szy0syz/z7d9edudouyp5xzj4g4m0u2d/image.png
+  [8]: http://static.zybuluo.com/szy0syz/iw0jizub58ywjr02oxrs1br4/image.png
 
 
 
