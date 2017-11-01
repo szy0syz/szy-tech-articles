@@ -750,9 +750,25 @@ background-image: -o-linear-gradient();
 
 注意：向左浮动时，没有浮动的元素会被浮动元素压在下面，我们的视角是从上往下看。
 
+**语法**
 
+- 属性：float
+- 取值：
+  1. `none` 默认值，即无浮动定位
+  2. `left` 左浮动，让元素停靠在父元素的左边，或停靠在左侧已有浮动元素的边缘上
+  3. `right` 右浮动，让元素停靠在父元素的右边，或停靠在右侧已有浮动元素的边缘上
 
+**浮动引发的特殊效果**
 
+    1. 当父元素的宽度显示不下所有的已浮动子元素时，最后一个将换行(有可能被卡住，就选哥哥只高1px页会卡住)
+    2. 元素一旦浮动起来后，那么宽度将变成自适应(非人为指定情况下)。例如一个div没指定宽度时占据一行，但指定它浮动后它的宽度则为自适应。
+    3. 元素一旦浮动起来后，那么将变成块级元素，尤其对行内元素影响最大
+      块级元素：允许修改 尺寸
+      行内元素：不允许修改 尺寸
+      例如一个<span>行内元素，本来不支持修改宽高，一旦浮动起来后就允许修改宽高
+    4. 文本、行内元素、行内块元素时采用环绕的方式排列的，是不会被浮动元素压在底下，会巧妙的避开浮动元素
+
+![image.png-17.7kB][7]
 
 ----------
 
@@ -766,7 +782,7 @@ background-image: -o-linear-gradient();
   [4]: http://static.zybuluo.com/szy0syz/jie63ul0vkjvl6w5fegsxsto/image.png
   [5]: http://static.zybuluo.com/szy0syz/gcg0vk4pchszka3dw902vl7i/image.png
   [6]: http://static.zybuluo.com/szy0syz/25g6j7dnxfngg2d89hevgdzo/image.png
-
+  [7]: http://static.zybuluo.com/szy0syz/z7d9edudouyp5xzj4g4m0u2d/image.png
 
 
 
