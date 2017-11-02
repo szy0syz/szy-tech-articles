@@ -822,13 +822,26 @@ background-image: -o-linear-gradient();
     1. display:none，脱离文档流，所以隐藏后不占据页面空间
     2. visibility:hidden，隐藏元素，但并不脱离文档流，导致空间依然占据
 
+- opacity 属性
+  - 作用：改变元素的透明度
+  - 属性：opacity
+  - 取值：0.0(完全透明) ~ 1.0(完全不透明)
+
+- vertical-algin 属性
+  - 说明：特殊情况的，垂直对齐方式 
+  - 属性：vertical-algin
+  - 取值：top / middle / bottom / baseline(默认,基线对齐)
+  - 作用：
+    1. 设置单元格内容的垂直对齐方式
+    2. 为行内块元素设置vertical-algin，相当于设置该元素两端的文本相对于该元素的垂直对齐方式
+
+
+00：29：24
+
 
 #### 光标
 
 
-
-
-----------
 
 
 ----------
