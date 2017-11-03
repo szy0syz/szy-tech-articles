@@ -833,8 +833,12 @@ background-image: -o-linear-gradient();
   - 取值：top / middle / bottom / baseline(默认,基线对齐)
   - 作用：
     1. 设置单元格内容的垂直对齐方式
-    2. 为行内块元素设置vertical-algin，相当于设置该元素两端的文本相对于该元素的垂直对齐方式
+    2. 为行内块元素设置vertical-algin，相当于设置该元素两端的文本相对于该元素的垂直对齐方式(相对于文本，其基线就是最后一行文本的位置)
+    3. 设置图片两端的文本相对于图片的垂直对齐方式
+  - 注意：默认的基线对齐时基线会在图片底部下移3px的位置
 
+
+![image.png-146.3kB][9]
 
 00：29：24
 
@@ -855,6 +859,7 @@ background-image: -o-linear-gradient();
   [6]: http://static.zybuluo.com/szy0syz/25g6j7dnxfngg2d89hevgdzo/image.png
   [7]: http://static.zybuluo.com/szy0syz/z7d9edudouyp5xzj4g4m0u2d/image.png
   [8]: http://static.zybuluo.com/szy0syz/iw0jizub58ywjr02oxrs1br4/image.png
+  [9]: http://static.zybuluo.com/szy0syz/9m4blnyrpnqzqyethfamo6zy/image.png
 
 
 
