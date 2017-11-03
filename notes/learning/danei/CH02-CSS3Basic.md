@@ -840,12 +840,16 @@ background-image: -o-linear-gradient();
 
 ![image.png-146.3kB][9]
 
-00：29：24
-
-
 #### 光标
 
-
+- 属性：cursor
+- 取值
+  1. default 默认
+  2. pointer 小手
+  3. crosshair 准心 +
+  4. text "I"
+  5. wait 等待
+  6. help 帮助
 
 
 ----------
