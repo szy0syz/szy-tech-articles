@@ -130,7 +130,7 @@ methods.forEach(function(method){
 
 ----------
 
-## 第6章 请求和响应对象
+## 第6章：请求和响应对象
 
 ### 6.1 URL的组成部分
 
