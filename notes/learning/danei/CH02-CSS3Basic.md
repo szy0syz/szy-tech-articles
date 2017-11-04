@@ -506,7 +506,7 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
 
 ----------
 
-## Day3：文本格式化、表格、浮动
+## Day3：文本格式化、表格
 
 ### 渐变
 
@@ -664,7 +664,9 @@ background-image: -o-linear-gradient();
 - 背景属性
   - 背景色，背景图，渐变
 - border属性
-
+- vertical-align
+  - 作用：在单元格中，设置文本的垂直对齐方式
+  - 取值：top  middle  bottom
 
 #### 表格的特有属性
 
@@ -947,9 +949,27 @@ background-image: -o-linear-gradient();
   - 绝对定位的元素会脱离文档流，不占据页面空间(不再占用老的菜地了)
   - 绝对定位的元素相对于它 ***最近的已定位的祖先元素*** 实现位置的初始化，如果这个元素没有已定位的祖先元素，那么这个元素就会相对于最初的包含块实现位置的初始化(如body、html)
   - 已定位：absolute、relative、fixed三种其中一个都称为已定位元素
+  - 祖先元素：无限父级元素
+- 语法
+  - `position: absolute;`
+  - 配合着 偏移属性 实现位置的改变
+- 绝对定位是一个关联定位
+- 特殊效果
+  - 绝对定位元素会变成块级元素
+  - 绝对定位元素依然可以使用margin，正常情况下，auto会失效
 
+![image.png-18.9kB][11]
+
+![image.png-3.2kB][12]
+
+![image.png-4.5kB][13]
+
+![image.png-2.7kB][14]
+
+![image.png-2.9kB][15]
 
 ----------
+
 
 
   [1]: http://static.zybuluo.com/szy0syz/jhblh4okvj5z0mo76gwh3ji4/image.png
@@ -962,6 +982,9 @@ background-image: -o-linear-gradient();
   [8]: http://static.zybuluo.com/szy0syz/iw0jizub58ywjr02oxrs1br4/image.png
   [9]: http://static.zybuluo.com/szy0syz/9m4blnyrpnqzqyethfamo6zy/image.png
   [10]: http://static.zybuluo.com/szy0syz/2ouyenvxzrs7lgbb99g1yimz/image.png
-
-
+  [11]: http://static.zybuluo.com/szy0syz/u8hxfryllepyf74rsjebsqvl/image.png
+  [12]: http://static.zybuluo.com/szy0syz/0eyu7whsfh35p0qurlmt9nvj/image.png
+  [13]: http://static.zybuluo.com/szy0syz/xg1bpv04opikn38zd42y9y22/image.png
+  [14]: http://static.zybuluo.com/szy0syz/clo3zmg6vqu947pj9ebnd675/image.png
+  [15]: http://static.zybuluo.com/szy0syz/rlo3e00o6zpysvzjvvp43jxd/image.png
 
