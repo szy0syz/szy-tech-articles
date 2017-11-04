@@ -901,18 +901,52 @@ background-image: -o-linear-gradient();
 
 #### 定位属性
 
-- 作用：指定元素的定位类型
-- 属性：`position`
-- 取值：
-  - static 默认值
-  - relative 相对定位
-  - absolute 绝对定位
-  - fixed 固定定位
+- position 属性
+  - 作用：指定元素的定位类型
+  - 属性：`position`
+  - 取值：
+    - static 默认值
+    - relative 相对定位
+    - absolute 绝对定位
+    - fixed 固定定位
 
-#### 偏移属性
+- 偏移属性
+  - 作用：改变元素在页面中的位置(移动元素)
+  - 属性：
+    1. top
+    2. bottom
+    3. left
+    4. right
+  - 取值：偏移距离，以px为单位的数值
 
-- 作用：改变元素在页面中的位置(移动元素)
-- 
+![image.png-56.8kB][10]
+
+- 堆叠顺序
+  - 作用：在元素出现堆叠效果时，改变它们的顺序
+  - 属性：z-index
+  - 取值：没有单位的数字，值越大，越靠上
+
+#### 定位方式
+
+##### 相对定位
+
+- 什么是相对定位？
+  - 元素会相对与它原来的位置偏移某个距离
+  - 相对定位元素原本所占的空间会保留
+
+- 语法
+  - `position: relative;`
+  - 配合着 偏移属性top/bottom/left/right实现元素的位置移动
+
+- 使用场景
+  - 实现元素位置微调时使用 
+
+##### 绝对定位
+
+- 什么是绝对定位
+  - 绝对定位的元素会脱离文档流，不占据页面空间(不再占用老的菜地了)
+  - 绝对定位的元素相对于它 ***最近的已定位的祖先元素*** 实现位置的初始化，如果这个元素没有已定位的祖先元素，那么这个元素就会相对于最初的包含块实现位置的初始化(如body、html)
+  - 已定位：absolute、relative、fixed三种其中一个都称为已定位元素
 
 
 ----------
@@ -927,6 +961,7 @@ background-image: -o-linear-gradient();
   [7]: http://static.zybuluo.com/szy0syz/z7d9edudouyp5xzj4g4m0u2d/image.png
   [8]: http://static.zybuluo.com/szy0syz/iw0jizub58ywjr02oxrs1br4/image.png
   [9]: http://static.zybuluo.com/szy0syz/9m4blnyrpnqzqyethfamo6zy/image.png
+  [10]: http://static.zybuluo.com/szy0syz/2ouyenvxzrs7lgbb99g1yimz/image.png
 
 
 
