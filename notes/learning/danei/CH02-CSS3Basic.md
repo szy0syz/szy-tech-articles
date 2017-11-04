@@ -613,7 +613,7 @@ background-image: -o-linear-gradient();
   - 取值：style varaint weight size family
   - 注意：使用简写属性时，必须设置family的值，否则无效！
   - ex：`font: 12px;` -> 无效
-  
+
 #### 文本属性
 
 - 文本颜色
@@ -838,7 +838,6 @@ background-image: -o-linear-gradient();
     2. 为行内块元素设置vertical-algin，相当于设置该元素两端的文本相对于该元素的垂直对齐方式(相对于文本，其基线就是最后一行文本的位置)
     3. 设置图片两端的文本相对于图片的垂直对齐方式
   - 注意：默认的基线对齐时基线会在图片底部下移3px的位置
-
 
 ![image.png-146.3kB][9]
 
