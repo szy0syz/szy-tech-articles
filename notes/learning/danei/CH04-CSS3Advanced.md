@@ -83,10 +83,10 @@
 
 - `:before` 或 `::before`
   - 作用：匹配 某元素的 内容区域之前
-  - <div>(:before)我是一个DIV</div>
+  - `<div>(:before)我是一个DIV</div>`
 - `:after` 或 `::after`
   - 作用：匹配 某元素的 内容区域之后
-  - <div>我是一个DIV(:after)</div>
+  - `<div>我是一个DIV(:after)</div>`
 
 #### 属性
 
@@ -129,11 +129,11 @@
   - 语法：
   - `counter-reset: key value;`
   - `counter-reset: key1 value1 key2 value2;`
-  -  注意：初始值可以省略不写，默认为0；不能放在使用的元素中声明，大部分情况下，可以将计数器声明在使用元素的父元素上(结合实际情况考虑)
+  - 注意：初始值可以省略不写，默认为0；不能放在使用的元素中声明，大部分情况下，可以将计数器声明在使用元素的父元素上(结合实际情况考虑)
 
 - 属性：counter-increment
   - 作用：指定计数器每次出现的增量，即每次出现计数器值的变化范围
-  - 语法： 
+  - 语法：
   - `counter-increment: 名 增量`
   - `counter-increment: 名1 增量1 名2 增量2`
   - 注意：增量可以为正，也可以为负，也可以省略，默认增量为1；哪个元素使用计数器，就在哪个元素中设置计数器增量
@@ -162,22 +162,45 @@
 
 #### 兼容性
 
-- chrome：  
+- chrome：
   - `-webkit-column-count`
   - `-webkit-column-gap`
   - `-webkit-column-rule`
-- firefox： 
+- firefox：
   - `-moz-column-count`
   - `-moz-column-gap`
   - `-moz-column-rule`
 
 ### CSS Hack(浏览器兼容问题)
 
+> 原理：充分使用CSS属性的优先级解决兼容性问题
 
+#### CSS Hack的实现样式
+
+- 第一种-CSS类内部Hack：在样式属性名或值的前后增加前后缀以便识别不同的浏览器
+
+![image.png-168kB][4]
+
+```css
+background-color: black;
+background-color: green\0;  /*IE8~10*/
+background-color: blue\9\0; /*IE9~10*/
++background-color: pink;    /*IE6~7*/
+-background-color: red;     /*IE6*/
+```
+
+- 第二种-选择器Hack：在选择器前增加前缀以便识别不同的浏览器
+  - 在选择器前增加前缀以便识别不同的浏览器
+  - `*`前缀：IE6 识别
+  - `*+`前缀：IE7 识别
+
+- 第三种-HTML头部引用Hack：使用HTML条件注释判断浏览器版本
 
 ----------
 
-
 ## Day2：转换、过渡、动画、CSS优化
 
-
+  [1]: http://static.zybuluo.com/szy0syz/h0dgdue2qmppyvapir77y9sv/content-generator.jpg
+  [2]: http://static.zybuluo.com/szy0syz/5g2ha4e7mst5r1ymbruwmxvb/css3-counter.jpg
+  [3]: http://static.zybuluo.com/szy0syz/hj76t782g5ran2goktz7tbyq/css3-column-count.jpg
+  [4]: http://static.zybuluo.com/szy0syz/bs0v91139pmi8pvdmcdlyx61/image.png
