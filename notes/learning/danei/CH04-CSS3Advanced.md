@@ -143,7 +143,33 @@
 
 ### 多列
 
+![css3-column-count.jpg-90.3kB][3]
 
+#### 语法
+
+- 分割列
+  - 属性：column-count
+  - 取值：数值
+
+- 列间隔
+  - 属性： column-gap
+  - 取值：px为单位的数值
+
+- 列规则
+  - 作用：定位每列之间的线条样式
+  - 属性：column-rule
+  - 取值：width style color
+
+#### 兼容性
+
+- chrome：  
+  - `-webkit-column-count`
+  - `-webkit-column-gap`
+  - `-webkit-column-rule`
+- firefox： 
+  - `-moz-column-count`
+  - `-moz-column-gap`
+  - `-moz-column-rule`
 
 ### CSS Hack(浏览器兼容问题)
 
