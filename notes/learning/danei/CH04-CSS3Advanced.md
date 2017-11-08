@@ -117,6 +117,13 @@
   - 空的元素
   - 显示方式为 table
 
+```css
+selector:before{
+  content: "";
+  display: table;
+}
+```
+
 > 以上两个解决方案就是 **内容生成** 的最大用处！
 
 #### 计数器
