@@ -278,9 +278,21 @@ background-color: blue\9\0; /*IE9~10*/
 
 #### 2D倾斜
 
+- 什么是倾斜？ 改变元素在页面中的形状，以原点为中心，围绕着x轴和y轴产生一定的倾斜角度
+- 属性：transform
+- 取值函数
+  - skew(xdeg)：向横向产生倾斜角度，实际改变的是y轴的倾斜角度。值为正，y轴按逆时针角度倾斜，值为负，y轴按顺时针方向倾斜
+  - skew(xdeg,ydeg)：x值为横向倾斜，y值为纵向倾斜。值为正，x轴按顺时针角度倾斜，否则反之
+  - skewX(ndeg)
+  - skewY(ndeg)
 
+![image.png-21.8kB][6]
+
+02:55:03
 
   [1]: http://static.zybuluo.com/szy0syz/h0dgdue2qmppyvapir77y9sv/content-generator.jpg
   [2]: http://static.zybuluo.com/szy0syz/5g2ha4e7mst5r1ymbruwmxvb/css3-counter.jpg
   [3]: http://static.zybuluo.com/szy0syz/hj76t782g5ran2goktz7tbyq/css3-column-count.jpg
   [4]: http://static.zybuluo.com/szy0syz/bs0v91139pmi8pvdmcdlyx61/image.png
+  [5]: http://static.zybuluo.com/szy0syz/ckxo0lfnu7kdnjxu5fxviv19/image.png
+  [6]: http://static.zybuluo.com/szy0syz/56nxjf6rgzs0z4bvyhjqse6p/image.png
