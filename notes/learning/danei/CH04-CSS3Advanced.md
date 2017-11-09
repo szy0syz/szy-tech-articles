@@ -227,6 +227,45 @@ background-color: blue\9\0; /*IE9~10*/
 - 2D转换：使元素在x轴和y轴上进行的转换操作
 - 3D转换：在2D转换的基础上增加了Z轴的转换操作
 
+- 转换属性
+  - 属性：`transform`
+  - 取值：
+    1 `none`
+    2 `tansform-functions`，一组转换函数，表示一个或多个转换函数，多个的话，用 空格 隔开
+
+- 转换原点
+  - 属性：`tansform-origin`
+  - 默认：原点在元素的中心处
+  - 取值：
+    1 两个值: 值1(x) 值2(y)
+    2 三个值: 值1(x) 值2(y) 值3(z)
+
+#### 2D位移
+
+- 什么是2D位移，就是改变元素在 x轴 和 y轴 上的位置
+
+- 属性：transform
+- 函数：
+  - translate(x)：改变元素在x轴上的位置，取值为正则右移，否则反之。
+  - translate(x,y)：改变元素在x轴和y轴上的位置，取值为正则右/下移，否则反之。
+  - transformX
+  - transformY
+
+#### 2D缩放
+
+- 什么是缩放？改变元素在 x轴 或 y轴上的大小
+- 语法：
+  - 属性：transform
+  - 取值函数：
+  - 1.scale(value)：value为缩放倍数，如果只给一个值则x轴和y轴等比缩放，默认值为1.
+  - 2.scale(x, y)：分别改变元素在x轴和y轴上的大小
+  - 3.scaleX(x)
+  - 4.scaleY(y)
+  - 当value为负数是，则体现“物极必反”，元素倒着放大了(旋转了180°)
+
+
+
+
   [1]: http://static.zybuluo.com/szy0syz/h0dgdue2qmppyvapir77y9sv/content-generator.jpg
   [2]: http://static.zybuluo.com/szy0syz/5g2ha4e7mst5r1ymbruwmxvb/css3-counter.jpg
   [3]: http://static.zybuluo.com/szy0syz/hj76t782g5ran2goktz7tbyq/css3-column-count.jpg
