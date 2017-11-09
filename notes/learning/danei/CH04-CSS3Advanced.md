@@ -217,6 +217,16 @@ background-color: blue\9\0; /*IE9~10*/
 
 ## Day2：转换、过渡、动画、CSS优化
 
+### 转换
+
+#### 什么是转换
+
+- 转换是改变元素在页面中的大小、位置、形状、角度的一种方式。
+- 转换也可以称之为变形。
+- 转换可以分为 2D转换 和 3D转换
+- 2D转换：使元素在x轴和y轴上进行的转换操作
+- 3D转换：在2D转换的基础上增加了Z轴的转换操作
+
   [1]: http://static.zybuluo.com/szy0syz/h0dgdue2qmppyvapir77y9sv/content-generator.jpg
   [2]: http://static.zybuluo.com/szy0syz/5g2ha4e7mst5r1ymbruwmxvb/css3-counter.jpg
   [3]: http://static.zybuluo.com/szy0syz/hj76t782g5ran2goktz7tbyq/css3-column-count.jpg
