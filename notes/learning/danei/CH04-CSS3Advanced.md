@@ -299,14 +299,15 @@ background-color: blue\9\0; /*IE9~10*/
 - 浏览器兼容性：chrom和safari： `-webkit-perspective: 数值;`
 
 #### 3D转换-旋转
+
 - 属性：transform
 - 取值：
-  - rotateX(ndeg) 
-  - rotateY(ndeg) 
-  - rotateZ(ndeg) 
+  - rotateX(ndeg)
+  - rotateY(ndeg)
+  - rotateZ(ndeg)
   - rotate3D(x,y,z,ndeg)：x、y、z取值为0说明该轴不参与旋转，取值为1说明该轴参与到旋转操作
 - 注意：
-  - `transform: rotate3D(1,1,1,45)` 与 
+  - `transform: rotate3D(1,1,1,45)` 与
   - `transform: rotatex(45) rotatey(45) rotatez(45)`
   - 是不同的，上者为三个轴同时并发旋转，二下者为三个轴分别顺序旋转
 
@@ -320,20 +321,61 @@ background-color: blue\9\0; /*IE9~10*/
 
 - 属性：transform
 - 取值：
-  - transformZ(z) 
+  - transformZ(z)
   - transform3d(x,y,z)
+
+有个练习。
 
 ### 过渡
 
+#### 什么是过度
 
+- 使得CSS属性值，在一段时间内，平缓变化的一个效果
+
+#### 过渡效果四要素
+
+1. 指定过渡属性：即指定哪个属性值在变化时需要使用过度效果
+2. 指定过渡时间：多长时间内完成过度效果
+3. 指定过渡时间的速率：过度过程中的变化速率(匀速、先快后慢...)
+4. 指定过渡延时时间：当用户激发操作后，等待多长时间才激发效果
+
+#### 过渡属性
+
+- 指定过渡属性
+  - 属性：`transition-property`
+  - 取值：none | all | property-name 
+  - ex: `transition-property: background;` `transition-property: border-radius;`
+- 允许设置过渡效果的属性：
+  - 颜色属性：color, background-color, border-color
+  - 取值为数值的属性：尺寸、background-size、margin、padding
+  - 转换属性：transform
+  - 渐变属性
+  - 阴影属性
+  - visibility
+- 指定过渡时长
+  - 属性：transform-duration
+  - 取值：s | ms
+  - 注意：默认值为0s，即没有过渡效果
+- 指定过渡时间速率
+  - 属性：transform-timing-function
+  - 取值：
+  - 1.ease，默认值，先慢后快再慢
+  - 2.linear，匀速
+  - 3.ease-in，慢速开始，快速结束
+  - 4.ease-out，快速开始，慢速结束
+  - 5.ease-in-out，慢速开始结束，中间先快后慢
+- 过渡延迟
+  - 属性：transition-delay
+  - 取值：s | ms
+- 过渡属性简写方式
+  - 属性：`transition: property duration timing-function delay;`
+  - 注意：`transition:transform 2s linear, background 3s;`
+
+2个练习
 
 ### 动画
 
-
-
 ### CSS优化
-
-
 
 
 
