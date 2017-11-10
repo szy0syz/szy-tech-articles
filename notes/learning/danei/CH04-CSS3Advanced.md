@@ -310,6 +310,18 @@ background-color: blue\9\0; /*IE9~10*/
   - `transform: rotatex(45) rotatey(45) rotatez(45)`
   - 是不同的，上者为三个轴同时并发旋转，二下者为三个轴分别顺序旋转
 
+#### 3D转换-位移
+
+- 3D位移就是改变元素在 x,y,z 轴上的位置
+- 属性：transform-style，如何处理子元素的摆放位置
+- 取值：
+  - flat，默认值，不保留子元素的3D位置
+  - preserve-3d，保留子元素的3D位置
+
+- 属性：transform
+- 取值：
+  - transformZ(z) 
+  - transform3d(x,y,z)
 
 ### 过渡
 
