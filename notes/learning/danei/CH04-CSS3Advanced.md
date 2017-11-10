@@ -219,7 +219,7 @@ background-color: blue\9\0; /*IE9~10*/
 
 ### 转换
 
-#### 什么是转换
+#### 转换简介
 
 - 转换是改变元素在页面中的大小、位置、形状、角度的一种方式。
 - 转换也可以称之为变形。
@@ -288,7 +288,42 @@ background-color: blue\9\0; /*IE9~10*/
 
 ![image.png-21.8kB][6]
 
-02:55:03
+> 旋转坐标轴可不是小事，要提防！
+
+#### 3D转换
+
+#### perspective属性
+
+- 模拟 **人眼** 到 **3D变换物体** 之间的距离
+- 该属性要添加在 3D转换元素 的父元素上
+- 浏览器兼容性：chrom和safari： `-webkit-perspective: 数值;`
+
+#### 3D转换-旋转
+- 属性：transform
+- 取值：
+  - rotateX(ndeg) 
+  - rotateY(ndeg) 
+  - rotateZ(ndeg) 
+  - rotate3D(x,y,z,ndeg)：x、y、z取值为0说明该轴不参与旋转，取值为1说明该轴参与到旋转操作
+- 注意：
+  - `transform: rotate3D(1,1,1,45)` 与 
+  - `transform: rotatex(45) rotatey(45) rotatez(45)`
+  - 是不同的，上者为三个轴同时并发旋转，二下者为三个轴分别顺序旋转
+
+
+### 过渡
+
+
+
+### 动画
+
+
+
+### CSS优化
+
+
+
+
 
   [1]: http://static.zybuluo.com/szy0syz/h0dgdue2qmppyvapir77y9sv/content-generator.jpg
   [2]: http://static.zybuluo.com/szy0syz/5g2ha4e7mst5r1ymbruwmxvb/css3-counter.jpg
