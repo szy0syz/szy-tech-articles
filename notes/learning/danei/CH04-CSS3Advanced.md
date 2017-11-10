@@ -324,7 +324,12 @@ background-color: blue\9\0; /*IE9~10*/
   - transformZ(z)
   - transform3d(x,y,z)
 
-有个练习。
+- 练习：平面6模块3D旋转
+- 知识点：
+  - 1
+  - 2
+
+![3Drotate][7]
 
 ### 过渡
 
@@ -378,10 +383,10 @@ background-color: blue\9\0; /*IE9~10*/
 ### CSS优化
 
 
-
   [1]: http://static.zybuluo.com/szy0syz/h0dgdue2qmppyvapir77y9sv/content-generator.jpg
   [2]: http://static.zybuluo.com/szy0syz/5g2ha4e7mst5r1ymbruwmxvb/css3-counter.jpg
   [3]: http://static.zybuluo.com/szy0syz/hj76t782g5ran2goktz7tbyq/css3-column-count.jpg
   [4]: http://static.zybuluo.com/szy0syz/bs0v91139pmi8pvdmcdlyx61/image.png
   [5]: http://static.zybuluo.com/szy0syz/ckxo0lfnu7kdnjxu5fxviv19/image.png
   [6]: http://static.zybuluo.com/szy0syz/56nxjf6rgzs0z4bvyhjqse6p/image.png
+  [7]: http://ofx24fene.bkt.clouddn.com//img/blog/3Drotate.gif
