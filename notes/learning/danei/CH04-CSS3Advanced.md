@@ -383,7 +383,14 @@ background-color: blue\9\0; /*IE9~10*/
   - 属性：`transition: property duration timing-function delay;`
   - 注意：`transition:transform 2s linear, background 3s;`
 
-2个练习
+#### 练习一：过渡——方块过渡成圆形
+
+- 实现步骤：
+  1. 还是在#box元素本身加过渡，而不是在动态伪类上加。因为在元素本身加过渡效果“有去有回”，而在动态伪类上加则“有去无回”
+  2. 过渡四要素之一(必须)：过渡属性 `transition-property: border-radius;`
+  3. 过渡四要素之二(必须)：过渡时长 `transition-duration: 600ms;`
+  4. 过渡四要素之三(非必须)：过渡速率 `transition-timing-function: linear;`
+  5. 过渡四要素之四(非必须)：过渡延迟 `transition-delay: 10ms;`
 
 02：43：11
 
