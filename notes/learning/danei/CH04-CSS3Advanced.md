@@ -64,8 +64,8 @@
 
 #### 伪元素选择器
 
-- 伪类：匹配元素的不同状态，匹配到的仍然还是元素！
-- 为元素：匹配的是某个元素中的某部分内容(例如匹配div中的第一个行文字或第一个字)
+- **伪类：匹配元素的不同状态，匹配到的仍然还是元素！**
+- 伪元素：匹配的是某个元素中的某部分内容(例如匹配div中的第一个行文字或第一个字)
 - 语法：
   - `:first-letter` 或 `::first-letter` 匹配某元素的首字符
   - `:first-line` 或 `::first-line` 匹配某元素的首行字符
@@ -119,8 +119,8 @@
 
 ```css
 selector:before{
-  content: "";
-  display: table;
+	content: "";
+	display: table;
 }
 ```
 
@@ -324,12 +324,19 @@ background-color: blue\9\0; /*IE9~10*/
   - transformZ(z)
   - transform3d(x,y,z)
 
-- 练习：平面6模块3D旋转
-- 知识点：
-  - 1
-  - 2
+#### 练习要点
 
-![3Drotate][7]
+![image7][7]
+
+- 要求：如上动画所示
+- 步骤
+  1. 嵌套元素: #stage>#parent>div*6
+  2. #stage开启perspective属性，启动模拟人眼到3D变换物体之间的距离1200px
+  3. #parent先相对定位(服务内部6个div)，再开启`transform-style: preserve-3d;`属性，启动保留子元素的3D位置，最后再开启`transform: rotateX(-20deg) rotateY(0deg);`让#parent元素在水平方向的x轴上(2D层面)与原来的轴产生20°偏移，相当于向前偏移20°，再好比把原本与观众水平的观众座椅升高了，观众就是俯视！
+  4. 第一个div，x和y轴没啥变化，但z轴上，让div向着观众移动200px；
+  5. 第二个div，效果图中右边2号位置，记住移动先旋转，再位移，因为旋转了就改变了轴的指向，那才是我们需要的方向啊！`transform: rotateY(60deg) translateZ(200px);`让元素现以y轴旋转60°后再向z轴位移200px。说实话这里还有有点难理解的，我的技巧就是想象你在蒙古包里吃烤羊腿，把铁叉串号的羊腿以右边扶手转动时，一定时X轴转换，而把羊腿拿得里我们进一点是Z轴位移，再而在我们眼前平行着换是y轴旋转！
+  6. 剩下的以此类推，第三个`transform: rotateY(120deg) translateZ(200px);`，就Y转旋转度数在变化而已。
+  7. 关于动画里的旋转，只是我手工修改#parent元素的`transform: rotateY(110deg);`而已，这一步真的就很明显的感受到Y轴旋转了，你看，每次增加度数，其实就是让红色边框元素于垂直平面产生一定度数！
 
 ### 过渡
 
@@ -378,9 +385,14 @@ background-color: blue\9\0; /*IE9~10*/
 
 2个练习
 
+02：43：11
+
 ### 动画
 
+
+
 ### CSS优化
+
 
 
   [1]: http://static.zybuluo.com/szy0syz/h0dgdue2qmppyvapir77y9sv/content-generator.jpg
