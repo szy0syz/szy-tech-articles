@@ -383,7 +383,7 @@ background-color: blue\9\0; /*IE9~10*/
   - 属性：`transition: property duration timing-function delay;`
   - 注意：`transition:transform 2s linear, background 3s;`
 
-#### 练习一：过渡——方块过渡成圆形
+#### 练习一：过渡——方块过渡成圆形&圆球滚动
 
 - 实现步骤：
   1. 还是在#box元素本身加过渡，而不是在动态伪类上加。因为在元素本身加过渡效果“有去有回”，而在动态伪类上加则“有去无回”
@@ -391,8 +391,9 @@ background-color: blue\9\0; /*IE9~10*/
   3. 过渡四要素之二(必须)：过渡时长 `transition-duration: 600ms;`
   4. 过渡四要素之三(非必须)：过渡速率 `transition-timing-function: linear;`
   5. 过渡四要素之四(非必须)：过渡延迟 `transition-delay: 10ms;`
+  6. 圆球元素本身`transition: transform 1800ms;`
+  7. 源头动态伪类:hoder`transform: translateX(255px) rotatez(720deg);`，在这里必须先在X轴位移后再z轴旋转
 
-02：43：11
 
 ### 动画
 
