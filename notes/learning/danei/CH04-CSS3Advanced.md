@@ -385,6 +385,8 @@ background-color: blue\9\0; /*IE9~10*/
 
 #### 练习一：过渡——方块过渡成圆形&圆球滚动
 
+![image8][8]
+
 - 实现步骤：
   1. 还是在#box元素本身加过渡，而不是在动态伪类上加。因为在元素本身加过渡效果“有去有回”，而在动态伪类上加则“有去无回”
   2. 过渡四要素之一(必须)：过渡属性 `transition-property: border-radius;`
@@ -410,3 +412,4 @@ background-color: blue\9\0; /*IE9~10*/
   [5]: http://static.zybuluo.com/szy0syz/ckxo0lfnu7kdnjxu5fxviv19/image.png
   [6]: http://static.zybuluo.com/szy0syz/56nxjf6rgzs0z4bvyhjqse6p/image.png
   [7]: http://ofx24fene.bkt.clouddn.com//img/blog/3Drotate.gif
+  [8]: http://ofx24fene.bkt.clouddn.com//img/blog/transition.gif
