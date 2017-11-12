@@ -396,6 +396,17 @@ background-color: blue\9\0; /*IE9~10*/
   6. 圆球元素本身`transition: transform 1800ms;`
   7. 源头动态伪类:hoder`transform: translateX(255px) rotatez(720deg);`，在这里必须先在X轴位移后再z轴旋转
 
+#### 练习二：CSS3钟
+
+![image9][9]
+
+- 实现步骤：
+  - 让指针旋转点改到左边，然后沿z轴选择即可！
+
+----------
+
+
+ 
 
 ### 动画
 
@@ -413,3 +424,4 @@ background-color: blue\9\0; /*IE9~10*/
   [6]: http://static.zybuluo.com/szy0syz/56nxjf6rgzs0z4bvyhjqse6p/image.png
   [7]: http://ofx24fene.bkt.clouddn.com//img/blog/3Drotate.gif
   [8]: http://ofx24fene.bkt.clouddn.com//img/blog/transition.gif
+  [9]: http://ofx24fene.bkt.clouddn.com//img/blog/clock.gif
