@@ -231,10 +231,10 @@ background-color: blue\9\0; /*IE9~10*/
   - 属性：`transform`
   - 取值：
     1 `none`
-    2 `tansform-functions`，一组转换函数，表示一个或多个转换函数，多个的话，用 空格 隔开
+    2 `transform-functions`，一组转换函数，表示一个或多个转换函数，多个的话，用 空格 隔开
 
 - 转换原点
-  - 属性：`tansform-origin`
+  - 属性：`transform-origin`
   - 默认：原点在元素的中心处
   - 取值：
     1 两个值: 值1(x) 值2(y)
@@ -355,7 +355,7 @@ background-color: blue\9\0; /*IE9~10*/
 
 - 指定过渡属性
   - 属性：`transition-property`
-  - 取值：none | all | property-name 
+  - 取值：none | all | property-name
   - ex: `transition-property: background;` `transition-property: border-radius;`
 - 允许设置过渡效果的属性：
   - 颜色属性：color, background-color, border-color
