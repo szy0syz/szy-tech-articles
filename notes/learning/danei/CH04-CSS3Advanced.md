@@ -405,12 +405,47 @@ background-color: blue\9\0; /*IE9~10*/
 
 ----------
 
-
- 
-
 ### 动画
 
+#### 什么是动画
 
+- 使元素从一种样式逐渐变化为另一种样式的过程
+- css中实现动画，会存在兼容性问题，与动画相关的操作尽量加上浏览器前缀
+
+#### 使用步骤
+
+- 定义动画
+  - 指定动画名称以及创建动画中的每个状态(关键帧)
+- 为元素调用动画
+  - 指定 调用的动画名称、时长、播放次数......
+- 声明动画
+  - 指定动画名称及各个关键帧
+  - 关键帧：当前元素状态的 **时间点** 及 **样式**
+  - 语法：
+
+```css
+/* 在样式中声明：*/
+    @keyframes animationName  {
+        0%{
+            /*动画开始时的 样式 0%可写成 from */
+        }
+        /* 50% {...} */
+        100%{
+            /*动画结束时的 样式 100%可写成 to */
+        }
+    }
+```
+
+- 调用动画(动画属性)
+  - `animation-name` 指定调用动画的名称
+  - `animation-duration` 指定动画完成一个周期所需用的时间s|ms
+  - `animation-timing-function` 指定动画的速率，取值ease/linear/ease-in/ease-in-out
+  - `animation-delay` 指定动画的延迟s|ms
+  - `animation-iteration-count` 指定动画播放次数，取值数字、infinite无限播放
+  - `animation-direction` 指定动画播放方向，默认为0%->100%。取值normal默认、reverse逆向播放(100%->0%)、alternate轮流播放，奇偶次播放(0%->100%->0%)
+  - 简写：`animation`，取值`name duration timing-function delay iteration-count direction;`
+  - `animation-fill-mode` 规定动画播放前后的填充效果，取值`none`默认-无填充效果、`forwards`动画播放完城后会保持在最后一帧的状态上，`backwards`动画播放前，应用在第一帧的状态上(只在有延迟(delay)时间内才会显示在 第一帧上)，`both` 动画播放前后，分别采用对应的填充状态
+  - `animation-play-state` 规定动画播放还是暂停 取值 paused暂停 和running播放
 
 ### CSS优化
 
