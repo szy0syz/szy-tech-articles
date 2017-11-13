@@ -447,6 +447,14 @@ background-color: blue\9\0; /*IE9~10*/
   - `animation-fill-mode` 规定动画播放前后的填充效果，取值`none`默认-无填充效果、`forwards`动画播放完城后会保持在最后一帧的状态上，`backwards`动画播放前，应用在第一帧的状态上(只在有延迟(delay)时间内才会显示在 第一帧上)，`both` 动画播放前后，分别采用对应的填充状态
   - `animation-play-state` 规定动画播放还是暂停 取值 paused暂停 和running播放
 
+#### 动画练习1
+
+- 要求：在原来6方块demo中加入，打开网页无限循环，鼠标停留在#parent上就暂停动画。
+- 步骤：
+  - 定义关键帧from - to，
+  - 给#parent加animation属性，打开网页就无限旋转 
+  - #parent:hover时`animation-play-state: paused;`
+  
 ### CSS优化
 
 
