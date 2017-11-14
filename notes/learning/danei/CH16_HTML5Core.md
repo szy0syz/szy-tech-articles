@@ -8,6 +8,12 @@
 
 ### (1)新的语义标签和属性
 
+#### 面试题：Flashb被HTML5取代在哪些方面？
+- 音频和视频 ———— `<video>` 和 `<audio>`
+- 绘图       ———— `<canvas>`
+- 动画和游戏 ———— `<canvas>` + 定时器
+- 统计图表   ———— `<canvas>` 和 `<svg>`
+- 客户端数据存储 ———— WebStorage
 
 ### (2)表单新特性
 
@@ -18,8 +24,7 @@
 - 表单元素的新属性 —— 12个
   - autocomplete(自动补全)、autofoucus、placeholder(占位符)、multipe、form
   - 验证相关属性 required、maxlength、minlength、max、min、step(限定步长,只能是偶数)、patten(样式验证)
-
-24：32
+- 有个练习
 
 ### (3)视频和音频
 
@@ -49,3 +54,4 @@
 
 - 要注意html5标准表单书写方式
   - `label.control-label+input.form-control+span.help-block`
+  - 表单中每一列之间有点像素的间隔
