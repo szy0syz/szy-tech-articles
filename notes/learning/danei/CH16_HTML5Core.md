@@ -8,8 +8,7 @@
 
 ### (1)新的语义标签和属性
 
-#### 面试题：Flashb被HTML5取代在哪些方面？
-
+##### 面试题：Flashb被HTML5取代在哪些方面？
 - 音频和视频 ———— `<video>` 和 `<audio>`
 - 绘图       ———— `<canvas>`
 - 动画和游戏 ———— `<canvas>` + 定时器
@@ -79,16 +78,4 @@ unit03--01：09：31
 ### (10)WebSocket
 
 
-<<<<<<< HEAD
   [1]: https://www.html5rocks.com/zh/tutorials/forms/html5forms/
-=======
-<<<<<<< HEAD
-  [1]: https://www.html5rocks.com/zh/tutorials/forms/html5forms/
-=======
-### homework01 HTML5表单基础样式
-
-- 要注意html5标准表单书写方式
-  - `label.control-label+input.form-control+span.help-block`
-  - 表单中每一列之间有点像素的间隔
->>>>>>> 2b174b67ee7b0a977f7624c973efeae225585f20
->>>>>>> cf2145affd445d16e11f90413d864313abb6afc8
