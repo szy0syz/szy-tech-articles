@@ -9,6 +9,7 @@
 ### (1)新的语义标签和属性
 
 ##### 面试题：Flashb被HTML5取代在哪些方面？
+
 - 音频和视频 ———— `<video>` 和 `<audio>`
 - 绘图       ———— `<canvas>`
 - 动画和游戏 ———— `<canvas>` + 定时器
@@ -24,6 +25,7 @@
 - 表单元素的新属性 —— 12个
   - autocomplete(自动补全)、autofoucus、placeholder(占位符)、multipe、form
   - 验证相关属性 required、maxlength、minlength、max、min、step(限定步长,只能是偶数)、patten(样式验证)
+
 - homework-HTML5表单练习
   - 要注意html5标准表单书写方式
   - `.form-group>label.control-label+input.form-control+span.help-block`
@@ -58,4 +60,12 @@
 ### (10)WebSocket
 
 
+<<<<<<< HEAD
   [1]: https://www.html5rocks.com/zh/tutorials/forms/html5forms/
+=======
+### homework01 HTML5表单基础样式
+
+- 要注意html5标准表单书写方式
+  - `label.control-label+input.form-control+span.help-block`
+  - 表单中每一列之间有点像素的间隔
+>>>>>>> 2b174b67ee7b0a977f7624c973efeae225585f20

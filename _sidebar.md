@@ -51,6 +51,7 @@
   - [珠峰React-Router-v4学习笔记](/notes/learning/react/zf-react-router.md)
   - [达内前端培训CH02_CSS3Basic](/notes/learning/danei/CH02-CSS3Basic.md)
   - [达内前端培训CH04_CSS3Advanced](/notes/learning/danei/CH04-CSS3Advanced.md)
+  - [达内前端培训 CH16_HTML5Core](/notes/learning/danei/CH16_HTML5Core.md)
 
 - 读书笔记
   - [《JavaScript权威指南（第6版）》](/notes/reading/9787111376613/README.md)
