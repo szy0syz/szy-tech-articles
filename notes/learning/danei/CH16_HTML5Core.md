@@ -8,7 +8,7 @@
 
 ### (1)新的语义标签和属性
 
-#### 面试题：Flashb被HTML5取代在哪些方面？
+##### 面试题：Flashb被HTML5取代在哪些方面？
 - 音频和视频 ———— `<video>` 和 `<audio>`
 - 绘图       ———— `<canvas>`
 - 动画和游戏 ———— `<canvas>` + 定时器
@@ -24,13 +24,41 @@
 - 表单元素的新属性 —— 12个
   - autocomplete(自动补全)、autofoucus、placeholder(占位符)、multipe、form
   - 验证相关属性 required、maxlength、minlength、max、min、step(限定步长,只能是偶数)、patten(样式验证)
-- 有个练习
+- homework-HTML5表单练习
+  - 要注意html5标准表单书写方式
+  - `.form-group>label.control-label+input.form-control+span.help-block`
+  - 表单中每一列拿个`div`包起来，且用个`.form-group`
+  - `.control-label`为控件标签、`input.form-control`为表单控件(表单每一列最好只要一个表单控件)、`span.help-block`为帮助块(用作提示作用)
+  - 表单中每一列之间有点像素的间隔，`.form-group:not(:last-child)`先选择所有.form-group元素然后在集合里排除最后一个子元素
+  - 每个表单控件对象都有`validity`属性，在其中包含了很多验证相关的属性
+  - `this.setCustomValidity(msg)`设置自定义验证消息
+- HTML5表单文章收藏: [利用 HTML5 美化表单 - HTML5 Rocks][1]
 
 ### (3)视频和音频
 
+- 讲义里
 
 ### (4)Canvas绘图
 
+```js
+<canvas id="c1" width="600" height="400"></canvas>
+var ctx = c1.getContext('2d');
+```
+
+> Canvas可以理解为画布，通过js获取上下文后使用JavaScript代码绘图，所以属于JavaScript绘图技术。
+
+unit03--01：09：31
+
+#### 常用属性
+
+
+
+#### 常用方法
+
+
+#### 注意
+
+- 绝对不要用CSS指定canvas的宽和高(如指定800*600)，因为那是没用实际作用，并没有实际扩大了画布大小，而是把画布默认300px*150px的大小放大8/3 + 6/1.5倍数的大小
 
 ### (5)SVG绘图
 
@@ -50,8 +78,4 @@
 ### (10)WebSocket
 
 
-### homework01 HTML5表单基础样式
-
-- 要注意html5标准表单书写方式
-  - `label.control-label+input.form-control+span.help-block`
-  - 表单中每一列之间有点像素的间隔
+  [1]: https://www.html5rocks.com/zh/tutorials/forms/html5forms/
