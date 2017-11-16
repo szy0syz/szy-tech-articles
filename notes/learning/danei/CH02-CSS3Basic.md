@@ -472,7 +472,7 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
     1. `value1 value2` 指定背景图片的宽度和高度，以px为单位
     2. `value1% value2%` 采用当前元素的宽和高的百分比计算此背景图片的大小
     3. `cover` 覆盖，将背景图等比放大，只到背景图完全覆盖到元素的所有区域为止(背景图放太大，显示不完整，看不全了)
-    4. `contain` 包含，将背景图等比放大直到背景图的下边或右边有一个边缘碰到元素为止
+    4. contain 包含，将背景图等比放大直到背景图的下边或右边有一个边缘碰到元素为止
 
 - 背景图片固定
   - 属性：background-attachment
@@ -511,6 +511,7 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,pre{
 ### 渐变
 
 #### 什么是渐变？
+
 两种或多种颜色间平滑过度的效果
 
 - 分类
@@ -973,9 +974,9 @@ background-image: -o-linear-gradient();
 - 属性：z-index
 - 取值：没有单位的数字，值越大，越靠上；值越小，越靠下；可取负值，取负值的话，该元素在页面所有元素内容之下
 - 注意：
-  - z-index：只能作用在，relative、absolute、fixed 定位的元素上
-  - 如果不指定z-index，则后来者居上
-  - 父子关系(层级)的元素不能使用z-index修改堆叠效果，永远都是子压父之上
+  - **z-index：只能作用在，relative、absolute、fixed 定位过的元素上**
+  - **如果不指定z-index，则后来者居上**
+  - **父子关系(层级)的元素不能使用z-index修改堆叠效果，永远都是子压父之上**
 
 #### 固定定位
 
@@ -1014,4 +1015,3 @@ background-image: -o-linear-gradient();
   [13]: http://static.zybuluo.com/szy0syz/xg1bpv04opikn38zd42y9y22/image.png
   [14]: http://static.zybuluo.com/szy0syz/clo3zmg6vqu947pj9ebnd675/image.png
   [15]: http://static.zybuluo.com/szy0syz/rlo3e00o6zpysvzjvvp43jxd/image.png
-
