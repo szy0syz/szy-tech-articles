@@ -9,6 +9,7 @@
 ### (1)新的语义标签和属性
 
 ##### 面试题：Flashb被HTML5取代在哪些方面？
+
 - 音频和视频 ———— `<video>` 和 `<audio>`
 - 绘图       ———— `<canvas>`
 - 动画和游戏 ———— `<canvas>` + 定时器
@@ -60,6 +61,14 @@ unit03--01：09：31
 
 - 绝对不要用CSS指定canvas的宽和高(如指定800*600)，因为那是没用实际作用，并没有实际扩大了画布大小，而是把画布默认300px*150px的大小放大8/3 + 6/1.5倍数的大小
 
+#### 使用Canvas绘制路径(Path)
+
+- 提示：Canvas中的概念与photoshop中钢笔类似的。
+  - 路径本身不可见，有三个用途：描边、填充(闭合)、裁剪(闭合)
+- Canvas中与路径绘制相关的方法：
+
+![image.png-24.2kB][2]
+
 ### (5)SVG绘图
 
 
@@ -79,3 +88,4 @@ unit03--01：09：31
 
 
   [1]: https://www.html5rocks.com/zh/tutorials/forms/html5forms/
+  [2]: http://static.zybuluo.com/szy0syz/zwtvtvpy3vqwqlydc47qutnv/image.png
