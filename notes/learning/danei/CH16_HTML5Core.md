@@ -69,6 +69,32 @@ unit03--01：09：31
 
 ![image.png-24.2kB][2]
 
+#### Canvas练习
+
+- 使用Canvas绘制简单的坐标轴
+  - ![image.png-2.5kB][3] 
+- 使用圆供和定时器绘制可以前进的进度条
+  - ![image.png-44kB][4]
+  - 解题思路：
+- 创建一个函数`openMouth()`，在画布上绘制如下的图形：
+  - ![image.png-15.1kB][5] 
+- 创建一个函数`closeMouth()`，在画布上绘制如下的图形：
+  - ![image.png-12.3kB][6]
+- 使用定时器，不停的调用openMouth()和closeMouth()函数 
+
+#### 小结：Canvas可以绘制的内容
+
+- 矩形
+- 文本
+- 路径 —— 描边、填充、裁剪
+- 图像
+
+#### 绘图上下文的状态和修改 ———— 难点&晦涩
+
+- `var ctx = canvas.getContext('2d');`
+- 可以将绘图上下文对象进行变形(transform)
+  -  
+
 ### (5)SVG绘图
 
 
@@ -89,3 +115,7 @@ unit03--01：09：31
 
   [1]: https://www.html5rocks.com/zh/tutorials/forms/html5forms/
   [2]: http://static.zybuluo.com/szy0syz/zwtvtvpy3vqwqlydc47qutnv/image.png
+  [3]: http://static.zybuluo.com/szy0syz/s8cqrxed2z260z74078trk7o/image.png
+  [4]: http://static.zybuluo.com/szy0syz/yfjlkfmosved6ivq1ze2iem2/image.png
+  [5]: http://static.zybuluo.com/szy0syz/qkpsz65o5zgal639wukbc49t/image.png
+  [6]: http://static.zybuluo.com/szy0syz/if0flbc0h5gf2eq8gf40y7nj/image.png
