@@ -84,12 +84,14 @@ unit03--01：09：31
 
 #### 小结：Canvas可以绘制的内容
 
-- 矩形
-- 文本
+- 矩形：`ctx.fillRect()` `ctx.strokeRect()` `ctx.clearRect()`
+- 文本：`ctx.fillText()` `ctx.strokeText()` `ctx.measureText()`
 - 路径 —— 描边、填充、裁剪
-- 图像
+  - `ctx.beginPath()` `ctx.closePath()` `ctx.moveTo` `ctx.lineTo` `ctx.arc` `ctx.stroke()` `ctx.fill()` `ctx.clip()`
+- 图像 `ctx.drawImage()`
+- 状态 `ctx.translate()` `ctx.rotate()` `ctx.scale()` `ctx.save()` `ctx.restore()`
 
-#### 绘图上下文的状态和修改 ———— 难点&晦涩
+#### 绘图上下文的状态和恢复———— 难点&晦涩
 
 - `var ctx = canvas.getContext('2d');`
 - 可以将 **绘图上下文对象(即画笔对象)** 进行变形(transform) —— 与对Canvas元素施加CSS Transform样式不同，绘图上下文的变形只影响当前绘制的图形图像内容
@@ -97,9 +99,18 @@ unit03--01：09：31
   - ![image.png-12.8kB][7]
   - `ctx.rotate()` 画笔旋转，则内容旋转，轴点在坐标轴原点
   - `ctx.scale()` 缩放
+  - `ctx.save()` 保存绘图上下文(画笔)当前的变形数据
+  - `ctx.restore()` 恢复最近一次保存的画笔的变形相关状态
 - 画笔的平移、旋转、缩放有累加效果！
 - 练习：绘制四个小飞机，各在画布的一个角且绕着自己的中心在旋转。
   - 注意：先将轴点translate到第一个小飞机中心，再translate做左上角，再translate到第二个小飞机中心点，旋转后再回左上角，以此类推... 
+
+#### 项目中Canvas技术的注意应用
+
+1. 绘制统计图
+2. 小游戏
+3. 绘图板
+4. 动态背景(交互+动画)
 
 ### (5)SVG绘图
 
