@@ -2,10 +2,6 @@
 
 [TOC]
 
-## Unit1 HTML5表单元素、HTML5表单属性、HTML5表单验证
-
-## HTML5新特性
-
 ### (1)新的语义标签和属性
 
 ##### 面试题：Flashb被HTML5取代在哪些方面？
@@ -48,14 +44,30 @@ var ctx = c1.getContext('2d');
 
 > Canvas可以理解为画布，通过js获取上下文后使用JavaScript代码绘图，所以属于JavaScript绘图技术。
 
-unit03--01：09：31
-
 #### 常用属性
+
+- ctx.fillStyle = 颜色/渐变对象
+- ctx.strokeStyle =颜色/渐变对象
+- ctx.lineWidth = 1
+- ctx.font = '10px sans-serif'
+- ctx.textBaseline = 'alphabetic'
+- ctx.shadowColor = 'rgba(0,0,0,0)'
+- ctx.shadowOffsetX = 0
+- ctx.shadowOffsetY = 0
+- ctx.shadowBlur = 0
 
 
 
 #### 常用方法
 
+- 矩形
+  - ctx.fillRect(x, y, w, h)
+  - ctx.strokeRect(x, y, w, h)
+  - ctx.clearRect(x, y, w, h)
+- 绘制文本
+  - ctx.fillText(txt, x, y)
+  - ctx.strokeText(txt, x, y)
+  - ctx.measureText(txt).width
 
 #### 注意
 
@@ -112,6 +124,39 @@ unit03--01：09：31
 3. 绘图板
 4. 动态背景(交互+动画)
 
+#### Canvas第三方库Chartjs
+
+- 一款开源的、提供了8种图表的、基于Canvas、响应式图表绘制工具库。
+- 参考Demo
+
+```js
+new Chart(CanvasCtx, {
+    type: ‘bar’,  // 图表类型，共有8种
+    data: {},     // 图表必须的数据
+    options: {}   // 可选项
+});
+```
+
+#### homework04 随机验证码
+
+- 使用Canvas绘制一个随机改变的验证码图片
+  - var str = 'ABCDEFGHJKLMNPQRSTWXY3456789';
+  - var char = str[ 0~字符串长度间的随机数 ];
+- 要求：
+  - 画布背景颜色随机(浅色) ctx.fillRect()
+  - 文字内容随机、大小随机，颜色随机(深色)、旋转角度随机
+  - 5条随机干扰线（深色），处于文字上方
+  - 100个杂色点（半径为1为圆），处于文字上方
+
+#### homework05 网易云音乐界面
+
+![image.png-28kB][8]
+
+- 仿网易云音乐的播放界面
+  - 点击播放按钮，碟片开始旋转，背景音乐开始播放；
+  - 再次点击播放按钮，碟片停止旋转，背景音乐停止播放。
+
+  
 ### (5)SVG绘图
 
 
@@ -137,3 +182,4 @@ unit03--01：09：31
   [5]: http://static.zybuluo.com/szy0syz/qkpsz65o5zgal639wukbc49t/image.png
   [6]: http://static.zybuluo.com/szy0syz/if0flbc0h5gf2eq8gf40y7nj/image.png
   [7]: http://static.zybuluo.com/szy0syz/lw4nw5dwx6j8v3h470iy78gs/image.png
+  [8]: http://static.zybuluo.com/szy0syz/km3z6dcad4jfp8s4bdz83p3u/image.png
