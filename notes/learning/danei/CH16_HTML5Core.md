@@ -92,8 +92,14 @@ unit03--01：09：31
 #### 绘图上下文的状态和修改 ———— 难点&晦涩
 
 - `var ctx = canvas.getContext('2d');`
-- 可以将绘图上下文对象进行变形(transform)
-  -  
+- 可以将 **绘图上下文对象(即画笔对象)** 进行变形(transform) —— 与对Canvas元素施加CSS Transform样式不同，绘图上下文的变形只影响当前绘制的图形图像内容
+  - `ctx.translate()` 坐标轴原点平移到指定点，所有点的坐标都发生改变
+  - ![image.png-12.8kB][7]
+  - `ctx.rotate()` 画笔旋转，则内容旋转，轴点在坐标轴原点
+  - `ctx.scale()` 缩放
+- 画笔的平移、旋转、缩放有累加效果！
+- 练习：绘制四个小飞机，各在画布的一个角且绕着自己的中心在旋转。
+  - 注意：先将轴点translate到第一个小飞机中心，再translate做左上角，再translate到第二个小飞机中心点，旋转后再回左上角，以此类推... 
 
 ### (5)SVG绘图
 
@@ -119,3 +125,4 @@ unit03--01：09：31
   [4]: http://static.zybuluo.com/szy0syz/yfjlkfmosved6ivq1ze2iem2/image.png
   [5]: http://static.zybuluo.com/szy0syz/qkpsz65o5zgal639wukbc49t/image.png
   [6]: http://static.zybuluo.com/szy0syz/if0flbc0h5gf2eq8gf40y7nj/image.png
+  [7]: http://static.zybuluo.com/szy0syz/lw4nw5dwx6j8v3h470iy78gs/image.png
