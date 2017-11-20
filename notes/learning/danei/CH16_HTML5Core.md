@@ -114,6 +114,13 @@ var ctx = c1.getContext('2d');
   - `ctx.save()` 保存绘图上下文(画笔)当前的变形数据
   - `ctx.restore()` 恢复最近一次保存的画笔的变形相关状态
 - 画笔的平移、旋转、缩放有累加效果！
+- 心法：：在Canvas中绘制一个旋转的飞机
+  - 首先在循环外`translate(x,y)`移动坐标原点只目标坐标(如画布中央)
+  - 然后进入循环定时器
+  - 先清整个画布(因为移动了坐标点，清除的起始坐标为-x,-y)
+  - 再移动画笔5度
+  - 最后画飞机，因坐标已经移动到，画的坐标仅需-planeWidth和-planeHeight即可
+  - 进入循环~
 - 练习：绘制四个小飞机，各在画布的一个角且绕着自己的中心在旋转。
   - 注意：先将轴点translate到第一个小飞机中心，再translate做左上角，再translate到第二个小飞机中心点，旋转后再回左上角，以此类推... 
 
@@ -150,7 +157,7 @@ new Chart(CanvasCtx, {
 
 #### homework05 网易云音乐界面
 
-![image.png-28kB][8]
+![image.png-141.2kB][8]
 
 - 仿网易云音乐的播放界面
   - 点击播放按钮，碟片开始旋转，背景音乐开始播放；
@@ -182,4 +189,4 @@ new Chart(CanvasCtx, {
   [5]: http://static.zybuluo.com/szy0syz/qkpsz65o5zgal639wukbc49t/image.png
   [6]: http://static.zybuluo.com/szy0syz/if0flbc0h5gf2eq8gf40y7nj/image.png
   [7]: http://static.zybuluo.com/szy0syz/lw4nw5dwx6j8v3h470iy78gs/image.png
-  [8]: http://static.zybuluo.com/szy0syz/km3z6dcad4jfp8s4bdz83p3u/image.png
+  [8]: http://static.zybuluo.com/szy0syz/dqafl7fz994duutvlhqh0ubw/image.png
