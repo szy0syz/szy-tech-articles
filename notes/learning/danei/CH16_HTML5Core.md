@@ -83,15 +83,22 @@ var ctx = c1.getContext('2d');
 
 #### Canvas练习
 
+![image.png-2.5kB][3] 
+
 - 使用Canvas绘制简单的坐标轴
-  - ![image.png-2.5kB][3] 
+
+![image.png-44kB][4]
+
 - 使用圆供和定时器绘制可以前进的进度条
-  - ![image.png-44kB][4]
   - 解题思路：
 - 创建一个函数`openMouth()`，在画布上绘制如下的图形：
-  - ![image.png-15.1kB][5] 
+
+![image.png-15.1kB][5] 
+
 - 创建一个函数`closeMouth()`，在画布上绘制如下的图形：
-  - ![image.png-12.3kB][6]
+
+![image.png-12.3kB][6]
+
 - 使用定时器，不停的调用openMouth()和closeMouth()函数 
 
 #### 小结：Canvas可以绘制的内容
@@ -106,9 +113,11 @@ var ctx = c1.getContext('2d');
 #### 绘图上下文的状态和恢复———— 难点&晦涩
 
 - `var ctx = canvas.getContext('2d');`
+
+![image.png-12.8kB][7]
+
 - 可以将 **绘图上下文对象(即画笔对象)** 进行变形(transform) —— 与对Canvas元素施加CSS Transform样式不同，绘图上下文的变形只影响当前绘制的图形图像内容
   - `ctx.translate()` 坐标轴原点平移到指定点，所有点的坐标都发生改变
-  - ![image.png-12.8kB][7]
   - `ctx.rotate()` 画笔旋转，则内容旋转，轴点在坐标轴原点
   - `ctx.scale()` 缩放
   - `ctx.save()` 保存绘图上下文(画笔)当前的变形数据
