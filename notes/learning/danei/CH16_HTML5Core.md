@@ -4,7 +4,7 @@
 
 ### (1)新的语义标签和属性
 
-##### 面试题：Flashb被HTML5取代在哪些方面？
+##### 面试题：Flashb被HTML5取代在哪些方面
 
 - 音频和视频 ———— `<video>` 和 `<audio>`
 - 绘图       ———— `<canvas>`
@@ -131,7 +131,7 @@ var ctx = c1.getContext('2d');
   - 最后画飞机，因坐标已经移动到，画的坐标仅需-planeWidth和-planeHeight即可
   - 进入循环~
 - 练习：绘制四个小飞机，各在画布的一个角且绕着自己的中心在旋转。
-  - 注意：先将轴点translate到第一个小飞机中心，再translate做左上角，再translate到第二个小飞机中心点，旋转后再回左上角，以此类推... 
+  - 注意：先将轴点translate到第一个小飞机中心，再translate做左上角，再translate到第二个小飞机中心点，旋转后再回左上角，以此类推...
 
 #### 项目中Canvas技术的注意应用
 
