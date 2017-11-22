@@ -166,12 +166,15 @@ new Chart(CanvasCtx, {
 
 #### homework05 网易云音乐界面
 
-![image.png-141.2kB][8]
+![image.png-141.2kB][8]![m云音乐.png-152.5kB][9]
 
 - 仿网易云音乐的播放界面
   - 点击播放按钮，碟片开始旋转，背景音乐开始播放；
   - 再次点击播放按钮，碟片停止旋转，背景音乐停止播放。
 
+- V1版项目完成心得：
+  - V1仅按照iphone5实现界面，V2使用rem重新做。
+  - 项目一开始一个container容器包裹，然后开始分开
   
 ### (5)SVG绘图
 
@@ -199,3 +202,4 @@ new Chart(CanvasCtx, {
   [6]: http://static.zybuluo.com/szy0syz/if0flbc0h5gf2eq8gf40y7nj/image.png
   [7]: http://static.zybuluo.com/szy0syz/lw4nw5dwx6j8v3h470iy78gs/image.png
   [8]: http://static.zybuluo.com/szy0syz/dqafl7fz994duutvlhqh0ubw/image.png
+  [9]: http://static.zybuluo.com/szy0syz/j4qvoxcg4ki7yw4sdjt1ur3t/m%E4%BA%91%E9%9F%B3%E4%B9%90.png
