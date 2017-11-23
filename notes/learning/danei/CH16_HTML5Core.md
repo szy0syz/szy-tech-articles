@@ -291,12 +291,35 @@ new Chart(CanvasCtx, {
   - SVG图形的样式可以用HTML属性赋值，也可以使用CSS形式，但不接受普通CSS样式！只能使用SVG元素的专有样式属性。
   - 使用JS修改时不能直接`myRect.x=200`，因为这样是能修改dom对象上新增一个x属性并赋值200，对SVG元素不生效，必须使用修改核心dom属性的方式修改，`rect.setAttribute('width', w);`，直接修改文档中dom元素的核心(行内)属性。
   - 所有的SVG图形的属性不属于HTMLDOM标准，只能使用核心DOM方法操作其属性：`rect.setAttribute(key,val)`
+  - 使用JS动态添加SVG元素时，要么用`svg.innerHTML=""`覆盖，要么`document.createElementNS(ns,tag)`创建，不能直接使用`document.createElement(tag)`
 
 ![501511449222_.pic.jpg-22.7kB][10]
 
 - 练习：
   - 在SVG画布上绘制一个矩形，从左到只右移动，同时填充颜色还在不停的变化
   - 根据如下json数据，绘制柱状统计图：
+
+```js
+  var x = 0, step = 10, dir = 0;
+  function randomColor() {
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    return "rgb(" + r + "," + g + "," + b + ")";
+  }
+  setInterval(function () {
+    rect.setAttribute('fill', randomColor());
+    if (x >= 500) {
+      dir = 1;
+    }
+    if (x <= 0) {
+      dir = 0;
+    }
+    x = dir === 0 ? x + step : x - step;
+    rect.setAttribute('x', x);
+  }, 50);
+```
+
 
 ## (6)地理定位
 
