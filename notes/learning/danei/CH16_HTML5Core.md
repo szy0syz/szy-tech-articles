@@ -215,6 +215,38 @@ new Chart(CanvasCtx, {
 - Adobe Photoshop：处理**位图**————每幅图像由点(RGB)组成，用于描述颜色的细节变化，可用于照片等领域，但放大后会出现马赛克失真。
 - Adobe Illustrator：处理**矢量图**————每幅图像由线条(需要指定方向和值)，可以无限缩放而不失真—————不善于描述颜色的细节变化
 
+### SVG基本使用
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<!--XML Name Space: 命名空间，指定当前标签用于何种语境-->
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+    <rect width="100" height="50"></rect>
+</svg>
+```
+
+#### H5之前只用SVG
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>started</title>
+</head>
+<body>
+    <h3>Html5之前只用SVG</h3>
+    <img src="started.svg" alt="svg">
+    <hr>
+    <iframe src="started.svg" frameborder="0"></iframe>
+    <hr>
+    <object data="started.svg"></object>
+    <hr>
+    <embed src="started.svg" >
+</body>
+</html>
+```
+
 ## (6)地理定位
 
 
