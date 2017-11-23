@@ -2,9 +2,9 @@
 
 [TOC]
 
-### (1)新的语义标签和属性
+## (1)新的语义标签和属性
 
-##### 面试题：Flashb被HTML5取代在哪些方面
+#### 面试题：Flashb被HTML5取代在哪些方面
 
 - 音频和视频 ———— `<video>` 和 `<audio>`
 - 绘图       ———— `<canvas>`
@@ -12,7 +12,7 @@
 - 统计图表   ———— `<canvas>` 和 `<svg>`
 - 客户端数据存储 ———— WebStorage
 
-### (2)表单新特性
+## (2)表单新特性
 
 - 新的input type —— 10个
   - email、url、number、tel(PC无效果,手机端弹出拨号盘)、search、range(滑块选择)、color(颜色选择)、date(日期选择)、month、week
@@ -31,11 +31,11 @@
   - `this.setCustomValidity(msg)`设置自定义验证消息
 - HTML5表单文章收藏: [利用 HTML5 美化表单 - HTML5 Rocks][1]
 
-### (3)视频和音频
+## (3)视频和音频
 
 - 讲义里
 
-### (4)Canvas绘图
+## (4)Canvas绘图
 
 ```js
 <canvas id="c1" width="600" height="400"></canvas>
@@ -44,7 +44,7 @@ var ctx = c1.getContext('2d');
 
 > Canvas可以理解为画布，通过js获取上下文后使用JavaScript代码绘图，所以属于JavaScript绘图技术。
 
-#### 常用属性
+### 常用属性
 
 - ctx.fillStyle = 颜色/渐变对象
 - ctx.strokeStyle =颜色/渐变对象
@@ -56,9 +56,7 @@ var ctx = c1.getContext('2d');
 - ctx.shadowOffsetY = 0
 - ctx.shadowBlur = 0
 
-
-
-#### 常用方法
+### 常用方法
 
 - 矩形
   - ctx.fillRect(x, y, w, h)
@@ -69,11 +67,11 @@ var ctx = c1.getContext('2d');
   - ctx.strokeText(txt, x, y)
   - ctx.measureText(txt).width
 
-#### 注意
+### 注意
 
 - 绝对不要用CSS指定canvas的宽和高(如指定800*600)，因为那是没用实际作用，并没有实际扩大了画布大小，而是把画布默认300px*150px的大小放大8/3 + 6/1.5倍数的大小
 
-#### 使用Canvas绘制路径(Path)
+### 使用Canvas绘制路径(Path)
 
 - 提示：Canvas中的概念与photoshop中钢笔类似的。
   - 路径本身不可见，有三个用途：描边、填充(闭合)、裁剪(闭合)
@@ -81,7 +79,7 @@ var ctx = c1.getContext('2d');
 
 ![image.png-24.2kB][2]
 
-#### Canvas练习
+### Canvas练习
 
 ![image.png-2.5kB][3] 
 
@@ -101,7 +99,7 @@ var ctx = c1.getContext('2d');
 
 - 使用定时器，不停的调用openMouth()和closeMouth()函数 
 
-#### 小结：Canvas可以绘制的内容
+### 小结：Canvas可以绘制的内容
 
 - 矩形：`ctx.fillRect()` `ctx.strokeRect()` `ctx.clearRect()`
 - 文本：`ctx.fillText()` `ctx.strokeText()` `ctx.measureText()`
@@ -110,7 +108,7 @@ var ctx = c1.getContext('2d');
 - 图像 `ctx.drawImage()`
 - 状态 `ctx.translate()` `ctx.rotate()` `ctx.scale()` `ctx.save()` `ctx.restore()`
 
-#### 绘图上下文的状态和恢复———— 难点&晦涩
+### 绘图上下文的状态和恢复———— 难点&晦涩
 
 - `var ctx = canvas.getContext('2d');`
 
@@ -133,14 +131,14 @@ var ctx = c1.getContext('2d');
 - 练习：绘制四个小飞机，各在画布的一个角且绕着自己的中心在旋转。
   - 注意：先将轴点translate到第一个小飞机中心，再translate做左上角，再translate到第二个小飞机中心点，旋转后再回左上角，以此类推...
 
-#### 项目中Canvas技术的注意应用
+### 项目中Canvas技术的注意应用
 
 1. 绘制统计图
 2. 小游戏
 3. 绘图板
 4. 动态背景(交互+动画)
 
-#### Canvas第三方库Chartjs
+### Canvas第三方库Chartjs
 
 - 一款开源的、提供了8种图表的、基于Canvas、响应式图表绘制工具库。
 - 参考Demo
@@ -153,7 +151,7 @@ new Chart(CanvasCtx, {
 });
 ```
 
-#### homework04 随机验证码
+### homework04 随机验证码
 
 - 使用Canvas绘制一个随机改变的验证码图片
   - var str = 'ABCDEFGHJKLMNPQRSTWXY3456789';
@@ -164,7 +162,7 @@ new Chart(CanvasCtx, {
   - 5条随机干扰线（深色），处于文字上方
   - 100个杂色点（半径为1为圆），处于文字上方
 
-#### homework05 网易云音乐界面
+### homework05 网易云音乐界面
 
 ![image.png-141.2kB][8]![m云音乐.png-152.5kB][9]
 
@@ -182,18 +180,18 @@ new Chart(CanvasCtx, {
   - toggle()函数实现disc和audio的旋转与播放，停止播放其实就是清除定时器。
   - 在上块区域的最后一个子元素加一个`div.clickarea`，修改display后再修改z-index为10，背景是透明的，放置在最上方，这样用户点击后toggle播放器
 
-#### 项目小结
+### 项目小结
 
 - 如何等待所有图片都加载完毕后才开始绘图？
 - 123
 
 
-### (5)SVG绘图
+## (5)SVG绘图
 
-- Scalable Vector Graphiph，可缩放的矢量图，此技术在2000年就已经存在了，独立于网页的一门技术；HTML5之后，纳入了HTML5标准标签库，并进行了一定的瘦身。
+- Scalable Vector Graphiph，可缩放的矢量图，此技术在2000年就已经存在了，独立于网-页的一门技术；HTML5之后，纳入了HTML5标准标签库，并进行了一定的瘦身。
 
-| 项目          | Canvas绘图           | SV绘图             |
-| :-----------: |:--------:            | :-----:            |
+| 项目          | Canvas绘图           |     SVG绘图         |
+| :-----------: |:--------:            |    :-----:         |
 | 绘图类型      | 位图                 |     矢量图         |
 | 缩放          | 失真                 |      保真          |
 | 颜色细节      | 丰富                 |    不够丰富        |
@@ -201,19 +199,35 @@ new Chart(CanvasCtx, {
 | 内容          | JavaScript等脚本绘制 | 每个图形都是标签   |
 | 事件绑定      | 不方便               |    不够丰富        |
 
-### (6)地理定位
+### SVG和Canvas区别
+
+- SVG
+  - 不依赖分辨率
+  - 支持事件处理
+  - 最适合带有大型渲染区域的应用程序(如百度地图)
+  - 不适合游戏
+- Canvas
+  - 依赖分辨率
+  - 不支持事件处理
+  - 能够以".png" 或 ".jpg" 格式保存结果图像
+  - 最适合图像密集型游戏开发
+
+- Adobe Photoshop：处理**位图**————每幅图像由点(RGB)组成，用于描述颜色的细节变化，可用于照片等领域，但放大后会出现马赛克失真。
+- Adobe Illustrator：处理**矢量图**————每幅图像由线条(需要指定方向和值)，可以无限缩放而不失真—————不善于描述颜色的细节变化
+
+## (6)地理定位
 
 
-### (7)拖放API
+## (7)拖放API
 
 
-### (8)WebWorker
+## (8)WebWorker
 
 
-### (9)WebStorage
+## (9)WebStorage
 
 
-### (10)WebSocket
+## (10)WebSocket
 
 
   [1]: https://www.html5rocks.com/zh/tutorials/forms/html5forms/
