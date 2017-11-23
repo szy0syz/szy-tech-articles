@@ -1,3 +1,5 @@
+# 达内前端培训 CH16_HTML5Core
+
 [TOC]
 
 ## (1)新的语义标签和属性
@@ -282,6 +284,19 @@ new Chart(CanvasCtx, {
 ```
 
 
+### 使用SVG画矩形
+
+- `<rect height="" width="" x="" y="" fill="#f00" fill-opacity="" stroke="" strok-width="" strok-opacity=""></rect>`
+- 注意：
+  - SVG图形的样式可以用HTML属性赋值，也可以使用CSS形式，但不接受普通CSS样式！只能使用SVG元素的专有样式属性。
+  - 使用JS修改时不能直接`myRect.x=200`，因为这样是能修改dom对象上新增一个x属性并赋值200，对SVG元素不生效，必须使用修改核心dom属性的方式修改，`rect.setAttribute('width', w);`，直接修改文档中dom元素的核心(行内)属性。
+  - 所有的SVG图形的属性不属于HTMLDOM标准，只能使用核心DOM方法操作其属性：`rect.setAttribute(key,val)`
+
+![501511449222_.pic.jpg-22.7kB][10]
+
+- 练习：
+  - 在SVG画布上绘制一个矩形，从左到只右移动，同时填充颜色还在不停的变化
+  - 根据如下json数据，绘制柱状统计图：
 
 ## (6)地理定位
 
@@ -307,3 +322,4 @@ new Chart(CanvasCtx, {
   [7]: http://static.zybuluo.com/szy0syz/lw4nw5dwx6j8v3h470iy78gs/image.png
   [8]: http://static.zybuluo.com/szy0syz/dqafl7fz994duutvlhqh0ubw/image.png
   [9]: http://static.zybuluo.com/szy0syz/j4qvoxcg4ki7yw4sdjt1ur3t/m%E4%BA%91%E9%9F%B3%E4%B9%90.png
+  [10]: http://static.zybuluo.com/szy0syz/fdj87li5hc324q05cdmoeq13/501511449222_.pic.jpg
