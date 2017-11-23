@@ -225,7 +225,7 @@ new Chart(CanvasCtx, {
 </svg>
 ```
 
-#### H5之前只用SVG
+#### H5之前使用SVG
 
 ```html
 <!DOCTYPE html>
@@ -246,6 +246,21 @@ new Chart(CanvasCtx, {
 </body>
 </html>
 ```
+
+- http://SVG标签不属于HTML4或XHTML标签，只能编写在独立的XML文件中，首先编写一个SVG文件（本质是一个XML文件），然后在HTML中使用IMG/IFRAME/OBJECT/EMBED等标签引入.svg文件。
+
+#### 在H5之中使用SVG
+
+- 在HTML文件中直接使用SVG相关标签即可
+  - `<svg>默认是300*150的行内块元素</svg>` 
+
+#### 练习
+
+- 练习1：
+  - 方式1：使用SVG矩形绘制一个国际相机的棋盘————使用HTML-rect标签
+  - 方式2：使用SVG矩形绘制一个国际相机的棋盘————使用JS动态创建HTML-rect标签
+
+unit04am 03：14：00
 
 ## (6)地理定位
 
