@@ -326,6 +326,35 @@ new Chart(CanvasCtx, {
 - 练习1：创建30个大小随机、颜色随机、透明度随机的原形
 - 练习2：在以上基础上，当点击某个原形时，其慢慢变大、变淡...直到消失，最后从DOM树上删除该元素（可以判断透明度是否为零确实是否删除）
 
+![image.png-30.9kB][11]
+
+### 使用svg画椭圆
+
+- 椭圆：半径在X轴和Y轴不一样的圆
+- `<ellipse rx="" ry="" cx="" cy=""></ellipse>`
+
+### 使用svg画直线
+
+- `<line x1="" y1="" x2="" y2="" stroke=""></line>`
+- 注意：所有SVG图形默认只有填充颜色，没有描边色。
+- 练习：使用 line 创建如下图标：
+- 提示：把多个元素放在一个`<g></g>`Group小组中，可以自动继承小组的公共属性
+
+![image.png-2.8kB][12]
+
+### 使用svg画折线
+
+- `<polyline points="x1,y1 x2,y2 x3,y3 ..."></polyline>`
+- 折线默认手尾闭合且填充，所以需要我们将填充透明
+- 练习：使用折线绘制如下的图标 ★
+
+### 使用svg画多边形
+
+- `<polygon points="x1,y1 x2,y2 x3,y3 ..."></polygon>`
+- 练习：使用多边形polygon绘制如下图标
+
+![image.png-2kB][13]
+
 
 ## (6)地理定位
 
@@ -352,3 +381,6 @@ new Chart(CanvasCtx, {
   [8]: http://static.zybuluo.com/szy0syz/dqafl7fz994duutvlhqh0ubw/image.png
   [9]: http://static.zybuluo.com/szy0syz/j4qvoxcg4ki7yw4sdjt1ur3t/m%E4%BA%91%E9%9F%B3%E4%B9%90.png
   [10]: http://static.zybuluo.com/szy0syz/fdj87li5hc324q05cdmoeq13/501511449222_.pic.jpg
+  [11]: http://static.zybuluo.com/szy0syz/78zl1xboopgc6fswaojpxiqz/image.png
+  [12]: http://static.zybuluo.com/szy0syz/ze1f01ffij85gen9lcukgfw6/image.png
+  [13]: http://static.zybuluo.com/szy0syz/rm8ypz89r68o43tkut5ngpeg/image.png
