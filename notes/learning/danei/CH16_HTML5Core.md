@@ -355,6 +355,26 @@ new Chart(CanvasCtx, {
 
 ![image.png-2kB][13]
 
+### 使用svg画文本
+
+- 提示：传统的标签不能置于SVG内部！同理，SVG的标签也不能放其他元素中！
+- `<text font-size="" alignment-baseline="before-edge" x="" y="">文本</text>`
+
+### 使用svg画图像
+
+- 提示：在SVG中绘制图像使用image元素，引入位图后，此SVG图片方法后同样会失真。
+- `<image width="" height="" xlink:href="xx.jpg" x="" y=""></image>`
+
+### SVG渐变元素
+
+- 什么是渐变
+  - 渐变是一种从一种颜色到另一种颜色的平滑过度(可以将多个颜色的过度应用到同一个元素上)
+- SVG渐变类型
+  - SVG线性渐变，使用`<lineGradient>`标签定义线性渐变
+  - SVG放射性渐变，使用`<radiaGradient>`标签定义放射性渐变
+- 注意：**SVG渐变必须在`<defs>`标签中进行定义**
+
+
 
 ## (6)地理定位
 
