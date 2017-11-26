@@ -405,9 +405,47 @@ new Chart(CanvasCtx, {
 
 ![image.png-25.5kB][15]
 
+### svg特效——滤镜
+
+- 类似Photoshop中的滤镜
+
+```html
+<svg width="600" height="500">
+    <defs>
+        <!--<linearGradient></linearGradient>-->
+        <filter id="f1">
+            <fegaussianblur stdDeviation="3"></fegaussianblur>
+        </filter>
+        <filter id="f2">
+            <fegaussianblur stdDeviation="6"></fegaussianblur>
+        </filter>
+    </defs>
+    <text font-size="50" x="20" y="100">葫芦娃，今天大日子。</text>
+    <text filter="url(#f1)" font-size="50" x="20" y="200">葫芦娃，今天大日子。</text>
+    <text filter="url(#f2)" font-size="50" x="20" y="300">葫芦娃，今天大日子。</text>
+</svg>
+```
+
 ### 复习
 
 - SVG可以不在元素内设置宽高，在CSS中指定宽高，但Canvas就不行，如果不在元素内部指定在CSS指定的话则意味着缩放Canvas画布！
+- 前端领域中可以用的绘图技术：
+  - Canvas ———— 2D位图
+  - SVG    ———— 2D矢量图
+  - WebGL  ———— 2D/3D图
+- 绘制统计图，以上任意一种均可用，但三种技术可供调用的代码不一样！ 
+
+### Two.js
+
+- 一套提供了统一接口，可用在Canvas、SVG和WebGL中常见图形的绘制，如矩形、三角形、圆形等...
+- 不足：为了兼容三种技术，必须舍弃某个技术所专用的效果，效率上有待提高。
+- 一般使用：
+  - 先配参数
+  - 再用参数实例化two(相当于画布)
+  - 然后对需要的子实例进行实例化
+  - 最后将数据从内存渲染的浏览器update
+
+unit5am 02：07：06
 
 ## (6)地理定位
 
