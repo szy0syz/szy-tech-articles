@@ -337,10 +337,23 @@ new Chart(CanvasCtx, {
 
 - `<line x1="" y1="" x2="" y2="" stroke=""></line>`
 - 注意：所有SVG图形默认只有填充颜色，没有描边色。
-- 练习：使用 line 创建如下图标：
+- 练习：使用 line 创建如下图标：<三道杠>
 - 提示：把多个元素放在一个`<g></g>`Group小组中，可以自动继承小组的公共属性
 
 ![image.png-2.8kB][12]
+
+```js
+<svg width="400" height="400">
+    <g stroke="#f00" stroke-width="40">
+        <line x1="30" y1="100" x2="100" y2="100"></line>
+        <line x1="30" y1="200" x2="100" y2="200"></line>
+        <line x1="30" y1="300" x2="100" y2="300"></line>
+        <line x1="160" y1="100" x2="330" y2="100"></line>
+        <line x1="160" y1="200" x2="330" y2="200"></line>
+        <line x1="160" y1="300" x2="330" y2="300"></line>
+    </g>
+</svg>
+```
 
 ### 使用svg画折线
 
@@ -374,7 +387,27 @@ new Chart(CanvasCtx, {
   - SVG放射性渐变，使用`<radiaGradient>`标签定义放射性渐变
 - 注意：**SVG渐变必须在`<defs>`标签中进行定义**
 
+```js
+<defs>
+    <linearGradient id="g2" x1="" y1="" x2="100%" y2="">
+        <stop offset="0" stop-color="" stop-opacity=""></stop>
+        <stop offset="100%" stop-color="" stop-opacity=""></stop>
+    </linearGradient>
+</defs>
+<rect width="" height="" fill="url(#g2)"></rect>
+```
 
+- 练习一：使用svg绘制如下统计图
+
+![image.png-54.9kB][14]
+
+- 练习二：自学two.js，绘制如下旋转效果：太阳、地球和月亮
+
+![image.png-25.5kB][15]
+
+### 复习
+
+- SVG可以不在元素内设置宽高，在CSS中指定宽高，但Canvas就不行，如果不在元素内部指定在CSS指定的话则意味着缩放Canvas画布！
 
 ## (6)地理定位
 
@@ -404,3 +437,5 @@ new Chart(CanvasCtx, {
   [11]: http://static.zybuluo.com/szy0syz/78zl1xboopgc6fswaojpxiqz/image.png
   [12]: http://static.zybuluo.com/szy0syz/ze1f01ffij85gen9lcukgfw6/image.png
   [13]: http://static.zybuluo.com/szy0syz/rm8ypz89r68o43tkut5ngpeg/image.png
+  [14]: http://static.zybuluo.com/szy0syz/swyj9jkgnz1mds97surhim81/image.png
+  [15]: http://static.zybuluo.com/szy0syz/mwmxabjcp8edsv1ntg8h6p1f/image.png
