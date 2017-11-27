@@ -460,9 +460,24 @@ unit5am 02：07：06
   - 靠手机与基站的数据，精度在“公里”级
 - PC中的浏览器
   - 靠IP地址反向解析，精度在“公里”级
+- HTML5新增用于获取浏览器所在定位的对象：
+- `window.navigator.geolocation`
+- `.getCurrentPosition: fn` 用于获取当前定位信息
+- `.watchPosition: fn` 不停的监视定位信息的改变
+- `.clearWatch: fn` 清除监视
+
+### 百度地图的使用
 
 ## (7)拖放API
 
+- 拖：Drag ，放：Drop  --> D&D ，HTML5为拖放x效果提供了七个事件，其中分为两组
+- 拖动的源对象(source)可以触发的事件 
+  - dragstart：拖动开始
+  - drag：拖动进行中
+  - dragend：拖动结束
+- 拖动的目标对象(target)可以触发的事件 
+
+01：58：40
 
 ## (8)WebWorker
 
