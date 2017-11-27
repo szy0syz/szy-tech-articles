@@ -475,6 +475,8 @@ unit5am 02：07：06
   - dragstart：拖动开始
   - drag：拖动进行中
   - dragend：拖动结束
+  - 源对象的拖动过程：dragstart*1 + drag*n + dragend*1 组成
+- 练习：实现一个可以跟随鼠标拖动而移动的小飞机 
 - 拖动的目标对象(target)可以触发的事件 
 
 01：58：40
