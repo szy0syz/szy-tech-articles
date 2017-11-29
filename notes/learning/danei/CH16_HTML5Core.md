@@ -488,6 +488,72 @@ unit5am 02：07：06
 - 练习1：垃圾桶初始时半透明；拖动小飞机进入垃圾桶变为不透明；离开后重新恢复半透明；在垃圾桶上松手也变为半透明！提示：只需要用到目标对象的四个事件
 - 练习2：一个垃圾桶，下方有一个容器(div#container)，其中有三架小飞机，拖动某个小飞机到垃圾桶上方，则页面中删除此小飞机。提示：需要用到源对象和目标对象的事件
 
+- 一个例子完美诠释HTML5-D&D
+  - 一开始定义个dragged元素存储单页面中拖动的“源对象”
+  - 所有时间都直接加到“document”上，因为时间冒泡传递，最终还是会传递到“document”
+  - 一定记得，在document.dragstart事件上给全局变量dragged赋值dom元素的引用哦，对了还可以改变样式~
+  - 后面又在document.dragend事件上对源对象恢复样式
+  - 对对对，所有7个事件都要阻止冒泡！当然也就意味着还需要在dragover阻止默认行为，这样drop事件才会触发啦！
+  - 好了，终于进到了dragenter事件中，此时就可以判断进来的元素到底是“谁”，然后根据需求改样式
+  - 对也，又进到了dragleave事件中，同样我们也判断“谁”离开的，然后根据需求恢复样式
+  - 哈哈，终结者drop事件到了，进来就先阻止默认行为`preventDefault()`，然后判断是不是我们指定的源对象drop到了目标对象，是的话就进行逻辑操作，完了！
+  - 这个例子写得真好！
+
+```js
+  var dragged;
+
+  /* events fired on the draggable target */
+  document.addEventListener("drag", function (event) {
+
+  }, false);
+
+  document.addEventListener("dragstart", function (event) {
+    // store a ref. on the dragged elem
+    dragged = event.target;
+    // make it half transparent
+    event.target.style.opacity = .5;
+  }, false);
+
+  document.addEventListener("dragend", function (event) {
+    // reset the transparency
+    event.target.style.opacity = "";
+  }, false);
+
+  /* events fired on the drop targets */
+  document.addEventListener("dragover", function (event) {
+    // prevent default to allow drop
+    event.preventDefault();
+  }, false);
+
+  document.addEventListener("dragenter", function (event) {
+    // highlight potential drop target when the draggable element enters it
+    if (event.target.className == "dropzone") {
+      event.target.style.background = "purple";
+    }
+
+  }, false);
+
+  document.addEventListener("dragleave", function (event) {
+    // reset background of potential drop target when the draggable element leaves it
+    if (event.target.className == "dropzone") {
+      event.target.style.background = "";
+    }
+
+  }, false);
+
+  document.addEventListener("drop", function (event) {
+    // prevent default action (open as link for some elements)
+    event.preventDefault();
+    // move dragged elem to the selected drop target
+    if (event.target.className == "dropzone") {
+      event.target.style.background = "";
+      dragged.parentNode.removeChild(dragged);
+      event.target.appendChild(dragged);
+    }
+
+  }, false);
+```
+
 unit05pm：03：30：07
 
 ## (8)WebWorker
