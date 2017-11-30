@@ -576,7 +576,11 @@ unit5am 02：07：06
   - 在源对象上 `ev.dataTransfer.setData('myKey', '20171130');`
   - 在目标对象上 `var val = ev.dataTransfer.getData('myKey');`
 
+#### 作业题：游戏飞机选择
 
+![image.png-40.9kB][16]
+
+- 要求：拖动某家飞机到目标区域，则在上方显示该飞机；下方该飞机图消失；替换选中区域已有的飞机。拖动另一架飞机到目标区域，则显示出该飞机，之前选中的飞机则重新显示在待选区域。
 
 ## (8)WebWorker
 
@@ -602,3 +606,4 @@ unit5am 02：07：06
   [13]: http://static.zybuluo.com/szy0syz/rm8ypz89r68o43tkut5ngpeg/image.png
   [14]: http://static.zybuluo.com/szy0syz/swyj9jkgnz1mds97surhim81/image.png
   [15]: http://static.zybuluo.com/szy0syz/mwmxabjcp8edsv1ntg8h6p1f/image.png
+  [16]: http://static.zybuluo.com/szy0syz/pq8sbh3u9p9nuafdbkm5gj30/image.png
