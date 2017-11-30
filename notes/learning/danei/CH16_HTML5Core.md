@@ -564,7 +564,19 @@ unit5am 02：07：06
   }, false);
 ```
 
-unit05pm：03：30：07
+#### 如何在拖动的源对象和目标对象间传递数据
+
+- 如何在以下的七个事件中传递数据？
+  - 源对象事件————3个：
+  - 目标对象事件————4个
+- 方法一：使用全局对象 ———— 全局对象污染
+- 方法二：使用拖放事件对象的dataTransfer属性
+  - dataTransfer，用作数据传递/转移，看作“拖拉机” 
+  - 使用：
+  - 在源对象上 `ev.dataTransfer.setData('myKey', '20171130');`
+  - 在目标对象上 `var val = ev.dataTransfer.getData('myKey');`
+
+
 
 ## (8)WebWorker
 
