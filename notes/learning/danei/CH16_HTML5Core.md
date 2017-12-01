@@ -610,7 +610,6 @@ container.ondrop = function(ev) {
 
 ###　面试题
 
-
 - 程序：计算机可以执行的代码，存在于影片中————静态的
 - 进程：把程序加载到内存中，等待被CPU执行————动态的
 - 线程：是CPU执行进程代码的基本单位————生产任务
@@ -621,8 +620,11 @@ container.ondrop = function(ev) {
   - 一个进程中至少有一个线程，也可以有多个线程。
   - 多个线程间并发执行————宏观上看似乎是“同时”的，微观上看却是“轮流”执行的。
 
+![HTML5-process-thread.png-57.3kB][17]
+
 - Chrome浏览器的线程模型是什么样的？
-- Chrome中的线程模型：
+  - Chrome中发起 HTTP 请求最多可以使用6个并发的线程；
+  - Chrome中负责向页面中执行绘制任务(含执行HTML/JavaScript/CSS)的只有 **1** 个线程————UI主线程。
 
 ## (9)WebStorage
 
@@ -646,3 +648,4 @@ container.ondrop = function(ev) {
   [14]: http://static.zybuluo.com/szy0syz/swyj9jkgnz1mds97surhim81/image.png
   [15]: http://static.zybuluo.com/szy0syz/mwmxabjcp8edsv1ntg8h6p1f/image.png
   [16]: http://static.zybuluo.com/szy0syz/pq8sbh3u9p9nuafdbkm5gj30/image.png
+  [17]: http://static.zybuluo.com/szy0syz/tqvb443lb28ec0693prbk25j/HTML5-process-thread.png
