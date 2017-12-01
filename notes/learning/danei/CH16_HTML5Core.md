@@ -582,8 +582,9 @@ unit5am 02：07：06
 
 - 要求：拖动某家飞机到目标区域，则在上方显示该飞机；下方该飞机图消失；替换选中区域已有的飞机。拖动另一架飞机到目标区域，则显示出该飞机，之前选中的飞机则重新显示在待选区域。
 
-### 拖拽扩展
+### 拖拽扩展：客户端文件拖拽到浏览器端
 
+- 面试题：如何在服务器端下载的网页中显示客户端图片？
 - 一般情况下，网页只能显示服务器上的图片；
 - HTML5中，可以实现用户拖拽一张本地的图片显示在服务器端下载的网页中。
   - HTML5中提供的用于文件输入输出(I/O)的对象：
@@ -591,6 +592,20 @@ unit5am 02：07：06
   - FileList：代表一个文件列表(类数组对象)
   - FileReader：用于从文件中读取内容
   - FileWriter：用于向文件中写入内容
+- 核心代码：
+
+```js
+container.ondrop = function(ev) {
+    var f0 = e.dataTransfer.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(f0);
+    reader.onload = function() {
+        // 读取完成后结果保存在result中
+        var dataUrl = reader.result;
+    }
+}
+```
+
 
 ## (8)WebWorker
 
