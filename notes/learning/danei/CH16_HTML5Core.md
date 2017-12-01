@@ -626,6 +626,19 @@ container.ondrop = function(ev) {
   - Chrome中发起 HTTP 请求最多可以使用6个并发的线程；
   - Chrome中负责向页面中执行绘制任务(含执行HTML/JavaScript/CSS)的只有 **1** 个线程————UI主线程。
 
+### Worker
+
+- 创建一个新的线程，去执行耗时的JS任务————与UI主线程并发执行。`new Thread('xxx.js')`类似
+- HTML5提供了一种类似创建新线程的机制：
+  - `new Worker('xxx.js');`  // 工人线程，与UI线程并发执行
+- 注意：Worker线程天然缺陷！！
+  - 浏览器禁止Worker线程操作任何的DOM和BOM对象！！
+  - 不能使用Workder加载类似JQuery.js文件
+  - 根源因为浏览器只允许UI线程进行页面的渲染！如果Worker允许碰DOM，那就违反了这个原则。
+  - 项目中，必须用到Worker的场景不多，比如有复杂运算耗时且与DOM无关的运算时。
+
+unit06pm 00:52:04
+
 ## (9)WebStorage
 
 
