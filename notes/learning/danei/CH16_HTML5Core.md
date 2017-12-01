@@ -606,6 +606,10 @@ container.ondrop = function(ev) {
 }
 ```
 
+- 效果图：
+
+![image.png-40.9kB][18]
+
 ## (8)WebWorker
 
 ###　面试题
@@ -662,3 +666,4 @@ unit06pm 00:52:04
   [15]: http://static.zybuluo.com/szy0syz/mwmxabjcp8edsv1ntg8h6p1f/image.png
   [16]: http://static.zybuluo.com/szy0syz/pq8sbh3u9p9nuafdbkm5gj30/image.png
   [17]: http://static.zybuluo.com/szy0syz/tqvb443lb28ec0693prbk25j/HTML5-process-thread.png
+  [18]: http://ofx24fene.bkt.clouddn.com//img/2017/D&Dp.gif
