@@ -641,7 +641,41 @@ container.ondrop = function(ev) {
   - 根源因为浏览器只允许UI线程进行页面的渲染！如果Worker允许碰DOM，那就违反了这个原则。
   - 项目中，必须用到Worker的场景不多，比如有复杂运算耗时且与DOM无关的运算时。
 
-unit06pm 00:52:04
+### Worker线程和UI线程通信
+
+- UI主线程给Worker线程传递数据————发消息:
+
+```js
+// UI线程：
+var w = new Worker('x.js');
+w.postMessage('StringMsg');  // StringMes就是要传输的数据
+
+// Worker线程(x.js)：
+onmessage = function(e) {
+    e.data;  // Worker线程接收到UI主线程传来的数据
+}
+```
+
+- Worker线程给UI主线程传递数据————发消息：
+
+```js
+// UI主线程：
+var w = new Worker('x.js');
+w.onmessage = function(e) {
+    e.data;  // Worker线程发来给UI主线程的数据
+}
+
+//Worker线程(x.js)：
+//...
+postMessage('StringMsg');
+//...
+```
+
+### 练习题：
+
+- 在主页面中有一个输入框和一个按钮(“开始质数计算”)，点击后创建一个新的Worker线程，把用户的输入传递给该线程，进行质数判定；... 计算结果再反传给UI主线程，在一个DIV元素中显示出运算结果
+
+unit06pm 01：16：45
 
 ## (9)WebStorage
 
