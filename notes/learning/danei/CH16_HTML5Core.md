@@ -4,7 +4,7 @@
 
 ## (1)新的语义标签和属性
 
-#### 面试题：Flashb被HTML5取代在哪些方面
+### 面试题：Flashb被HTML5取代在哪些方面
 
 - 音频和视频 ———— `<video>` 和 `<audio>`
 - 绘图       ———— `<canvas>`
@@ -680,7 +680,7 @@ postMessage('StringMsg');
 <script src="js/1_delay.js"></script>
 <input type="button" value="按钮2" onclick="console.log('按钮2按下了');">
 ```
-  
+
 ### 练习题
 
 - 在主页面中有一个输入框和一个按钮(“开始质数计算”)，点击后创建一个新的Worker线程，把用户的输入传递给该线程，进行质数判定；... 计算结果再反传给UI主线程，在一个DIV元素中显示出运算结果
@@ -692,7 +692,7 @@ postMessage('StringMsg');
 
 ## (9)WebStorage
 
-### Web存储
+### 知识前瞻
 
 - 服务端存储：
   - 数据库技术：存储项目中的核心数据
@@ -701,7 +701,17 @@ postMessage('StringMsg');
   - Cookie技术：使用比较繁琐、限制大小(4KB以内)
   - Flash技术：已经被淘汰
   - HTML5WebStorage：使用简单，不超过8MB
+  - IndexedDB技术：客户端直接存储对象，目前还不是HTML标准技术
+- Web Session(会话)：指客户端浏览器从连接到某个Web服务器开始，一系列的请求-响应的过程。直到客户端关闭浏览器(该浏览器标签)，会话结束。
 
+### 介绍
+
+- HTML5的WebStorage技术，提供了两个对象，用于在浏览器中存储客户端的访问数据：
+  - `window.sessionStorage`：会话级存储，在浏览器内存中存储的与某个服务器间的一系列请求-响应过程产生的数据————都是Key-Value键值对形式。当会话结束时，会话级数据即消失。
+  - `window.localStorage`：本地/跨会话级存储
+
+unit06 02:40:00
+  
 ## (10)WebSocket
 
 
