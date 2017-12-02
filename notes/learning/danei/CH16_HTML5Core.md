@@ -671,14 +671,36 @@ postMessage('StringMsg');
 //...
 ```
 
-### 练习题：
+- 如何证明Chrome中UI主线程仅为单线程？
+  - 写一个非常耗时的延迟脚本丢在渲染之间，此时渲染就会被隔断。
+  - 此时不仅隔断了渲染，而且还点不了第一个按钮！
+
+```js
+<input type="button" value="按钮1" onclick="console.log('按钮1按下了');">
+<script src="js/1_delay.js"></script>
+<input type="button" value="按钮2" onclick="console.log('按钮2按下了');">
+```
+  
+### 练习题
 
 - 在主页面中有一个输入框和一个按钮(“开始质数计算”)，点击后创建一个新的Worker线程，把用户的输入传递给该线程，进行质数判定；... 计算结果再反传给UI主线程，在一个DIV元素中显示出运算结果
 
-unit06pm 01：16：45
+- 总结：
+  - Worker本质上是一个线程，在UI主线程之外并发执行的线程；
+  - 用于执行耗时的JS任务；
+  - 缺陷：不能操作BOM和DOM，只能和UI主线程发消息。
 
 ## (9)WebStorage
 
+### Web存储
+
+- 服务端存储：
+  - 数据库技术：存储项目中的核心数据
+  - Session技术：存储当前用户的信息
+- 客户端存储：不太要紧的与客户端有关的数据，如浏览记录、内容定制、样式定制
+  - Cookie技术：使用比较繁琐、限制大小(4KB以内)
+  - Flash技术：已经被淘汰
+  - HTML5WebStorage：使用简单，不超过8MB
 
 ## (10)WebSocket
 
