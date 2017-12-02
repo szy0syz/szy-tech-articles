@@ -70,7 +70,7 @@
   - [《剑指Offer(第2版)》](/notes/reading/9787121310928.md)
   - [《JavaScript高级程序设计(第3版)》](/notes/reading/9787115275790.md)
   - [《CSS权威指南(第3版)》读书笔记](/notes/reading/9787508355948.md)
-
+  - [《HTML5布局之路》读书笔记](/notes/reading/9787302466840.md)
 
 - 干货店铺
   - **[JavaScript标准参考教材](http://javascript.ruanyifeng.com/)**
