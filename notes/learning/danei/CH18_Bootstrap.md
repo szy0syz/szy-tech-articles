@@ -29,11 +29,26 @@
 ### 如何编写响应式网页
 
 - 必须声明viewport元标签
-  - `<meta name="viewport" content="... ... ..."> `
+  - `<meta name="viewport" content="... ... ...">`
   - `width=device-widht,` --> 指定 视口 的宽度
   - `inital-scale=1.0,`   --> 设置 视口 初始化的放大比例
-  - `user-scalable=no`    --> 设置 视口 为用户不能缩放
+  - `user-scalable=no`    --> 设置 视口 为用户不能缩放(1/0/yes/no)
+  - `minimum-scale=1.0`   --> 允许的最小缩放倍率
+  - `maximum-scale=1.0`   --> 允许的最大缩放倍率
+- 容器尽量使用相对尺寸
+  - 尽量避免绝对尺寸：`div.container{width: 1211px;}`
+  - 使用相对尺寸代替：`div.container{width: 80%;}`
+- 文字大小尽量使用相对尺寸
+  - 尽量避免绝对尺寸：`.text{font-size: 12px;}`
+  - 使用相对尺寸代替：`.text{font-size: 0.5rem;}`
+- 图片尽量使用相对尺寸：
+  - 尽量避免绝对尺寸：`img{width: 200px}`
+  - 使用相对尺寸代替：`img{width: width:50%;}` 或 `img{max-width: width:50%;}`
+  - width 和 max-width 的区别：两者都是指定在父容器中的宽度占比，但width属性可以随着父容器变大而无限变大；而 max-width 却限制放大同时不能超过自己的原始大小
+- 页面布局尽量采用流式布局(Fluid)
+  - float:left;  或者  display:inline-block;
+- 响应式网页必须 CSS3 Media Query 技术
 
-12.20-Uint01am 02：00：00
+- em和rem的区别
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
