@@ -707,11 +707,25 @@ postMessage('StringMsg');
 ### 介绍
 
 - HTML5的WebStorage技术，提供了两个对象，用于在浏览器中存储客户端的访问数据：
-  - `window.sessionStorage`：会话级存储，在浏览器内存中存储的与某个服务器间的一系列请求-响应过程产生的数据————都是Key-Value键值对形式。当会话结束时，会话级数据即消失。
-  - `window.localStorage`：本地/跨会话级存储
+- `window.sessionStorage`：会话级存储，在浏览器内存中存储的与某个服务器间的一系列请求-响应过程产生的数据————都是Key-Value键值对形式。当会话结束时，会话级数据即消失。
+  - `sessionStorage['key'] = 'value';` 存储
+  - `var v = sessionStorage['key'];`   读取
+  - `sessionStorage.length` 获取数据的个数
+  - `sessionStorage.setItem('key', 'value')` 存储
+  - `sessionStorage.getItem('key')` 读取
+  - `sessionStorage.removeItem('key')` 删除
+  - `sessionStorage.clear()`  清除所有数据 
+- `window.localStorage`：本地/跨会话级存储。在客户端文件系统/硬盘中存储客户端与服务器间的访问数据————都是kev-value键值对形式。即使关闭浏览器，甚至关闭计算机仍然存在，除非手动删除，否则会永远存在。
+  - `localStorage['key'] = 'value';` 存储
+  - `var v = localStorage['key'];`   读取
+  - `localStorage.length` 获取数据的个数
+  - `localStorage.setItem('key', 'value')` 存储
+  - `localStorage.getItem('key')` 读取
+  - `localStorage.removeItem('key')` 删除
+  - `localStorage.clear()`  清除所有数据 
 
-unit06 02:40:00
-  
+unit06pm-02：48：04
+
 ## (10)WebSocket
 
 
