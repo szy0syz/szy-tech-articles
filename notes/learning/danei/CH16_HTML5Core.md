@@ -722,9 +722,10 @@ postMessage('StringMsg');
   - `localStorage.setItem('key', 'value')` 存储
   - `localStorage.getItem('key')` 读取
   - `localStorage.removeItem('key')` 删除
-  - `localStorage.clear()`  清除所有数据 
+  - `localStorage.clear()`  清除所有数据
 
-unit06pm-02：48：04
+- 练习1：登录、登出和跳转练习
+- 练习2：主题定制页面
 
 ## (10)WebSocket
 
