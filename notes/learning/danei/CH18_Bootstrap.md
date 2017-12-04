@@ -49,6 +49,22 @@
   - float:left;  或者  display:inline-block;
 - 响应式网页必须 CSS3 Media Query 技术
 
+### CSS3 Media Query
+
+- Media：指浏览网页的设备，如screen、tv、projection(投影)、printer、tty(字符终端)、braille
+- Query：使用CSS自动查询浏览设备的特性，如位深、解析度、宽高、水平/竖立方向...
+- CSS3 Media Query：根据浏览网页的设备类型不同，或者特性不同，而有选择的执行某些CSS，放弃执行另外的。
+
+#### 媒体查询具有两种方法
+
+- 有选择性的执行符合条件的外部CSS文件
+  - `<link media="screen and (min-width:768px) and (max-width:991px)" rel="stylesheet" href="css/pad.css">`
+  - 缺陷：即使不满足当前浏览器条件的CSS文件，也会被浏览器下载。
+
+- **有选择性的执行CSS片段中的部分内容**
+  - `@media screen and (min-width:768px) and (max-width:991px) { h3: {display: none} }` 
+
+
 - em和rem的区别
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
