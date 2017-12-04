@@ -31,7 +31,7 @@
 - 必须声明viewport元标签
   - `<meta name="viewport" content="... ... ...">`
   - `width=device-widht,` --> 指定 视口 的宽度
-  - `inital-scale=1.0,`   --> 设置 视口 初始化的放大比例
+  - `initial-scale=1.0,`   --> 设置 视口 初始化的放大比例
   - `user-scalable=no`    --> 设置 视口 为用户不能缩放(1/0/yes/no)
   - `minimum-scale=1.0`   --> 允许的最小缩放倍率
   - `maximum-scale=1.0`   --> 允许的最大缩放倍率
