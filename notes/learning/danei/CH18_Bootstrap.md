@@ -64,7 +64,15 @@
 - **有选择性的执行CSS片段中的部分内容**
   - `@media screen and (min-width:768px) and (max-width:991px) { h3: {display: none} }` 
 
+#### 响应式网页练习
+
+![image.png-81.2kB][2]
+
+- 主体布局变化 1:3:1  -->  1:3:0  --> 100%:100%:0 
 
 - em和rem的区别
 
+unit1am-finished
+
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
+  [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
