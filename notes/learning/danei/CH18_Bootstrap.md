@@ -72,7 +72,35 @@
 
 - em和rem的区别
 
-unit1am-finished
+### Bootstrap起步
+
+> 我们学bootstrap到底学什么？学那1000来个class。————大实话
+
+#### 基本模板
+
+- `<html lang="zh-cn">` `<html lang="en-us">`
+  - `html`标签的"lang"属性(language)指定当前网页所使用的自然语言，如zh、zh-cn、zh-tw、en-uk、ja、de、fr...
+  - 作用1：指定当前页面的基础，为浏览器的翻译做准备；
+  - 作用2：位盲人的屏幕阅读指明基础发音。
+- `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
+  - Cross-UserAgent-Compatible，跨(IE)浏览器兼容性
+  - IE6：拥有非常多的专有对象
+  - IE7：6/7
+  - IE8：6/7/8
+  - ...
+  - IE11：6/7/8/9/10/11
+  - edge：edge
+  - 这句话意思就是说：告诉IE使用可用的最新版本IE内核
+- `html5shiv.min.js`：第三方的JS文件，自执行函数，让老IE支持HTML5的语义标签。
+- `respond.min.js`：第三方的JS文件，自执行函数，让老IE支持响应式网页————支持CSS3的媒体查询技术
+- 练习：找出bootstarap.css对HTML标签的默认样式进行了哪些重置：
+  - `*{}`
+  - `html{}`
+  - `body{}`
+  - `h1{}`
+  - `h6{}`
+  - `p{}`
+
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
