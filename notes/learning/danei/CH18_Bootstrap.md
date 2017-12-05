@@ -31,7 +31,7 @@
 - 必须声明viewport元标签
   - `<meta name="viewport" content="... ... ...">`
   - `width=device-widht,` --> 指定 视口 的宽度
-  - `initial-scale=1.0,`   --> 设置 视口 初始化的放大比例
+  - `inital-scale=1.0,`   --> 设置 视口 初始化的放大比例
   - `user-scalable=no`    --> 设置 视口 为用户不能缩放(1/0/yes/no)
   - `minimum-scale=1.0`   --> 允许的最小缩放倍率
   - `maximum-scale=1.0`   --> 允许的最大缩放倍率
@@ -93,14 +93,29 @@
   - 这句话意思就是说：告诉IE使用可用的最新版本IE内核
 - `html5shiv.min.js`：第三方的JS文件，自执行函数，让老IE支持HTML5的语义标签。
 - `respond.min.js`：第三方的JS文件，自执行函数，让老IE支持响应式网页————支持CSS3的媒体查询技术
-- 练习：找出bootstarap.css对HTML标签的默认样式进行了哪些重置：
-  - `*{}`
-  - `html{}`
-  - `body{}`
-  - `h1{}`
-  - `h6{}`
-  - `p{}`
 
+#### 练习-bootstrap的reset样式
+
+- `*{}`
+  - --> `box-sizing: border-box;` 改变盒子模型为边框盒子
+- `html{}`
+  - --> `font-size: 10px;` 全局字体为10px
+  - --> `-webkit-tap-highlight-color: rgba(0, 0, 0, 0);`
+- `body{}`
+  - --> `font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;` 
+  - --> `font-size: 14px;` 覆盖修改全局字体14px
+  - --> `line-height: 1.42857143;`
+  - --> `color: #333333;`
+  - --> `background-color: #fff;`
+- `h1{}`
+  - --> `font-family: inherit;`
+  - --> `font-weight: 500;`
+  - --> `line-height: 1.1;`
+  - --> `color: inherit;`
+  - --> --> `margin-top: 20px;`
+  - --> --> `margin-bottom: 10px;`
+- `h6{}`
+- `p{}`
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
