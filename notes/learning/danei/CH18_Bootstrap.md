@@ -139,5 +139,32 @@
 
 ### Bootstrap全局样式
 
+#### 与按钮相关的样式
+
+- .btn
+- .btn-default
+- .btn-danger
+- .btn-warnning
+- .btn-success
+- .btn-info
+- .btn-primary
+- .btn-lg
+- .btn-sm
+- .btn-xs
+- .btn-block
+
+#### 与图片相关的样式
+
+- .img-rounded   圆角图片
+- .img-circle    圆形图片
+- .img-thumbnail 缩略
+- .img-responsive 响应式图片
+
+unit01pm：03：45：30
+
+#### 与文本相关的样式
+
+#### 与列表相关的样式
+
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
