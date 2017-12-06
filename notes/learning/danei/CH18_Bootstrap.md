@@ -115,7 +115,19 @@
   - --> --> `margin-top: 20px;`
   - --> --> `margin-bottom: 10px;`
 - `h6{}`
+  - --> `font-family: inherit;`
+  - --> `font-weight: 500;`
+  - --> `line-height: 1.1;`
+  - --> `color: inherit;`
+  - --> --> `margin-top: 10px;`
+  - --> --> `margin-bottom: 10px;`
+  - --> --> --> `font-size: 12px;`
 - `p{}`
+  - --> `margin: 0 0 10px;`
+- `img{}`
+  - --> `border: 0;`
+  - --> `vertical-align: middle;`
+
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
