@@ -127,7 +127,17 @@
 - `img{}`
   - --> `border: 0;`
   - --> `vertical-align: middle;`
+- `a{}`
+  - --> `color: #337ab7;text-decoration:none;`
+- `ul{}`
+  - --> `margin-bottom: 10px; margin-top: 0;`
+- `table{}`
+  - --> `background: transparent; border-collapse: collapse;`
+- `div` --> 无
+- `span` --> 无
+- 上述样式重置很多依赖于 `normalize.css` 第三方样式文件。
 
+### Bootstrap全局样式
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
