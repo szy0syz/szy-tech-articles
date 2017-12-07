@@ -160,11 +160,29 @@
 - .img-thumbnail 缩略
 - .img-responsive 响应式图片
 
-unit01pm：03：45：30
+#### 与列表相关的样式
+
+- .list-unstyle  没有提示符的列表
+- .list-inline   行内列表
 
 #### 与文本相关的样式
 
-#### 与列表相关的样式
+- .text-danger
+- .text-success
+- .text-warnning
+- .text-info
+- .text-primary
+- .bg-danger
+- .bg-success
+- .bg-warnning
+- .bg-info
+- .bg-primary
+- .text-left
+- .text-right
+- .text-center
+- .text-justify
+- .text-uppercase
+- .text-capitalize
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
