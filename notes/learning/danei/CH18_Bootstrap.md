@@ -70,8 +70,6 @@
 
 - 主体布局变化 1:3:1  -->  1:3:0  --> 100%:100%:0 
 
-- em和rem的区别
-
 ### Bootstrap起步
 
 > 我们学bootstrap到底学什么？学那1000来个class。————大实话
@@ -183,6 +181,30 @@
 - .text-justify
 - .text-uppercase
 - .text-capitalize
+- .text-muted
+
+#### 辅助类
+
+- .close
+- .caret
+- .pull-left
+- .pull-right
+- .center-block  让内容块居中
+- .clearfix
+- .show
+- .hidden
+- .sr-only  对屏幕阅读器以外的设备隐藏内容
+- .text-hide  图片替换
+
+#### unit01pm-home
+
+- em和rem的区别
+- 自学“全局CSS样式”：辅助类、排版、代码
+- 使用媒体查询编写如下的响应式网页：
+
+![image.png-172.6kB][3]
+
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
+  [3]: http://static.zybuluo.com/szy0syz/ly98vj2zh0wc9h9wfak2ov1a/image.png
