@@ -217,9 +217,215 @@
 
 ### 手写响应式网站心法
 
-- css: `*{ box-sizing: border-box; }`
+No.01: css初始化
 
-unit02   00:35:26
+```css
+* {
+    box-sizing: border-box; /*边框盒子*/
+}
+
+html {
+    font-family: 'sans-serif';
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Helvetica Neue';
+    font-size: 14px;
+    background: #fff; /**/
+    margin: 0;
+}
+
+/*防止子元素越界*/
+.container:before {
+    content: ' ';
+    display: table;
+}
+
+/*清除浮动*/
+.container:after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+/**系统默认分四种屏幕的样式**/
+/**lg(超宽PC屏幕)屏幕：w>=1200px**/
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 1170px; /*bootstrap 默认数值*/
+        margin: 0 auto; /*水平居中*/
+    }
+}
+/**md(Medim，一般的中等PC屏幕)屏幕：1200px>w>=992px**/
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        width: 970px; /*bootstrap 默认数值*/
+        margin: 0 auto; /*水平居中*/
+    }
+}
+/**sm(Small，平板电脑)屏幕：992px>w>=768px**/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .container {
+        width: 750px; /*bootstrap 默认数值*/
+        margin: 0 auto; /*水平居中*/
+    }
+}
+/**xs(ExtraSmall，手机设备)屏幕：768px>w**/
+@media screen and (min-width: 767px) {
+}
+```
+
+No.2 html
+
+```html
+<!--导航条-->
+<div class="navbar">
+    <div class="container">
+        <img src="img/logo.png" alt="logo">
+        <ul class="list-inline pull-right">
+            <li><a href="#">起步</a></li>
+            <li><a href="#">全局CSS样式</a></li>
+            <li><a href="#">组件</a></li>
+            <li><a href="#">JS插件</a></li>
+            <li><a href="#">定制</a></li>
+        </ul>
+    </div>
+</div>
+<!--主题-->
+<div class="main">
+    <div class="container">
+        <h1 class="text-center">Bootstrap</h1>
+        <p class="text-center">Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。</p>
+        <a class="btn btn-primary center-block" style="width: 200px" href="#">Bootstrap3中文文档(v3.3.7)</a>
+
+        <div class="container-fluid">
+            <img src="img/t1.png" alt="t1" class="my-img"/>
+            <img src="img/t2.png" alt="t2" class="my-img"/>
+            <img src="img/t3.png" alt="t3" class="my-img"/>
+            <img src="img/t4.png" alt="t4" class="my-img"/>
+        </div>
+    </div>
+</div>
+```
+
+No.3 css
+
+```css
+.list-inline {
+    /*li默认样式去除，内边距去除*/
+    list-style: none;
+    padding: 0;
+    margin-left: -5px;
+}
+
+.list-inline > li {
+    padding: 0 5px;
+    display: inline-block;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 20px 0 10px 0; /*抄袭bootstrap*/
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn {
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background: #337ab7;
+    color: #fff;
+    border-color: #2e6ba4;
+}
+
+.center-block {
+    display: block;
+    margin: 0 auto;
+}
+
+.container-fluid:before {
+    content: ' ';
+    display: table;
+}
+
+.container-fluid:after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+.container-fluid{
+    margin: 0 20px;
+}
+
+.my-img {
+    float: left;
+    padding: 5px;
+}
+
+/**系统默认分四种屏幕的样式**/
+/**lg(超宽PC屏幕)屏幕：w>=1200px**/
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 1170px; /*bootstrap 默认数值*/
+        margin: 0 auto; /*水平居中*/
+    }
+
+    .my-img {
+        width: 25%;
+    }
+}
+
+/**md(Medim，一般的中等PC屏幕)屏幕：1200px>w>=992px**/
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        width: 970px; /*bootstrap 默认数值*/
+        margin: 0 auto; /*水平居中*/
+    }
+
+    .my-img {
+        width: 25%;
+    }
+}
+
+/**sm(Small，平板电脑)屏幕：992px>w>=768px**/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .container {
+        width: 750px; /*bootstrap 默认数值*/
+        margin: 0 auto; /*水平居中*/
+    }
+
+    .my-img {
+        width: 50%;
+    }
+}
+
+/**xs(ExtraSmall，手机设备)屏幕：768px>w**/
+@media screen and (max-width: 767px) {
+    .my-img {
+        width: 100%;
+    }
+}
+```
+
+unit02   01:00:56
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
