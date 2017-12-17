@@ -204,6 +204,22 @@
 
 ![image.png-172.6kB][3]
 
+## Unit02：全局CSS样式、组件
+
+### 响应式网页基本要求(步骤)
+
+ 1. 声明viewport元标签
+ 2. 容器尽量使用相对尺寸
+ 3. 文字尽量使用相对大小
+ 4. 图片尽量使用相对尺寸
+ 5. 布局尽量使用流式布局
+ 6. 使用CSS3 Media Query
+
+### 手写响应式网站心法
+
+- css: `*{ box-sizing: border-box; }`
+
+unit02   00:35:26
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
