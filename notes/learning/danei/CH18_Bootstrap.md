@@ -449,24 +449,24 @@ h1 {
 
 #### 栅格布局系统的使用方法
 
-- 栅格系统的父元素必须是
+- **栅格系统的父元素必须是**
   - div.container       ————定宽容器：lg:1170px、md:970px、sm:750px、xs:100%
   - div.container-fluid ————变宽容器：全部情况下100%
-- 在容器中声明**“行”**
+- **在容器中声明**“行”****
   - `div.container > div.row` 
-- 在**“行”**中声明**“列”**
+- **在**“行”**中声明**“列”****
   - `div.container > div.row > div.col-*-*`
-- 列根据不同的屏幕尺寸分为四组：
+- **列根据不同的屏幕尺寸分为四组：**
   - `.col-lg-*`
   - `.col-md-*`
   - `.col-sm-*`
   - `.col-xs-*`
-- 一行均分为12等列，每个列必须指定自己的占比：
+- **一行均分为12等列，每个列必须指定自己的占比**
   - `.col-lg-1`
   - `.col-lg-2`
   - `.col-lg-3`
   - `.col-lg-12`
-- 列可以向后“偏移”指定的宽度
+- **列可以向后“偏移”指定的宽度**
   - `.col-lg-offset-1`
   - `.col-lg-offset-2`
   - `.col-lg-offset-3`
@@ -476,7 +476,41 @@ h1 {
 
 ![image.png-138.8kB][5]
 
-unit02   01:00:56
+- **列的适用性**
+  - 不同屏幕宽度下的列宽度占比适用于指定屏幕已经更大的屏幕
+  - `.col-xs-*`     适用于xs/sm/md/lg屏幕
+  - `.col-sm-*`     适用于sm/md/lg屏幕
+  - `.col-md-*`     适用于md/lg屏幕
+  - `.col-lg-*`     仅适用于lg屏幕
+
+- **响应式的列宽占比**
+  - 一个列可以指定在不同屏幕下的不同宽度占比
+  - `<div class="col-xs-12 col-sm-9 col-md-6">`手机占100%、平板占75%、PC屏占50%
+  - `<div class="col-xs-12 col-md-6">` 手机和平板占100%、PC屏占50%
+- **指定列在特定屏下隐藏**
+  - `.hidden-lg`
+  - `.hidden-md`
+  - `.hidden-sm`
+  - `.hidden-xs`
+  - `.hidden`
+- **栅格系统可以嵌套**
+
+```html
+<div class="row">
+    <div class="col-xs-1">
+        <div class="row">
+            <div class="col-xs-6">1/24</div>
+            <div class="col-xs-6">1/24</div>
+       </div>
+    </div>
+</div>
+```
+
+- **列的排序问题**
+
+#### 格栅系统练习
+
+![image.png-134.4kB][6]
 
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
@@ -484,3 +518,4 @@ unit02   01:00:56
   [3]: http://static.zybuluo.com/szy0syz/ly98vj2zh0wc9h9wfak2ov1a/image.png
   [4]: http://static.zybuluo.com/szy0syz/u9cbh3ikpn11q2yh1hj6ufsh/image.png
   [5]: http://static.zybuluo.com/szy0syz/4svm3w9se7x2ti0f6j3jo95e/image.png
+  [6]: http://static.zybuluo.com/szy0syz/whk6hzuzpbrnx4z0rmqagyhn/image.png
