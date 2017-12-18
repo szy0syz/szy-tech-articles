@@ -545,6 +545,51 @@ h1 {
 
 #### 2.行内表单
 
+![image.png-6.7kB][8]
+
+- `<form class="form-inline">`
+- `<label class="sr-only" for="uname2">用户名：</label>`
+- Screen Reader Only 仅屏幕阅读器可见
+- 代码结构
+
+```html
+<form>
+    <div class="form-group">
+        <label class="sr-only">username</label>
+        <input class="form-control" placeholder="">
+    </div>
+</form>
+```
+
+#### 3.水平表单
+
+![image.png-20.8kB][9]
+
+- 水平表单是指在一行内放置label、input、span，需要整合栅格系统(变种)和表单相关内容。
+
+| 项目     |    标准栅格系统   |  水平表单中栅格系统  |
+| :------: | :-----:     | :----:  |
+| 外层容器 | div.container 或 div.continer-fluid |  form.form-horizontal |
+| 行       | div.row    |   div.form-group   |
+| 列       | div.col-\*-\*   |  div.col-\*-\*  |
+
+
+- 代码结构
+
+```html
+<form>
+    <div class="form-group">
+        <div class="col-*-*">
+            <label class="sr-only">username</label>
+        </div>
+        <div class="col-*-*">
+            <input class="form-control" placeholder="">
+        </div>
+    </div>
+</form>
+```
+
+- 练习：如何在输入框中放置一个对勾、叉叉、放大镜？ 
 
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
@@ -554,3 +599,5 @@ h1 {
   [5]: http://static.zybuluo.com/szy0syz/4svm3w9se7x2ti0f6j3jo95e/image.png
   [6]: http://static.zybuluo.com/szy0syz/whk6hzuzpbrnx4z0rmqagyhn/image.png
   [7]: http://static.zybuluo.com/szy0syz/13kuumwbnygsetxbixvm2a2r/image.png
+  [8]: http://static.zybuluo.com/szy0syz/ld5unqv6yyh9lovcmrxlel93/image.png
+  [9]: http://static.zybuluo.com/szy0syz/ijxacstvycy9voc5tbyulbbz/image.png
