@@ -512,7 +512,7 @@ h1 {
 
 ![image.png-134.4kB][6]
 
-### bootstrap全局样式————表单
+### bootstrap全局样式——表单
 
 #### 1.默认表单
 
@@ -591,6 +591,17 @@ h1 {
 
 - 练习：如何在输入框中放置一个对勾、叉叉、放大镜？ 
 
+### bootstrap组件——下拉菜单
+
+- 下来菜单必须的三级结构
+- `data-toggle="dropdown"`此属性必须引入bootstrap.js，其中会监听元素，并绑定事件监听函数。
+
+```html
+<div class="dropdown">
+    <a data-toggle="dropdown">触发元素</a>
+    <ul class="dropdown-menu">隐藏的菜单</ul>
+</div>
+```
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
