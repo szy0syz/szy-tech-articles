@@ -425,6 +425,28 @@ h1 {
 }
 ```
 
+### bootstrap全局样式————表格table
+
+- .table
+- .table-bordered   带边框的表格
+- .table-striped    隔行变色的表格
+- .table-hover      鼠标悬停变色的表格
+- .table-responsive 响应式表格，需用在table的父元素上
+
+### bootstrap全局样式————栅格布局系统
+
+#### 页面布局的几种方式
+
+- Table布局
+  - 好处：简单、容易控制
+  - 问题：语义错误、渲染效率低
+- Div+CSS布局
+  - 好处：语义正确、渲染效率高
+  - 问题：不容易控制
+- bootstrap栅格布局
+  - 好处：语义正确，渲染效率简单容易控制，响应式布局
+  - 不足：没有？
+
 unit02   01:00:56
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
