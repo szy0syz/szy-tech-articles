@@ -512,6 +512,40 @@ h1 {
 
 ![image.png-134.4kB][6]
 
+### bootstrap全局样式————表单
+
+#### 1.默认表单
+
+![image.png-16.9kB][7]
+
+- 代码结构
+
+```html
+    <form>
+        <div class="form-group">
+            <label class="control-label" for="uname">用户名：</label>
+            <input class="form-control" type="text" id="uname">
+            <span class="help-block">用户名必须是字母、数字或下划线</span>
+        </div>
+        <!--注意H5规范推荐的复选框和单选框的写法-->
+        <!--SRP:单一责任原则-->
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">保存登录七天
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-success" type="button" value="提交">
+            <input class="btn btn-danger" type="button" value="重置">
+        </div>
+    </form>
+```
+
+#### 2.行内表单
+
+
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
@@ -519,3 +553,4 @@ h1 {
   [4]: http://static.zybuluo.com/szy0syz/u9cbh3ikpn11q2yh1hj6ufsh/image.png
   [5]: http://static.zybuluo.com/szy0syz/4svm3w9se7x2ti0f6j3jo95e/image.png
   [6]: http://static.zybuluo.com/szy0syz/whk6hzuzpbrnx4z0rmqagyhn/image.png
+  [7]: http://static.zybuluo.com/szy0syz/13kuumwbnygsetxbixvm2a2r/image.png
