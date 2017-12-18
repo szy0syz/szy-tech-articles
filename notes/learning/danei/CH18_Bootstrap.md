@@ -447,8 +447,40 @@ h1 {
   - 好处：语义正确，渲染效率简单容易控制，响应式布局
   - 不足：没有？
 
+#### 栅格布局系统的使用方法
+
+- 栅格系统的父元素必须是
+  - div.container       ————定宽容器：lg:1170px、md:970px、sm:750px、xs:100%
+  - div.container-fluid ————变宽容器：全部情况下100%
+- 在容器中声明**“行”**
+  - `div.container > div.row` 
+- 在**“行”**中声明**“列”**
+  - `div.container > div.row > div.col-*-*`
+- 列根据不同的屏幕尺寸分为四组：
+  - `.col-lg-*`
+  - `.col-md-*`
+  - `.col-sm-*`
+  - `.col-xs-*`
+- 一行均分为12等列，每个列必须指定自己的占比：
+  - `.col-lg-1`
+  - `.col-lg-2`
+  - `.col-lg-3`
+  - `.col-lg-12`
+- 列可以向后“偏移”指定的宽度
+  - `.col-lg-offset-1`
+  - `.col-lg-offset-2`
+  - `.col-lg-offset-3`
+  - `.col-lg-offset-12`
+
+![image.png-6.3kB][4]
+
+![image.png-138.8kB][5]
+
 unit02   01:00:56
+
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
   [3]: http://static.zybuluo.com/szy0syz/ly98vj2zh0wc9h9wfak2ov1a/image.png
+  [4]: http://static.zybuluo.com/szy0syz/u9cbh3ikpn11q2yh1hj6ufsh/image.png
+  [5]: http://static.zybuluo.com/szy0syz/4svm3w9se7x2ti0f6j3jo95e/image.png
