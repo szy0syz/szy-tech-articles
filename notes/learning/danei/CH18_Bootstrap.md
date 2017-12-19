@@ -62,13 +62,13 @@
   - 缺陷：即使不满足当前浏览器条件的CSS文件，也会被浏览器下载。
 
 - **有选择性的执行CSS片段中的部分内容**
-  - `@media screen and (min-width:768px) and (max-width:991px) { h3: {display: none} }` 
+  - `@media screen and (min-width:768px) and (max-width:991px) { h3: {display: none} }`
 
 #### 响应式网页练习
 
 ![image.png-81.2kB][2]
 
-- 主体布局变化 1:3:1  -->  1:3:0  --> 100%:100%:0 
+- 主体布局变化 1:3:1  -->  1:3:0  --> 100%:100%:0
 
 ### Bootstrap起步
 
@@ -100,7 +100,7 @@
   - --> `font-size: 10px;` 全局字体为10px
   - --> `-webkit-tap-highlight-color: rgba(0, 0, 0, 0);`
 - `body{}`
-  - --> `font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;` 
+  - --> `font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;`
   - --> `font-size: 14px;` 覆盖修改全局字体14px
   - --> `line-height: 1.42857143;`
   - --> `color: #333333;`
@@ -208,12 +208,12 @@
 
 ### 响应式网页基本要求(步骤)
 
- 1. 声明viewport元标签
- 2. 容器尽量使用相对尺寸
- 3. 文字尽量使用相对大小
- 4. 图片尽量使用相对尺寸
- 5. 布局尽量使用流式布局
- 6. 使用CSS3 Media Query
+- 声明viewport元标签
+- 容器尽量使用相对尺寸
+- 文字尽量使用相对大小
+- 图片尽量使用相对尺寸
+- 布局尽量使用流式布局
+- 使用CSS3 Media Query
 
 ### 手写响应式网站心法
 
@@ -453,7 +453,7 @@ h1 {
   - div.container       ————定宽容器：lg:1170px、md:970px、sm:750px、xs:100%
   - div.container-fluid ————变宽容器：全部情况下100%
 - **在容器中声明**“行”****
-  - `div.container > div.row` 
+  - `div.container > div.row`
 - **在**“行”**中声明**“列”****
   - `div.container > div.row > div.col-*-*`
 - **列根据不同的屏幕尺寸分为四组：**
@@ -573,9 +573,6 @@ h1 {
 | 行       | div.row    |   div.form-group   |
 | 列       | div.col-\*-\*   |  div.col-\*-\*  |
 
-
-- 代码结构
-
 ```html
 <form>
     <div class="form-group">
@@ -589,7 +586,7 @@ h1 {
 </form>
 ```
 
-- 练习：如何在输入框中放置一个对勾、叉叉、放大镜？ 
+- 练习：如何在输入框中放置一个对勾、叉叉、放大镜？
 
 ### bootstrap组件——下拉菜单
 
