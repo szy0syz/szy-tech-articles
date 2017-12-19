@@ -603,6 +603,18 @@ h1 {
 </div>
 ```
 
+### bootstrap组件——警告框
+
+```html
+<div class="alert alert-danger alert-dismissible">
+    <span data-dismiss="alert" class="close">&times;</span>
+    <h4>警告</h4>
+    <p>你所打开的内容无法显示，请联系网络管理员！</p>
+</div>
+```
+
+### 练习：intel官网
+
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
   [3]: http://static.zybuluo.com/szy0syz/ly98vj2zh0wc9h9wfak2ov1a/image.png
