@@ -619,7 +619,24 @@ h1 {
 </div>
 ```
 
-### 练习：intel官网
+### bootstrap组件——图表字体
+
+- bootstrap提供了200+个Glyphicons图标，使用方法：
+  - `<span class="glyphicon glyphicon-*"></span>`
+  - 提示：使用图标字体HTML标签中不能有任何子元素或文本！
+- 练习：使用图标找到如下内容
+  - 首页、配置、用户、定位、刷新、搜索、邮件、星星、心型、加号、减号、对勾、叉叉、上一张、下一张、前进、后退、播放、暂停、快进、快退 
+
+### bootstrap组件——按钮组
+
+- `btn-group`
+
+### bootstrap组件——导航nav
+
+- bootstrap提供了三种形式的导航组件
+  - 标签页式导航(页签组件) `nav nav-tabs`
+  - 胶囊式导航 `nav nav-pills`
+  - 导航条专用导航
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
