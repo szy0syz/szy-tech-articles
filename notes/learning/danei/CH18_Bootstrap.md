@@ -638,6 +638,45 @@ h1 {
   - 胶囊式导航 `nav nav-pills`
   - 导航条专用导航
 
+### bootstrap组件——缩略图
+
+- 可以用于A元素或者DIV元素，用于展示一系列条目中的一个。
+- 练习：使用格栅系统+缩略图实现“商城中的商品列表”
+
+![image.png-12.6kB][10]
+
+### bootstrap组件——媒体对象
+
+媒体对象常用于商品列表：
+
+```html
+<div class="media">
+    <div class="media-left">图片</div>
+    <div class="media-body">主体</div>
+    <div class="media-right">图片</div>
+</div>
+```
+
+### bootstrap组件——列表组
+
+- 用法1：无鼠标悬停效果
+
+```html
+<ul>
+    <li class="list-group-item">
+</ul>
+```
+
+- 用法2：有鼠标悬停效果
+
+```html
+<div>
+    <a class="list-group-item"></a>
+</div>
+```
+
+unit03: 01:45:00
+
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
   [3]: http://static.zybuluo.com/szy0syz/ly98vj2zh0wc9h9wfak2ov1a/image.png
@@ -647,3 +686,4 @@ h1 {
   [7]: http://static.zybuluo.com/szy0syz/13kuumwbnygsetxbixvm2a2r/image.png
   [8]: http://static.zybuluo.com/szy0syz/ld5unqv6yyh9lovcmrxlel93/image.png
   [9]: http://static.zybuluo.com/szy0syz/ijxacstvycy9voc5tbyulbbz/image.png
+  [10]: http://static.zybuluo.com/szy0syz/lvf593ri8uxwcyxfqant7gmz/image.png
