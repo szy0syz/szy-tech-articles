@@ -675,7 +675,31 @@ h1 {
 </div>
 ```
 
-unit03: 01:45:00
+### bootstrap的JS插件——collapse
+
+- 折叠效果，本身使用很简单
+- 折叠的应用场景
+  - 手风琴：折叠效果插件 + 面板组
+  - 响应式导航条
+
+```html
+<a data-toggle="collapse" href="#myID">触发元素</a>
+<div id="myID" class="collapse in">
+    内容
+</div>
+```
+  
+#### 扩展：前端实现动画可用的技术
+
+- JavaScript定时器 烂啊--jQuery1/2中都用此技术
+- CSS3 Transition  不错
+- CSS3 KeyFrames   不错
+- requestAnimationFrame 最好--jQuery3
+
+### bootstrap组件——响应式导航条
+
+![image.png-38kB][11]
+
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
@@ -687,3 +711,4 @@ unit03: 01:45:00
   [8]: http://static.zybuluo.com/szy0syz/ld5unqv6yyh9lovcmrxlel93/image.png
   [9]: http://static.zybuluo.com/szy0syz/ijxacstvycy9voc5tbyulbbz/image.png
   [10]: http://static.zybuluo.com/szy0syz/lvf593ri8uxwcyxfqant7gmz/image.png
+  [11]: http://static.zybuluo.com/szy0syz/q52n71hujue8gehilqld6m62/image.png
