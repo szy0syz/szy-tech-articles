@@ -700,6 +700,30 @@ h1 {
 
 ![image.png-38kB][11]
 
+- 代码结构
+
+```html
+<div class="navbar"> 
+    <div class="container">
+        <div class="navbar-header"> 
+            /*仅能放‘商标’和‘汉堡’*/
+        </div>
+        <div class="navbar-collapse collapse">
+            /*折叠隐藏的内容，如导航、表单、链接...*/
+        </div>
+    </div>
+</div>
+```
+
+- 导航条的种类，按颜色分：
+  - 浅色底深色字：`navbar.navbar-default`
+  - 深色底浅色字：`navbar.navbar-inverse`
+- 导航条的种类，按定位分：
+  - 相对定位(占用空间)：`.narbar`
+  - 固定定位(不占空间)：`.navbar.navbar-fixed-*`
+- 导航条的种类，按位置分：
+  - 固定在顶部：`.navbar.navbar-fixed-top`
+  - 固定在底部：`.navbar.navbar-fixed-bottom`
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
