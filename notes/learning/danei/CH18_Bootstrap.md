@@ -703,13 +703,51 @@ h1 {
 - 代码结构
 
 ```html
-<div class="navbar"> 
+<div class="navbar navbar-default"> 
     <div class="container">
         <div class="navbar-header"> 
             /*仅能放‘商标’和‘汉堡’*/
         </div>
         <div class="navbar-collapse collapse">
             /*折叠隐藏的内容，如导航、表单、链接...*/
+        </div>
+    </div>
+</div>
+```
+
+```html
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!--商标和汉堡包-->
+            <a class="navbar-brand" href="#">
+                <img src="img/wangdoc.png" style="height: 50px; margin-top: -15px;" alt="logo">
+            </a>
+            <a href="#myMenu" data-toggle="collapse" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        </div>
+        <div id="myMenu" class="navbar-collapse collapse">
+            <!--导航条中的导航-->
+            <ul class="nav navbar-nav">
+                <li><a href="#">首页</a></li>
+                <li><a href="#" class="active">新闻</a></li>
+                <li><a href="#">产品</a></li>
+            </ul>
+            <!--导航条中的导航-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">注册</a></li>
+                <li><a href="#">登录</a></li>
+            </ul>
+            <!--导航条中的表单-->
+            <form class="navbar-form navbar-right hidden-xs">
+                <div class="form-group">
+                    <label for="kw" class="sr-only">搜索关键字：</label>
+                    <input type="text" class="form-control" id="kw" placeholder="请输入搜索关键字">
+                </div>
+            </form>
         </div>
     </div>
 </div>
