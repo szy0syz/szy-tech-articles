@@ -53,6 +53,7 @@
   - [达内前端培训CH04_CSS3Advanced](/notes/learning/danei/CH04-CSS3Advanced.md)
   - [达内前端培训 CH16_HTML5Core](/notes/learning/danei/CH16_HTML5Core.md)
   - [达内前端培训 CH18_Bootstrap](/notes/learning/danei/CH18_Bootstrap.md)
+  - [React全家桶+Epxress+MongoDB开发招聘APP](/notes/learning/react/react-job-app.md)
 
 - 读书笔记
   - [《JavaScript权威指南（第6版）》](/notes/reading/9787111376613/README.md)
