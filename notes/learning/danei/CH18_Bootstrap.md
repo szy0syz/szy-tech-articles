@@ -625,7 +625,7 @@ h1 {
   - `<span class="glyphicon glyphicon-*"></span>`
   - 提示：使用图标字体HTML标签中不能有任何子元素或文本！
 - 练习：使用图标找到如下内容
-  - 首页、配置、用户、定位、刷新、搜索、邮件、星星、心型、加号、减号、对勾、叉叉、上一张、下一张、前进、后退、播放、暂停、快进、快退 
+  - 首页、配置、用户、定位、刷新、搜索、邮件、星星、心型、加号、减号、对勾、叉叉、上一张、下一张、前进、后退、播放、暂停、快进、快退
 
 ### bootstrap组件——按钮组
 
@@ -688,7 +688,7 @@ h1 {
     内容
 </div>
 ```
-  
+
 #### 扩展：前端实现动画可用的技术
 
 - JavaScript定时器 烂啊--jQuery1/2中都用此技术
@@ -703,9 +703,9 @@ h1 {
 - 代码结构
 
 ```html
-<div class="navbar navbar-default"> 
+<div class="navbar navbar-default">
     <div class="container">
-        <div class="navbar-header"> 
+        <div class="navbar-header">
             /*仅能放‘商标’和‘汉堡’*/
         </div>
         <div class="navbar-collapse collapse">
