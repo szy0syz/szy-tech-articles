@@ -204,7 +204,7 @@
 
 ![image.png-172.6kB][3]
 
-## Unit02：全局CSS样式、组件
+## Unit02 & 03：全局CSS样式、组件
 
 ### 响应式网页基本要求(步骤)
 
@@ -762,6 +762,43 @@ h1 {
 - 导航条的种类，按位置分：
   - 固定在顶部：`.navbar.navbar-fixed-top`
   - 固定在底部：`.navbar.navbar-fixed-bottom`
+
+## Unit04: JS插件、Bootstrap定制
+
+- Bootstrap的JS插件其实可以分为10来个，可以分别引入，但有些存在依赖关系，建议还是全部引入。
+- 调用方法有两种：
+  - 使用JS调用 `$(div).modal();`
+  - 使用扩展属性方式调用(推荐写法) `<div data-toggle="modal"></div>`
+
+### Bootstrap插件：下拉菜单
+
+- JS方式调用
+  - `$('.dropdown a').dropdown();`
+  - 问题多多
+- data-*方式调用
+- `<a data-toggle="dropdown">`
+
+### Bootstrap插件：警告框
+
+- data-*方式调用
+
+```html
+<div class="alert alert-info">
+    <span class="close" data-dismiss="alert">
+    文字内容
+</div>
+```
+
+### Bootstrap插件：折叠效果
+
+- data-*方式调用
+
+```html
+<a data-toggle="collapse" href="#target">触发元素</a>
+<div id="target" class="collapse"></div>
+```
+
+### Bootstrap插件：模态框
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
