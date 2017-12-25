@@ -800,6 +800,24 @@ h1 {
 
 ### Bootstrap插件：模态框
 
+- modal：模态对话框，在父窗口中打开了一个子窗口，只要子窗口不关闭，父窗口无法获得输入焦点——该子窗口就称为“模态子窗口”。浏览器中默认有三个：window.alert()/confirm/prompt()都是模态窗口，但无法定制。
+- 一般项目中使用div模拟模态框，其bootstrap的模态框有三层结构
+
+```html
+<div id="modal1" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span data-dismiss="modal" class="close">&times;</span>
+                header
+            </div>
+            <div class="modal-body">body</div>
+            <div class="modal-footer">footer</div>
+        </div>
+    </div>
+</div>
+```
+
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
   [3]: http://static.zybuluo.com/szy0syz/ly98vj2zh0wc9h9wfak2ov1a/image.png
