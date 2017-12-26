@@ -818,6 +818,25 @@ h1 {
 </div>
 ```
 
+### Bootstrap插件：轮播组件
+
+Carousel：旋转木马、轮播广告
+提示：Bootstrap提供的轮播广告结构复杂，只需要记住最外层容器div.carousel，其余内容全靠Bootlint提示即可。
+
+### 样式语言的分类
+
+#### 静态样式语言
+
+- 即CSS，可以直接被浏览器解释执行。作为一门语言，CSS有缺陷，如缺少：类型、变量、运算、函数、对象和继承等语言必须的概念，导致了CSS样式代码可维护性差。
+
+#### 动态样式语言
+
+- 在CSS基础上添加了动态语言必需的因素，如类型、变量、运算、函数、对象和继承等，极大的提高了样式代码的可维护性。
+- 常见的动态样式语言：
+  - Sass/SCSS
+  - Stylus
+  - Less
+
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
   [3]: http://static.zybuluo.com/szy0syz/ly98vj2zh0wc9h9wfak2ov1a/image.png
