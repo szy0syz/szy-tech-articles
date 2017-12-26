@@ -836,6 +836,31 @@ Carousel：旋转木马、轮播广告
   - Sass/SCSS
   - Stylus
   - Less
+- 注意：浏览器只能解析CSS，所以所有的动态样式语言代码都必须转换为CSS才能执行——此过程称为动态样式语言的“编译”(Compile)
+
+### Less
+
+- Less文件有两种使用方法：
+- 在客户端使用Less
+  - 创建 x.less
+  - 创建 x.html，引入x.less，引入less.js(Less编译器)
+  - 客户端发送请求x.html，下载.less和.js两个文件，在浏览器中允许less.js把x.less文件编译成css代码
+- 在服务端使用Less
+  - 创建x.less
+  - 程序员在自己的电脑上安装less编译器
+  - 程序员执行less编译器，把x.less 编译成 x.css
+  - 创建 x.html，引入x.css
+  - 客户端请求html，下载css，直接执行
+- WebStorm中使用Less配置
+  - 配置项Tools -- File Watcher -- add
+
+#### Less基本语法
+
+- Less支持CSS所有语法
+- Less支持多行、单行注释，但CSS支持多行注释，所以Less中的单行注释不会被编译到CSS文件中
+- Less有变量(Variable)的概念
+- 声明变量：`@变量名: 值;`
+- 使用变量：`选择器{ 样式: @变量名; }`
 
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
