@@ -859,9 +859,26 @@ Carousel：旋转木马、轮播广告
 - Less支持CSS所有语法
 - Less支持多行、单行注释，但CSS支持多行注释，所以Less中的单行注释不会被编译到CSS文件中
 - Less有变量(Variable)的概念
-- 声明变量：`@变量名: 值;`
-- 使用变量：`选择器{ 样式: @变量名; }`
+  - 声明变量：`@变量名: 值;`
+  - 使用变量：`选择器{ 样式: @变量名; }`
+  - 变量值可以是任意合法的样式值
+- Less可以执行样式/变量的计算
+  - 加、减、乘、除、取余
+- Less支持样式的混入(Minix)
+  - 意思就是先定义选择器1定义样式值后，直接在样式2中调用样式1
+  - Less在样式混入时可以指定参数(类函数)
+- Less支持样式嵌套
+- Less支持文件包含指令
+  - CSS提供了`@import`指令，可用于包含其它的CSS文件，但由于会增加请求次数，不推荐使用；
+  - Less也提供了`@import`指令，可以用于包含其它的Less文件，推荐使用。——Less的文件包含是在服务端执行的文件合并，客户端只需要请求一次即可
 
+### Bootstrap定制
+
+- 定制目标：
+  - bootstrap瘦身，删除不必要的样式
+  - 修改Bootstrap默认的样式值，实现粗颗粒度定制
+  - 修改Bootstrap组件的细节样式，实现细颗粒度定制
+  
   [1]: http://static.zybuluo.com/szy0syz/abamsxlsv398rc80vl95lxtc/image.png
   [2]: http://static.zybuluo.com/szy0syz/7kenz001yzcpzgmm33rik1b2/image.png
   [3]: http://static.zybuluo.com/szy0syz/ly98vj2zh0wc9h9wfak2ov1a/image.png
