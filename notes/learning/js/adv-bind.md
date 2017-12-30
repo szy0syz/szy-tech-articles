@@ -5,7 +5,6 @@
 ![js-bind.png-383kB][1]
 
 - 来吧，我们看着原理图，不看答案的来走一遭~
-  
 
 ```javascript
 Function.prototype.myBind = function myBind(context) {
@@ -37,6 +36,4 @@ fn1('shi');
 /////////////↑↑↑↑↑以上是myBind测试↑↑↑↑↑///////////////
 ```
 
-
   [1]: http://static.zybuluo.com/szy0syz/pu2jqt7lcrm7ebki8kjkke2i/js-bind.png
-
