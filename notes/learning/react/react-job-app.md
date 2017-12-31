@@ -1,6 +1,6 @@
 # React全家桶+Epxress+MongoDB开发招聘APP
 
-## React基础知识
+## 第3张：React基础知识
 
 ### React是什么
 
@@ -39,6 +39,18 @@
 ![image.png-143.5kB][1]
 ![image.png-816kB][2]
 ![image.png-245.9kB][3]
+
+### antd-mobile
+
+按序加载：
+
+- `yarn add antd-mobile`
+- `yarn run eject`
+- `yarn add babel-plugin-import --dev`
+- 在package.json中新增`"plugs":"["import", { "libraryName": "antd-mobile", "style": "css" }],`
+- 之后就不需要单独引入某个组件的css样式
+
+## 第4章：Redux状态管理与React-router
 
   [1]: http://static.zybuluo.com/szy0syz/wojlnmcp2la4uxv0xe35juec/image.png
   [2]: http://static.zybuluo.com/szy0syz/3a1slmbmhcvnwing382lmxg6/image.png
