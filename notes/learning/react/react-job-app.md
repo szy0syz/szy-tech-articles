@@ -52,6 +52,12 @@
 
 ## 第4章：Redux状态管理与React-router
 
+专注于状态管理的库
+
+- Redux专注于状态管理，和react解耦
+- 单一状态，单向数据流
+- 核心概念：store、state、action、reducer
+
   [1]: http://static.zybuluo.com/szy0syz/wojlnmcp2la4uxv0xe35juec/image.png
   [2]: http://static.zybuluo.com/szy0syz/3a1slmbmhcvnwing382lmxg6/image.png
   [3]: http://static.zybuluo.com/szy0syz/qsypkctj5nxokbgzsibddtgy/image.png
