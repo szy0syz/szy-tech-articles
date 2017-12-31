@@ -58,6 +58,23 @@
 - 单一状态，单向数据流
 - 核心概念：store、state、action、reducer
 
+使用react-redux
+
+- Provier组件在应用最外层，传入store即可，只用一次
+- Connect负责从从外部获取组件需要的参数
+- Connect可以用装饰器的方式来写
+
+使用装饰器优化connect代码
+
+- `npm run eject` 弹出个性配置
+- `npm i babel-pulgin-transform-decorators-legacy -D`插件
+- package.json里babel加上plugins配置
+- @connect(参数1, 参数2)
+  - 参数1: 你要state的什么属性放到props里
+  - 参数2：你要什么方法放到props里，会自动dispatch
+
+4.7
+
   [1]: http://static.zybuluo.com/szy0syz/wojlnmcp2la4uxv0xe35juec/image.png
   [2]: http://static.zybuluo.com/szy0syz/3a1slmbmhcvnwing382lmxg6/image.png
   [3]: http://static.zybuluo.com/szy0syz/qsypkctj5nxokbgzsibddtgy/image.png
