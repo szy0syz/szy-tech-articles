@@ -81,8 +81,19 @@ React-4outer4
 
 ![image.png-368.3kB][4]
 
+## 第5章：需求分析
+
+![image.png-76.3kB][5]
+
+### 前后端连调
+
+- 如何发送，端口不一致，使用proxy配置转发
+  - package.json中新增键值对 "proxy": "http://localhost:9093" 
+- asios拦截器，统一loading处理
+- redux里使用异步数据，渲染页面
 
   [1]: http://static.zybuluo.com/szy0syz/wojlnmcp2la4uxv0xe35juec/image.png
   [2]: http://static.zybuluo.com/szy0syz/3a1slmbmhcvnwing382lmxg6/image.png
   [3]: http://static.zybuluo.com/szy0syz/qsypkctj5nxokbgzsibddtgy/image.png
   [4]: http://static.zybuluo.com/szy0syz/qj84ur9i8gy9wazzbc1ekyot/image.png
+  [5]: http://static.zybuluo.com/szy0syz/34p3ka7shlkx3y19656zvk6x/image.png
