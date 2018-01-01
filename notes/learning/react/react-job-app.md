@@ -97,8 +97,27 @@ React-4outer4
 - 拦截请求：`axios.interceptors.request.use(fun=>)`
 - 拦截响应：`axios.interceptors.response.use(fun=>)`
 
+## 第6章：登录与注册
+
+页面文件结构，骨架结构的实现
+
+  - 组件放在Components文件夹下
+  - 页面放在Container文件夹下
+  - 页面入口处获取用户信息，决定跳转到哪个页面
+
+开发模式
+
+- 基于cookie验证用户
+  - epxress依赖cookie-parser
+  - cookie类似一张身份卡，登录后服务器返回，你带着cookie就可以访问受限资源
+  - 页cookie的管理浏览器会自动c
+
+![image.png-54.1kB][6]
+
+
   [1]: http://static.zybuluo.com/szy0syz/wojlnmcp2la4uxv0xe35juec/image.png
   [2]: http://static.zybuluo.com/szy0syz/3a1slmbmhcvnwing382lmxg6/image.png
   [3]: http://static.zybuluo.com/szy0syz/qsypkctj5nxokbgzsibddtgy/image.png
   [4]: http://static.zybuluo.com/szy0syz/qj84ur9i8gy9wazzbc1ekyot/image.png
   [5]: http://static.zybuluo.com/szy0syz/34p3ka7shlkx3y19656zvk6x/image.png
+  [6]: http://static.zybuluo.com/szy0syz/p1kbyo53dardei7zopsappyj/image.png
