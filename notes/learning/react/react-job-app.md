@@ -71,10 +71,18 @@
 - package.json里babel加上plugins配置
 - @connect(参数1, 参数2)
   - 参数1: 你要state的什么属性放到props里
-  - 参数2：你要什么方法放到props里，会自动dispatch
+  - 参数2: 你要什么方法放到props里，会自动dispatch
 
-4.7
+React-4outer4
+
+- 核心概念：动态路由、Route、Link、Switch
+- Router4使用react-router-dom
+- Switch只渲染命中的一个路由
+
+![image.png-368.3kB][4]
+
 
   [1]: http://static.zybuluo.com/szy0syz/wojlnmcp2la4uxv0xe35juec/image.png
   [2]: http://static.zybuluo.com/szy0syz/3a1slmbmhcvnwing382lmxg6/image.png
   [3]: http://static.zybuluo.com/szy0syz/qsypkctj5nxokbgzsibddtgy/image.png
+  [4]: http://static.zybuluo.com/szy0syz/qj84ur9i8gy9wazzbc1ekyot/image.png
