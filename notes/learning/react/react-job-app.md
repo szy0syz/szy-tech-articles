@@ -88,9 +88,14 @@ React-4outer4
 ### 前后端连调
 
 - 如何发送，端口不一致，使用proxy配置转发
-  - package.json中新增键值对 "proxy": "http://localhost:9093" 
+  - `package.json`中新增键值对 `"proxy": "http://localhost:9093"`
 - asios拦截器，统一loading处理
 - redux里使用异步数据，渲染页面
+
+### axios拦截器
+
+- 拦截请求：`axios.interceptors.request.use(fun=>)`
+- 拦截响应：`axios.interceptors.response.use(fun=>)`
 
   [1]: http://static.zybuluo.com/szy0syz/wojlnmcp2la4uxv0xe35juec/image.png
   [2]: http://static.zybuluo.com/szy0syz/3a1slmbmhcvnwing382lmxg6/image.png
