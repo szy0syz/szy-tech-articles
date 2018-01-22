@@ -42,6 +42,13 @@ security:
   authorization: 'enabled'
 ```
 
+### 配置git私有仓库
+
+- `ssh-keygen -t rsa -b 4096 -C 'szy0syz@gmail.com'` 如果出现密码不要输入忽略掉
+- 使用以上命令前必须先看时候已经生成过 `cd ~/.ssh`
+- ssh代理开启 `eval "$(ssh-agent -s)"`
+- 进入`~/.ssh`后打开id_rsa.pub文件查看公钥，之后就可以去git管理页面添加公钥
+
   [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
   [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
   [3]: http://static.zybuluo.com/szy0syz/u7kwc6lg19tyvvyykagzkrfb/image.png
