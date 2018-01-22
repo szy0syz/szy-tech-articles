@@ -101,7 +101,7 @@ React-4outer4
 
 页面文件结构，骨架结构的实现
 
-  - 组件放在Components文件夹下
+  - 组件放在Component文件夹下
   - 页面放在Container文件夹下
   - 页面入口处获取用户信息，决定跳转到哪个页面
 
@@ -114,6 +114,16 @@ React-4outer4
 
 ![image.png-54.1kB][6]
 
+## 第7章：
+
+当想把一个对象中某个属性剔除后生产新对象，可以使用结构和展开运算符
+
+```javascript
+const { pwd, ...user } = data
+```
+
+![image.png-23.8kB][7]
+
 
   [1]: http://static.zybuluo.com/szy0syz/wojlnmcp2la4uxv0xe35juec/image.png
   [2]: http://static.zybuluo.com/szy0syz/3a1slmbmhcvnwing382lmxg6/image.png
@@ -121,3 +131,4 @@ React-4outer4
   [4]: http://static.zybuluo.com/szy0syz/qj84ur9i8gy9wazzbc1ekyot/image.png
   [5]: http://static.zybuluo.com/szy0syz/34p3ka7shlkx3y19656zvk6x/image.png
   [6]: http://static.zybuluo.com/szy0syz/p1kbyo53dardei7zopsappyj/image.png
+  [7]: http://static.zybuluo.com/szy0syz/9j3vhzyn1tdbrkn5i3m4wksg/image.png
