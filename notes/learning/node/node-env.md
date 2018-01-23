@@ -1,0 +1,77 @@
+# Ubuntu安装及Node.js生产环境部署
+
+## 下载镜像
+
+使用阿里云镜像下载镜像，速度很快。
+
+```bash
+# 目录
+http://mirrors.aliyun.com/ubuntu-releases/
+
+# 测试机32位系统即可
+http://mirrors.aliyun.com/ubuntu-releases/16.04.3/ubuntu-16.04.3-server-i386.iso
+```
+
+## 安装
+
+安装完系统首先去更新下源，待会我们update和upgrade时会快一点。
+
+```bash
+cd /etc/apt/sources.list.d
+touch sources-cn.list
+vim sources-cn.list
+```
+
+到 http://wiki.ubuntu.org.cn 找个sources的模板，这里用16.04：
+
+```bash
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse
+##測試版源
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-proposed main restricted universe multiverse
+# 源碼
+deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse
+##測試版源
+deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-proposed main restricted universe multiverse
+# Canonical 合作夥伴和附加
+deb http://archive.canonical.com/ubuntu/ xenial partner
+deb http://extras.ubuntu.com/ubuntu/ xenial main
+```
+
+其中也可以将以上源中的`http://cn.archive.ubuntu.com/ubuntu/`替换成阿里云、网易、中科院等等
+
+更新系统及安装常用软件
+
+```bash
+# 从源中更新软件列表到本地
+sudo apt-get update
+
+# 如果报一个和cdrom没法获取数据的错，需把deb cdrom:[]注销
+vim /etc/apt/sources.list
+
+# 一键更新
+sudo apt-get upgrade
+
+# 安装一些比用软件
+sudo apt-get install git vim openssl build-essential libssh-dev wget curl
+
+# 安装nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
+# 生效nvm
+source ~/.bashrc
+
+# 安装node.js
+nvm install 8.9.4
+
+# 安装yarn
+
+# 
+```
+
+
