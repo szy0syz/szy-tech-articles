@@ -65,6 +65,8 @@ methods = {
 | \$extend        |        |    |
 | \$has        |     |   |
 
+- 没事别在新页面中调用空onLoad钩子函数，否则报错：出现脚本错误或者未正确调用 Page()
+
 ### wepy-v2ex-demo笔记
 
 #### 流程

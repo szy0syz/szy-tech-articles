@@ -10,3 +10,4 @@
 - http://jsbin.com
 - http://runjs.cn/code
 - https://jsfiddle.net
+- http://www.yamllint.com/
