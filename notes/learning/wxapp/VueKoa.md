@@ -42,12 +42,54 @@ security:
   authorization: 'enabled'
 ```
 
-### 配置git私有仓库
+### 配置 Git 私有仓库管理代码
 
 - `ssh-keygen -t rsa -b 4096 -C 'szy0syz@gmail.com'` 如果出现密码不要输入忽略掉
 - 使用以上命令前必须先看时候已经生成过 `cd ~/.ssh`
 - ssh代理开启 `eval "$(ssh-agent -s)"`
 - 进入`~/.ssh`后打开id_rsa.pub文件查看公钥，之后就可以去git管理页面添加公钥
+
+### 配置 PM2 一键部署发布项目
+
+ 创建`ecosystem.json` "生态系统"的json，pm2读取此脚本后去服务器部署
+
+ ```json
+{
+    "apps": [
+        {
+            "name": "Ice",
+            "script": "server.js",
+            "instances": 2,
+            "env": {
+                "COMMON_VARIABLE": "true"
+            },
+            "env_production": {
+                "NODE_ENV": "production"
+            }
+        }
+    ],
+    "deploy": {
+        "production": {
+            "user": "root",
+            "host": [
+                "47.92.154.146"
+            ],
+            "ref": "origin/master",
+            "repo": "https://git.coding.net/szy0syz/yncyzj.git",
+            "path": "/home/wwwroot/yncyzj",
+            "ssh_options": "StrictHostKeyChecking=no",
+            "pre-delpoy-local": "ehco 'Deploy Done!'",
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    }
+}
+ ```
+
+之后第一次部署时：`pm2 deploy ecosystem.json production setup`，会去git的仓库clone整个新代码
+
+之后发布服务：`pm2 deploy ecosystem.json production setup`，将服务发布在pm2
 
   [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
   [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
