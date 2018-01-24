@@ -81,23 +81,34 @@ ps -e|grep ssh
 sudo apt-get install openssh-server
 #   启动服务
 sudo /etc/init.d/ssh start
-#   修改ssh端口号
+#   备份ssh配置
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+#   修改ssh配置
 sudo vim /etc/ssh/sshd_config
+#   PermitEmptyPasswords no     # 禁止空密码登录
+#   RSAAuthentication yes       # 启用 RSA 认证
+#   PubkeyAuthentication yes    # 启用公钥认证
+#   ServerKeyBits 1024          # 将ServerKey强度改为1024比特
 #   重启以生效
 sudo /etc/init.d/ssh restart
+#   sudo service ssh restart
 
 # 初始化ssh(服务器和开发端)
 #   生成公钥和秘钥 空密码
 ssh-keygen -t rsa -C "szy0syz@gmail.com" -P ''
 #   将开发端公钥改名
-cp id_rsa.pub authorized_keys
+cp id_rsa.pub jerry@4790MAC
 #   发送authorized_keys到服务端 和修改权限
-scp authorized_keys szy0syz@192.168.2.36:/home/szy0syz/.ssh
+scp jerry@4790MAC szy0syz@192.168.2.36:~/
+#   切到服务器将公钥放
+cat jerry@4790MAC >> ~/.ssh/authorized_keys
 sudo chmod 755 ~/.ssh
 sudo chmod 600 ~/.ssh/authorized_keys
+#   将ssh key添加到ssh-agent
+ssh-add ~/.ssh/id_rsa
 #   重启ssh-server
 sudo /etc/init.d/ssh restart
+#   sudo service ssh restart
+#   开发端添加ssh host
+vim ~/.ssh/config
 ```
-
-
-
