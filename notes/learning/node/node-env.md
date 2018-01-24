@@ -54,8 +54,11 @@ sudo apt-get update
 # 如果报一个和cdrom没法获取数据的错，需把deb cdrom:[]注销
 vim /etc/apt/sources.list
 
-# 一键更新
+# 一键更新软件包
 sudo apt-get upgrade
+
+# 升级管理器
+sudo update-manager -d
 
 # 安装一些比用软件
 sudo apt-get install git vim openssl build-essential libssh-dev wget curl
@@ -71,7 +74,30 @@ nvm install 8.9.4
 
 # 安装yarn
 
-# 
+# 安装ssh
+#   先看是否安装ssh
+ps -e|grep ssh
+#   如果缺少就安装
+sudo apt-get install openssh-server
+#   启动服务
+sudo /etc/init.d/ssh start
+#   修改ssh端口号
+sudo vim /etc/ssh/sshd_config
+#   重启以生效
+sudo /etc/init.d/ssh restart
+
+# 初始化ssh(服务器和开发端)
+#   生成公钥和秘钥 空密码
+ssh-keygen -t rsa -C "szy0syz@gmail.com" -P ''
+#   将开发端公钥改名
+cp id_rsa.pub authorized_keys
+#   发送authorized_keys到服务端 和修改权限
+scp authorized_keys szy0syz@192.168.2.36:/home/szy0syz/.ssh
+sudo chmod 755 ~/.ssh
+sudo chmod 600 ~/.ssh/authorized_keys
+#   重启ssh-server
+sudo /etc/init.d/ssh restart
 ```
+
 
 
