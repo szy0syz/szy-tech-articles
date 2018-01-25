@@ -95,7 +95,7 @@ sudo /etc/init.d/ssh restart
 
 # 初始化ssh(服务器和开发端)
 #   生成公钥和秘钥 空密码
-ssh-keygen -t rsa -C "szy0syz@gmail.com" -P ''
+ssh-keygen -t rsa -C "szy0syz@gmail.com"
 #   将开发端公钥改名
 cp id_rsa.pub jerry@4790MAC
 #   发送authorized_keys到服务端 和修改权限
@@ -112,3 +112,17 @@ sudo /etc/init.d/ssh restart
 #   开发端添加ssh host
 vim ~/.ssh/config
 ```
+
+如果客户端使用git报错
+
+`Permanently added the RSA host key for IP address  to the list of known hosts.`
+
+```bash
+# vim ~/.ssh/config
+Host *
+   StrictHostKeyChecking no
+   UserKnownHostsFile /dev/null
+   LogLevel ERROR
+```
+
+
