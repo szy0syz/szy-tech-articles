@@ -22,7 +22,7 @@ touch sources-cn.list
 vim sources-cn.list
 ```
 
-到 http://wiki.ubuntu.org.cn 找个sources的模板，这里用16.04：
+到 `http://wiki.ubuntu.org.cn` 找个sources的模板，这里用16.04：
 
 ```bash
 deb http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
@@ -124,5 +124,3 @@ Host *
    UserKnownHostsFile /dev/null
    LogLevel ERROR
 ```
-
-
