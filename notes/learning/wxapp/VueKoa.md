@@ -87,9 +87,16 @@ security:
 }
  ```
 
-之后第一次部署时：`pm2 deploy ecosystem.json production setup`，会去git的仓库clone整个新代码
+- first: `pm2 deploy ecosystem.json production setup`
+- then: `pm2 deploy ecosystem.json production`
 
-之后发布服务：`pm2 deploy ecosystem.json production setup`，将服务发布在pm2
+## 第4章
+
+### Ngrok本地代理服务
+
+- 下载ngrok
+- 验证ngrok
+- 启动ngrok `ngrok http 3000`
 
   [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
   [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
