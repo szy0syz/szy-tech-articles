@@ -90,13 +90,25 @@ security:
 - first: `pm2 deploy ecosystem.json production setup`
 - then: `pm2 deploy ecosystem.json production`
 
+### pm2资源
+
+- https://segmentfault.com/q/1010000012007247
+- https://segmentfault.com/a/1190000005171229
+- https://www.kancloud.cn/daiji/pm2/395298
+- http://pm2.keymetrics.io/docs/usage/application-declaration/
+- https://www.kancloud.cn/daiji/pm2/395298
+
+## 第2章
+
+- 全新邮箱注册微信开放平台，绑定公众号和小程序后，可以那到uionID，此后在公众号和小程序上可以用相同id获取同一用户的数据
+
 ## 第4章
 
 ### Ngrok本地代理服务
 
-- 下载ngrok
-- 验证ngrok
-- 启动ngrok `ngrok http 3000`
+- 下载ngrok.cc客户端
+- 注册ngrok.cc
+- 启动sunny_ngrok `ngrok client xxxxxxxxx`
 
   [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
   [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
