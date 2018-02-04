@@ -54,6 +54,9 @@ methods = {
 - 在promise对象中，resolve(res)并不是return，所以可以在resolve(res)后继续写代码
 - 子组件的onload方法要在父页面组件onload方法前执行，好tm费解的机制。
 - wepy -> props 也可以用于页面渲染
+- wepy中view标签的子元素必须换行规规矩矩的来才正常显示
+- navigate元素是块级元素，修改display还不行
+- wepy组件要有个顺序，要不然插件还warnning：先template然script后style
 
 - 看看`wepy`实例到底有些啥属性
 
