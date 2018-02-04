@@ -57,6 +57,7 @@ methods = {
 - wepy中view标签的子元素必须换行规规矩矩的来才正常显示
 - navigate元素是块级元素，修改display还不行
 - wepy组件要有个顺序，要不然插件还warnning：先template然script后style
+- wepy组件中，不要的component、data、onLoad...没有就不要留空，直接别写，否则warnning
 
 - 看看`wepy`实例到底有些啥属性
 
