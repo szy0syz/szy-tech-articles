@@ -1,6 +1,6 @@
 # 微信小程序自学笔记
 
-- 程序官方出品，WeUI+Weapp，小项目，很不错。https://github.com/Tencent/weui-wxss、http://www.runoob.com/w3cnote/weui-for-weixin-web.html
+- 程序官方出品，WeUI+Weapp，小项目，很不错。`https://github.com/Tencent/weui-wxss、http://www.runoob.com/w3cnote/weui-for-weixin-web.html`
 
 - `<scroll-view>`标签是个奇葩的存在，你对它设置的任何布局都不生效，有点像开了"天神下凡"的山丘之王~
 
@@ -33,10 +33,10 @@ methods = {
         })
         var t = arguments
         promise.then((d) => {
-          console.dir(d) //对象：toast的属性，包含title、img等 
+          console.dir(d) //对象：toast的属性，包含title、img等
           console.dir(arguments)
           //哇，内部函数的this竟然被绑定到了外部函数的this上
-          console.log(t === arguments) 
+          console.log(t === arguments)
         })
     }
 }
@@ -54,8 +54,11 @@ methods = {
 - 在promise对象中，resolve(res)并不是return，所以可以在resolve(res)后继续写代码
 - 子组件的onload方法要在父页面组件onload方法前执行，好tm费解的机制。
 - wepy -> props 也可以用于页面渲染
-- 父子组件传值方式 `<child :myData='varName'></child>`
-- 在await函数后记得`this.$apply()`处理赃数据
+- wepy中view标签的子元素必须换行规规矩矩的来才正常显示
+- navigate元素是块级元素，修改display还不行
+- wepy组件要有个顺序，要不然插件还warnning：先template然script后style
+- wepy组件中，不要的component、data、onLoad...没有就不要留空，直接别写，否则warnning
+- wepy组件中传值，如果是静态的话只能传String，动态的可以选择不同步，单向同步和双向同步
 
 - 看看`wepy`实例到底有些啥属性
 
@@ -76,9 +79,7 @@ methods = {
 - 流程
   - 首页设hot，实例化`wepy.page`类生成实例对象，然后用封装好的api将数据存page中。注册子组件topicList，通过动态绑定props传递数据进子组件展示数据；
   - 第二页设latest，实例化`wepy.page`类生成实例对象并api调用数据。动态绑定属性到topicList组件展示，同上。
-  - 第三页为nodes页，实例化`wepy.page`类生成实例对象并api调用数据存page中。动态绑定属性到nodeList组件展示。同时在page对象上为onReachBottom行为注册事件，并在events中定义函数，如果触发page组件的行为则用`this.$broadcast('getMoreNodes', 100)`广播行为到子组件，注册子组件getMoreNodes事件，
- - 在nodeList组件中，因为要分段显示数据，而父组件传进来的只绑定在props上，但子组件的onload又先在父组件onload先执行，则只能在子组件中利用watcher监控props里传入的数据，等父组件异步获取到数据，并传进来后执行展示。
-
+  - 第三页为nodes页，实例化`wepy.page`类生成实例对象并api调用数据存page中。动态绑定属性到nodeList组件展示。同时在page对象上为onReachBottom行为注册事件，并在events中定义函数，如果触发page组件的行为则用`this.$broadcast('getMoreNodes', 100)`广播行为到子组件，注册子组件getMoreNodes事件
+- 在nodeList组件中，因为要分段显示数据，而父组件传进来的只绑定在props上，但子组件的onload又先在父组件onload先执行，则只能在子组件中利用watcher监控props里传入的数据，等父组件异步获取到数据，并传进来后执行展示。
 
 ### wepy-one 学习笔记
-
