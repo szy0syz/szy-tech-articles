@@ -54,6 +54,8 @@ methods = {
 - 在promise对象中，resolve(res)并不是return，所以可以在resolve(res)后继续写代码
 - 子组件的onload方法要在父页面组件onload方法前执行，好tm费解的机制。
 - wepy -> props 也可以用于页面渲染
+- 父子组件传值方式 `<child :myData='varName'></child>`
+- 在await函数后记得`this.$apply()`处理赃数据
 
 - 看看`wepy`实例到底有些啥属性
 
