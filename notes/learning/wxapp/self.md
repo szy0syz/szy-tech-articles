@@ -59,6 +59,8 @@ methods = {
 - wepy组件要有个顺序，要不然插件还warnning：先template然script后style
 - wepy组件中，不要的component、data、onLoad...没有就不要留空，直接别写，否则warnning
 - wepy组件中传值，如果是静态的话只能传String，动态的可以选择不同步，单向同步和双向同步
+- 父子组件传值方式 `<child :myData='varName'></child>`
+- 在await函数后记得`this.$apply()`处理赃数据
 
 - 看看`wepy`实例到底有些啥属性
 
