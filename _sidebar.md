@@ -38,7 +38,7 @@
   - [SASS学习笔记](/notes/learning/css/SASS.md)
   - [JS进阶：实现bind方法](/notes/learning/js/adv-bind.md)
   - [极客学院-微信小程序学习笔记](/notes/learning/wxapp/jkxy.md)
-  - [微信小程序自学笔记](/notes/learning/wxapp/self.md)  
+  - [微信小程序自学笔记](/notes/learning/wxapp/self.md)
   - [flexbox学习笔记](/notes/learning/css/flexbox.md)
   - [WTK JavaScript学习笔记](/notes/learning/js/wtfjs.md)
   - [爱创课堂CSS内部视频](/notes/learning/css/icketang_css.md)
@@ -67,12 +67,14 @@
   - [《JavaScript模式》[在读]](/notes/reading/9787512329232/README.md)
   - [《Eloquent JavaScript》[计划]](/notes/reading/9781593275846/README.md)
   - [《代码整洁之道》[计划]](/notes/reading/9787115216878/README.md)
-  - [《C Primer Plus (第6版)》[计划]](/notes/reading/9787115390592/README.md)  
+  - [《C Primer Plus (第6版)》[计划]](/notes/reading/9787115390592/README.md)
   - [《离散数学及其应用(第5版)》[计划]](/notes/reading/9787111203261/README.md)
   - [《剑指Offer(第2版)》](/notes/reading/9787121310928.md)
   - [《JavaScript高级程序设计(第3版)》](/notes/reading/9787115275790.md)
   - [《CSS权威指南(第3版)》读书笔记](/notes/reading/9787508355948.md)
   - [《HTML5布局之路》读书笔记](/notes/reading/9787302466840.md)
+  - [《《卖晾衣杆的小贩为何不会倒》》读书笔记](/notes/reading/987111546115.md)
+  - [《精彩绝伦的CSS》读书笔记](/notes/reading/9787115284792.md)
 
 - 干货店铺
   - **[JavaScript标准参考教材](http://javascript.ruanyifeng.com/)**
