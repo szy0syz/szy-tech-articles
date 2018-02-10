@@ -75,6 +75,7 @@
   - [《HTML5布局之路》读书笔记](/notes/reading/9787302466840.md)
   - [《《卖晾衣杆的小贩为何不会倒》》读书笔记](/notes/reading/987111546115.md)
   - [《精彩绝伦的CSS》读书笔记](/notes/reading/9787115284792.md)
+  - [《精通CSS 高级WEB标准解决方案(第2版)》读书笔记](/notes/reading/9787115226730.md)
 
 - 干货店铺
   - **[JavaScript标准参考教材](http://javascript.ruanyifeng.com/)**
