@@ -51,9 +51,9 @@ security:
 
 ### 配置 PM2 一键部署发布项目
 
- 创建`ecosystem.json` "生态系统"的json，pm2读取此脚本后去服务器部署
+创建`ecosystem.json` "生态系统"的json，pm2读取此脚本后去服务器部署
 
- ```json
+```json
 {
     "apps": [
         {
@@ -92,11 +92,11 @@ security:
 
 ### pm2资源
 
-- https://segmentfault.com/q/1010000012007247
-- https://segmentfault.com/a/1190000005171229
-- https://www.kancloud.cn/daiji/pm2/395298
-- http://pm2.keymetrics.io/docs/usage/application-declaration/
-- https://www.kancloud.cn/daiji/pm2/395298
+- `https://segmentfault.com/q/1010000012007247`
+- `https://segmentfault.com/a/1190000005171229`
+- `https://www.kancloud.cn/daiji/pm2/395298`
+- `http://pm2.keymetrics.io/docs/usage/application-declaration/`
+- `https://www.kancloud.cn/daiji/pm2/395298`
 
 ## 第2章
 
