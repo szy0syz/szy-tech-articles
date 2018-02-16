@@ -104,11 +104,28 @@ security:
 
 ## 第4章
 
-### Ngrok本地代理服务
+### 4-01 Ngrok本地代理服务
 
 - 下载ngrok.cc客户端
 - 注册ngrok.cc
 - 启动sunny_ngrok `ngrok client xxxxxxxxx`
+- jerry测试: `71eb740946c7b826`
+
+### 4-02 构建初始项目验证公众号服务器
+
+- babel编译启动服务
+
+```js
+require('babel-core/register')({
+  'presets': [
+    'stage-3',
+    ['latest-node', { 'target': 'current' }]
+  ]
+})
+
+require('babel-polyfill')
+require('./server')
+```
 
   [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
   [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
