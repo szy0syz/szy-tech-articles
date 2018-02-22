@@ -51,9 +51,9 @@ security:
 
 ### 配置 PM2 一键部署发布项目
 
- 创建`ecosystem.json` "生态系统"的json，pm2读取此脚本后去服务器部署
+创建`ecosystem.json` "生态系统"的json，pm2读取此脚本后去服务器部署
 
- ```json
+```json
 {
     "apps": [
         {
@@ -92,11 +92,11 @@ security:
 
 ### pm2资源
 
-- https://segmentfault.com/q/1010000012007247
-- https://segmentfault.com/a/1190000005171229
-- https://www.kancloud.cn/daiji/pm2/395298
-- http://pm2.keymetrics.io/docs/usage/application-declaration/
-- https://www.kancloud.cn/daiji/pm2/395298
+- `https://segmentfault.com/q/1010000012007247`
+- `https://segmentfault.com/a/1190000005171229`
+- `https://www.kancloud.cn/daiji/pm2/395298`
+- `http://pm2.keymetrics.io/docs/usage/application-declaration/`
+- `https://www.kancloud.cn/daiji/pm2/395298`
 
 ## 第2章
 
@@ -104,11 +104,30 @@ security:
 
 ## 第4章
 
-### Ngrok本地代理服务
+### 4-01 Ngrok本地代理服务
 
 - 下载ngrok.cc客户端
 - 注册ngrok.cc
 - 启动sunny_ngrok `ngrok client xxxxxxxxx`
+- jerry测试: `71eb740946c7b826`
+
+### 4-02 构建初始项目验证公众号服务器
+
+- babel编译启动服务
+
+```js
+require('babel-core/register')({
+  'presets': [
+    'stage-3',
+    ['latest-node', { 'target': 'current' }]
+  ]
+})
+
+require('babel-polyfill')
+require('./server')
+```
+
+## 第6章 爬虫
 
   [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
   [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
