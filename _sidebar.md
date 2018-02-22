@@ -74,9 +74,9 @@
   - [《CSS权威指南(第3版)》](/notes/reading/9787508355948.md)
   - [《HTML5布局之路》](/notes/reading/9787302466840.md)
   - [《卖晾衣杆的小贩为何不会倒》](/notes/reading/987111546115.md)
-  - [《精彩绝伦的CSS》读书笔记](/notes/reading/9787115284792.md)
+  - [《精彩绝伦的CSS》](/notes/reading/9787115284792.md)
   - [《精通CSS 高级WEB标准解决方案(第2版)》](/notes/reading/9787115226730.md)
-  - [《Progressive Web Apps》读书笔记](/notes/reading/9781617294587.md)
+  - [《Progressive Web Apps》](/notes/reading/9781617294587.md)
 
 - 干货店铺
   - **[JavaScript标准参考教材](http://javascript.ruanyifeng.com/)**
