@@ -49,3 +49,30 @@
 - 集合(`collection`)是文档的聚合
 - 0 和 1 也可以表示 true 或 false
 - 数字类型64位浮点数, 整数都会被转换成64位浮点数
+
+## MongoDB操作
+
+> MongoDB中有很多隐式
+
+## 索引
+
+索引就是用来加速查询的。数据库索引与书籍的索引类似：有了索引就不需要翻遍整本书，数据库这可以直接在索引中查找，使得查找速度能提高几个数量级。在索引中找到条目以后，就可以直接跳转到目标文档的位置。
+
+- `explain()`是非常有用的工具，会帮助你获得查询方面诸多有用的信息。只要对游标调用方法，就可以得到查询细节。explain会返回一个文档，而不是游标本身。如：`db.test.find().explain()`查询该查询的执行性能
+
+```js
+// 创建索引
+db.shares.ensureIndex({ barCode: 1 })
+
+// 创建唯一索引(不允许重复)
+db.shares.ensureIndex({barCode: 1}, {unique: true})
+
+// 查看关于索引(包含整个集合)信息
+db.shares.stats()
+
+// 查询使用索引的情况
+db.shares.find({shares: 2}).explain()
+
+// 删除索引
+db.shares.dropIndex({ barCode: 1 })
+```
