@@ -121,3 +121,22 @@ db.createCollection("collectionName"， { capped:true, size: 100000, max: 100 })
 `mongoimport -h dbhost -d dbname -c collectionname output`
 
   - `output` 导出是的文件名
+
+## 安全和认证
+
+每个MongoDB实例中的数据库都可以有许多用户。如果开启了安全检查，则只有数据库认证用户才能执行读写操作。在认证的上下文中，MongoDB会将普通的数据作为admin数据库处理。admin数据库中的用户被视为超级用户。
+在认证后，管理员可以读写所有数据库，执行特定的管理命令。
+在开启安全检查之前，必须保证有一个管理员用户。
+
+```js
+use admin
+db.addUser("username", "password")
+
+// 在test数据库中创建普通账号
+use test
+db.addUser("test1","123")
+db.addUser("test2","123", true) //test2用户仅有读取数据的权限
+
+// 开启验证模式
+mongod --dbpath d:/data/db --auth
+```
