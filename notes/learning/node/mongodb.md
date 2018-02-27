@@ -140,3 +140,28 @@ db.addUser("test2","123", true) //test2用户仅有读取数据的权限
 // 开启验证模式
 mongod --dbpath d:/data/db --auth
 ```
+
+## 主从复制(主从集群)
+
+> 主从复制是MongoDB最常用的复制方式。
+
+```js
+// 启动主数据库实例
+mongod --master
+
+// 启动从属数据库实例并连接主服务库
+mongod --slave --source master_address
+```
+
+MongoDB的复制至少需要两个服务器或者节点。其中一个是主节点，负责处理客户端请求，其它的都是从节点，负责映射主节点的数据。
+主节点记录在其上执行的所有操作。从节点定期轮询主节点获得这些操作，然后对自己的数据副本执行这些操作。由于和主节点执行了相同的操作，从节点就能保持与主节点的数据同步。
+
+```js
+mongod --dbpath c:\data\master --master --port 10000 --directoryperdb
+
+mongod --dbpath c:\data\slave\slave1 --port 10001 --slave --source localhost:10000 --directoryperdb
+
+mongod --dbpath c:\data\slave\slave1 --port 10002 --slave --source localhost:10000 --directoryperdb
+```
+
+> 注意：主节点可以进行增删改查所有操作，而在从节点只能进行查询的操作。
