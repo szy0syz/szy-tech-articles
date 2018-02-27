@@ -90,3 +90,22 @@ db.createCollection("collectionName"， { capped:true, size: 100000, max: 100 })
 ```
 
 当指定文档数量上限时，必须同时指定大小。淘汰机制会用或逻辑或判定条件启动淘汰机制。
+
+## 备份与恢复
+
+### 备份
+
+`mongodump -h dbhost -d dbname -o out-dbdirectory`
+
+  - `-h` host:port
+  - `-d` dbname
+  - `-o` out dbdirectory
+
+### 恢复
+
+`mongorestore -h dbhost -d dbname -directoryperdb dbdirectory`
+
+  - `-h` host:27017
+  - `-d` dbname
+  - `-directoryperdb` 每个数据库独立文件
+  - `dbdirectory` 所备份的数据目录
