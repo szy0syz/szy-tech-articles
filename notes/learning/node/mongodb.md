@@ -95,11 +95,11 @@ db.createCollection("collectionName"， { capped:true, size: 100000, max: 100 })
 
 ### 备份
 
-`mongodump -h dbhost -d dbname -o out-dbdirectory`
+`mongodump -h dbhost -d dbname -o output-dbdirectory`
 
   - `-h` host:port
   - `-d` dbname
-  - `-o` out dbdirectory
+  - `-o` output dbdirectory
 
 ### 恢复
 
@@ -109,3 +109,15 @@ db.createCollection("collectionName"， { capped:true, size: 100000, max: 100 })
   - `-d` dbname
   - `-directoryperdb` 每个数据库独立文件
   - `dbdirectory` 所备份的数据目录
+
+## 导入与导出
+
+这里导出的数据是json数据，和备份出来的二进制数据不一样。
+
+`mongoexport -h dbhost -d dbname -c collectionName -o output`
+
+  - `-o` output filename 需指明文件名
+
+`mongoimport -h dbhost -d dbname -c collectionname output`
+
+  - `output` 导出是的文件名
