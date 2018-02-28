@@ -170,6 +170,11 @@ mongod --dbpath c:\data\slave\slave1 --port 10002 --slave --source localhost:100
 
 > 副本集就是有自动故障恢复功能的主从集群。
 
+![repl-1](https://docs.mongodb.com/manual/_images/replica-set-read-write-operations-primary.bakedsvg.svg)
+![repl-2](https://docs.mongodb.com/manual/_images/replica-set-primary-with-two-secondaries.bakedsvg.svg)
+![repl-3](https://docs.mongodb.com/manual/_images/replica-set-primary-with-secondary-and-arbiter.bakedsvg.svg)
+![repl-4](https://docs.mongodb.com/manual/_images/replica-set-trigger-election.bakedsvg.svg)
+
 主从集群和副本集最大的区别就是副本集没有固定的“主节点”；整个集群会选出一个“主节点”，当其挂掉后，又在剩下的从节点中选中其他节点为“主节点”。
 
 副本集总有三种节点：和。
