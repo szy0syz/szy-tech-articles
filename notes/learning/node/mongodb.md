@@ -176,7 +176,7 @@ mongod --dbpath c:\data\slave\slave1 --port 10002 --slave --source localhost:100
 ![repl-4](https://docs.mongodb.com/manual/_images/replica-set-trigger-election.bakedsvg.svg)
 
 主从集群和副本集最大的区别就是副本集没有固定的“主节点”；整个集群会选出一个“主节点”，当其挂掉后，又在剩下的从节点中选中其他节点为“主节点”。
-
+ 
 副本集总有三种节点：和。
 
 - 一个主要节点(primary)
@@ -199,4 +199,24 @@ mongod --replSet jerry --dbpath c:\data\rs\data\10002 --port 10002 --logpath c:\
 rs.status()
 // 查看副本集配置
 rs.conf()
+```
+
+## 分片
+
+> 分片(sharding)是指将数据拆分，将其分散存在不同的机器上的过程。有时也用分区(partitioning)来表示这个概念。将数据分散到不同的机器上，不需要功能强大的大型计算机就可以储存更多的数据，处理更多的负载。
+
+MongoDB分片的基本思想就是将集合切分成小块。这些块分散到若干片里面，每个片只负责总数据的一部分。应用程序不必知道哪片对应哪些数据，甚至不需要知道数据已经被拆分了，所以在分片之前要运行一个路由进程，该进程名为mongos。这个路由器知道所有数据的存放位置，所以应用可以连接它来正常发送请求。对应用来说，它仅知道连接了一个普通的mongod。路由器知道数据和片的对应关系，能够转发请求道正确的片上。如果请求有了回应，路由器将其收集起来回送给应用。
+设置分片时，需要从集合里面选一个键，用该键的值作为数据拆分的依据。这个键称为片键(shard key)。
+用个例子来说明这个过程：假设有个文档集合表示的是人员。如果选择名字("name")作为片键，第一片可能会存放名字以A~F开头的文档，第二片存的G~P的名字，第三片存的Q~Z的名字。随着添加或者删除片，MongoDB会重新平衡数据，使每片的流量都比较均衡，数据量也在合理范围内。
+
+![sharding](http://ofx24fene.bkt.clouddn.com//blog/2018/sharding.png)
+![sharding](http://ofx24fene.bkt.clouddn.com//blog/2018/sharding_.png)
+
+```js
+// 先开一个configdb
+mongod --port 10000 --dbpath c:\data\sharding\data\10000 --directoryperdb --logappend --logpath c:\data\sharding\log\10000.log
+
+//
+
+
 ```
