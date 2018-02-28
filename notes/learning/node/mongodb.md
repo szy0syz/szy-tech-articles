@@ -165,3 +165,33 @@ mongod --dbpath c:\data\slave\slave1 --port 10002 --slave --source localhost:100
 ```
 
 > 注意：主节点可以进行增删改查所有操作，而在从节点只能进行查询的操作。
+
+## 副本集
+
+> 副本集就是有自动故障恢复功能的主从集群。
+
+主从集群和副本集最大的区别就是副本集没有固定的“主节点”；整个集群会选出一个“主节点”，当其挂掉后，又在剩下的从节点中选中其他节点为“主节点”。
+
+副本集总有三种节点：和。
+
+- 一个主要节点(primary)
+- 一个或多个次要节点(secondary)，其中又分为：
+  - standard 常规节点，存储一份完整的数据副本，参与选举投票，有可能成为primary节点;
+  - passive 被动节点，存储了完整的数据副本，参与投票，不能成为primary节点;
+  - arbiter 仲裁节点，只参与投票，不接收复制的数据，也不能成为primary节点。
+
+```js
+// 启动三台
+mongod --replSet jerry --dbpath c:\data\rs\data\10000 --port 10000 --logpath c:\data\rs\log\10000.log --logappend
+
+mongod --replSet jerry --dbpath c:\data\rs\data\10001 --port 10001 --logpath c:\data\rs\log\10001.log --logappend
+
+mongod --replSet jerry --dbpath c:\data\rs\data\10002 --port 10002 --logpath c:\data\rs\log\10002.log --logappend
+
+// 添加secondary节点
+> rs.add("localhost:10002")
+// 查看副本集状态
+rs.status()
+// 查看副本集配置
+rs.conf()
+```
