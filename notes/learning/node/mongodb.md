@@ -213,10 +213,10 @@ MongoDB分片的基本思想就是将集合切分成小块。这些块分散到�
 ![sharding](http://ofx24fene.bkt.clouddn.com//blog/2018/sharding_.png)
 
 ```js
-// 先开一个configdb
+// 开启configservs副本集
 mongod --port 10000 --dbpath c:\data\sharding\data\10000 --directoryperdb --logappend --logpath c:\data\sharding\log\10000.log
+mongod --port 10001 --dbpath c:\data\sharding\data\10001 --directoryperdb --logappend --logpath c:\data\sharding\log\10001.log --replSet jerry
+mongod --port 10002 --dbpath c:\data\sharding\data\10002 --directoryperdb --logappend --logpath c:\data\sharding\log\10002.log --replSet jerry
 
-//
-
-
+mongos --port 15000 --configdb "jerry/localhost:20000"
 ```
