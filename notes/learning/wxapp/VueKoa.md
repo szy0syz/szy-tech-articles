@@ -116,6 +116,7 @@ security:
 - babel编译启动服务
 
 ```js
+
 require('babel-core/register')({
   'presets': [
     'stage-3',
@@ -125,7 +126,20 @@ require('babel-core/register')({
 
 require('babel-polyfill')
 require('./server')
+
 ```
+
+### 4-13 在 Vue SSR 中实现微信网页授权机制与用户资料读取
+
+流程
+
+  1. 微信访问/a?username=jerry&age=20
+  2. 跳转到微信服务器 url /a redirect_url=/b
+  3. /b?code&state 其中state就是a页面中的查询参数
+  4. code => access_token openid => user info
+
+
+`http://jerrys.free.ngrok.cc/wechat-redirect?a=111&b=222`
 
 ## 第6章 爬虫
 
