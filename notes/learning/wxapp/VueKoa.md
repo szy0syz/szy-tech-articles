@@ -37,6 +37,13 @@
 * `vim /etc/mongod.conf`
 
 ```bash
+use admin
+db.addUser("username", "password")
+# 在testdb数据库中创建普通账号
+use testdb
+db.addUser("test1","123")
+db.addUser("test2","123", true) //test2用户仅有读取数据的权限
+
 # mongod.conf
 security:
   authorization: 'enabled'
