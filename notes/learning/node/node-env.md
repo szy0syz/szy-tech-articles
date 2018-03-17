@@ -132,3 +132,15 @@ Host *
 ```
 
 如果`pm2 deploy`报错找不到`npm`或`pm2`时，编辑.bashrc文件，nvm配置提到最前面。
+
+## 安装lnmp中Nginx和ssl证书
+
+```bash
+# 安装lnmp (不要装多余的，如php、mysql，装了也能通用或删除)
+
+#    部署ssl证书错误时，可以尝试升级Nginx版本，有时过低的Nginx会部署ssl失败
+#    在http://nginx.org/查看最新版本
+./upgrade.sh nginx
+#    最后来添加ssl证书
+lnmp ssl add 
+```
