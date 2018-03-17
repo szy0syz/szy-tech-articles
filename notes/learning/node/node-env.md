@@ -111,6 +111,12 @@ sudo /etc/init.d/ssh restart
 #   sudo service ssh restart
 #   开发端添加ssh host
 vim ~/.ssh/config
+#    格式如下：
+#    Host ynamp
+#      User root
+#      HostName 47.92.154.146
+#      Port 22
+#      IdentityFile ~/.ssh/id_rsa
 ```
 
 如果客户端使用git报错
