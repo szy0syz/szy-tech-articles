@@ -143,4 +143,5 @@ Host *
 ./upgrade.sh nginx
 #    最后来添加ssl证书
 lnmp ssl add 
+#    升级后还失败，就是系统安装了py2的原因，得删除py2，安装py3，然后再来操作 https://segmentfault.com/a/1190000010693933
 ```
