@@ -144,4 +144,36 @@ Host *
 #    最后来添加ssl证书
 lnmp ssl add 
 #    升级后还失败，就是系统安装了py2的原因，得删除py2，安装py3，然后再来操作 https://segmentfault.com/a/1190000010693933
+#    ubuntu系统以来pythone2.7，应该删除掉，把ubunt版本换成14.04即可正常使用。
+```
+
+## ssl/https后nginx配置
+
+```bash
+# 将所有的http请求通过rewrite重写到https上
+rewrite ^(.*)$  https://$host$1 permanent;
+
+# nginx最简模板
+server {
+  listen       8080;
+  listen       443 ssl;
+  server_name  localhost;
+
+  ssl_certificate  /etc/nginx/ssl/server.crt
+  ssl_certificate_key /etc/nginx/ssl/server.key
+
+  location / {
+    proxy_pass http://localhost:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+
+  location /public {
+    root /usr/local/var/www;
+  }
+
+}
 ```
