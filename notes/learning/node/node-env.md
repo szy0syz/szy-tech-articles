@@ -177,3 +177,9 @@ server {
 
 }
 ```
+
+## npm设置淘宝源
+
+```bash
+npm config set registry http://registry.npm.taobao.org/
+```
