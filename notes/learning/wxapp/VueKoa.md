@@ -30,7 +30,7 @@
 * 安装 public KEY `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5`
 * 创建文件，这里需改 ★ 阿里云的镜像，速度快。 `echo "deb [ arch=amd64,arm64 ] https://mirrors.aliyun.com/mongodb/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list`
 * `sudo apt-get update`
-* `sudo apt-get install -y mongodb-org`
+* `sudo apt-get install -y mongodb-org` 在腾讯云可能找不到mongodb-org，则去掉-org尝试即可
 * `sudo service mongod start`
 * 查看 mongodb 默认日志 `cat /var/log/mongodb/mongod.log`
 * 如果安装失败，可以进入目录直接修改源 `cd /etc/apt/sources.list.d/` `ls` `vim xxx.list`
