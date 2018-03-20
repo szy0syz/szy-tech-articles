@@ -155,7 +155,22 @@ require('./server')
 
 23:39
 
-## 第 6 章 爬虫
+## 第6章 爬虫
+
+## 第7章
+
+骑牛云获取token
+
+```js
+qiniu.conf.ACCESS_KEY = config.qiniu.AK
+qiniu.conf.SECRET_KEY = config.qiniu.SK
+
+const bucket = config.qiniu.bucket
+
+const bucketManager = new qiniu.rs.Client()
+
+const uptoken = (key) => new qiniu.rs.PutPolicy(`${bucket}:${key}`).token()
+```
 
 [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
 [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
