@@ -62,6 +62,7 @@ methods = {
 - wepy组件中传值，如果是静态的话只能传String，动态的可以选择不同步，单向同步和双向同步
 - 父子组件传值方式 `<child :myData='varName'></child>`
 - 在await函数后记得`this.$apply()`处理赃数据
+- 在wepy的redux中，直接从action加载命令时就可以有action.payload，如果从types加载命令着会有target元素
 
 - 看看`wepy`实例到底有些啥属性
 
