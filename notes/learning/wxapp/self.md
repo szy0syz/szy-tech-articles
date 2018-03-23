@@ -63,6 +63,7 @@ methods = {
 - 父子组件传值方式 `<child :myData='varName'></child>`
 - 在await函数后记得`this.$apply()`处理赃数据
 - 在wepy的redux中，直接从action加载命令时就可以有action.payload，如果从types加载命令着会有target元素
+- 在wepy的redux中，`@connect`是修饰器啊，怎么我又没看到这个`@`，晕死。
 
 - 看看`wepy`实例到底有些啥属性
 
