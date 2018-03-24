@@ -172,6 +172,27 @@ const bucketManager = new qiniu.rs.Client()
 const uptoken = (key) => new qiniu.rs.PutPolicy(`${bucket}:${key}`).token()
 ```
 
+### 7-6
+
+七牛云 js-sdk 客户端直传
+
+```js
+const self = this
+const observer = {
+  next(res) {
+    console.log(res.total, res)
+  },
+  error(err) {
+    console.log(err)
+  },
+  complete(res) {
+    self.edited.images.push(res.key)
+  }
+}
+const observable = qiniu.upload(file, key, token, null, config)
+observable.subscribe(observer) // 上传开始
+```
+
 [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
 [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
 [3]: http://static.zybuluo.com/szy0syz/u7kwc6lg19tyvvyykagzkrfb/image.png
