@@ -67,13 +67,13 @@ methods = {
 
 - 看看`wepy`实例到底有些啥属性
 
-| name        | x|  y  |
-| :----:  | :----:   | :----:  |
-| \$copy     |  |        |
-| \$createApp        |      |     |
-| \$createPage        |        |    |
-| \$extend        |        |    |
-| \$has        |     |   |
+| name         | x      |  y     |
+| :----:       | :----: | :----: |
+| \$copy       |        |        |
+| \$createApp  |        |        |
+| \$createPage |        |        |
+| \$extend     |        |        |
+| \$has        |        |        |
 
 - 没事别在新页面中调用空onLoad钩子函数，否则报错：出现脚本错误或者未正确调用 Page()
 
