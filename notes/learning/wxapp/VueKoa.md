@@ -202,6 +202,7 @@ observable.subscribe(observer) // 上传开始
  3. 这样就表示每次在admin的首页中调用项目根目录下的中间件
  
 - 在koa中同步函数使用await会造成响应超级慢！
+- this.$router.go(-1) 返回上一页
 
 [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
 [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
