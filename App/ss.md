@@ -8,6 +8,8 @@
 
 ![vpscang_screenshot](http://ofx24fene.bkt.clouddn.com//img/book/VPScang_screenshot.png)
 
+- 2018年，谷歌云注册送300刀可用一年，且能选到东亚服务器，ping值在50ms内，且没流量限制，YouTube完美4k。
+
 ### 1.安装Shadowsock Server
 
 ### 2.安装Shadowsock Client
