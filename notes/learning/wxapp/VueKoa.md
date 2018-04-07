@@ -200,9 +200,18 @@ observable.subscribe(observer) // 上传开始
  1. pages/admin/index.vue - script 中添加中间件 `middleware: 'wevaht-auth'`
  2. 在项目根目录创建文件夹`middleware`，并新建`wevaht-auth.js`，内容为 `export default function({store, route, redirect}) {...}`
  3. 这样就表示每次在admin的首页中调用项目根目录下的中间件
- 
-- 在koa中同步函数使用await会造成响应超级慢！
-- this.$router.go(-1) 返回上一页
+
+在koa中同步函数使用await会造成响应超级慢！
+
+this.$router.go(-1) 返回上一页
+
+### 9-1 微信支付
+
+在vue中可以直接在v-model后加trim去前后空格
+
+```js
+inputinput(v-model.trim='info.phoneNumber' type='tel' placeholder='你的电话')
+```
 
 [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
 [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
