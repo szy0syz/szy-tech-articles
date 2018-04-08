@@ -213,6 +213,15 @@ this.$router.go(-1) 返回上一页
 inputinput(v-model.trim='info.phoneNumber' type='tel' placeholder='你的电话')
 ```
 
+### 9-3 支付功能的申请流程
+
+1. 申请完微信支付之后，会收到两封邮件，一封是通知开通了微信支付，另一封是微信官方开通的商户号，里面会有商户的登录信息；
+2. 微信商户里，设置网页授权的域名、JS安全域名、业务域名等，并且域名要求备案过；
+3. 商户平台的产品中心的开放配置中，去添加公众号支付授权目录；
+4. 下载官方demo实例代码，拷贝核心代码到项目中为己所用；
+5. 在商户平台中下载API证书，设置API秘钥。需要用此证书在服务器端生成预支付订单。
+
+
 [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
 [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
 [3]: http://static.zybuluo.com/szy0syz/u7kwc6lg19tyvvyykagzkrfb/image.png
