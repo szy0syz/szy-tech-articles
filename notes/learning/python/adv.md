@@ -20,24 +20,24 @@ Python像一个技术的润滑剂，大多数互联网公司或多或少都会�
 
 Python特点：
 
-  * 简洁：`Life is short, I use Pythone.` 人生苦短，我用Python
-  * Pythonic： 很-Python  例如交换变量：`x,y = y,x`
-  * 非常易于学习，万金油
-  * 美与哲学
+* 简洁：`Life is short, I use Pythone.` 人生苦短，我用Python
+* Pythonic： 很-Python  例如交换变量：`x,y = y,x`
+* 非常易于学习，万金油
+* 美与哲学
 
 Pythone应用场景：
 
-  * 爬虫
-  * 大数据
-  * AI
-  * 测试
-  * Web
-  * 脚本书里
+* 爬虫
+* 大数据
+* AI
+* 测试
+* Web
+* 脚本书里
 
 Python子禅：
 
-  * Simple is better than complex  简洁胜于复杂
-  * Now is better than never. Although never is often better than **right** now.  做也许好过不做，但不假思索就动手做还不如不做。
+* Simple is better than complex  简洁胜于复杂
+* Now is better than never. Although never is often better than **right** now.  做也许好过不做，但不假思索就动手做还不如不做。
 
 ### 1.2 Python特点
 
