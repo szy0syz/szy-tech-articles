@@ -94,7 +94,33 @@
 
 ### 3-1 页面布局
 
-三栏布局之浮动定位：
+Common
+
+```html
+<style>
+  html * {
+    margin: 0;
+    padding: 0;
+  }
+  .layout article div {
+    min-height: 100px;
+  }
+  .left {
+    background: red;
+  }
+  .center {
+    background: green;
+  }
+  .right {
+    background: blue;
+  }
+  .layout:not(:first-child) {
+    margin-top: 20px;
+  }
+</style>
+```
+
+三栏布局之浮动：
 
 ```html
 <section class="layout float">
@@ -104,11 +130,6 @@
       width: 300px;
       background-color: red;
     }
-
-    .layout.float .center {
-      background-color: green;
-    }
-
     .layout.float .right {
       float: right;
       width: 300px;
@@ -133,6 +154,128 @@ Jerry要点总结：
 1. html5语义化书写
 2. article中三个div顺序要注意left和right已经脱离文档流，这须写在center之前
 3. left块为左浮动，right为右浮动，再把center放中间则其没设置宽度就会自动撑开
+
+三栏布局之绝对定位：
+
+```html
+<section class="layout absolute">
+  <style>
+    .layout.absolute article>div {
+      position: absolute;
+    }
+    .layout.absolute .left {
+      left: 0;
+      width: 300px;
+    }
+    .layout.absolute .right {
+      right: 0;
+      width: 300px;
+    }
+    .layout.absolute .center {
+      left: 300px;
+      right: 300px;
+    }
+  </style>
+  <article class="left-center-right">
+    <div class="left"></div>
+    <div class="center">
+      <h2>我是【绝对定位】的三栏布局</h2>
+      <p>富强、民主、文明、和谐</p>
+      <p>自由、平等、公正、法治</p>
+      <p>爱国、敬业、诚信、友善</p>
+    </div>
+    <div class="right"></div>
+  </article>
+</section>
+```
+
+三栏布局之flex：
+
+```html
+<section class="layout flex" style="margin-top: 140px;">
+  <style>
+    .layout.flex article {
+      display: flex;
+    }
+    .layout.flex .left {
+      width: 300px;
+    }
+    .layout.flex .right {
+      width: 300px;
+    }
+    .layout.flex .center {
+      flex: 1;
+    }
+  </style>
+  <article class="left-center-right">
+    <div class="left"></div>
+    <div class="center">
+      <h2>我是【flex】的三栏布局</h2>
+      <p>富强、民主、文明、和谐</p>
+      <p>自由、平等、公正、法治</p>
+      <p>爱国、敬业、诚信、友善</p>
+    </div>
+    <div class="right"></div>
+  </article>
+</section>
+```
+
+三栏布局之table：
+
+```html
+<section class="layout table">
+  <style>
+    .layout.table article {
+      display: table;
+      width: 100%;
+      height: 100%;
+    }
+    .layout.table article>div {
+      display: table-cell;
+    }
+    .layout.table .left {
+      width: 300px;
+    }
+    .layout.table .right {
+      width: 300px;
+    }
+  </style>
+  <article class="left-center-right">
+    <div class="left"></div>
+    <div class="center">
+      <h2>我是【table】的三栏布局</h2>
+      <p>富强、民主、文明、和谐</p>
+      <p>自由、平等、公正、法治</p>
+      <p>爱国、敬业、诚信、友善</p>
+    </div>
+    <div class="right"></div>
+  </article>
+</section>
+```
+
+三栏布局之网格：
+
+```html
+<section class="layout grid">
+  <style>
+    .layout.grid .left-center-right {
+      display: grid;
+      grid-template-rows: 100px;
+      grid-template-columns: 300px auto 300px;
+    }
+  </style>
+  <article class="left-center-right">
+    <div class="left"></div>
+    <div class="center">
+      <h2>我是【grid】的三栏布局</h2>
+      <p>富强、民主、文明、和谐</p>
+      <p>自由、平等、公正、法治</p>
+      <p>爱国、敬业、诚信、友善</p>
+    </div>
+    <div class="right"></div>
+  </article>
+</section>
+```
 
 页面布局小结
 
