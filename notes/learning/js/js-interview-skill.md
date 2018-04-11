@@ -94,7 +94,45 @@
 
 ### 3-1 页面布局
 
+三栏布局之浮动定位：
 
+```html
+<section class="layout float">
+  <style>
+    .layout.float .left {
+      float: left;
+      width: 300px;
+      background-color: red;
+    }
+
+    .layout.float .center {
+      background-color: green;
+    }
+
+    .layout.float .right {
+      float: right;
+      width: 300px;
+      background-color: blue;
+    }
+  </style>
+  <article class="left-right-center">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="center">
+        <h2>我是【浮动定位】的三栏布局</h2>
+        <p>富强、民主、文明、和谐</p>
+        <p>自由、平等、公正、法治</p>
+        <p>爱国、敬业、诚信、友善</p>
+    </div>
+  </article>
+</section>
+```
+
+Jerry要点总结：
+
+1. html5语义化书写
+2. article中三个div顺序要注意left和right已经脱离文档流，这须写在center之前
+3. left块为左浮动，right为右浮动，再把center放中间则其没设置宽度就会自动撑开
 
 页面布局小结
 
