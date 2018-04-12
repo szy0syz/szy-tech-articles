@@ -94,6 +94,8 @@
 
 ### 3-1 页面布局
 
+题目：假设高度已知，请写出三蓝布局，其中左栏、右栏宽度各位300px，中间自适应。
+
 Common
 
 ```html
@@ -189,6 +191,13 @@ Jerry要点总结：
 </section>
 ```
 
+Jerry要点总结：
+
+1. 容器内所有“item”均设为绝对定位
+2. left元素设置距离左边0
+3. right元素设置距离右边0
+4. center元素设置距离左右两边都为300px
+
 三栏布局之flex：
 
 ```html
@@ -219,6 +228,12 @@ Jerry要点总结：
   </article>
 </section>
 ```
+
+Jerry要点总结：
+
+1. 设置容器为flex，因默认就是水平排列则不需要设置按哪条轴排列
+2. 设置left和right元素的宽度
+3. 设置center为flex:1，表示其在中间自动适应
 
 三栏布局之table：
 
@@ -253,6 +268,12 @@ Jerry要点总结：
 </section>
 ```
 
+Jerry要点总结：
+
+1. 在容器上设置display:table，再设置容器width:100%，在这个外容器全部撑开，因为设置容器内item为table-cell后，所有item默认会成为一个收缩型表格，单元格宽度仅为内容撑开
+2. 设置容器内所有item的display: table-cell
+3. 设置left和right元素宽度，center会自动撑满剩余空间
+
 三栏布局之网格：
 
 ```html
@@ -277,6 +298,32 @@ Jerry要点总结：
 </section>
 ```
 
+Jerry要点总结：
+
+1. 设置容器为grid网格布局，网格行高，网格各个列的宽度，完！
+2. gird兼容型实在太差
+
+![3rd-layout][1]
+
+
+布局题目延伸：
+
+* 这五种布局各自有什么优缺点？
+  * 浮动布局，缺点需要处理清除浮动和浮动元素周边元素关系，优点则兼容性好，毕竟是老字号；
+  * 绝对定位，优点为快捷，缺点为元素全部脱离文档流，则容器内剩余所有子元素都需要脱离，则其可使用性较差；
+  * flex布局，CSS3中的新布局方式，其解决了上诉两种布局方式不足之处，相对于移动端使用相对完美；
+  * table布局，优点为兼容性相对不错，缺点为如果应用场景要求每一栏高度不随之增加时就不适用，也就是说在表格中的所有单元格高度都会随着这行的高度变化而变化，但有些时候却需要限制某个单元格高度不变；
+  * grid布局，优点为功能强大、使用便捷，缺点是兼容性极差。
+
+![3rd-layout-1][2]
+
+* 如果把高度已经去掉，不再只考虑水平方向自适应，还需考虑垂直方向自适应，例中间高度被撑开很大，两边高度也需随之跟着撑开。则这五种布局方案哪几个还能用，哪些不能用？
+  * 一、二、五布局均不能出现错误
+  * flex布局和table布局能在垂直水平方向自适应
+* 五种方案的兼容性如何，如果在生产环境，该选哪种方案？
+  * 浮动兼容性最好，但需要处理问题；
+  * flex在IE6~9不支持，IE10以后也是部分支持；
+
 页面布局小结
 
 * 语义化掌握到位
@@ -299,6 +346,35 @@ Jerry要点总结：
 * 上高度固定，下自适应
 * 下高度固定，上自适应
 
+### 3-2 CSS盒模型
+
+基本模型：标准模型 + IE模型
+标准模型和IE模型区别：计算高度和宽度的不同
+CSS如何设置这两种模型：
+JS如何设置获取盒模型对应的宽高度
+实例题：根据盒模型解释边距重叠
+BFC（边距重叠解决方案）
+
+![css-box][3]
+![css-box][4]
+
+CSS如何设置这两种模型
+
+* `box-sizing: content-box` 标准模型 -> 浏览器默认
+* `box-sizing: border-box` IE盒子模型
+
+JS如何设置获取盒模型对应的宽和高
+
+* `dom.style.width/height` 此api仅能取到元素内联样式的宽和高
+* `dom.currnetStyle.width/height` 此api仅IE支持，取到的是浏览器渲染后dom元素的宽和高
+* `window.getComputedStyle(dom).width/height` 此api仅weikit内核等支持，取到的是浏览器渲染后dom元素的宽和高
+* `dom.getBoundingClientRect().width/height` 此api应用场景在计算某个元素相对于当前viewport视口的左上角定点的绝对位置
+
+BFC原理介绍
+
+* [史上最全面、最透彻的BFC原理剖析][5]
+* [学习 BFC][6]
+
 ## 第4章 二面/三面
 
 
@@ -320,3 +396,9 @@ Jerry要点总结：
 ## 第8章 课程总结
 
 
+[1]: http://ofx24fene.bkt.clouddn.com//blog/2018/3rd-layout.jpeg
+[2]: http://ofx24fene.bkt.clouddn.com//blog/2018/3rd-layout-1.jpeg
+[3]: http://ofx24fene.bkt.clouddn.com//blog/2018/CSSBox.png
+[4]: http://ofx24fene.bkt.clouddn.com//blog/2018/CSSBox-ie.png
+[5]: https://github.com/zuopf769/notebook/blob/master/fe/BFC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/README.md
+[6]: https://juejin.im/post/59b73d5bf265da064618731d
