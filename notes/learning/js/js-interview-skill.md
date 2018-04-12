@@ -189,6 +189,13 @@ Jerry要点总结：
 </section>
 ```
 
+Jerry要点总结：
+
+1. 容器内所有“item”均设为绝对定位
+2. left元素设置距离左边0
+3. right元素设置距离右边0
+4. center元素设置距离左右两边都为300px
+
 三栏布局之flex：
 
 ```html
@@ -219,6 +226,12 @@ Jerry要点总结：
   </article>
 </section>
 ```
+
+Jerry要点总结：
+
+1. 设置容器为flex，因默认就是水平排列则不需要设置按哪条轴排列
+2. 设置left和right元素的宽度
+3. 设置center为flex:1，表示其在中间自动适应
 
 三栏布局之table：
 
@@ -253,6 +266,12 @@ Jerry要点总结：
 </section>
 ```
 
+Jerry要点总结：
+
+1. 在容器上设置display:table，再设置容器width:100%，在这个外容器全部撑开，因为设置容器内item为table-cell后，所有item默认会成为一个收缩型表格，单元格宽度仅为内容撑开
+2. 设置容器内所有item的display: table-cell
+3. 设置left和right元素宽度，center会自动撑满剩余空间
+
 三栏布局之网格：
 
 ```html
@@ -276,6 +295,11 @@ Jerry要点总结：
   </article>
 </section>
 ```
+
+Jerry要点总结：
+
+1. 设置容器为grid网格布局，网格行高，网格各个列的宽度，完！
+2. gird布局真够简洁
 
 页面布局小结
 
