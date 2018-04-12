@@ -370,6 +370,11 @@ JS如何设置获取盒模型对应的宽和高
 * `window.getComputedStyle(dom).width/height` 此api仅weikit内核等支持，取到的是浏览器渲染后dom元素的宽和高
 * `dom.getBoundingClientRect().width/height` 此api应用场景在计算某个元素相对于当前viewport视口的左上角定点的绝对位置
 
+BFC原理介绍
+
+* [史上最全面、最透彻的BFC原理剖析][5]
+* [学习 BFC][6]
+
 ## 第4章 二面/三面
 
 
@@ -395,3 +400,5 @@ JS如何设置获取盒模型对应的宽和高
 [2]: http://ofx24fene.bkt.clouddn.com//blog/2018/3rd-layout-1.jpeg
 [3]: http://ofx24fene.bkt.clouddn.com//blog/2018/CSSBox.png
 [4]: http://ofx24fene.bkt.clouddn.com//blog/2018/CSSBox-ie.png
+[5]: https://github.com/zuopf769/notebook/blob/master/fe/BFC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/README.md
+[6]: https://juejin.im/post/59b73d5bf265da064618731d
