@@ -346,6 +346,30 @@ Jerry要点总结：
 * 上高度固定，下自适应
 * 下高度固定，上自适应
 
+### 3-2 CSS盒模型
+
+基本模型：标准模型 + IE模型
+标准模型和IE模型区别：计算高度和宽度的不同
+CSS如何设置这两种模型：
+JS如何设置获取盒模型对应的宽高度
+实例题：根据盒模型解释边距重叠
+BFC（边距重叠解决方案）
+
+![css-box][3]
+![css-box][4]
+
+CSS如何设置这两种模型
+
+* `box-sizing: content-box` 标准模型 -> 浏览器默认
+* `box-sizing: border-box` IE盒子模型
+
+JS如何设置获取盒模型对应的宽和高
+
+* `dom.style.width/height` 此api仅能取到元素内联样式的宽和高
+* `dom.currnetStyle.width/height` 此api仅IE支持，取到的是浏览器渲染后dom元素的宽和高
+* `window.getComputedStyle(dom).width/height` 此api仅weikit内核等支持，取到的是浏览器渲染后dom元素的宽和高
+* `dom.getBoundingClientRect().width/height` 此api应用场景在计算某个元素相对于当前viewport视口的左上角定点的绝对位置
+
 ## 第4章 二面/三面
 
 
@@ -369,3 +393,5 @@ Jerry要点总结：
 
 [1]: http://ofx24fene.bkt.clouddn.com//blog/2018/3rd-layout.jpeg
 [2]: http://ofx24fene.bkt.clouddn.com//blog/2018/3rd-layout-1.jpeg
+[3]: http://ofx24fene.bkt.clouddn.com//blog/2018/CSSBox.png
+[4]: http://ofx24fene.bkt.clouddn.com//blog/2018/CSSBox-ie.png
