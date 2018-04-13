@@ -221,6 +221,10 @@ inputinput(v-model.trim='info.phoneNumber' type='tel' placeholder='你的电话'
 4. 下载官方demo实例代码，拷贝核心代码到项目中为己所用；
 5. 在商户平台中下载API证书，设置API秘钥。需要用此证书在服务器端生成预支付订单。
 
+### 10-2 代理环境集成与正式打包测试
+
+启动生产环境：`NODE_ENV=production node start`
+
 ### 10-5 调整路由-控制器-数据 API 的分层结构
 
 * 让路由更专注于路由的转发
