@@ -225,6 +225,12 @@ inputinput(v-model.trim='info.phoneNumber' type='tel' placeholder='你的电话'
 
 启动生产环境：`NODE_ENV=production node start`
 
+微信测试号管理---修改接口域名时需改三个地方
+
+1. 接口配置信息修改 (必要)
+2. JS接口安全域名修改 (不必要)
+3. 体验接口权限表 - 网页授权获取用户基本信息 - 修改 (必要) ★被坑2小时半★
+
 ### 10-5 调整路由-控制器-数据 API 的分层结构
 
 * 让路由更专注于路由的转发
