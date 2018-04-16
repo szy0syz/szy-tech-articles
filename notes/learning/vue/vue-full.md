@@ -28,6 +28,21 @@
 5. 更新配置
 6. 安装`rimraf`，新增`package.json`文件中scripts: `"clean": "runraf dist"`
 
+### 2.3 css module配置
+
+```js
+cssModules:
+{
+  localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]',
+  camelCase: true
+ }
+```
+
+使用方法
+
+* vue文件style标签scoped更换成module
+* template标签里的样式类名替换成`:class="$style.mainHeader"`
+* 原理：相当于在xx.vue文件增加计算字段 `computed: {$style() { return { mainHeader: '[path]-[name]-[hash:base64:5]' } }}`
 
 ## 第3章 Vue核心知识
 
