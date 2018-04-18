@@ -408,6 +408,26 @@ BFC原理介绍
 * `event.currentTarget` 学会用事件代理，把子元素的事件代理全部放到父元素上，这样N多个子元素的响应，只需要绑定一次，而我们只需要父元素响应式区分到底是哪个子元素捕获了事件。currentTarget指的是绑定了此次响应事件的元素(父元素)
 * `event.target` 具体指被点击的元素
 
+```js
+<script>
+  window.addEventListener('click', function() {
+    console.log('window capture ~~~')
+  }, true) // 设为捕获
+
+  document.addEventListener('click', function() {
+    console.log('document capture ~~~')
+  }, true)
+
+  ev.addEventListener('click', function() {
+    console.log('ev element capture ~~~')
+  }, true) // 调整顺序
+
+  document.documentElement.addEventListener('click', function() {
+    console.log('html capture ~~~')
+  }, true)
+</script>
+```
+
 #### 自定义事件
 
 ```js
@@ -418,6 +438,10 @@ ele.addEventListener('custome', function() {
 ele.dispatchEvent(eve)
 
 // 如果有参数传递，可以使用CustomeEvent，方法类似
+```
+
+```js
+window
 ```
 
 ## 第4章 二面/三面
