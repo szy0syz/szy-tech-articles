@@ -375,6 +375,51 @@ BFC原理介绍
 * [史上最全面、最透彻的BFC原理剖析][5]
 * [学习 BFC][6]
 
+### 3-3 DOM事件
+
+####　DOM事件的级别
+
+* DOM0 `elemnet.onclick=function() {}`
+* DOM1 其在设计DOM1标准时，没有设计和事件相关的功能
+* DOM2 `element.addEventListener('click', function() {}, false)`
+* DOM3 `elemnet.addEventListener('click', function() {}, false)` DOM3和DOM2差不多，只是增加了很多的事件类型
+
+#### DOM事件模型
+
+捕获(从外层到里层)和冒泡(从里层往外层)
+
+#### DOM事件流
+
+浏览器在为当前此页面与用户作交互过程中，如果用户点了鼠标左键，而事件流指的就是这个鼠标左键点击后怎么传递到页面上和如何响应的。
+
+一个完整的事件流分为三个阶段：1.捕获阶段；2.目标阶段；3.冒泡冒泡。
+
+#### 描述DOM事件捕获的具体流程
+
+`window --> document --> html --> body --> ... --> 目标元素`
+
+用JavaScript怎么获取html节点？`document.documentElement`
+
+#### Event对象的常见应用
+
+* `event.preventDefault()`  阻止默认事件
+* `event.stopPropagation()` 阻止冒泡
+* `event.stopImmediatePropagation()` 阻止调用相同事件的其他侦听函数，事件响应优先级，具体见MDN
+* `event.currentTarget` 学会用事件代理，把子元素的事件代理全部放到父元素上，这样N多个子元素的响应，只需要绑定一次，而我们只需要父元素响应式区分到底是哪个子元素捕获了事件。currentTarget指的是绑定了此次响应事件的元素(父元素)
+* `event.target` 具体指被点击的元素
+
+#### 自定义事件
+
+```js
+var eve = new Event('custome')
+ele.addEventListener('custome', function() {
+  console.log('custome')
+})
+ele.dispatchEvent(eve)
+
+// 如果有参数传递，可以使用CustomeEvent，方法类似
+```
+
 ## 第4章 二面/三面
 
 
