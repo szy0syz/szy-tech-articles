@@ -438,11 +438,25 @@ ele.addEventListener('custome', function() {
 ele.dispatchEvent(eve)
 
 // 如果有参数传递，可以使用CustomeEvent，方法类似
+// 绑定时间相应
+ev.addEventListener('jerry', function(e) {
+  console.log('jerry事件被触发了~~')
+  console.dir(e)
+}, true)
+    
+// 创建新事件
+var event = new CustomEvent('jerry', {
+  detail: {
+    name: 'jerry shi',
+    age: '18'
+  }
+})
+
+// 触发事件
+ev.dispatchEvent(event)
 ```
 
-```js
-window
-```
+* 在`CustomEvent`传递的参数中，并不会定义事件是的参数传递到响应式的evnet对象上去，而是使用类似`Object.assign(e, customOptions)`的方式二次覆盖上去。
 
 ## 第4章 二面/三面
 
