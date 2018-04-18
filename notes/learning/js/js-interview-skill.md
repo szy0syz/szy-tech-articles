@@ -65,7 +65,6 @@
 
 ### 2-4 准备自己的技术栈
 
-
 ### 2-5 面试准备-自我陈述
 
 简历
@@ -443,7 +442,7 @@ ev.addEventListener('jerry', function(e) {
   console.log('jerry事件被触发了~~')
   console.dir(e)
 }, true)
-    
+
 // 创建新事件
 var event = new CustomEvent('jerry', {
   detail: {
@@ -457,6 +456,42 @@ ev.dispatchEvent(event)
 ```
 
 * 在`CustomEvent`传递的参数中，并不会定义事件是的参数传递到响应式的evnet对象上去，而是使用类似`Object.assign(e, customOptions)`的方式二次覆盖上去。
+
+### 3-4 HTTP协议类
+
+#### HTTP协议的主要特点
+
+* 简单快速
+* 灵活
+* 无连接：每连接一次完成后就会断开连接
+* 无状态：服务端无法区分这次连接和上次连接的客户端是否是同一个
+
+#### HTTP报文的组成部分
+
+请求报文：请求行(http方法、页面地址、http协议、http版本) + 请求头(包含一些key-value键值对告诉服务端需要什么数据) + 空行(隔离请求体和请求头) + 请求体
+响应报文：状态行(http协议及版本号、http响应码) + 响应头(k-v) + 空行 + 响应体
+
+#### HTTP方法
+
+* `GET`     获取资源
+* `POST`    传输资源
+* `PUT`     更新资源
+* `DELETE`  删除资源
+* `HEAD`    获取报文首部
+
+#### POST和GET的区别
+
+* GET在浏览器回退时时无害的，而POST会再次提交请求
+* GET产生URL地址可以被收藏，而POST不可以
+* GET请求会被浏览器主动缓存，而POST不会，除非手动设置
+* GET只能进行url编码，而POST支持多种编码方式
+* GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留
+* GET请求在URL中传送的参数是有长度限制的，而POST没有限制
+* 对参数的数据类型，GET只接受ASCII字符，而POST没有限制
+* GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息
+* GET参数通过URL传递，POST放在Request Body中
+
+
 
 ## 第4章 二面/三面
 
