@@ -540,6 +540,24 @@ HTTP协议采用“请求-应答”模式，当使用普通模式，即非Keep-A
 * HTTP/1.1要求服务端支持管线化，但并不要求服务端也进行响应的管线化处理，只是要求对于管线化的请求不失败即可
 * 由于上面提到的服务端问题，开启管线化很可能并不会带来大幅度的性能提升，而且很多服务端和代理程序对管线化支持不好，因此现代浏览器和Chrom和Firefox默认并未开启管线化支持
 
+### 3-5 原型链
+
+#### 创建对象的几种方法
+
+```js
+// 第一种
+var o10 = {name: 'jerry10'}
+var o11 = new Object({name:'jerry11'})
+
+// 第二种
+var M = function(name){this.name = name}
+var o2 = new M('jerry2')
+
+// 第三种
+var P = {name: 'jerry3'}
+var o3 = Object.create(P)
+```
+
 ## 第4章 二面/三面
 
 
