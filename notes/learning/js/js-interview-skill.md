@@ -557,8 +557,6 @@ var o2 = new M('jerry2')
 var P = {name: 'jerry3'}
 var o3 = Object.create(P)
 ```
-
-
 #### new运算符
 
 流程：
@@ -578,6 +576,135 @@ var new2 = function(func) {
   }
 }
 ```
+
+### 3-6 面向对象
+
+
+
+### 3-7 通信类
+
+#### 什么是同源策略及限制
+
+同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互。
+这是一个用于隔离潜在恶意文件的关键的安全机制。
+
+* Cookie、LocalStorage 和 IndexDB 无法读取
+* DOM 无法获得
+* Ajax 请求不能发送
+
+#### 前后端如何通信
+
+* Ajax (同源策略)
+* WebSocket (不限制同源策略)
+* JSONP 数据格式 JSON 的一种 “使用模式”
+* CORS "跨域资源共享"（Cross-origin resource sharing）
+
+扩展阅读：
+
+JSONP的原理：利用 script 标签不受同源策略影响，可以跨域引入外部资源的特性，让服务器端返回可执行的 JS 函数，将要返回的数据作为参数传进函数，以此实现跨域加载数据的目的。此时，绕过 Ajax，并未使用它，但同样达成了请求数据的目的。
+
+script 标签引用资源得本质是：
+
+* 向 src 发送请求
+* 将资源下载到当前页面
+* 当资源加载完毕后，把该资源当做 JS 代码来立刻执行
+
+JSONP的使用
+
+* 动态创建 script 标签，src 地址指向数据接口，并传递 callback 参数
+* 定义数据处理函数
+* 服务端接收请求，解析参数，计算数，返回回调函数字符串
+* 将回调函数字符串引入页面并作为 JS 去执行：此时会调用数据处理函数，数据会作为数据处理函数的参数被处理计算出一个结果
+
+JSONP的优缺点
+
+* 优点：因 script 隶属于 HTML 的标签，所以不存在兼容问题
+* 缺点：因需使用 URL 引入资源，所以 JSONP 仅支持 get 请求；因 script 标签会将资源作为 JS 代码执行，所以可能会被注入恶意代码
+
+```js
+////////JSONP
+var btn = document.querySelector('.btn'),
+    panal = document.querySelector('.panal');
+
+btn.addEventListener('click', function () {
+    var script = document.createElement('script');
+    script.src = 'http://b.yang.com:8080/loadData?callback=onSuccess';
+    document.head.appendChild(script);
+    document.head.removeChild(script);
+});
+
+function onSuccess(data) {
+    panal.innerText = data;
+}
+
+app.get('/loadData', function(req, res) {
+    var dataStr = '';
+    var len = 10;
+    var disc = 'abcdefjhigklmnopqrstuvwxyz';
+    for(var i = 0; i < len; i++){
+        dataStr += disc[Math.floor(Math.random() * disc.length)];
+    }
+    var callback = req.query.callback;
+    data = callback + '(' + JSON.stringify(dataStr) + ');';
+    res.send(data);
+});
+```
+
+CORS 的原理
+
+1. 当使用 XMLHttpRequest 发送请求时，如果浏览器发现该请求不符合同源策略，会给该请求加一个请求头：Origin；
+2. 后台进行一系列处理，如果确定接受请求则在返回结果中加入一个响应头：Access-Control-Allow-Origin；
+3. 浏览器判断该响应头中是否包含 Origin 的值：
+4. 如果包含浏览器则会处理响应，前端就可以拿到响应数据；
+5. 如果不包含浏览器直接驳回，此时前端无法拿到响应数据。
+
+CORS 的使用：前端：正常使用 AJAX 发送请求；服务端：若确定接受请求，则在返回结果中加入响应头：Access-Control-Allow-Origin。
+
+CORS 的优缺点
+
+* 优点：使用简单方便、更为安全；支持 POST 请求方式
+* 缺点：CORS 是一种新型跨域问题的解决方案：存在兼容问题——仅支持 IE10 以上
+
+```js
+var btn = document.querySelector('.btn'),
+panal = document.querySelector('.panal');
+
+btn.addEventListener('click', function () {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState === 4){
+            if(xhr.status === 200){
+                onSuccess(xhr.responseText);
+            }
+        }
+    }
+    xhr.open('post', 'http://b.yang.com:8080/loadData', true);
+    xhr.send();
+});
+
+function onSuccess(data) {
+    panal.innerText = data;
+}
+
+app.post('/loadData', function(req, res) {
+    var disc = 'abcdefjhigklmnopqrstuvwxyz';
+    var data = '';
+    for(var i = 0; i < 10; i++){
+        data += disc[Math.floor(Math.random() * disc.length)];
+    }
+    res.header("Access-Control-Allow-Origin", "http://a.yang.com:8080");
+    res.send(data);
+});
+```
+
+#### 如何创建Ajax
+
+
+
+#### 跨域通信的几种方式
+
+
+
 
 ## 第4章 二面/三面
 
