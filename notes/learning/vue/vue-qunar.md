@@ -4,6 +4,36 @@
 
 ## 第2章 Vue 起步
 
+### Vue基础 hello world
+
+```js
+<body>
+  <div id='app'>{{content}}</div>
+
+  <div>{{content}}</div>
+  
+  <script>
+    // var app = document.getElementById('app')
+    // app.innerHTML = 'hello world'
+    // setTimeout(() => {
+    //   app.innerHTML = 'hello world Timeout'
+    // }, 2000)
+
+    var app = new Vue({
+      el: '#app',
+      data: () => {
+        return  {
+          content: 'hello Vue'
+        }
+      }
+    })
+    
+    setTimeout(() => {
+      app.$data.content = 'hello jerry'
+    }, 2000)
+  </script>
+</body>
+```
 
 
 ## 第3章 Vue 基础精讲
