@@ -11,7 +11,7 @@
   <div id='app'>{{content}}</div>
 
   <div>{{content}}</div>
-  
+
   <script>
     // var app = document.getElementById('app')
     // app.innerHTML = 'hello world'
@@ -27,7 +27,7 @@
         }
       }
     })
-    
+
     setTimeout(() => {
       app.$data.content = 'hello jerry'
     }, 2000)
@@ -35,10 +35,55 @@
 </body>
 ```
 
+Vue 组件之间传值
+
+```js
+<div id='app'>
+  <input type="text" v-model="inputValue" @keyup.enter="handleAddItem">
+  <!-- <ul>
+          <li @click="handleRemove(index)" v-for="(item, index) in list">{{item}}</li>
+      </ul> -->
+  <todo-list @remove="handlerRemoveItem" :list="list"></todo-list>
+</div>
+
+<script>
+  const todoList = {
+    props: ['list'],
+    template: '<ul><li @click="handleItemClick(index)" v-for="(item, index) in list">{{item}}</li></ul>',
+    methods: {
+      handleItemClick(index) {
+        console.log(index)
+        this.$emit('remove', index)
+      }
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      inputValue: '',
+      list: ['one', 'two', 'three']
+    },
+    components: {
+      todoList
+    },
+    methods: {
+      handleAddItem() {
+        this.list.push(this.inputValue)
+        this.inputValue = ''
+      },
+
+      handlerRemoveItem(index) {
+        this.list.splice(index, 1)
+      }
+    }
+  })
+</script>
+```
 
 ## 第3章 Vue 基础精讲
 
-
+Vue的声明周期函数就是Vue的实例在某一个时间点会自动执行的函数
 
 ## 第4章 深入理解 Vue 组件
 
