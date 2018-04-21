@@ -85,6 +85,43 @@ Vue 组件之间传值
 
 Vue的声明周期函数就是Vue的实例在某一个时间点会自动执行的函数
 
+### 3-3 模板语法
+
+* `{{ inputValue }}` 差值表达式
+* `v-text` 文本指令
+* `v-html` html渲染指令
+* 三者都可以在其内部写js表达式
+
+### 3-4 计算属性，方法和侦听器
+
+* 计算属性内置缓存，只要其计算的数据没变，它就不重新计算。如果一个需求可以用mothods、watch和computed实现，我们优先使用computed，watch也带缓存，只是语法复杂。
+
+### 3-5 计算属性的setter和getter
+
+* 计算属性默认只有get，没有set，得自己写。
+
+### 3-8 列表渲染
+
+在Vue中只能用Vue提供的7个数据遍历方法来操作数据，否则不会触发updated
+
+* `push`
+* `pop`
+* `shift`
+* `unshif`
+* `splice`
+* `sort`
+* `reverse`
+
+修改被Vue-data中数组具体某项的值的三种方法
+
+* `list.splice(1,1,{id:"1012", content: "new"})`
+* 直接将`this.list = 新的数组对象`
+* `$set(this.list, 2, 88)`
+
+`<template></template>` 为模板占位符，渲染时不会出现任何dom元素
+
+新增data中某对象的属性时记得$set
+
 ## 第4章 深入理解 Vue 组件
 
 
