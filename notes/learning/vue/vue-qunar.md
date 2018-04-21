@@ -215,7 +215,93 @@ Vue.prototype.bus = new Vue()
 
 ## 第5章 Vue 中的动画特效
 
+![enter][1]
+![leave][2]
 
+### 5-2 Vue中使用Animation.css库
+
+使用第三方动画库，只需要修改`transition`组件的那六个自定义动态添加的类
+
+```js
+// link animation.css
+<div>
+  <transition name="fade" enter-active-class="animated swing" leave-active-class="animated shank">
+    <div>Hello Jerry</div>
+  </transition>
+  <button @click="handleClick">toggle</button>
+</div>
+```
+
+### 5-2 在Vue中同时使用过度和动画
+
+解决第一次载入或刷新网页时没动画：在`transtion 新增appear特性`
+
+```js
+<transition 
+  name="fade" 
+  appear
+  enter-active-class="animated swing" 
+  leave-active-class="animated shank"
+  appear-active-class="animated swing"
+  >
+    <div>Hello Jerry</div>
+  </transition>
+```
+
+在Vue中同时使用过度和动画： 在`transition`组件标签上添加`enter-active-class`，且又在style类里自定义`fade-enter-active`的过度动画即可。
+
+在两种动画都在用时：
+
+* 可以在transition标签上指定type，则可以指定到底以哪种动画时长为准，也可以`:duration="4000"`自定义两者的动画时长，还可以`:duration="{enter: 5000, leave: 2000}"`分别指定两者的不同时长。
+
+### 5-3 Vue中的JS动画与Velocity.js的结果
+
+Vue中的JS动画钩子函数
+
+* `before-enter`
+* `enter`
+* `after-enter`
+
+```js
+methods: {
+  handleBeforeEnter: function(el) {
+    el.style.opacity = 0;
+  },
+  handleEnter: function(el, done) {
+    Velocity(el, {
+      opactity: 1
+    }, {
+      duration: 1000,
+      complete: deon
+    })
+  },
+  handleAfterEnter: function(el) {
+    console.log('动画结束)
+  }
+}
+```
+
+### 5-5
+
+    不让Vue复用DOM方法，加`key="uniq"`
+
+Vue的transition中可以指定mode="in-out"指定多个元素入场和出差的动画执行循序
+
+多个组件的过度动画需要用动态组件的方式来实现
+
+```js
+<transition mode="in-out">
+  <component :is="whichType"></component>
+</transition>
+```
+
+### 5-6 Vue中的列表过度
+
+![group][3]
+
+### 5-7 Vue中动画的封装
+
+![封装][4]
 
 ## 第6章 Vue 项目预热
 
@@ -234,3 +320,8 @@ Vue.prototype.bus = new Vue()
 
 
 ## 第10章 项目的联调，测试与发布上线
+
+[1]: http://ofx24fene.bkt.clouddn.com//img/blog/vue-css3-enter.png
+[2]: http://ofx24fene.bkt.clouddn.com//img/blog/vue-css3-leave.png
+[3]: http://ofx24fene.bkt.clouddn.com//img/blog/vue-transition-group.png
+[4]: http://ofx24fene.bkt.clouddn.com//img/blog/vue-transition.png
