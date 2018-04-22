@@ -91,6 +91,17 @@ JSON.parse('{"a":"1","b":"2"}')
 
 `Foo.prototype.__proto__ === Object.prototype`
 
+![__proto__][1]
+
+只循环对象自身的属性
+
+```js
+for(key in obj) {
+    if(f.hasOwnProperty(item)) {
+        // 自身属性，不含原型链上的
+    }
+}
+```
 
 ## 第3章 JS基础知识（中）
 
@@ -121,3 +132,4 @@ JSON.parse('{"a":"1","b":"2"}')
 
 
 
+[1]: http://ofx24fene.bkt.clouddn.com//img/blog/prototype.png
