@@ -335,6 +335,74 @@ firstLoad(20) // true
 
 ## 第 4 章 JS 基础知识（下）
 
+JS的三座大山：
+
+* 原型和原型链
+* 作用域和作用域链
+* 异步和单线程
+
+### 前端使用异步的场景
+
+* 定时任务：setTimeo、setInterval
+* 网络请求：ajax、动态`<img>`加载
+* 事件绑定：DOM事件
+* Promise
+
+### 同步和异步的区别
+
+* 同步会阻塞代码执行，而异步不会
+* alert是同步，setTimeout是异步
+
+### 日期
+
+* `Date.now()` 获取当前时间从19700101开始到现在的毫秒数
+* 获取2018-04-22格式的日期
+
+```js
+var dt = new Date
+var yeae = dt.fetFullYear()
+var month = get.getMonth() + 1
+var day = dt.getDate()
+// 省略补0的代码
+```
+
+### 数组API
+
+* `forEach` 遍历所有数组元素 `(item, index)`
+* `every` 判断所有元素是否都符合条件
+* `some` 判断是否有至少一个元素符合条件
+* `sort` 排序
+* `map` 对元素重新组装，生成新数组
+* `filter` 过滤符合条件的元素
+
+### 对应API
+
+* `for(key in obj)`
+
+```js
+// 获取随机数，要求长度一致的字符串格式
+var random = Math.random()
+random = random + '0000000000' // 后面加10个零
+random = random.slice(0, 10)
+console.log(random)
+
+// 写一个能遍历对象和数组的forEach函数
+function forEach(obj, fn) {
+  var key
+  if (obj instanceof Array) { // 判断是不是数组
+    obj.forEach(function(item, index) {
+      fn(item, index)
+    })
+  } else { // 不是数据就用
+    for (key in obj) {
+      if(obj.hasOwnPropery(key)) {
+        fn(key, obj[key]) // 原型链上的属性不遍历
+      }
+    }
+  }
+}
+```
+
 ## 第 5 章 JS-Web-API（上）
 
 ## 第 6 章 JS-Web-API（下）
