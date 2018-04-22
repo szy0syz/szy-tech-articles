@@ -223,12 +223,34 @@ var xiaobai = new Dog()
 </body>
 ```
 
-
-
 ## 第3章 JS基础知识（中）
 
+### 执行上下文
 
+```js
+// 执行上下文
+console.log(a) // undefined
+var a = 100
+// 完美体现了js预解释
+fn('jerry') // jerry 20
+function fn(name) {
+    age = 20
+    console.log(name,age)
+    var age
+}
+```
 
+* 范围：一段`<script>`或者一个函数
+* 全局：变量定义、函数声明
+* 函数：变量定义、函数声明、this、arguments
+
+### this
+
+* this要在执行时才能确认值，定义时无法确认
+* 作为构造函数执行
+* 作为对象属性执行
+* 作为普通函数执行 --> 指向window
+* call apply bind
 
 ## 第4章 JS基础知识（下）
 
