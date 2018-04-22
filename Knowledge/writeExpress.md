@@ -466,5 +466,3 @@ proto.handle = function (req, res) {
   next();
 }
 ```
-
-----------
