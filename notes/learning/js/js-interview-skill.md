@@ -893,6 +893,44 @@ CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元
 * Promise
 * ajax
 
+### 4-3 页面性能
+
+提升页面性能的方法有哪些？
+
+1. 资源压缩合并
+2. 非核心代码异步加载 --> 异步加载的方式 --> 异步加载的区别
+3. 李荣浏览器缓存 --> 缓存分类 --> 缓存原理
+4. 使用CDN
+5. 预解析DNS
+
+#### 预解析DNS
+
+方法一：`<meta http-equiv="x-dns-prefetch-control" content="no">` 默认http协议的网站所有a标签都会开启dns预解析的，但https会默认关闭，此标签就可以开启https中a标签的预解析
+
+方法二：`<link rel="dns-prefetch" href="//host_name_to_prefetch.com">`
+
+#### 异步加载
+
+* 异步加载方式
+  * 动态脚本加载`createElement('script')`
+  * `defer`
+  * `async`
+
+* 异步加载的区别
+  * defer是在html解析完后才会执行，如果是多个，按照加载的顺序依次执行
+  * async是在加载完后立即执行，如果是多个，执行顺序和加载顺序无关
+
+#### 浏览器缓存
+
+缓存分类：强缓存和协商花村
+
+* 强缓存：
+  * `Expires` Expires: Thu,21 Jan 2018 23:39:02 GMT
+  * `Cache-Control` Cache-Control:max-age=3600
+
+* 协商缓存
+  * `Last-Modified`/ `If-Modified-Since` Last-Modified: Web, 26 Jan 2017 00:35:11 GMT
+  * `Etag` `If-None-Match`
 
 ## 第5章 三面/四面
 
