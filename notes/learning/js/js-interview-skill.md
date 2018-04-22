@@ -929,8 +929,10 @@ CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元
   * `Cache-Control` Cache-Control:max-age=3600
 
 * 协商缓存
-  * `Last-Modified`/ `If-Modified-Since` Last-Modified: Web, 26 Jan 2017 00:35:11 GMT
+  * `Last-Modified` / `If-Modified-Since` Last-Modified: Web, 26 Jan 2017 00:35:11 GMT
   * `Etag` `If-None-Match`
+
+协商缓存中`Last-Modified`和`Etag`是服务端给的，`If-Modified-Since`和`If-None-Match`是客户端请求头携带的，前者和后者都是一个值。
 
 ## 第5章 三面/四面
 
