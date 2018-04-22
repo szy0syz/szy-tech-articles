@@ -252,6 +252,37 @@ function fn(name) {
 * 作为普通函数执行 --> 指向window
 * call apply bind
 
+### 作用域
+
+* js没有块级作用域
+* 只有函数作用域和全局作用域
+
+```js
+if (true) {
+    var name = 'jerry'
+}
+console.log(name) // jerry，证明了js没有块级作用域
+```
+
+### 作用域链
+
+```js
+var a = 100
+function fn() {
+    var b = 200
+
+    // 当前作用域没有定义的变量，但能在作用域链中找到，就叫“自有变量”
+    console.log(a)
+}
+```
+
+### 闭包
+
+闭包的使用场景
+
+* 函数作为返回值
+* 函数作为参数传递（回调）
+
 ## 第4章 JS基础知识（下）
 
 
