@@ -49,6 +49,8 @@
   - [《React.js入门基础与案例开发》](/notes/learning/react/imooc_react_starter.md)
   - [珠峰React基础学习笔记](/notes/learning/react/zf-react-base.md)
   - [珠峰React-Router-v4学习笔记](/notes/learning/react/zf-react-router.md)
+  - [珠峰Redux学习笔记](/notes/learning/react/zf-redux.md)
+  - [珠峰Redux-middleware学习笔记](/notes/learning/react/zf-redux-middleware.md)
   - [达内前端培训CH02_CSS3Basic](/notes/learning/danei/CH02-CSS3Basic.md)
   - [达内前端培训CH04_CSS3Advanced](/notes/learning/danei/CH04-CSS3Advanced.md)
   - [达内前端培训 CH16_HTML5Core](/notes/learning/danei/CH16_HTML5Core.md)
