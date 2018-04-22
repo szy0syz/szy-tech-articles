@@ -107,7 +107,7 @@ for(key in obj) {
 
 ![__proto__][1]
 
-### instanceof
+#### instanceof
 
     用于判断 引用类型 属于哪个 构造函数 的方法
 
@@ -118,6 +118,111 @@ f instanceof Foo
 // 判断逻辑: f的__proto__隐式原型属性上递归一层一层往上找，能否找到对应的Foo.prototype，找到了就提前回来。
 // 如果没找到，就再试着判断 f instanceof Object
 ```
+
+#### 写一个原型链继承的例子
+
+```js
+function Animal() {
+    this.eat = function() {console.log('animal eat')}
+}
+function Dog() {
+    this.bark = function() {console.log('dog bark')}
+}
+
+Dog.prototype = new Animal()
+
+var xiaobai = new Dog()
+```
+
+原型链继承核心就是在子类的构造函数的显示原型上实例化一个父类的实例对象
+
+#### 描述new一个对象的过程
+
+* 创建一个新对象
+* this指向这个新对象
+* 执行代码，即对this赋值
+* 返回this
+
+阅读源码是高效提高技能的方式
+但不能“埋头苦钻”有技巧在其中
+
+#### 写一个用原型继承封装DOM查询的例子
+
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型扩展</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .nav {
+      display: flex;
+    }
+
+    .nav li {
+      list-style-type: none;
+      border: 1px solid #000;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul class="nav">
+        <li>首页</li>
+        <li>关于</li>
+      </ul>
+    </nav>
+  </header>
+  <section>
+    <article id="myContent">
+      <p>我是内容</p>
+    </article>
+  </section>
+  <footer>
+    <p>我是footer</p>
+  </footer>
+
+  <script>
+    function Elem(id) {
+      this.elem = document.getElementById(id)
+    }
+
+    Elem.prototype.html = function (val) {
+      var elem = this.elem
+      if (val) {
+        elem.innerHTML = val
+        return this // 链式操作
+      } else {
+        return elem.innerHTML // 如果没有就返回元素html文本
+      }
+    }
+
+    Elem.prototype.on = function (type, fn) {
+      var elem = this.elem
+      if (fn && (Object.prototype.toString.call(fn) === '[object Function]')) {
+        elem.addEventListener(type, fn) // 冒泡
+        return this
+      } else {
+        throw new Error('fn must be function')
+      }
+    }
+
+    var myContent = new Elem('myContent')
+    setTimeout(function () {
+      myContent.html('我被修改了~~~~~~~~').on('click', function () { alert('click~~~') })
+    }, 1000)
+  </script>
+</body>
+```
+
 
 
 ## 第3章 JS基础知识（中）
