@@ -89,10 +89,6 @@ JSON.parse('{"a":"1","b":"2"}')
 * 所有的引用类型（数据、对象、函数），`__prpto__`隐式原型属性都指向它的构造函数的`prototype`属性
 * 当视图得到一个对象的属性时，吐过这个对象本身没有这个属性，那么就会去它的`__proto__`隐式原型(即它的构造函数的`prototype`)中寻找
 
-`Foo.prototype.__proto__ === Object.prototype`
-
-![__proto__][1]
-
 只循环对象自身的属性
 
 ```js
@@ -102,6 +98,27 @@ for(key in obj) {
     }
 }
 ```
+
+### 原型链
+
+![eg1][2]
+
+`Foo.prototype.__proto__ === Object.prototype`
+
+![__proto__][1]
+
+### instanceof
+
+    用于判断 引用类型 属于哪个 构造函数 的方法
+
+```js
+function Foo() {}
+var f = new Foo()
+f instanceof Foo
+// 判断逻辑: f的__proto__隐式原型属性上递归一层一层往上找，能否找到对应的Foo.prototype，找到了就提前回来。
+// 如果没找到，就再试着判断 f instanceof Object
+```
+
 
 ## 第3章 JS基础知识（中）
 
@@ -133,3 +150,4 @@ for(key in obj) {
 
 
 [1]: http://ofx24fene.bkt.clouddn.com//img/blog/prototype.png
+[2]: http://ofx24fene.bkt.clouddn.com//img/blog/eg1.png
