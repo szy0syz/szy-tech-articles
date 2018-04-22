@@ -405,6 +405,36 @@ function forEach(obj, fn) {
 
 ## 第 5 章 JS-Web-API（上）
 
+JS基础知识(语法)：Standard ECMA-262，它定义什么变量类型、原型、作用域和异步。
+JS-Web_API：W3C标准，但W3C标准没有规定任何Js基础相关的东西，只管定义用于浏览器中JS操作页面的API和全局变量。
+
+* 例如获取元素document.getElementById(id)，浏览器需要：
+  * 要定义一个document全局变量，对象类型；
+  * 还给它定义一个getElementById的属性，属性值是一个函数
+
+* 我们常说的JS(浏览器执行的JS)包含两部分：
+  * JS基础知识(ECMA262标准)
+  * JS-Web-API(W3C标准)
+
+### DOM
+
+Document Object Model
+
+DOM可以理解为：浏览器把拿到的html代码，树形结构化一个浏览器可以识别并且js可以操作的一个模型而已。
+
+* 获取DOM元素
+* property
+* attribute
+
+```js
+var pList = document.querySelectorAll('p')
+var p =pList[0]
+p.getAttribute('data-name')
+p.setAttribute('data-name', 'jerry')
+p.getAttribute('style') // img的src等
+p.setAttribute('style', 'font-size:30px;')
+```
+
 ## 第 6 章 JS-Web-API（下）
 
 ## 第 7 章 开发环境
