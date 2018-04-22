@@ -739,6 +739,42 @@ WebSocket：init后，监听三个函数: onpen,onmessage,onclose
 
 CORS：支持跨域通信的Ajax，浏览器在发现你用ajax发送了一个跨域请求后，向请求头中加了一个orgin:域名的内容，指明这个域可以跨域
 
+### 3-7 安全类
+
+#### CSRF
+
+CSRF：跨站请求伪造
+
+CSRF原理图
+
+![CSRF][7]
+
+CSRF能做什么：攻击者盗用了你的身份，以你的名义发送恶意请求
+
+CSRF实现提前：
+
+* 服务端接口有漏洞
+* 用户在注册网站A登录过，有cookie等信息
+
+CSRF防御措施：
+
+* Token验证(加密的cookie)
+* Referer验证：请求来源验证
+* 隐藏令牌
+
+#### XSS
+
+XSS: 跨域脚本攻击 cross-site scripting
+
+[攻击原理和防御措施](https://www.imooc.com/learn/812)
+
+原理：例如各种渠道向你的页面注入JS脚本(eg:评论区)
+防御：让你插入的js无法执行
+
+CSRF与XSS区别
+
+XSS是向你页面注入js脚本让其运行，然后在函数体里做非法操作
+CSRF利用你网站本身的漏洞，利用cookie换取你登录的身份后发送恶意请求
 
 ## 第4章 二面/三面
 
@@ -767,3 +803,4 @@ CORS：支持跨域通信的Ajax，浏览器在发现你用ajax发送了一个�
 [4]: http://ofx24fene.bkt.clouddn.com//blog/2018/CSSBox-ie.png
 [5]: https://github.com/zuopf769/notebook/blob/master/fe/BFC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/README.md
 [6]: https://juejin.im/post/59b73d5bf265da064618731d
+[7]: http://ofx24fene.bkt.clouddn.com//img/blog/CSRF.png
