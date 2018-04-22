@@ -946,6 +946,11 @@ CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元
   * performance.getEntries()
   * Error事件捕获
 
+* 使用performance.getEntries()获取网页图片加载错误：
+  * `var allImgs = document.getElementsByTagName`
+  * `var loadedImgs = performance.getEntries().filter(i => i.initiatorType === 'img')`
+  * 最后allIms和loadedImgs对比即可找出图片资源未加载项目
+
 Error事件捕获代码演示
 
 ```js
