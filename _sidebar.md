@@ -19,6 +19,7 @@
   - [Hackintosh](/Knowledge/Hackintosh.md)
   - [Windows开发环境简单安装部署](/Knowledge/win10NewEnv.md)
   - [来吧，一起撸一套简仿的express框架](/Knowledge/writeExpress.md)
+  - [JS进阶：实现bind方法](/notes/learning/js/adv-bind.md)
   - [大前端知识梳理](/Knowledge/front-end-plus.md)
 
 - 学习笔记
@@ -36,7 +37,6 @@
   - [JS_dom基础：99. DOM 个人总结](/notes/dom/base99.md)
   - [VanillaJS小技巧总结](/notes/vanillaJS.md)
   - [SASS学习笔记](/notes/learning/css/SASS.md)
-  - [JS进阶：实现bind方法](/notes/learning/js/adv-bind.md)
   - [极客学院-微信小程序学习笔记](/notes/learning/wxapp/jkxy.md)
   - [微信小程序自学笔记](/notes/learning/wxapp/self.md)
   - [flexbox学习笔记](/notes/learning/css/flexbox.md)
