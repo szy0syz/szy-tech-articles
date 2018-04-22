@@ -712,7 +712,33 @@ app.post('/loadData', function(req, res) {
 * WebSocket
 * CORS
 
-13:40
+JSONP：利用script标签的异步加载来实现的
+
+```js
+function jsonp(req){
+    var script = document.createElement('script');
+    var url = req.url + '?callback=' + req.callback.name;
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script); 
+}
+
+function hello(res){
+    alert('hello ' + res.data);
+}
+jsonp({
+    url : '',
+    callback : hello
+});
+```
+
+Hash：Iframe子父窗口传值
+
+postMessage：html5新api，兄弟窗口间传值
+
+WebSocket：init后，监听三个函数: onpen,onmessage,onclose
+
+CORS：支持跨域通信的Ajax，浏览器在发现你用ajax发送了一个跨域请求后，向请求头中加了一个orgin:域名的内容，指明这个域可以跨域
+
 
 ## 第4章 二面/三面
 
