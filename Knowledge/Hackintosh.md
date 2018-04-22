@@ -8,7 +8,7 @@
 
 ## 目前我的黑苹果
 
-- 公司黑苹果机: 
+- 公司黑苹果机:
   - CPU: Intel I3-6100
   - Mobo: Gigabyte  GA-B150M-D3H
   - Graphics: none
@@ -17,20 +17,19 @@
   - HHD: WD 1TB SATA3
   - Monitor: Dell P2417H
   - macOS Sierra 10.12.4
-  
+
 - 家用黑苹果机:
   - CPU: Intel I7-4790K
   - Mobo: ASUS Z97-a/usb3.1
-  - Graphics: none 
+  - Graphics: none
   - RAM: G.SKILL F3-2400C11S-8GSR(*2)
   - SSD: Samsung 850 EVO 250G SATA3
-  - HHD: WD 3TB SATA3 64M 
+  - HHD: WD 3TB SATA3 64M
   - Monitor: Samsung T240 (2007年10月1日买的...)
   - macOS Sierra 10.12.5
   - Accessories: BCM94360CD/11AC-1900M
 
 ![max-home](http://ofx24fene.bkt.clouddn.com//img/2017/mac_home.png)
-
 
 ## 黑苹果全套流程
 
