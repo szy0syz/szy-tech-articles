@@ -808,7 +808,7 @@ https://segmentfault.com/a/1190000009857470
 * 回答要灵活
 * 要学会赞美
 
-### 渲染机制
+### 4-1 渲染机制
 
 渲染机制五大核心要素
 
@@ -876,6 +876,24 @@ CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元
   * 不要频繁计算样式，缓存计算结果
   * 考虑一下渲染树和变更后需要重新验证的消耗
 
+### 4-2 js运行机制
+
+* 如何理解Js的单线程：一段时间内JS只能干一件事
+* 什么是任务队列
+* 事件循环
+
+任务队列和Event Loop
+
+![runtime][9]
+
+开启异步任务
+
+* 定时器
+* DOM事件
+* Promise
+* ajax
+
+
 ## 第5章 三面/四面
 
 
@@ -901,3 +919,4 @@ CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元
 [6]: https://juejin.im/post/59b73d5bf265da064618731d
 [7]: http://ofx24fene.bkt.clouddn.com//img/blog/CSRF.png
 [8]: http://ofx24fene.bkt.clouddn.com//img/blog/html-render.png
+[9]: http://ofx24fene.bkt.clouddn.com//img/blog/js-runtime.png
