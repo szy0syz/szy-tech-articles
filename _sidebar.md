@@ -79,6 +79,7 @@
   - [《精彩绝伦的CSS》](/notes/reading/9787115284792.md)
   - [《精通CSS 高级WEB标准解决方案(第2版)》](/notes/reading/9787115226730.md)
   - [《Progressive Web Apps》](/notes/reading/9781617294587.md)
+  - [《精通CSS 高级WEB标准解决方案(第2版)》](/notes/reading/9787115226730.md)
 
 - 干货店铺
   - **[JavaScript标准参考教材](http://javascript.ruanyifeng.com/)**
