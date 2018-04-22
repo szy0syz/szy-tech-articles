@@ -427,12 +427,61 @@ DOM可以理解为：浏览器把拿到的html代码，树形结构化一个浏�
 * attribute
 
 ```js
+// 获取DOM元素
 var pList = document.querySelectorAll('p')
 var p =pList[0]
+
+// property
+console.log(p.nodeName)
+
+// attribute
 p.getAttribute('data-name')
 p.setAttribute('data-name', 'jerry')
 p.getAttribute('style') // img的src等
 p.setAttribute('style', 'font-size:30px;')
+```
+
+### DOM结构操作
+
+* 新增节点
+* 获取父元素
+* 获取子元素
+* 删除节点
+
+* DOM是哪种基本的数据结构
+  * 树 tree
+
+* DOM操作的常用API有哪些
+  * 获取DOM节点，以及节点的property和attribute
+  * 获取父节点，获取子节点
+  * 新增节点，删除节点
+  * property 只是一个js对象的属性的修改
+  * attribute 是对html标签属性的修改
+
+### BOM
+
+* navigator
+* screen
+* location
+* history
+
+```js
+// navigator
+var ua = navigator.userAgent
+var isChrome = ua.indexOf('Chrome')
+
+// screen
+console.log(screen.width)
+console.log(screen.heigth)
+
+// location
+console.log(location.href)
+console.log(location.protocol)
+console.log(location.search)
+
+// history
+history.back()
+history.forward()
 ```
 
 ## 第 6 章 JS-Web-API（下）
