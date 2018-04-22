@@ -827,6 +827,37 @@ DOCTYPE是用来告诉浏览器这个文档到底是哪个DTD
 HTML5的DOCTYPE `<!DOCTYPE html>`
 HTML4.0 的dtd有两个模式：严格模式和传统模式。严格模式里不能使用展示性和弃用的元素(eg: font)
 
+#### 浏览器渲染过程
+
+![render][8]
+
+html、css、js都会影响你页面的最终呈现形式
+
+什么是CSSOM？
+
+* CSSOM是CSS Object Model的缩写
+* CSSOM是一个建立在web页面上的 CSS 样式的映射
+* 它和DOM类似，但是只针对CSS而不是HTML
+* 浏览器将DOM和CSSOM结合来渲染web页面
+
+CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元素上。
+
+#### 重排reflow
+
+定义：DOM结构中的各个元素都要自己的盒子模型，这些都需要浏览器根据各种样式来计算将元素放在它该出现的位置，这个过程就是reflow
+
+重排，就是这个元素的几何属性或者坐标发生了改变，所以会造成重排。
+
+只要涉及到盒模型的css属性基本都会触发重排Reflow，包括：
+
+* 增删改DOM节点，可能会重排也可能重绘
+* 移动DOM位置，你设置了个动画
+* 修改CSS样式
+* 改变viewport窗口大小
+* 修改网页默认字体时
+
+触发Reflow时基本上会触发Repaint
+
 ## 第5章 三面/四面
 
 
@@ -851,3 +882,4 @@ HTML4.0 的dtd有两个模式：严格模式和传统模式。严格模式里不
 [5]: https://github.com/zuopf769/notebook/blob/master/fe/BFC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/README.md
 [6]: https://juejin.im/post/59b73d5bf265da064618731d
 [7]: http://ofx24fene.bkt.clouddn.com//img/blog/CSRF.png
+[8]: http://ofx24fene.bkt.clouddn.com//img/blog/html-render.png
