@@ -934,6 +934,33 @@ CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元
 
 协商缓存中`Last-Modified`和`Etag`是服务端给的，`If-Modified-Since`和`If-None-Match`是客户端请求头携带的，前者和后者都是一个值。
 
+### 4-4 错误监控类
+
+#### 前端错误的分类
+
+* 即时运行错误：代码错误
+  * `try...catch`
+  * `window.onerror` (也可以用DOM2事件监听)
+* 资源加载错误
+  * object.onerror: dom对象的onerror事件
+  * performance.getEntries()
+  * Error事件捕获
+
+Error事件捕获代码演示
+
+```js
+window.addEventListener('error', function(e) {
+  console.log('捕获'，e)
+}, true) // 这里只有捕获才能触发事件，冒泡是不能触发
+```
+
+#### 上报错误的基本原理
+
+* 采用Ajax通信的方式上报
+* 利用Image对象上报 (主流方式)
+
+Image上报错误方式: `(new Image()).src = 'http://jerryshi.com/error?title=xxxooo'`
+
 ## 第5章 三面/四面
 
 
