@@ -739,7 +739,7 @@ WebSocket：init后，监听三个函数: onpen,onmessage,onclose
 
 CORS：支持跨域通信的Ajax，浏览器在发现你用ajax发送了一个跨域请求后，向请求头中加了一个orgin:域名的内容，指明这个域可以跨域
 
-### 3-7 安全类
+### 3-8 安全类
 
 #### CSRF
 
@@ -775,6 +775,25 @@ CSRF与XSS区别
 
 XSS是向你页面注入js脚本让其运行，然后在函数体里做非法操作
 CSRF利用你网站本身的漏洞，利用cookie换取你登录的身份后发送恶意请求
+
+### 3-9 算法类
+
+#### 排序
+
+* [快速排序](https://segmentfault.com/a/1190000009426421)
+* [选择排序](https://segmentfault.com/a/1190000009366805)
+* [希尔排序](https://segmentfault.com/a/1190000009461832)
+
+#### 堆栈、队列、链表
+
+堆栈：先进后出，push进，pop出
+队列：先进先出，push进，shift出
+
+文章：https://juejin.im/entry/58759e79128fe1006b48cdfd
+
+#### 递归
+
+#### 波兰式和逆波兰式
 
 ## 第4章 二面/三面
 
