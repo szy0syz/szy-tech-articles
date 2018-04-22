@@ -55,7 +55,10 @@
   - [达内前端培训 CH18_Bootstrap](/notes/learning/danei/CH18_Bootstrap.md)
   - [React全家桶+Epxress+MongoDB开发招聘APP](/notes/learning/react/react-job-app.md)
   - [传智博客 - MongoDB入门](/notes/learning/node/mongodb.md)
+  - [慕课网 - VueSSR+Koa2全栈开发微信公众号+小程序](/notes/learning/wxapp/VueKoa.md)
   - [慕课网 - Python3入门与进阶](/notes/learning/python/adv.md)
+  - [慕课网 - Vue2.5开发去哪儿网App](/notes/learning/vue/vue-qunar.md))
+  - [慕课网 - Vue核心技术 Vue+Vue-Router+Vuex+SSR实战精讲](/notes/learning/vue/vue-full.md)
 
 - 读书笔记
   - [《JavaScript权威指南（第6版）》](/notes/reading/9787111376613/README.md)
