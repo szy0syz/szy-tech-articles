@@ -406,6 +406,7 @@ function forEach(obj, fn) {
 ## 第 5 章 JS-Web-API（上）
 
 JS基础知识(语法)：Standard ECMA-262，它定义什么变量类型、原型、作用域和异步。
+
 JS-Web_API：W3C标准，但W3C标准没有规定任何Js基础相关的东西，只管定义用于浏览器中JS操作页面的API和全局变量。
 
 * 例如获取元素document.getElementById(id)，浏览器需要：

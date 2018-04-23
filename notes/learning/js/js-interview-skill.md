@@ -735,7 +735,7 @@ Hash：Iframe子父窗口传值
 
 postMessage：html5新api，兄弟窗口间传值
 
-WebSocket：init后，监听三个函数: onpen,onmessage,onclose
+WebSocket：init后，监听三个函数: onopen,onmessage,onclose
 
 CORS：支持跨域通信的Ajax，浏览器在发现你用ajax发送了一个跨域请求后，向请求头中加了一个orgin:域名的内容，指明这个域可以跨域
 
@@ -825,6 +825,7 @@ DTD (document type definition, 文档类型定义)：告诉浏览器此文档的
 DOCTYPE是用来告诉浏览器这个文档到底是哪个DTD
 
 HTML5的DOCTYPE `<!DOCTYPE html>`
+
 HTML4.0 的dtd有两个模式：严格模式和传统模式。严格模式里不能使用展示性和弃用的元素(eg: font)
 
 #### 浏览器渲染过程
@@ -899,7 +900,7 @@ CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元
 
 1. 资源压缩合并
 2. 非核心代码异步加载 --> 异步加载的方式 --> 异步加载的区别
-3. 李荣浏览器缓存 --> 缓存分类 --> 缓存原理
+3. 使用浏览器缓存 --> 缓存分类 --> 缓存原理
 4. 使用CDN
 5. 预解析DNS
 
@@ -930,7 +931,7 @@ CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元
 
 * 协商缓存
   * `Last-Modified` / `If-Modified-Since` Last-Modified: Web, 26 Jan 2017 00:35:11 GMT
-  * `Etag` `If-None-Match`
+  * `Etag` / `If-None-Match`
 
 协商缓存中`Last-Modified`和`Etag`是服务端给的，`If-Modified-Since`和`If-None-Match`是客户端请求头携带的，前者和后者都是一个值。
 
@@ -947,7 +948,7 @@ CSSOM是做什么的？ CSSOM将样式表中的规则映射到页面对应的元
   * Error事件捕获
 
 * 使用performance.getEntries()获取网页图片加载错误：
-  * `var allImgs = document.getElementsByTagName`
+  * `var allImgs = document.getElementsByTagName('image')`
   * `var loadedImgs = performance.getEntries().filter(i => i.initiatorType === 'img')`
   * 最后allIms和loadedImgs对比即可找出图片资源未加载项目
 
