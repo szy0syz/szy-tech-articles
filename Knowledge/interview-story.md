@@ -36,7 +36,7 @@
 
 7. SSR原理、不用框架，自己实现。除了框架，自己实现另一种避免首屏白屏问题，我说模板渲染了，这好像也算服务端渲染吧？没答好。
 
-8. 、js运行机制。先问原理，又出题目。这题我只能强力答题一波，直接在白板解答。原图heap、stack、async-webapis、event-loop、callback-queue各种，感觉回答最好的一题了！
+8. js运行机制。先问原理，又出题目。这题我只能强力答题一波，直接在白板解答。原图heap、stack、async-webapis、event-loop、callback-queue各种，感觉回答最好的一题了！
 
 9. 页面布局、bootstrap实现布局原理。答了5种分布方式，很详细，这题强力回答了。
 
