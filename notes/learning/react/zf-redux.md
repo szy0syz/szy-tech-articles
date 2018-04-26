@@ -77,7 +77,7 @@ export { createStore }
 
 ### 手绘复习redux调用流程
 
-![redux-flow-hand](http://ofx24fene.bkt.clouddn.com//img/react/redux-flow-hand.jpeg)
+![redux-flow-hand](http://ofx24fene.bkt.clouddn.com//blog/2018/redux-flow-handwrite.jpeg)
 
 -------
 
