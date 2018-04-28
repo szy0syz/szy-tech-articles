@@ -103,7 +103,18 @@ trim_trailling_whitespace = true // 代码结束不能有空格
 * 安装husky后，它会自动帮我们在.git生成一个hook钩子
 * 在package.json 中配置`precommit: "npm run lint-fix"`，这样huksy就会自动读取改命令
 
+### 2.5 Webpack4升级
+
 ## 第3章 Vue核心知识
+
+### 3.1 vue核心讲解单独配置
+
+* 新建`webpack.config.practice.js`
+* 其中只要if里dev环境配置不需要prod的
+* 覆盖base中的entry，重新指定入口点
+* 在resolve中指定alias: `'vue': path.join(__dirname, '../node_modules/vue/dist/vue.esm.js')`，这条命令的意思是在代码中使用`import Vue from 'vue'`重定向到`vue.esm.js`文件。这是因为Vue为我们提供不同环境的支持，默认import的vue都是加了runtime的vue，在开发环境是`vue.runtime.esm.js`。加了runtime和不加runtime的区别就是我们可以在Vue根节点对象里使用`template`。
+* package.json新建命令``
+* 在webpack的plugins时，可以添加htmlPlugin使用模板来初始化Vue的根节点
 
 
 
