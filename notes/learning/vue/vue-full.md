@@ -116,6 +116,31 @@ trim_trailling_whitespace = true // 代码结束不能有空格
 * package.json新建命令``
 * 在webpack的plugins时，可以添加htmlPlugin使用模板来初始化Vue的根节点
 
+### 3.2 Vue实例
+
+#### Vue实例的创建和作用
+
+
+#### Vue实例的属性
+
+* 修改data的几种方式
+  * `app.counter = 111`
+  * `app.$data.counter = 222`
+  * `app.$options.data().counter = 333`
+* `app.$el` 获取Vue挂在的dom根节点
+* `app.$children` 获取所有子组件
+* `app.$root === app` 在所有子组件中都可以this.$root获取vue的app实例
+* `app.$refs` 全局所有引用的dom节点都存这里
+* `app.$isServer` 是否启用服务端渲染
+* `app.$options.render` 下一次轮询执行的渲染
+
+```js
+app.$options.render = h => {
+  return h('span', {}, 'new jerry ssssss')
+}
+```
+
+#### Vue实例的方法
 
 
 
