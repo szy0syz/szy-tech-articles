@@ -118,9 +118,6 @@ trim_trailling_whitespace = true // 代码结束不能有空格
 
 ### 3.2 Vue实例
 
-#### Vue实例的创建和作用
-
-
 #### Vue实例的属性
 
 * 修改data的几种方式
@@ -148,6 +145,13 @@ app.$options.render = h => {
 * `app.$nextTick()`
 
   每一个Vue组件都是一个Vue的实例
+
+### 3.3 Vue的生命周期
+
+如果开启服务端渲染SSR，`beforeMount`和`mounted`是不会被调用的。
+
+* `renderError(h, e) { return h('div', {}, e.stack) }` 在调试中，当调用实例redner方式报错时，可以自定义错误显示
+* `errorCaptured () {}` 在生产环境冒泡方式报错
 
 ## 第4章 Vue-Router和Vuex
 
