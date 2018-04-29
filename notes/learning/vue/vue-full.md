@@ -146,12 +146,34 @@ app.$options.render = h => {
 
   每一个Vue组件都是一个Vue的实例
 
-### 3.3 Vue的生命周期
+### 3.3 Vue的生命周期方法
 
 如果开启服务端渲染SSR，`beforeMount`和`mounted`是不会被调用的。
 
 * `renderError(h, e) { return h('div', {}, e.stack) }` 在调试中，当调用实例redner方式报错时，可以自定义错误显示
 * `errorCaptured () {}` 在生产环境冒泡方式报错
+
+### 3.5 Vue的watch和computed
+
+computed：有缓存、默认只有get没set
+
+```js
+watch: {
+  obj.a: {
+    handler() {
+      console.log('obk.a changed.')
+    },
+    immediate: true,
+    deep: true // 深入遍历对象的每个属性，否者watch不到
+  }
+}
+```
+
+* 不能在computed和watch中修改所依赖的变量。computed里不能做任何值的修改，可能导致循环依赖。
+
+### 3.6 Vue的原生指令
+
+
 
 ## 第4章 Vue-Router和Vuex
 
