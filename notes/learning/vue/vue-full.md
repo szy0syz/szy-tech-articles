@@ -173,7 +173,26 @@ watch: {
 
 ### 3.6 Vue的原生指令
 
+* `v-text`：操作类似dom.innerHtml
+* 在使用`v-for`时，需要加个key，vue希望这个key是在该循环数组中是唯一的，因为该列数据是经常会变化的，Vue就需要重新渲染这个行表后放回dom中去，这也性能开销就会比较大，然后我们放入唯一值到key中去后，当该行数据变化时，vue会从缓存经过key拿到对象后就仅去修改这一行的虚拟节点，就不需要生成新的dom节点，这样就可以复用dom节省性能开销。
+* `v-model`默认只用在表单节点。`v-model.number` `v-model.trim` `v-model.lazy`
+* `v-pre` 不解析差值表达式
+* `v-cloak` 有了webpack应用场景很少
+* `v-once` 只渲染一次，使用于静态文本渲染，节省开销，不做响应式绑定
 
+```html
+<div>
+  <input type="checkbox" :value="1" v-model="arr" />
+  <input type="checkbox" :value="2" v-model="arr" />
+  <input type="checkbox" :value="3" v-model="arr" />
+</div>
+
+<script>
+  data: {
+    arr: [2, 3] // 多选框组 + 数组的绑定
+  }
+</script>
+```
 
 ## 第4章 Vue-Router和Vuex
 
