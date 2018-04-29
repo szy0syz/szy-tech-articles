@@ -215,6 +215,41 @@ new Vue({
 * props 应该使用单向数据流
 * 在子组件上ref时，可以拿到这个子组件的vue实例
 
+### 3.8 Vue的组件继承
+
+```js
+const Component = { ... }
+// 方式一
+const CompVue = Vue.extend(component)
+
+new CompVue({
+  el: '#root',
+  propsData: {
+    propOne: 'jerry' // 可以向父类pros传值
+  },
+  data: {
+    text: 'dd2222' // 可以覆盖父类的data
+  },
+  mounted() {
+    console.log('CompVue mounted') // 先调用父类，再调用子类生命周期函数
+  }
+})
+
+///// 方法二
+const component2 = {
+  extends: Component,
+  data() {
+    return {
+      text: 1111
+    }
+  }
+}
+```
+
+* Vue中extends的应用场景：项目中先写了一个组件，此组件配置项复杂，且需要在不同页面复用，且每次还需配置默认配置项，此时则可以使用extends再封装一道，把不懂需求的配置封装成组件，每次使用直接启用即可。
+
+* `this.$parent`获取父组件的引用，也可以修改父组件属性。只能在`new Vue()`实例时指定该实例的`parnet`，在子组件中无论怎么修改最终Vue也会在渲染时该成其当前上下文为parent。一定避免在子组件中修改父子间的属性！
+
 ## 第4章 Vue-Router和Vuex
 
 
