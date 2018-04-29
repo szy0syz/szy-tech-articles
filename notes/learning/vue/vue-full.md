@@ -194,6 +194,27 @@ watch: {
 </script>
 ```
 
+### 3.7 Vue的组件定义
+
+Vue官方组件命名规则
+
+```js
+const component = {
+  template: `<div>this is component one`
+}
+
+Vue.component('CompOne', component)
+
+new Vue({
+  el: '#root',
+  template: `<comp-one></comp-one>`
+})
+```
+
+* 正常情况下子组件没不应该去改父组件传进来的props，正确的行为应该是子组件emit事件把值传递出去，由父组件根据实际情况落实是不是需要改。
+* props 应该使用单向数据流
+* 在子组件上ref时，可以拿到这个子组件的vue实例
+
 ## 第4章 Vue-Router和Vuex
 
 
