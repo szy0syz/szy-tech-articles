@@ -24,7 +24,7 @@ module.exports = {
     // 为以下路由添加侧边栏
     sidebar: {
       '/knowledge/': ['111', '222'],
-      '/note/': ['note1', 'note2']
+      '/notes/': ['note1', 'note2']
     }
   }
 }

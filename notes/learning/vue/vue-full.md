@@ -142,7 +142,12 @@ app.$options.render = h => {
 
 #### Vue实例的方法
 
+* `app.$on('test', (a, b)=> {})` 和 `app.$emit('test', 11, 22)`
+* `app.$forceUpdate()` 强制刷新
+* `app.$set()`
+* `app.$nextTick()`
 
+  每一个Vue组件都是一个Vue的实例
 
 ## 第4章 Vue-Router和Vuex
 
