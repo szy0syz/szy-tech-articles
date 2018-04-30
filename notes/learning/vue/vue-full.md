@@ -339,6 +339,21 @@ export default () => {
 
 ### 4-4 Vue-Router之导航守卫
 
+在Vue-router前端路由，参数可以配置replace，表示不在history记录中，这样返回时就跳过此条记录。
+
+路由钩子的三种使用方式：
+
+* 全局钩子
+  * `router.beforeEach`
+  * `router.beforeResolve`
+  * `router.afterEach`
+* 路由配置内的钩子
+  * `beforeEnter`
+* 组件内的路由钩子，前两个钩子是无法拿到组件this对象，但我们可以在next(vm=> { vm.name = 'eeee' })的回调拿到创建后的this对象。
+  * `beforeRouteEnter`
+  * `beforeRouteUpdate` 应用于`/detail/2291` 和 `detail/2982` 切换时触发
+  * `beforeRouteLeave`
+
 ## 第5章 服务器渲染
 
 ## 第6章 高级组件开发
