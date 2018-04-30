@@ -250,6 +250,16 @@ const component2 = {
 
 * `this.$parent`获取父组件的引用，也可以修改父组件属性。只能在`new Vue()`实例时指定该实例的`parnet`，在子组件中无论怎么修改最终Vue也会在渲染时该成其当前上下文为parent。一定避免在子组件中修改父子间的属性！
 
+### 3.9 Vue组件之自定义双向绑定
+
+    v-model的双向绑定
+
+Vue中爷爷和孙子组件传值还可以用`provide` + `inject`模式
+
+### 3.11 Vue的render function
+
+`template -转换-> render function`
+
 ## 第4章 Vue-Router和Vuex
 
 
