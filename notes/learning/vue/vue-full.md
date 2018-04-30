@@ -264,6 +264,8 @@ Vue中爷爷和孙子组件传值还可以用`provide` + `inject`模式
 
 我们还知道了原来Vue通过vue-loader将teplate转换成render函数，然后生成树形结构的vnode，最后如果vnode数据发生改变时，在nextTick调用render渲染。
 
+在了解了template原理后，我们会更深入的了解Vue执行原理，在遇到一些问题时，就会用一些更合理的逻辑思维去思考这个问题，发生template本质问题所在，导致了调用createElement传参出现问题。
+
 ## 第4章 Vue-Router和Vuex
 
 ## 第5章 服务器渲染
