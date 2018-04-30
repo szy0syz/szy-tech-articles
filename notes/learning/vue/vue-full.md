@@ -275,6 +275,70 @@ Vue中爷爷和孙子组件传值还可以用`provide` + `inject`模式
 3. `new Vue({ router })`
 4. page中即可使用 `<router-view />`
 
+### 4-2 Vue-Router之配置
+
+webapck-devServer中增加配置，为了方便前端调试。
+
+```js
+historyApiFallback: {
+  index: '/index.html'
+}
+```
+
+```js
+export default () => {
+  return new Router({
+    routes,
+    mode: 'history', // 路由模式为非hash路由,
+    // base: '/base/' // 统一加前缀域名
+    // linkActiveClass: 'active-link', // 只要包含就算匹配就加class
+    // linkExactActiveClass: 'exact-link' // 必须精确匹配后才加class
+    // scrollBehavior(to, from, savePosition) {
+    //   // 页面跳转时，是否接受滚动数值的记录
+    //   // 三个参数都是对象！
+    //   // console.dir(arguments)
+    //   // if (savePosition) {
+    //   //   return savePosition
+    //   // } else {
+    //   //   return { x: 0, y: 0 }
+    //   // }
+    // }
+    // parseQuery(query) {  // 拿参数
+    //   console.log(query)
+    //   return ''
+    // },
+    // stringifyQuery(obj) { // 拿参数，对象格式
+    //   console.dir(obj)
+    //   return ''
+    // }
+    // fallback: true // 自动识别开启history模式，失败就hash模式
+  })
+}
+```
+
+### 4-3 Vue-Router之路由参数传递
+
+```js
+{
+  path: '/app/:qid',
+  props: true, // 路由解耦
+  component: Todo,
+  name: 'app',
+  meta: {
+    title: 'this is app',
+    description: 'app desc'
+  },
+  // children: [ // 嵌套路由，需要放在Todo组件中<router-view></router-view>
+  //   {
+  //     path: '/cc1',
+  //     component: Login
+  //   }
+  // ]
+}
+```
+
+### 4-4 Vue-Router之导航守卫
+
 ## 第5章 服务器渲染
 
 ## 第6章 高级组件开发
