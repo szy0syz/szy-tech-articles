@@ -268,6 +268,13 @@ Vue中爷爷和孙子组件传值还可以用`provide` + `inject`模式
 
 ## 第4章 Vue-Router和Vuex
 
+### 4-1 Vue-Router初始配置
+
+1. add `router.js` export一个实例化的路由对象
+2. add `routes.js` export具体路由配置
+3. `new Vue({ router })`
+4. page中即可使用 `<router-view />`
+
 ## 第5章 服务器渲染
 
 ## 第6章 高级组件开发
