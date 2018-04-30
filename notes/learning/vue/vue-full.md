@@ -68,18 +68,18 @@ eslint的好处：
 * 修改`package.json` -- `script`中添加 `"lint": "eslint --ext .jsx --ext .vue client/"`。新建完后自行命令就可以检测出来错误提示
 * 修改`package.json` -- `script`中添加 `"lint-fix": "eslint --fix --ext .jsx --ext .vue client/"`。新建完成后自行命令即可全部修复错误
 
-为了每次保存代码时都进行eslint检测，我们需要安装`eslint-loader babel-eslint -D`，修改配置 
+为了每次保存代码时都进行eslint检测，我们需要安装`eslint-loader babel-eslint -D`，修改配置
 
 * `.eslintrc` `{"parser": "babel-eslint"}`，为什么要指定parser呢？因为我们项目基于webpack开发，代码都需要通过babel转换成ES5的，在babel处理时和eslint有不同，所以我们还需指定babel-eslint作为转换器
 * 接下来需要在webpack中配置eslint。只需在base里配置，因为dev和prod都需要。新增module-rules
-* 此时在webpack流程中，我们先用es-lint检测.vue.js.jsx文件，检测出错后就不能再继续进行下一步的loader编译，故我们需要进行强制预处理，即配置`enforce:: 'pre' `
+* 此时在webpack流程中，我们先用es-lint检测.vue.js.jsx文件，检测出错后就不能再继续进行下一步的loader编译，故我们需要进行强制预处理，即配置`enforce:: 'pre'`
 
 ```js
 {
   test: /\.(vue|js|jsx)$/,
   loader: 'eslint-loader',
   exclude: /node_modules/,
-  enforce:: 'pre' 
+  enforce:: 'pre'
 }
 ```
 
@@ -259,6 +259,10 @@ Vue中爷爷和孙子组件传值还可以用`provide` + `inject`模式
 ### 3.11 Vue的render function
 
 `template -转换-> render function`
+
+我们在Vue中写template时，其实在内部Vue会将我们的template转换成render函数，这样在可以在有数据变化时调用render函数渲染即可。我们在了解template如何转换成render后，在写template就会具体知道为什么某处为什么编译不通过、如何书写紧凑的template。
+
+我们还知道了原来Vue通过vue-loader将teplate转换成render函数，然后生成树形结构的vnode，最后如果vnode数据发生改变时，在nextTick调用render渲染。
 
 ## 第4章 Vue-Router和Vuex
 
