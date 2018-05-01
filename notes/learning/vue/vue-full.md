@@ -428,6 +428,8 @@ computed: {
 
 * Vuex官方推荐所有state的修改都需要放在mutation中
 * 可以在构建Vue实例是传入`strict: true`研究在$store属性上修改state，但此选项仅在开发环境中限制开发人员规范来用
+* 在开发过程中，mutation中是不能包含异步的代码，mutation中必须全是同步代码，所以我们只能将异步的代码写在action中
+* 一般后端数据请求将代码写在actions中，而简单的数据变化则用mutation
 
 ## 第5章 服务器渲染
 
