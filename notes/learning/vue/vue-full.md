@@ -395,6 +395,37 @@ export default () => {
 }
 ```
 
+### 4-6 Vuex之state和getters
+
+我们可以简单地理解getter就是一个computed
+
+对于那些为定稿的ES6语法，需使用`npm i babel-preset-stage-1 -D`的插件来编译
+
+`...mapState(['count'])`用与store-state中变量名不需要自定义名
+
+`...mapState({counter: 'count'})`用于store-state中变量名需自定义名
+
+```js
+computed: {
+    // ...mapState(['count']),
+    ...mapState({
+      counter: (state) => state.count
+    }),
+    // count() {
+    //   return this.$store.state.count
+    // },
+    ...mapGetters(['fullName']),
+    // fullName() {
+    //   console.log(this.$store.getters)
+    //   return this.$store.getters.fullName
+    // }
+  }
+```
+
+### 4-7 Vuex之mutation和action
+
+
+
 ## 第5章 服务器渲染
 
 ## 第6章 高级组件开发
