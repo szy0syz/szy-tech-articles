@@ -363,6 +363,38 @@ export default () => {
 3. 在项目上删除原先对需要动态加载组件的import
 4. 在配置路由时，修改`component: () => import(../views/todo/todo.vue)`
 
+### 4-5 Vuex之集成
+
+在使用vuex中必须每次都返回一个新router对象和store对象，否则在SSR时会产生内存溢出！
+
+```js
+// index.js
+import Vuex from 'vuex'
+Vue.use(Vuex)
+import createStore from './store/store'
+const store = createStore()
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount(root)
+///////////////////////////
+// store
+export default () => {
+  return new Vuex.Store({
+    state: {
+      count: 0
+    },
+    mutations: {
+      updateCount(state, num) {
+        state.count = num
+      }
+    }
+  })
+}
+```
+
 ## 第5章 服务器渲染
 
 ## 第6章 高级组件开发
