@@ -354,6 +354,15 @@ export default () => {
   * `beforeRouteUpdate` 应用于`/detail/2291` 和 `detail/2982` 切换时触发
   * `beforeRouteLeave`
 
+#### Vue-Router和webpack实现异步组件
+
+实现步骤：
+
+1. `npm i babel-plugin-syntax-dynamic-import -D` 引入babel插件编译动态引入
+2. 修改`.babelrc`配置引入此插件
+3. 在项目上删除原先对需要动态加载组件的import
+4. 在配置路由时，修改`component: () => import(../views/todo/todo.vue)`
+
 ## 第5章 服务器渲染
 
 ## 第6章 高级组件开发
