@@ -494,6 +494,10 @@ store.registerModule('c', {
 
 ## 第5章 服务器渲染
 
+### 5-1 开发时服务端渲染的配置和原理
+
+* `VueServerPlugin`此插件安装后，项目整体打包就不再会有JavaScript文件输出，它仅会输出JSON文件
+
 ## 第6章 高级组件开发
 
 ## 第7章 项目开发
