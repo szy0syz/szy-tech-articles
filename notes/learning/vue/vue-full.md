@@ -486,6 +486,12 @@ store.registerModule('c', {
 3. 如果有，就使用hot.accept监控各个路径文件
 4. 发送变化就重新再次加载文件后用hotUpdate注册新模块
 
+### 4-9 Vuex的API和配置
+
+* `store.watch()`
+* `store.subscribeAction((mutation, state) => { mutation.type, mutation.payload })` 坚守flux设计模式
+* Vuex-plugin
+
 ## 第5章 服务器渲染
 
 ## 第6章 高级组件开发
