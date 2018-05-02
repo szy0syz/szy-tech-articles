@@ -431,6 +431,61 @@ computed: {
 * 在开发过程中，mutation中是不能包含异步的代码，mutation中必须全是同步代码，所以我们只能将异步的代码写在action中
 * 一般后端数据请求将代码写在actions中，而简单的数据变化则用mutation
 
+### 4-8 Vuex之modules
+
+```js
+export default () => {
+  return new Vuex.Store({
+    state: defaultState,
+    mutations,
+    getters,
+    actions,
+    modules: {
+      planA: {
+        namespaced: true, // 强制启用命名空间 调用时a/title
+        state: {
+          title: 'planAAA',
+          counter: 0
+        }
+      },
+      planB: {
+        state: {
+          title: 'planBBBB',
+          value: 99
+        },
+        mutations: {
+          updateBVal(state, val) {
+            console.log('mutations-updateVal:', state.value)
+            state.value = val
+          }
+        }
+      }
+    }
+  })
+}
+```
+
+* `modules`启用模块
+* 在modules下的getters的第三个参数可以拿个rootState
+* modules子模块可以调用全局rootVuex的mutation等
+
+#### 动态注册Vuex模块
+
+```js
+store.registerModule('c', {
+  state: {
+    val: 94
+  }
+})
+```
+
+#### 为Vuex加上热更替功能
+
+1. 修改store.js导出store的方式
+2. 判断module.hot
+3. 如果有，就使用hot.accept监控各个路径文件
+4. 发送变化就重新再次加载文件后用hotUpdate注册新模块
+
 ## 第5章 服务器渲染
 
 ## 第6章 高级组件开发
