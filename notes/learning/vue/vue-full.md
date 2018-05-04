@@ -498,6 +498,10 @@ store.registerModule('c', {
 
 * `VueServerPlugin`此插件安装后，项目整体打包就不再会有JavaScript文件输出，它仅会输出JSON文件
 
+### 5-2 使用koa实现node server
+
+### 5-3 服务端渲染的entry配置
+
 ## 第6章 高级组件开发
 
 ## 第7章 项目开发
