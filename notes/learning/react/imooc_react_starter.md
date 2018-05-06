@@ -1,6 +1,5 @@
 # 《React.js入门基础与案例开发》学习笔记
 
-
 [TOC]
 
 ## 第1章 课程简介
@@ -36,17 +35,17 @@
 
 ## 第2章 React 简介
 
-- https://github.com/enaqx/awesome-react
-- http://kangax.github.io/compat-table/es6/
+- `https://github.com/enaqx/awesome-react`
+- `http://kangax.github.io/compat-table/es6/`
 
 ----------
 
 ## 第3章 React 初体验
 
 - 如何查看所有的历史版本
-  - https://facebook.github.io/react/blog/all.html
+  - `https://facebook.github.io/react/blog/all.html`
   - 在官网博客中会有专门的帖子对每个版本的变化做相信的说明
-  - https://cdnjs.com/libraries/react/
+  - `https://cdnjs.com/libraries/react/`
 
 ----------
 
@@ -97,9 +96,9 @@
 
 ## 第7章 React组件基础
 
-- 开源算法：https://github.com/Matt-Esch/virtual-dom
-- 官方解释: https://facebook.github.io/react/docs/react-api.html
-- 简单实例：http://requirebin.com/?gist=5492847b9a9025e64bab
+- 开源算法：`https://github.com/Matt-Esch/virtual-dom`
+- 官方解释: `https://facebook.github.io/react/docs/react-api.html`
+- 简单实例：`http://requirebin.com/?gist=5492847b9a9025e64bab`
 
 ```js
 // virtual-dom 的简单实例
@@ -113,7 +112,7 @@ function render(count)  {
     return h('div', {
         style: {
             textAlign: 'center',
-            lineHeight: (100 + count) + 'px', 
+            lineHeight: (100 + count) + 'px',
             border: '1px solid red',
             width: (100 + count) + 'px',
             height: (100 + count) + 'px'
@@ -131,13 +130,14 @@ document.body.appendChild(rootNode);    // ... and it should be in the document
 // 3: Wire up the update logic
 setInterval(function () {
       count++;
-      
+
       var newTree = render(count);
       var patches = diff(tree, newTree);
       rootNode = patch(rootNode, patches);
       tree = newTree;
 }, 300);
 ```
+
 ### React组件
 
 - 类里有`render()`用于解析类的输出
@@ -198,7 +198,7 @@ setInterval(function () {
 ### 复用组件
 
 - Prop验证
-  - https://facebook.github.io/react/docs/reusable-components.html
+  - `https://facebook.github.io/react/docs/reusable-components.html`
   - `const propTypes = {id: PropTypes.number.isRequired, url: PropTypes.string}`
 - 默认Prop值
   - `const defaultProps = {userDesc: '小伙子什么都没留下'};`
@@ -252,10 +252,10 @@ this.refs.myInput
 
 - Mixins：组件间用作事件的共享
 - 不同组件之间公用功能、共享代码
-- 官方文档：https://facebook.github.io/react/docs/reusable-components.html#mixins
+- 官方文档：`https://facebook.github.io/react/docs/reusable-components.html#mixins`
 - 和页面具有类似的生命周期
 - ES6下的使用需要安装插件: `react-mixin@2`
-- 关于Mixins的讨论文章：https://facebook.github.io/react/blog/2016/07/13/mixins-considered-harmful.html
+- 关于Mixins的讨论文章：`https://facebook.github.io/react/blog/2016/07/13/mixins-considered-harmful.html`
 
 ----------
 
@@ -265,7 +265,7 @@ this.refs.myInput
 
 - CSS命名规范：`dialog__confirm-button--highlight`
 
-```js 
+```js
 // 必须在render函数里定义
 const styleComponentHeader = {
   header: {
@@ -314,18 +314,17 @@ const styleComponentHeader = {
   - 只需引用组件的 JS 就能搞定组件所有的JS和CSS
   - 依然是CSS，几乎零学习成本
 
-
 - npm i babel-plugin-react-html-attrs -S
 - npm i style-loader css-loader -S
 - webpack.config.js
   - `test: /\.css?$/,`
-  - `loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'` 
+  - `loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'`
 - .babelrc
   - "plugins": [ "react-html-attrs" ]
 
 ### JSX样式与CSS的互转
 
-- 在线转换: http://staxmanade.com/CssToReact
+- 在线转换: `http://staxmanade.com/CssToReact`
 
 ### Ant Design 样式框架
 
@@ -340,7 +339,7 @@ const styleComponentHeader = {
 - `npm install -S react-router`
 - 控制页面的层级关系
 - 单页面构建 Router 控制
-- https://reacttraining.com/react-router/
+- `https://reacttraining.com/react-router/`
 - 底层机制
   - React: state/props -> Components -> UI
   - React: location -> Router -> UI
@@ -361,7 +360,7 @@ const styleComponentHeader = {
 
 ## 第12章 项目实战-页头页脚模块
 
-- https://www.iconfinder.com
+- `https://www.iconfinder.com`
 - 项目采用FLEX布局
 - 导航使用antd的Memu控件
 - `"react-responsive": "^1.3.4"`
@@ -403,49 +402,36 @@ const styleComponentHeader = {
 
 ## 第15章 项目实战-详情模块
 
-
 ----------
 
 ## 第16章 项目实战-个人中心模块
-
 
 ----------
 
 ## 第17章 项目实战-最后调优
 
-
 ----------
 
 ## 第18章 网页优化
-
-
 
 ----------
 
 ## 第19章 课程扩展-React的实用组件
 
-
-
 ----------
 
 ## 第20章 课程扩展-使用Webpack 2与React Router 4升级项目
-
-
 
 ----------
 
 ## 第21章 课程扩展-深入React原理与算法
 
-
-
 ----------
 
 ## 第22章 课程扩展-使用Webpack进行项目打包
 
-
 ----------
 
 ## 第23章 课程扩展-服务器部署相关
-
 
 ----------
