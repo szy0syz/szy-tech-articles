@@ -9,10 +9,37 @@
 * `https://www.promisejs.org/`
 * promise不是简单的语法糖，而是一个设计规范，有着各种各样的库去实现这套规范，进而向我们提供Promise接口能力的函数。
 
-
 ## 第2章 必会 ES6-7 语法特性与规范
 
+* 箭头函数：跟父作用域共享this
 
+```js
+// 箭头函数经典栗子
+const jerry = {
+    age: 18,
+    say: function () {
+        setTimeout(function () {
+            console.log('age: ', this.age)
+        }, 500)
+    },
+    sayWithThis: function () {
+        let _this = this
+        setTimeout(function () {
+            console.log('_this age: ', _this.age)
+        }, 1000)
+    },
+    sayWithArrow: function () {
+        setTimeout(() => {
+            console.log('arrow age: ', this.age)
+        }, 1500)
+    },
+    sayWithGlobalArrow: () => {
+        setTimeout(() => {
+            console.log('global arrow age: ', this.age)
+        }, 2000) // --> global arrow age:  undefined
+    }
+}
+```
 
 ## 第3章 层层学习 Koa 框架的 API
 
