@@ -45,11 +45,76 @@ const jerry = {
 
 第一阶段：`callback`
 
+```js
+function readFile (cb) {
+  fs.readFile('../package.json', (err, data) => {
+    if (err) return cb(err)
+
+    cb(null, data)
+  })
+}
+
+readFile((err, data) => {
+  if (!err) {
+    data = JSON.parse(data)
+
+    console.log(data.name)
+  }
+})
+```
+
 第二阶段：`promise`
+
+```js
+function readFileAsync (path) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, (err, data) => {
+      if (err) reject(err)
+      else resolve(data)
+    })
+  })
+}
+
+readFileAsync('../package.json')
+  .then(data => {
+    data = JSON.parse(data)
+
+    console.log(data.name)
+  })
+  .catch(err => {
+    console.error(err)
+  })
+```
 
 第三阶段：`co + Generator + Promisify`
 
+```js
+co(function *() {
+  let data = yield util.promisify(fs.readFile)('../package.json')
+
+  data = JSON.parse(data)
+
+  console.log(data.name)
+})
+```
+
 第四阶段：`async`
+
+```js
+const readAsync = util.promisify(fs.readFile)
+
+async function init () {
+  let data = await readAsync('../package.json')
+
+  data = JSON.parse(data)
+
+  console.log(data.name)
+}
+
+init()
+```
+
+一开始我没明白`co+generator+promise`是什么意思，后来发现原来co是把函数暂停了异步的结果，等到异步结果出来后再去执行后续的代码。
 
 ## 第3章 层层学习 Koa 框架的 API
 
