@@ -116,6 +116,18 @@ init()
 
 一开始我没明白`co+generator+promise`是什么意思，后来发现原来co是把函数暂停了异步的结果，等到异步结果出来后再去执行后续的代码。
 
+### babel环境配置与import、export、async和await
+
+配置babel环境
+
+* `npm i -D babel-cli babel-preset-env`
+* add `.babelrc`
+
+`ReferenceError: regeneratorRuntime is not defined` 重新配置babel
+
+* `npm i -S babel-plugin-transform-runtime babel-runtime`
+* 修改 `.babelrc`
+
 ## 第3章 层层学习 Koa 框架的 API
 
 ## 第4章 Koa2 与 Koa1 、Express 框架对比
