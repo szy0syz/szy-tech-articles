@@ -130,6 +130,41 @@ init()
 
 ## 第3章 层层学习 Koa 框架的 API
 
+### Koa核心对象
+
+Koa           Epxress
+======================
+HTTP  接收  解析  响应
+中间件      执行上下文
+
+Application   Context
+Request      Response
+Middlewares
+Session      Cookie
+
+```js
+const Koa = require('koa')
+const app = new Koa()
+
+app.use(async (ctx, next) => {
+  ctx.body = 'Jerry Shi - ' + Date.now() 
+})
+
+app.listen(4441)
+```
+
+* Koa和Epxress一样，是一个Web服务框架，能够接收接收、解析和响应HTTP请求。
+* Koa的全链路组合以后就是一个应用服务对象，这个对象内部有application、context、request、response、middlewares等对象。
+* 上述代码中 `async` 、 `ctx` 、 `next` 、整个`app.use`传入的function `ctx.body` 各是什么？
+
+### Koa源码之Application
+
+* Koa类继承自node的`events`
+* Koa-Compose对应中间件的函数数据，Koa中的所有中间件都必须是中间件数组，数组中的每个值都必须是函数，这点需要注意。Koa-Compose实现的非常精妙，执行过程中的next都是在它里面传入后往下进行的整个流程的运转的，此源码应该读读。
+* context 整个运行服务的上下文，context里不仅能访问到HTTP来源所携带的信息以及方法，也能访问到给用户返回数据的方法
+* 读源码时，可以使用删减法来读，把非核心不重要的代码删除后再来整体阅读。看看它核心解决了什么问题，是怎么解决的
+* `application.js` 提供一种能力：通过它所new的实例后，这个实例就能使用它的能力，它的能力包括传入中间件use、监听端口生成服务器实例，生成之后能够在nodejs里通过拿到进来的http请求，对这个请求逐层的过中间件数据，最后把过完之后的结果交给它内部的`handleRespose`来处理响应
+
 ## 第4章 Koa2 与 Koa1 、Express 框架对比
 
 ## 第5章 从 0 开发一个电影预告片网站
