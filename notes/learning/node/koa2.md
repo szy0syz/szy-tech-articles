@@ -132,6 +132,7 @@ init()
 
 ### Koa核心对象
 
+```js
 Koa           Epxress
 ======================
 HTTP  接收  解析  响应
@@ -141,6 +142,7 @@ Application   Context
 Request      Response
 Middlewares
 Session      Cookie
+```
 
 ```js
 const Koa = require('koa')
@@ -288,7 +290,7 @@ function respond(ctx) {
 }
 ```
 
-* Koa类继承自node的`events`
+* 当我们import一个`Koa`时，其实是暴露了一个`Application`类，它继承了`Emitter`，就以为这这个类可以直接为自定义事件注册回调函数，也可以触发一些事件，同时可以捕获到其它地方捕捉到的事件，那就以为着它有耳朵和手，可以听到一些动静之后，做一些事件。
 * Koa-Compose对应中间件的函数数据，Koa中的所有中间件都必须是中间件数组，数组中的每个值都必须是函数，这点需要注意。Koa-Compose实现的非常精妙，执行过程中的next都是在它里面传入后往下进行的整个流程的运转的，此源码应该读读。
 * context 整个运行服务的上下文，context里不仅能访问到HTTP来源所携带的信息以及方法，也能访问到给用户返回数据的方法
 * 读源码时，可以使用删减法来读，把非核心不重要的代码删除后再来整体阅读。看看它核心解决了什么问题，是怎么解决的
