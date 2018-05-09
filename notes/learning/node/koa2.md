@@ -149,7 +149,7 @@ const Koa = require('koa')
 const app = new Koa()
 
 app.use(async (ctx, next) => {
-  ctx.body = 'Jerry Shi - ' + Date.now() 
+  ctx.body = 'Jerry Shi - ' + Date.now()
 })
 
 app.listen(4441)
@@ -176,7 +176,6 @@ module.exports = class Application extends Emitter {
   }
 
   listen(...args) {
-    debug('listen');
     const server = http.createServer(this.callback());
     return server.listen(...args);
   }
@@ -295,6 +294,32 @@ function respond(ctx) {
 * context 整个运行服务的上下文，context里不仅能访问到HTTP来源所携带的信息以及方法，也能访问到给用户返回数据的方法
 * 读源码时，可以使用删减法来读，把非核心不重要的代码删除后再来整体阅读。看看它核心解决了什么问题，是怎么解决的
 * `application.js` 提供一种能力：通过它所new的实例后，这个实例就能使用它的能力，它的能力包括传入中间件use、监听端口生成服务器实例，生成之后能够在nodejs里通过拿到进来的http请求，对这个请求逐层的过中间件数据，最后把过完之后的结果交给它内部的`handleRespose`来处理响应
+
+### Koa源码之middlewares
+
+```js
+const mid1 = async (ctx, next) => {
+  ctx.body = 'Hi'
+  await next()
+  ctx.body = ctx.body + ' There'
+}
+
+const mid2 = async (ctx, next) => {
+  ctx.type = 'text/html; charset=utf-8'
+  await next()
+}
+
+const mid3 = async (ctx, next) => {
+  await next()
+}
+
+app.use(mid1)
+app.use(mid2)
+app.use(mid3)
+```
+
+* koa中间件可以不断堆到堆栈中，其实就是堆到数组中，执行时也是按照先进先执行的方式进行，只不过每个中间件里都允许具备时间旅行的能力，可以先做自己的一部分事情，再去其他中间件继续做事情，全部做好之后再回来把自己剩下的事做完。
+* koa中间件为什么可以按use顺序依次执行？为什么中间件可以在依次执行的过程中暂停下来执行其他中间件完了以后又接着做？
 
 ## 第4章 Koa2 与 Koa1 、Express 框架对比
 
