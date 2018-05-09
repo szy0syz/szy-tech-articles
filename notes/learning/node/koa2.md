@@ -159,6 +159,135 @@ app.listen(4441)
 
 ### Koa源码之Application
 
+```js
+module.exports = class Application extends Emitter {
+  constructor() {
+    super();
+
+    this.proxy = false;
+    this.middleware = [];
+    this.subdomainOffset = 2;
+    this.env = process.env.NODE_ENV || 'development';
+    this.context = Object.create(context);
+    this.request = Object.create(request);
+    this.response = Object.create(response);
+  }
+
+  listen(...args) {
+    debug('listen');
+    const server = http.createServer(this.callback());
+    return server.listen(...args);
+  }
+
+  /**
+   * Use the given middleware `fn`.
+   *
+   * Old-style middleware will be converted.
+   *
+   * @param {Function} fn
+   * @return {Application} self
+   * @api public
+   */
+
+  use(fn) {
+    this.middleware.push(fn);
+    return this;
+  }
+
+  /**
+   * Return a request handler callback
+   * for node's native http server.
+   */
+
+  callback() {
+    const fn = compose(this.middleware);
+    const handleRequest = (req, res) => {
+      const ctx = this.createContext(req, res);
+      return this.handleRequest(ctx, fn);
+    };
+
+    return handleRequest;
+  }
+
+  handleRequest(ctx, fnMiddleware) {
+    const res = ctx.res;
+    res.statusCode = 404;
+    const onerror = err => ctx.onerror(err);
+    const handleResponse = () => respond(ctx);
+    onFinished(res, onerror);
+    return fnMiddleware(ctx).then(handleResponse).catch(onerror);
+  }
+
+  createContext(req, res) {
+    const context = Object.create(this.context);
+    const request = context.request = Object.create(this.request);
+    const response = context.response = Object.create(this.response);
+    context.app = request.app = response.app = this;
+    context.req = request.req = response.req = req;
+    context.res = request.res = response.res = res;
+    request.ctx = response.ctx = context;
+    request.response = response;
+    response.request = request;
+    context.originalUrl = request.originalUrl = req.url;
+    context.cookies = new Cookies(req, res, {
+      keys: this.keys,
+      secure: request.secure
+    });
+    request.ip = request.ips[0] || req.socket.remoteAddress || '';
+    context.accept = request.accept = accepts(req);
+    context.state = {};
+    return context;
+  }
+};
+
+function respond(ctx) {
+  // allow bypassing koa
+  if (false === ctx.respond) return;
+
+  const res = ctx.res;
+  if (!ctx.writable) return;
+
+  let body = ctx.body;
+  const code = ctx.status;
+
+  // ignore body
+  if (statuses.empty[code]) {
+    // strip headers
+    ctx.body = null;
+    return res.end();
+  }
+
+  if ('HEAD' == ctx.method) {
+    if (!res.headersSent && isJSON(body)) {
+      ctx.length = Buffer.byteLength(JSON.stringify(body));
+    }
+    return res.end();
+  }
+
+  // status body
+  if (null == body) {
+    body = ctx.message || String(code);
+    if (!res.headersSent) {
+      ctx.type = 'text';
+      ctx.length = Buffer.byteLength(body);
+    }
+    return res.end(body);
+  }
+
+  // responses
+  if (Buffer.isBuffer(body)) return res.end(body);
+  if ('string' == typeof body) return res.end(body);
+  if (body instanceof Stream) return body.pipe(res);
+
+  // body: json
+  body = JSON.stringify(body);
+  if (!res.headersSent) {
+    ctx.length = Buffer.byteLength(body);
+  }
+  res.end(body);
+}
+```
+
 * Koa类继承自node的`events`
 * Koa-Compose对应中间件的函数数据，Koa中的所有中间件都必须是中间件数组，数组中的每个值都必须是函数，这点需要注意。Koa-Compose实现的非常精妙，执行过程中的next都是在它里面传入后往下进行的整个流程的运转的，此源码应该读读。
 * context 整个运行服务的上下文，context里不仅能访问到HTTP来源所携带的信息以及方法，也能访问到给用户返回数据的方法
