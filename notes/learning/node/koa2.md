@@ -375,6 +375,10 @@ Koa小节：
 
 ![flow](http://cdn.jerryshi.com//blog/2018/dynamic_flow.png)
 
+### 利用puppeteer爬取和分析电影列表
+
+    一个网站的价值其实是信息传递的价值，而信息的本质是数据。
+
 ## 第7章 彩蛋篇 - [高难度拔高干货] 深度理解 Node.js 异步 IO 模型
 
 ## 第8章 实战篇 - 在 Koa 中向 MongoDB 建立数据模型
