@@ -321,6 +321,44 @@ app.use(mid3)
 * koa中间件可以不断堆到堆栈中，其实就是堆到数组中，执行时也是按照先进先执行的方式进行，只不过每个中间件里都允许具备时间旅行的能力，可以先做自己的一部分事情，再去其他中间件继续做事情，全部做好之后再回来把自己剩下的事做完。
 * koa中间件为什么可以按use顺序依次执行？为什么中间件可以在依次执行的过程中暂停下来执行其他中间件完了以后又接着做？
 
+### Koa-Compose的纯函数与尾递归
+
+```js
+module.exports = compose
+
+function compose (middleware) {
+  if (!Array.isArray(middleware)) throw new TypeError('Middleware stack must be an array!')
+  for (const fn of middleware) {
+    if (typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions!')
+  }
+
+  return function (context, next) {
+    // last called middleware #
+    let index = -1
+    return dispatch(0)
+    function dispatch (i) {
+      if (i <= index) return Promise.reject(new Error('next() called multiple times'))
+      index = i
+      let fn = middleware[i]
+      if (i === middleware.length) fn = next
+      if (!fn) return Promise.resolve()
+      try {
+        return Promise.resolve(fn(context, function next () {
+          return dispatch(i + 1)
+        }))
+      }
+    }
+  }
+}
+```
+
+Koa-Compose：
+
+* next看作一个钩子或回调函数，可以串联到下一个中间件
+* compose入参是一个纯函数
+* compose真正返回的是一个promise、
+* compose作用就是把一个个不相干的中间件给串在一起来组合函数，把这些函数串联起来执行，多个函数组合之后，前一个函数的输出结果就是后一个函数的输入参数。一旦第一个函数开始执行后，整个中间件的队列就像是多米诺骨牌一样，推到执行了。
+
 ## 第4章 Koa2 与 Koa1 、Express 框架对比
 
 ## 第5章 从 0 开发一个电影预告片网站
