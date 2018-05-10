@@ -359,11 +359,21 @@ Koa-Compose：
 * compose真正返回的是一个promise、
 * compose作用就是把一个个不相干的中间件给串在一起来组合函数，把这些函数串联起来执行，多个函数组合之后，前一个函数的输出结果就是后一个函数的输入参数。一旦第一个函数开始执行后，整个中间件的队列就像是多米诺骨牌一样，推到执行了。
 
+Koa小节：
+
+1. Koa中一切流程皆是中间件
+2. 一个HTTP请求进入Koa后，都会流经过预先配置好的中间件数组
+3. 在中间件执行策略中，是会通过Koa-Compose来把这些中间件组合在一起，一个接一个的把数组里面的函数依次执行，通过一个next钩子/回调函数，不断的将控制权/执行权进行往下传递。理解了Koa-Compose就是理解了Koa的洋葱模型
+4. 每一个中间件都会拿到整个HTTP请求的Context，通过context可以访问打request和response对象，而且可以访问到上面的属性和方法
+5. 贯穿中间件的请求上下文context、request、response三者互相引用，方便调用，request和response都是在node原生对象上扩展出来的
+
 ## 第4章 Koa2 与 Koa1 、Express 框架对比
 
 ## 第5章 从 0 开发一个电影预告片网站
 
 ## 第6章 利用爬虫搞定网站基础数据
+
+![flow](http://cdn.jerryshi.com//blog/2018/dynamic_flow.png)
 
 ## 第7章 彩蛋篇 - [高难度拔高干货] 深度理解 Node.js 异步 IO 模型
 
