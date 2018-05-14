@@ -8,7 +8,7 @@
 
 > Finished: 2017.08.27
 
-----------
+---
 
 ## lesson-02 Courtesy
 
