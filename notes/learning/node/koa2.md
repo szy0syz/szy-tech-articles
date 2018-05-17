@@ -380,6 +380,51 @@ Koa小节：
 
 ![porject](http://cdn.jerryshi.com//blog/2018/koa-5-7-001.png)
 
+* `npm i -S babel-preset-env babel-preset-stage-0 babel-preset-react`
+* `npm i -S babel-plugin-transform-decorators-legacy babel-plugin-transform-class-properties`
+
+Parcel打包配置流程
+
+* html引入index.js脚本
+* index.js中引入react和react-dom，写jsx
+* 配置babel
+
+```json
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ],
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ]
+}
+```
+
+* 配置npm脚本
+
+```jsson
+{
+  "build": "rimraf parcel/dist && parcel build parcel/index.html --no-cache -d parcel/dist --public-url /dist/"
+}
+```
+
 ## 第6章 利用爬虫搞定网站基础数据
 
 ![flow](http://cdn.jerryshi.com//blog/2018/dynamic_flow.png)
