@@ -376,6 +376,10 @@ Koa小节：
 
 ## 第5章 从 0 开发一个电影预告片网站
 
+### 关于构建工具pracel解决的问题
+
+![porject](http://cdn.jerryshi.com//blog/2018/koa-5-7-001.png)
+
 ## 第6章 利用爬虫搞定网站基础数据
 
 ![flow](http://cdn.jerryshi.com//blog/2018/dynamic_flow.png)
