@@ -253,6 +253,16 @@ inputinput(v-model.trim='info.phoneNumber' type='tel' placeholder='你的电话'
 
 * 主动解题能力。面对一个未知的、或目前尚不了解的、或不熟悉的领域、或者是一个比较奇葩的技术难题，能不能打开思路，很快的抓住问题的脉络，利用各种资源，不管是人脉资源还是搜索能力，能够把问题pass掉，那么这个就是其解题能力，并且要加上“主动”两个字。这个点能够放映的是作为一个工程技术人员，能不能形成一套有效的方法论和解题思路，那么只有通过整个自我驱动的过程，你才能不断的训练自己的思维能力和解题能力
 
+## 第 14 章：自我扩展
+
+后端如何添加collection并使用
+
+1. `/server/database/schema/`目录下添加collection对应的schema，其中不仅限于定义、虚拟字段、pre、静态方法、实例方法等
+2. `/server/api/`目录添加数据层逻辑
+3. `/server/api/index.js`添加新的导出对象
+4. `/server/routes/`目录添加新的子路由
+5. `/server/middlewares/`[可选]添加collection初始化
+
 [1]: http://static.zybuluo.com/szy0syz/qbf3fz7hgsxm6ykwigr8s8jm/w01.png
 [2]: http://static.zybuluo.com/szy0syz/bze9frkh04el10x9rct2ha3q/image.png
 [3]: http://static.zybuluo.com/szy0syz/u7kwc6lg19tyvvyykagzkrfb/image.png
