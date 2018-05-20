@@ -192,7 +192,7 @@ server {
 npm config set registry http://registry.npm.taobao.org/
 ```
 
-## Ubuntu安装Yarn
+## Ubuntu 16.04 安装 Yarn
 
 ```bash
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
