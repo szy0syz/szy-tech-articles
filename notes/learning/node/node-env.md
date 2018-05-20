@@ -77,6 +77,9 @@ source ~/.bashrc
 # 安装node.js
 nvm install 8.9.4
 
+# 配置npm源
+npm config set registry https://registry.npm.taobao.org
+
 # 安装yarn
 
 # 安装ssh
