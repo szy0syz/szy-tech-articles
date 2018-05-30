@@ -137,7 +137,9 @@ Host *
    LogLevel ERROR
 ```
 
-如果`pm2 deploy`报错找不到`npm`或`pm2`时，编辑.bashrc文件，nvm配置提到最前面。
+## pm2部署
+
+如果`pm2 deploy`报错提示找不到`npm`或`pm2`时，编辑.bashrc文件，nvm配置提到最前面。
 
 ## 安装lnmp中Nginx和ssl证书
 
