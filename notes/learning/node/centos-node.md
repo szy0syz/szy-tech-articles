@@ -6,13 +6,13 @@
 
 ## 步骤
 
-1. 修改服务器名
+### 修改服务器名
 
 ```bash
 vim /etc/hostname
 ```
 
-2. CentOS 安装 MongoDB
+### CentOS 安装 MongoDB
 
 ```bash
 # 新建  /etc/yum.repos.d/mongodb.repo 文件，并写入以下内容为
@@ -43,7 +43,7 @@ echo "never" > /sys/kernel/mm/transparent_hugepage/enabled
 echo "never" >  /sys/kernel/mm/transparent_hugepage/defrag
 ```
 
-3. 安装Node.js
+### 安装Node.js
 
 ```bash
 # 安装nvm
@@ -72,7 +72,7 @@ yum install yarn
 yarn config set registry https://registry.npm.taobao.org
 ```
 
-3. 安装 Nginx
+### 安装 Nginx
 
 ```bash
 # 安装
