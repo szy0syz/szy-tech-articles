@@ -80,3 +80,11 @@ yum install nginx
 
 
 ```
+
+### Todo
+
+The authenticity of host 'git.coding.net (123.59.83.81)' can't be established.
+RSA key fingerprint is SHA256:jok3FH7q5LJ6qvE7iPNehBgXRw51ErE77S0Dn+Vg/Ik.
+RSA key fingerprint is MD5:98:ab:2b:30:60:00:82:86:bb:85:db:87:22:c4:4f:b1.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'git.coding.net,123.59.83.81' (RSA) to the list of known hosts.
