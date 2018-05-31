@@ -42,3 +42,41 @@ echo "never" > /sys/kernel/mm/transparent_hugepage/enabled
 # 修复警告：WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'
 echo "never" >  /sys/kernel/mm/transparent_hugepage/defrag
 ```
+
+3. 安装Node.js
+
+```bash
+# 安装nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
+# 编辑 ~/.bashrc 文件，将nvm的注册提到最前面
+vim ~/.bashrc
+
+# 生效 nvm
+source ~/.bashrc
+
+# 安装 node.js
+nvm install 10.3.0
+
+# 注册 npm 源
+npm config set registry http://registry.npm.taobao.org/
+
+# 更新 npm
+npm i -g npm
+
+# 安装 Yarn
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+yum install yarn
+
+# 修改yarn源
+yarn config set registry https://registry.npm.taobao.org
+```
+
+3. 安装 Nginx
+
+```bash
+# 安装
+yum install nginx
+
+
+```
