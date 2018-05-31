@@ -95,7 +95,12 @@ server {
         proxy_set_header Connection "";
         proxy_pass http://jerryshi; # 这里要和最上面upstream后的应用名一致，可以自定义
     }
+
+    # 重定向到https
+    rewrite ^(.*)$  https://$host$1 permanent;
 }
+
+
 
 ```
 
