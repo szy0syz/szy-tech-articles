@@ -159,7 +159,7 @@ app.listen(4441)
 * Koa的全链路组合以后就是一个应用服务对象，这个对象内部有application、context、request、response、middlewares等对象。
 * 上述代码中 `async` 、 `ctx` 、 `next` 、整个`app.use`传入的function `ctx.body` 各是什么？
 
-### Koa源码之Application
+### Koa源码之 Application
 
 ```js
 module.exports = class Application extends Emitter {
