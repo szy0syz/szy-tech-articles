@@ -56,6 +56,8 @@ HTTP/2
 
 ### 2-3 HTTP的三次握手
 
+![tcp-3](http://cdn.jerryshi.com/note/2018/tcp-3-handshakings.png)
+
 ### 2-4 URI-URL和URN
 
 ### 2-5 HTTP报文格式
