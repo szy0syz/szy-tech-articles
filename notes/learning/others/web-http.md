@@ -60,6 +60,23 @@ HTTP/2
 
 ### 2-4 URI-URL和URN
 
+URI
+
+* Uniform Resource Identifier / 统一资源标识符
+* 用来唯一标识互联网上的信息资源
+* 包括URL和URN
+
+URL
+
+* Uniform Resource Locator / 统一资源定位器
+* `http://uer:pass@host.com:80/path?query=string#hash`
+
+URN
+
+* 永久统一资源定位符
+* 在资源移动后还能被找到
+* 目前还没有非常成熟的使用方案
+
 ### 2-5 HTTP报文格式
 
 ### 2-6 创建一个最简单的web服务
