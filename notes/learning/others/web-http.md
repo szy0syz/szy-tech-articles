@@ -148,3 +148,10 @@ HTTP CODE
 * Connection #0 to host jerryshi.com left intact
 ```
 
+### 3-2 CORS跨域请求的限制与解决
+
+浏览器跨域请求说白了就是浏览器的默认行为，如果在curl中是不存在跨域的问题。这就表示其实服务器根本不知道你跨不跨域，服务器肯定是响应了请求的，只是客户端浏览器做了拦截并忽略而已。这也就是说只有服务器允许跨域请求，客户端才能使用跨域。
+
+浏览器是允许link、script、image标签跨域加载，则jsonp的实现原理就是在script标签里加载某个url链接，用这个链接跨域访问某个请求并返回内容。
+
+`Access-Control-Allow-Origin: "*"`
