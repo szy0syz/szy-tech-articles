@@ -85,4 +85,66 @@ HTTP CODE
 * 各个区间的CODE有各自的语义
 * 好的HTTP服务可以通过CODE判断结果
 
-### 2-6 创建一个最简单的web服务
+## HTTP各种特性总览
+
+### 3-1 认识HTTP客户端
+
+    浏览器是一个最常见的HTTP客户端。
+
+当浏览器请求`baidu.com`浏览器首先得到是一下内容，表示请 经过0秒后网页将跳转到url。
+
+```bash
+╭─jerry@JerrydeiMac  ~
+╰─$ curl baidu.com
+<html>
+<meta http-equiv="refresh" content="0;url=http://www.baidu.com/">
+</html>
+```
+
+浏览器访问我的博客时，得到的确实这个内容，表示域名已经永久转义到https上。但关键怎么没有永久转义后的url呢？
+
+```bash
+╭─jerry@JerrydeiMac  ~
+╰─$ curl jerryshi.com
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body bgcolor="white">
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+```
+
+我们价格啰嗦模式看看，原来转义后的url在响应头里。
+
+```bash
+╭─jerry@JerrydeiMac  ~
+╰─$ curl -v jerryshi.com
+* Rebuilt URL to: jerryshi.com/
+*   Trying 45.40.200.123...
+* TCP_NODELAY set
+* Connected to jerryshi.com (45.40.200.123) port 80 (#0)
+> GET / HTTP/1.1
+> Host: jerryshi.com
+> User-Agent: curl/7.51.0
+> Accept: */*
+>
+< HTTP/1.1 301 Moved Permanently
+< Server: nginx
+< Date: Sat, 09 Jun 2018 07:27:17 GMT
+< Content-Type: text/html
+< Content-Length: 178
+< Connection: keep-alive
+< Location: https://jerryshi.com/
+<
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body bgcolor="white">
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+* Curl_http_done: called premature == 0
+* Connection #0 to host jerryshi.com left intact
+```
+
