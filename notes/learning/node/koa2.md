@@ -468,6 +468,77 @@ IO：数据的进出。人机交互时，我们会把鼠标键盘这些外设视
 
 这章我们专注于网站的核心业务，也就是网站的路由、数据的获取和数据的返回，即关于整个系统中后台的部分。那么对于一个后端服务来说，请求也就意味着HTTP请求接收和返回，处理接收和返回的能力在 `koa` 中主要借助于其上下文 `ctx` 以及众多的中间件完成，其中有处理会话的、有处理body解析的，还有处理路由的。
 
+```bash
+git checkout master -b daily-9-1
+git add .
+git commit -m ''
+git push oirgin daily-9-1
+```
+
+### 9-2
+
+```js
+/// koa-router的几种应用方式
+// 多个中间件
+router.use(mid1()).use(mid2()).get('/movies', (ctx, next) => {
+  const Category = mongoose.model('Category')
+  ctx.category = await Category.find({}).exec()
+  
+  next()
+}, async (ctx, next) => {
+  const Movie = mongoose.model('Movie')
+  const movies = await Movie.find({}).sort({
+    'meta.createAt': -1
+  })
+
+  ctx.body = {
+    movies
+  }
+})
+
+// 加前缀
+const router = new Router({
+  prefix: '/movies'
+})
+```
+
+### 9-3
+
+```js
+class Boy {
+  @speak('云南话')
+  run() {
+    console.log('I can run!')
+    console.log('I can speak ' + this.lang)
+  }
+}
+
+function speak(lang) {
+  return function (target, key, descriptor) {
+    console.log(target)
+    console.log(key)
+    console.log(descriptor)
+    target.lang = lang
+
+    return descriptor
+  }
+}
+
+const jerry = new Boy()
+
+jerry.run()
+
+/////////////////
+// Boy {}
+// run
+// { value: [Function: run],
+//   writable: true,
+//   enumerable: false,
+//   configurable: true }
+// I can run!
+// I can speak 云南话
+```
+
 ## 第10章 实战篇 - 集成 AntDesign 与 Parcel 打通前后端与构建
 
 ## 第11章 实战篇 - 实现网站前端路由与页面功能
