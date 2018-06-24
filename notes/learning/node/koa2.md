@@ -541,6 +541,22 @@ jerry.run()
 
 ## 第10章 实战篇 - 集成 AntDesign 与 Parcel 打通前后端与构建
 
+### 10-1 配置babel postcss 支持parcel打包
+
+新建.postcssrc
+`yarn add postcss-modules autoprefixer`
+
+```bash
+{
+  "modules": true,
+  "plugins": {
+    "autoprefixer": {
+      "grid": true
+    }
+  }
+}
+```
+
 ## 第11章 实战篇 - 实现网站前端路由与页面功能
 
 ## 第12章 实战篇 - 实现后台登录权限与管理功能
