@@ -1,6 +1,8 @@
-![9787121177408](../../../static/img/9787121177408.jpg)
+# 《JavaScript语言精粹(修订版)》
 
 > 竟然还是在计划时间7月29日看完，哈哈哈。
+
+![9787121177408](../../../static/img/9787121177408.jpg)
 
 ## 第一章：精华
 
@@ -99,12 +101,12 @@ a = b = c = {};
 `delete`运算符可以用来删除对象的属性。删除对象的属性可能会让来自原型链中的属性透现出来：
 
 ```javascript
-another_stooge.nickname;  // 'jerry' 
+another_stooge.nickname;  // 'jerry'
 
 // 删除 another_stooge 的 nickname属性，从来暴露出原型上的nickname属性
 delete another_stooge.nickname;
 
-another_stooge.nickname;  // 'szy0syz' 
+another_stooge.nickname;  // 'szy0syz'
 ```
 
 ### 减少全局变量污染
@@ -178,7 +180,7 @@ String.method('trim', function () {
 
 - 递归函数可以非常高效地操作树形结构，比如浏览器端的文档对象模型(DOM)，每次递归调用时处理指定的树的一小段。*ES6中已经明确提出尾递归优化，再也不用担心栈溢出。*
 
-### 作用域 
+### 作用域
 
 - 在编程语言中，*作用域*控制着变量和参数的可见性和生命周期。JavaScript仅有函数作用域，而缺少块级作用域，所以最好就是在函数体的顶部声明函数中可能用到的所有变量。
 
@@ -186,11 +188,10 @@ String.method('trim', function () {
 
 - 作用域的作用是内部函数可以访问定义它们的外部函数参数和变量(除了this和arguments)！说实话前面这句话翻译的有点难理解，换种说法：**作用域的作用是内部函数可以访问到外部函数的参数和变量。**
 
-
 ```javascript
 var myObject = (function () {
     var val = 0;
-    
+
     return {
         increment: function (inc) {
             val += typeof inc === 'number' ? inc : 1;
@@ -201,6 +202,7 @@ var myObject = (function () {
     }
 })()
 ```
+
  > 这里栗子有点简单了，本来不想写了，为了基础么再来走一遭：
    1. 在全局作用域预解释时定义myObject；
    2. 开始赋值myObject，不管是啥IIFE，先给你整个作用域摆那，把该预解释的做了，然后返回一个对象，此时这个对象偏偏要用作用域链方式拉了根线牵着外层作用域的val，所以外层作用域用完也不能销毁，直到myObject不用了；
@@ -286,10 +288,10 @@ this.prototype = { constructor: this };
 Function.method('new', function () {
     // 创建一个新对象，它继承自构造函数的原型对象，用Object类的create方法
     vat that = Object.create(this.prototype)
-    
+
     // 调用构造函数，绑定 this  到新对象上
     var other = this.apply(that, arguments) //在这里开始实例化一个类
-    
+
     // 如果other不是一个对象，就直接返回上面的that
     return (typeof other === 'object' && other) || that
 })
@@ -298,7 +300,7 @@ Function.method('new', function () {
 Person.new({name: 'jerry', age: '20'})
 ```
 
-### 原型
+### 原 型
 
 - 在一个纯粹的原型模式中，我们会摒弃类，转而专注于对象。基于原型的继承：一个新对象可以继承一个旧对象的属性。
 
@@ -328,13 +330,13 @@ var eventuality = function (that) {
             i,
             type = typeof event === 'string' ? event : event.type;
         // 上面的声明声明方式很整洁啊，get~
-        
+
         // 如果这个事件存在一组事件处理程序，那么遍就遍历它们并按顺序依次执行
         if (registry.hasOwnProperty[type]) {
             array = registry[type]
             for (i=0; i < array.length; i +=1) {
                 handler = array[i]
-                
+
                 // 每个处理程序包含一个方法和一组可选的参数
                 // 如果该方法是一个字符串形式的名字，那么找到该函数
                 func = handler.method;
@@ -384,6 +386,7 @@ var misc = [
     ['nested', 'array'], {object: true}, NaN, Infinity
 ];  // misc.length  --> 10
 ```
+
 ### 长度
 
 - JavaScript数组的length是没有上届的。若用大于或等于当前length的数字作为下表来存储一个元素，那么length值会被增大以容纳新元素，不会发生数组越界错误。
@@ -398,7 +401,7 @@ var misc = [
 
 ## 第七章：正则表达式
 
->  正则学的还算扎实，这章刚才作为复习。
+> 正则学的还算扎实，这章刚才作为复习。
 
 ### 匹配URL的例子
 
