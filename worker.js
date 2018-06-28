@@ -6,7 +6,7 @@ const fs = require('fs')
 const readline = require('linebyline')
 
 // const list = glob.sync(resolve(__dirname, './notes/reading/**/*.md'))
-const list = glob.sync('./notes/reading/**/*.md').forEach(i => {
+const list = glob.sync('./notes/learning/**/*.md').forEach(i => {
   if (i) {
     fs.readFile(i, 'utf8', (err, data) => {
       if (err) { throw new Error(err) }
