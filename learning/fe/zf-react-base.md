@@ -1,10 +1,8 @@
 # React基础学习笔记及代码
 
-[TOC]
-
 ## CH01 认识React
 
-- http://www.zhufengpeixun.cn/docs/html/react%E8%AF%BE%E7%A8%8B/2.React%E5%9F%BA%E7%A1%80.html
+- `http://www.zhufengpeixun.cn/docs/html/react%E8%AF%BE%E7%A8%8B/2.React%E5%9F%BA%E7%A1%80.html`
 
 ```js
 import React from 'react';

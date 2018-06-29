@@ -1,7 +1,5 @@
 # Vue2.5开发去哪儿网App
 
-[TOC]
-
 ## 第2章 Vue 起步
 
 ### Vue基础 hello world

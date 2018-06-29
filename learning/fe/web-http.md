@@ -2,8 +2,6 @@
 
     https://coding.imooc.com/class/225.html
 
-[TOC]
-
 ## 第2章 HTTP协议基础及发展历史
 
 ### 2-1 5层网络模型介绍
