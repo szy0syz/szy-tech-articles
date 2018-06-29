@@ -40,3 +40,5 @@ jspm_packages
 #mac os
 .DS_Store
 .DS_Store?
+
+.vuepress/dist
