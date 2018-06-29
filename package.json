@@ -15,5 +15,9 @@
   "dependencies": {
     "ejs": "^2.6.1",
     "glob": "^7.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szy0syz/szy-tech-articles.git"
   }
 }
