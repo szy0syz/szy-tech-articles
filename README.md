@@ -1,11 +1,16 @@
-# szy-tech-articles
+---
+sidebar: false
+actionText: 起步 →
+actionLink: /reading/
+footer: MIT Licensed | Copyright © 2017-present Jerry Shi
+---
 
-> 用来记录和总结技术相关的东西~
+# Jerry articles
 
-## 前言
+> szy的个人学习笔记
 
-记录和归纳一些自己在Win、Mac和Linux上个人常用效率、开发软件相关的使用技巧。有些经验真的是自己连续七八个小时专研出来的，但不记录，过了半把年可能会忘记大部分。比如2017年初玩的黑苹果，花了一个月专门研究，各种都弄熟了，但不记录，现在都有些不记得。
-
-
-
-  [1]: http://book.jirengu.com/fe/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/index.html
+* [读书笔记](/reading/)
+* 学习笔记
+  * [前端](/learning/fe/)
+  * [Node](/learning/fe/)
+  * [Other](/learning/other/)

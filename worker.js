@@ -2,12 +2,17 @@ const ejs = require('ejs')
 const glob = require('glob')
 const fs = require('fs')
 
-const pathList = ['./reading', './learning/fe']
+const pathList = ['./reading', './learning/fe', './learning/node', './learning/python', './learning/other']
 
 function getContents(p) {
   let list = []
 
-  const tpl = `# CONTENTS
+  const tpl = 
+`---
+sidebar: false
+---
+
+# CONTENTS
 <% for(let i=0; i < data.length; i++) { %>
 * [<%= data[i].name %>](<%= data[i].path %>)
 <% } %>`

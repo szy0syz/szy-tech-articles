@@ -1,29 +1,19 @@
 {
-  "name": "szy-tech-articles",
+  "name": "vuepress",
   "version": "1.0.0",
-  "description": "> 用来记录和总结技术相关的东西~",
-  "main": "config.js",
+  "description": "vuepress",
+  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://szy0syz@github.com/szy0syz/szy-tech-articles.git"
+    "dev": "vuepress dev",
+    "docs:build": "vuepress build"
   },
   "author": "szy0syz",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/szy0syz/szy-tech-articles/issues"
-  },
-  "homepage": "https://github.com/szy0syz/szy-tech-articles#readme",
   "dependencies": {
     "ejs": "^2.6.1",
-    "glob": "^7.1.2",
-    "linebyline": "^1.3.0",
-    "lodash": "^4.17.10",
-    "ramda": "^0.25.0"
+    "glob": "^7.1.2"
   }
 }
