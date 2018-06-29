@@ -1,3 +1,5 @@
+// cp -rf ./* /home/wwwroot/articles.jerryshi.com
+
 const ejs = require('ejs')
 const glob = require('glob')
 const fs = require('fs')
