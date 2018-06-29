@@ -5,11 +5,9 @@ const glob = require('glob')
 const fs = require('fs')
 
 const pathList = ['./reading', './learning/fe', './learning/node', './learning/python', './learning/other']
+const reg = /# \S+\n$/
 
-function getContents(p) {
-  let list = []
-
-  const tpl = 
+const tpl =
 `---
 sidebar: false
 ---
@@ -18,6 +16,9 @@ sidebar: false
 <% for(let i=0; i < data.length; i++) { %>
 * [<%= data[i].name %>](<%= data[i].path %>)
 <% } %>`
+
+function getContents(p) {
+  let list = []
 
   ~(async () => {
     let ll = glob.sync(p + '/**/*.md').filter(i => i.indexOf('index') < 0)

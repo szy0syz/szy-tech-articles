@@ -26,8 +26,6 @@ sidebar: false
 
 * [在线资源](/learning/other/online.md)
 
-* [postman](/learning/other/postman.md)
-
 * [数据库设计：RBAC](/learning/other/RBAC.md)
 
 * [#Redis](/learning/other/redis.md)
@@ -35,8 +33,6 @@ sidebar: false
 * [#科学上网](/learning/other/ss.md)
 
 * [TED演讲笔记](/learning/other/ted.md)
-
-* [Windows开发环境简单安装部署](/learning/other/win10NewEnv.md)
 
 * [Windows系统](/learning/other/Windows.md)
 
