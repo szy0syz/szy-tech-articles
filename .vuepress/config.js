@@ -1,6 +1,9 @@
 module.exports = {
   title: 'Jerry articles',
   description: 'writing some notes',
+  ga: 'UA-121630045-1',
+  serviceWorker: true,
+  dest: '/home/wwwroot/articles.jerryshi.com',
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }]
