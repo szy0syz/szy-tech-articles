@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vuepress dev",
-    "docs:build": "vuepress build"
+    "build": "vuepress build"
   },
   "author": "szy0syz",
   "license": "ISC",
