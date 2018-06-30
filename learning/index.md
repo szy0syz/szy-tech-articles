@@ -16,7 +16,7 @@ sidebar: false
 
 * [前端跳槽面试必备技巧](/learning/fe/js-interview-skill.md)
 
-* [koa学习笔记](/learning/fe/koa.md)
+* [koa学习笔记](/learning/node/koa.md)
 
 * [React全家桶+Epxress+MongoDB开发招聘APP](/learning/fe/react-job-app.md)
 
