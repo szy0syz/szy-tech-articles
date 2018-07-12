@@ -1,15 +1,15 @@
 # JavaScript DOM基础 ---- 99. DOM 个人总结
 
-#### 关于资料查询
+## 关于资料查询
 
  主推mdn和w3cschool，真心好。
 
-#### HTML DOM 简介
+## HTML DOM 简介
 
 > HTML DOM 定义了所有 HTML 元素的对象和属性，以及访问它们的方法。
 > HTML DOM 是关于如何获取、修改、添加或删除 HTML 元素的标准。
  
-#### HTML DOM 节点
+## HTML DOM 节点
  
 > ***在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML。***
 
@@ -87,7 +87,7 @@ this.children = function () {
 
 ----------
 
-#### HTML DOM Nodes prototype
+#### HTML DOM Nodes prototype 
 
 ![dom-node-prototype.png-91.1kB][3]
 
