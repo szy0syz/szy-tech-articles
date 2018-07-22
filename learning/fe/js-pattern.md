@@ -32,6 +32,82 @@
 
 ### 3-3 设计原则-5大原则
 
+    S O L I D 五大设计原则
+
+* S - 单一责任原则
+* O - 开放封闭原则
+* L - 里氏替换原则
+* I - 接口独立原则
+* D - 依赖倒置原则
+
+#### 单一责任原则
+
+* 一个程序只做好一件事
+* 如果功能过于负责就拆分，每个部分保持独立
+
+#### 开放封闭原则
+
+* 对扩张开发，对修改封闭
+* 增加需求时，扩张新代码，而非修改已有代码
+* 这个是软件设计的终极目标
+
+#### 里氏替换原则
+
+* 子类能覆盖父类
+* 父类能出现的地方子类就能出现
+* JS中使用较少(弱类型&继承使用较少)
+
+#### 接口独立原则
+
+* 保持接口的单一独立，避免出现 “胖接口”
+* JS中没有接口(typescript例外)，使用较少
+* 类似于单一职责原则，这里更关注接口
+
+### 依赖倒置原则
+
+* 面向解扣子编程，依赖于抽象而不依赖于具体
+* 使用方只关注接口而不关注具体类的实现
+* JS中使用较少
+
+#### 设计原则总结
+
+* S O 体现较多，详细介绍
+* LID 体现较少，但是要了解其用意
+
+#### 用Promise来说明 S-O
+
+```js
+function loadImg(src) {
+  var promise = new Promise(function(resolve, reject) {
+    var img = document.createElement('img)
+    img.onload = function () {
+      resolve(img)
+    }
+    img.onerror = function () {
+      reject('图片加载失败')
+    }
+    img.src = src
+  })
+  return promise
+}
+
+var src = 'https://www.imooc.com/static/img/index/logo.png'
+var result = loadImg(src)
+
+result.then(function (img) {
+  console.log('img.width', img.width)
+  return img
+}).then(function (img) {
+  console.log('img.height', img.height)
+}).catch(function (err) {
+  console.error(err)
+})
+```
+
+* 单一职责原则：每个 then 中的逻辑只做好一件事
+* 开放封闭原则：如果新增需求，扩展then
+* 对奎章开发，对修改封闭
+
 ### 3-4 用promise演示
 
 ### 3-5 设计模式简介
