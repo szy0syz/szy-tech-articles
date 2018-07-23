@@ -6,6 +6,56 @@
 
 ### 2-1 搭建开发环境
 
+`npm init`
+
+`npm i webpack webpack-cli --save-dev`
+
+```js
+//add file
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: __dirname,
+    filename: './release/bundle.js'
+  }
+}
+```
+
+```bash
+# package.json
+"dev": "webpack --config ./webpack.dev.config.js --mode development"
+```
+
+`npm i webpack-dev-server html-webpack-plugin -D`
+
+```js
+// webapck.dev.config.js
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: __dirname,
+    filename: './release/bundle.js'
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    })
+  ],
+
+  devServer: {
+    contentBase: path.join(__dirname, './release'), // 设置根目录
+    open: true,  // 自动打开浏览器
+    port: 9000
+  }
+}
+```
+
+`"dev": "webpack-dev-server --config ./webpack.dev.config.js --mode development"`
+
 ### 2-2 什么是面向对象
 
 ### 2-3 面向对象-继承
