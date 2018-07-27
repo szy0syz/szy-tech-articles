@@ -1,4 +1,4 @@
-# What the f*ck JavaScript?
+# What the f*ck JavaScript
 
 > A list of funny and tricky examples of JavaScript.
 
