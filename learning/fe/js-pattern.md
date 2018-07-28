@@ -56,6 +56,30 @@ module.exports = {
 
 `"dev": "webpack-dev-server --config ./webpack.dev.config.js --mode development"`
 
+支持babel `npm i babel-core babel-loader babel-polyfill babel-preset-es2015 babel-preset-latest -D`
+
+新增babel配置文件 `.babelrc`
+
+```json
+{
+    "presets": ["es2015", "latest"],
+    "plugins": []
+}
+```
+
+再次修改webpack.config.js
+
+```js
+// 新增module
+module: {
+  rules: [{ 
+    test: /\.js?$/,  // 我们要去检验哪些文件
+    exclude: /(node_modules)/,  // 跳过哪些文件
+    loader: 'babel-loader'  // 使用的loader
+  }]
+},
+```
+
 ### 2-2 什么是面向对象
 
 ### 2-3 面向对象-继承
