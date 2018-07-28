@@ -71,3 +71,61 @@
   * data 存数据
   * capacity
   * size 初始为0，指向最后一个没有存放元素的索引
+
+### 拓展：JavaScript实现ES6
+
+我有这么一个奇葩的需求：我想在Array里写的代码热更新，且支持ES6/7特性。
+
+我们先安装webback `npm i webpack webpack-cli --save-dev`
+
+再配置webpack的配置文件
+
+```js
+//add webapck.dev.config.js file
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: __dirname,
+    filename: './release/bundle.js'
+  }
+}
+```
+
+增加package.json命令
+
+```bash
+# package.json
+"dev": "webpack --config ./webpack.dev.config.js --mode development"
+```
+
+但是现在不支持热更新嘛，继续加：`npm i webpack-dev-server html-webpack-plugin -D`
+
+再次修改webpack配置文件
+
+```js
+// webapck.dev.config.js
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: __dirname,
+    filename: './release/bundle.js'
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    })
+  ],
+
+  devServer: {
+    contentBase: path.join(__dirname, './release'), // 设置根目录
+    open: true,  // 自动打开浏览器
+    port: 9000
+  }
+}
+```
+
+修改启动命令 `"dev": "webpack-dev-server --config ./webpack.dev.config.js --mode development"`

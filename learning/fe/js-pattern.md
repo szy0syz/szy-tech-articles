@@ -11,7 +11,7 @@
 `npm i webpack webpack-cli --save-dev`
 
 ```js
-//add file
+//add webapck.dev.config.js file
 module.exports = {
   entry: './src/index.js',
   output: {
