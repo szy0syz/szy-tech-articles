@@ -238,6 +238,20 @@ inputinput(v-model.trim='info.phoneNumber' type='tel' placeholder='你的电话'
 
 在业务紧急时会有很多略带臃肿的面条代码，或者很多颗粒度划分得不够精细的模块，所以当业务跑通后我们需要第一时间对代码进行“**重构**”。
 
+## 第11章 小程序开发-基于 Restful API 开发微信小程序
+
+> 此章已跳过，并不是重点。
+
+## 第12章 小程序开发-基于 GraphQL 改造小程序
+
+### 12-2 配置 GraphQL 到Nodejs项目中
+
+* 安装依赖 `"apollo-server-koa": "^1.4.0"` 和 `"graphql": "^0.13.2"`
+* 分别注册路由
+  * get+post `/graphql`, get `/graphiql`
+* 创建 `graphql` 文件夹，目录结构如下：
+  * `schema.js`
+
 ### 13-0 额外调试
 
 > 把线上代码和课程代码clone后，改APPID本地运行对比调试，找手写代码bug~
