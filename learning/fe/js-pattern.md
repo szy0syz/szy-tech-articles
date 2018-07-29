@@ -72,7 +72,7 @@ module.exports = {
 ```js
 // 新增module
 module: {
-  rules: [{ 
+  rules: [{
     test: /\.js?$/,  // 我们要去检验哪些文件
     exclude: /(node_modules)/,  // 跳过哪些文件
     loader: 'babel-loader'  // 使用的loader
