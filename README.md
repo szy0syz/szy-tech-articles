@@ -8,5 +8,5 @@ footer: MIT Licensed | Copyright © 2017-present Jerry Shi
 * [读书笔记](/reading/)
 * 学习笔记
   * [前端](/learning/fe/)
-  * [Node](/learning/fe/)
+  * [Node](/learning/node/)
   * [Other](/learning/other/)
