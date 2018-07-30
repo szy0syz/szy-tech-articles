@@ -21,13 +21,19 @@ JavaScript引擎（JavaScript Interpretor）
 3. 根据渲染树，计算每个节点在屏幕上的位置、尺寸等信息
 4. 将渲染树绘制到屏幕上
 
-![p02](http://cdn.jerryshi.com/picgo/20180730225138.png)
+![p02](http://cdn.jerryshi.com/picgo/sf-fe-lesson-02-webkit.jpg)
 
 市面上浏览器主流程大体都差不多。
 
 webkit简化流程：(解析HTML+构建DOM) --> (构建渲染树) --> (布局) --> (绘制到屏幕)
 
+![p03](http://cdn.jerryshi.com/picgo/sf-fe-lesson-03.jpg)
+
 CSS对象模型与DOM Tree有所不通，因为CSSOM有重叠(层叠)的特性。
+
+![p04](http://cdn.jerryshi.com/picgo/sf-fe-lesson-04.jpg)
+
+![p05](http://cdn.jerryshi.com/picgo/sf-fe-lesson-05.jpg)
 
 > **渲染树不包含屏幕不可见元素的信息**
 
@@ -77,8 +83,11 @@ foo.style.marginTop = (margin + 10) + 'px' // 好了，最后一次操作，只�
 
 JavaScript对HTML文件解析(默认)会产生阻塞的。
 
+![p06](http://cdn.jerryshi.com/picgo/sf-fe-lesson-06.jpg)
+
 实例分析和优化建议
 
 JS阻塞分析
 
 - 两个外链JS会阻塞两次HTML文件的解析
+- 默认情况下，解析是以上往下进行的
