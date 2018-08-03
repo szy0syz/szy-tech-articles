@@ -328,6 +328,29 @@ TODO: 补代码
 
 ### 4-1 工厂模式-介绍
 
+原理
+
+* 将 `new` 操作单独封装
+* 遇到 `new` 时，就要考虑是否该使用工厂模式
+
+示例
+
+* 你去购买汉堡，直接点餐、取餐，不会自己亲手做
+* 商店要 “封装” 做汉堡的工作，做好直接给顾客
+
+![uml03](http://cdn.jerryshi.com/picgo/20180803230323.png)
+
+场景
+
+* `jQuery - $('div')`
+* `React.createElement`
+* `vue异步组件`
+
+#### React.createElement
+
+![react1](http://cdn.jerryshi.com/picgo/20180803231325.png)
+
+
 ### 4-2 工厂模式-演示和场景
 
 ## 第5章 单例模式
