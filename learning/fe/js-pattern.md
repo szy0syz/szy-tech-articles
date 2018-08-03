@@ -249,6 +249,62 @@ result.then(function (img) {
 
 ### 3-7 面试真题1
 
+* 打车时，可以打专车或者快车。任何车都有车牌号和名称
+  * 解析：需设计公共父类(车牌号和名称)，父类下又有两子类(专车和快车))
+* 不同车价格不同，快车每公里1元，专车每公里2元
+  * 解析：子类里有不同的价格
+* 行程开始时，显示车辆信息
+  * 行车和车有关系，但和专车还是快车没关系。所以我们需要依赖抽象编程，所以行程只和车有关系，不和具体哪种车有关，也就是说无论什么车都有行车信息
+  * 所以我们需要再建一个"行程"的类，这个类引用车的某个属性，我们可以通过这个属性得到车的信息(车牌号、名称、单价)
+* 行程结束时，显示打车金额(假定行程就5公里)
+  * “金额”属于行程。买了一万辆车丢着是没有行程金额的
+
+UML类图
+
+![uml01](http://cdn.jerryshi.com/picgo/20180803221439.png)
+
+```js
+class Car {
+  constructor(number, name) {
+    this.number = number
+    this.name = name
+  }
+}
+
+class Kuaiche extends Car {
+  constructor(number, name) {
+    super(number, name)
+    this.Price = 1
+  }
+}
+
+class Zhuanche extends Car {
+  constructor(number, name) {
+    super(number, name)
+    this.Price = 2
+  }
+}
+
+class Trip {
+  constructor(car) {
+    this.car = car
+  }
+
+  start() {
+    console.log(`行程开始，名称：${this.car.name}，车牌号：${this.car.Price}`)
+  }
+
+  end() {
+    console.log(`行程结束，价格：${this.car.Price * 5}`)
+  }
+}
+
+let car = new Kuaiche('101', '捷达')
+let trip = new Trip(car)
+trip.start()
+trip.end()
+```
+
 ### 3-8 面试真题2
 
 ### 3-9 总结
