@@ -326,8 +326,6 @@ TODO: 补代码
 
 ## 第4章 工厂模式
 
-### 4-1 工厂模式-介绍
-
 原理
 
 * 将 `new` 操作单独封装
@@ -346,20 +344,46 @@ TODO: 补代码
 * `React.createElement`
 * `vue异步组件`
 
-#### React.createElement
+### React.createElement
 
 ![react1](http://cdn.jerryshi.com/picgo/20180803231325.png)
 
+React.createElement使用工厂模式的好处：如果我们不用 createElement 封装 `new VNode(tag,attrs, children)`，在对生成VNode示例时我们还是让用户去验证各个属性参数，显示不合理，而且用了工厂模式后用户根本不关系内部构造函数怎么变化。
 
-### 4-2 工厂模式-演示和场景
+### vue异步组件
+
+![vue](http://cdn.jerryshi.com/picgo/20180803231738.png)
+
+Vue异步加载组件完成后创建组件的模式
+
+使用工厂模式把工厂内部构造函数与用户隔离
+
+### 设计原则验证
+
+* 构造函数和创建者分离
+* 符合开放封闭原则
 
 ## 第5章 单例模式
 
-### 5-1 单例模式-介绍
+* 系统中仅被唯一使用的
+* 一个类只有一个实例
 
-### 5-2 单例模式-演示
+### 示例
 
-### 5-3 单例模式-场景和总结
+* 登录框
+* 购物车
+* vuex和redux中的store
+
+![single](http://cdn.jerryshi.com/picgo/20180803232620.png)
+
+![js-single](http://cdn.jerryshi.com/picgo/20180803232756.png)
+
+`jQuery`永远只有一个
+
+### 设计 原则 验证
+
+* 符合单一职责原则，只实例化唯一的对象
+* 没法具体开放封闭原则，但是绝对不违反开放封闭原则
 
 ## 第6章 适配器模式
 
