@@ -4,7 +4,7 @@
 
 ## 第2章 ES6 语法
 
-ES6模块化如何使用，开发环境如何打包
+### ES6模块化如何使用，开发环境如何打包
 
 * 模块化的基本语法
 * 开发环境配置
@@ -75,3 +75,112 @@ ES6模块化如何使用，开发环境如何打包
 * 语法：import export
 * 环境：babel编译ES6语法，模块化可用webpack和rollup
 * 扩展：说下自己对模块化标准统一的期待
+
+### class和普通构造函数有何区别
+
+JS构造函数语法
+
+```js
+function MathHandle(x,y) {
+    this.x = x
+    this.y = y
+}
+
+MathHandle.prototype.add = function () {
+    return this.x + this.y
+}
+
+var m = new MathHandle(1,2)
+console.log(m.add())
+```
+
+class语法
+
+```js
+class MathHandle {
+    constructor(x, y) {
+        this.x = x
+        this.y = y
+    }
+
+    add() {
+        return this.x + this.y
+    }
+}
+
+const m = new MatchHandle(1,2)
+console.log(m.add())
+```
+
+以上两者其实就是两个语法糖，两者本质是一样的
+
+```js
+class MathHandle {}
+
+typeof MathHandle // -> "function"
+MathHandle === MathHandle.prototypt.constructor // -> true
+```
+
+* 这种语法糖形式，看起来和世纪缘里不一样的东西，我个人不太赞同
+* 形式上强行模仿 Java、C#，却丢失了它的本性和个性
+
+> 一个实例对象的隐式原型 全等于 它的构造函数(类)的显示原型
+
+### JS继承
+
+> 继承就是从抽象到具象的关系，从高级到低级的关系
+
+```js
+function Animal() {
+    this.eat = function () {
+        console.log('animal eat')
+    }
+}
+
+function Dog() {
+    this.bark = function () {
+        console.log('dog bark')
+    }
+}
+
+// 这里什么意思呢？
+// 本来Dog.prototype原型是指向Object，现在我们把它原型替换成Animal的一个实例，最后还是指向Object的
+Dog.prototype = new Animal()
+
+// 哈士奇
+var hashiqi = new Dog()
+```
+
+继承Class
+
+```js
+class Animal {
+    constructor(name) {
+        this.name = name
+    }
+    eat() {
+        console.log(`${this.name} eat.`)
+    }
+}
+
+class Dog extends Animal {
+    constructor(name) {
+        super(name)
+        this.name = name
+    }
+    say() {
+        console.log(`${this.name} say.`)
+    }
+}
+
+const dog = new Dog('哈士奇')
+dog.say()
+dog.eat()
+```
+
+问题解答
+
+* Class在语法上更加贴合面向对象的写法
+* Class实现继承更加易读、易理解
+* 更易于写java等后端语言的使用
+* 本质还是语法糖，使用prototype
