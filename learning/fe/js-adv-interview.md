@@ -548,7 +548,7 @@ Promise.all([res1, res2]).then(data => {
 * 修改data属性后，vue立刻监听到
 * data属性被代理到vm(this的一个属性)上
 
-### Object.defineProperty
+#### Object.defineProperty
 
 ```js
 var obj = {
@@ -574,7 +574,7 @@ console.log(obj.name)   // 可以监听到获取
 obj.name = 'jerry2'     // 可以监听到修改
 ```
 
-### Vue响应式模拟实现
+#### Vue响应式模拟实现
 
 ```js
 var vm = {}
@@ -606,3 +606,48 @@ for (key in data) {
 Vue的响应式
 
 > Vue在实例化时，先拿到data不急着挂载到this上，而是遍历data这个对象拿到每一个key，然后把key传到一个IIFE中，里面用Object.defineProperty给vm对象分别挂载key属性，还声明get和set函数。这样外界在调用就能形成响应式，从计算机的角度来看，只要挂载上后的属性都是一个栈地址的指针，每次获取或调用都会去执行那个闭包里的get和set函数。
+
+### vue中如何解析模板
+
+![tmp](http://cdn.jerryshi.com/picgo/20180804222517.png)
+
+#### 模板是什么
+
+* 本质就是一堆字符串
+* 但却有逻辑，如`v-if` `v-for`
+* 与 html 格式很像，但有很大区别
+* 但最终还要转换为 html 来显示
+* 模板最终必须转换成JS代码，因为：
+  * 模板有逻辑，必须用JS才能实现(图灵完备)
+  * 模板转换为 html 渲染页面，必须用JS才能实现
+  * 因此，模板最终还是会转换成一个JS函数(render函数)
+
+#### render函数
+
+![with](http://cdn.jerryshi.com/picgo/20180804223956.png)
+
+在vue的render函数里，使用了with。
+
+![render](http://cdn.jerryshi.com/picgo/20180804224459.png)
+
+* 模板中所有信息都包含在了render函数中(包含id属性，p子元素)
+* this 即 vm
+* price 即 this.price 即 vm.price，即data中的price
+* _c 即 this._c 即 vm._c
+
+如何拿到任意组件的render函数？
+
+* 传统方式引入vue
+* 打开源码搜索 `code.render`
+* 在return 前打印 `code.render` 即可
+
+> Vue从2.0开始，已经支持预编译。即开发环境写模板，编译打包后，生产环境直接存render函数，这也就不需要浪费时间模板转render了。
+
+从render渲染函数角度来看vue指令的v-on，其实就在render函数的on属性对象上加了一个监听input事件的函数，这个只要input值改动了就把 `$event.target.value` 赋值到 `this.title`
+
+* 在render函数里 v-for 执行最终只会转换成 `_l(list)`，这个 `_l` 好比 `Array.map()` 函数
+
+* 思考
+  * v-model 怎么实现
+  * v-on 怎么实现
+  * v-for 怎么实现
