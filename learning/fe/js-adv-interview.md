@@ -230,3 +230,92 @@ result.then(function (img) {
 * 块级作用域
 * 函数默认参数
 * 箭头函数(解决全局函数this指向window)
+
+## 第3章 原型
+
+### zepto原型实现
+
+```js
+// 空对象
+var zepto = {}
+
+// 这就是构造函数
+function Z(dom, selector) {
+    var i, len = dom ? dom.length : 0
+    for (i =0; i<len; i++) this[i] = dom[i]
+    this.length = len
+    this.selector = selector || ''
+}
+
+zepto.Z = function(dom, selector) {
+    return new Z(dom, selector)
+}
+
+zepto.init = function (selector) {
+    var slice = Array.prototype.slice
+    var dom = slice.call(document.querySelectorAll(selector))
+
+    return zepto.Z(dom, selector)
+}
+
+// 注册 zepto 的 $
+var $ = function(selector) {
+    return zepto.init(selector)
+}
+
+$.fn = {
+    constructor: zepto.Z,
+    css: function (key, value){},
+    html: function (value){}
+}
+
+// Z的原型只是JS对象
+zepto.Z.prototype = Z.prototype = $.fn
+```
+
+jQuery原型实现
+
+```js
+var jQuery = function (selector) {
+    // 注意 new 关键字， 第一步就找到了构造函数
+    return new jQuery.fn.init(selector)
+}
+
+var init = jQuery.fn.init = function (selector) {
+    var slice = Arrar.prototype.slice
+    var dom = slice.call(document.querySelectorAll(selector))
+
+    var i, len = dom ? dom.length : 0
+    for (i=0; i<len; i++) this[i] = dom[i]
+    this.length = len
+    this.selecotor = selector || ''
+}
+
+// 初始化 jQuery.fn
+jQuery.fn = jQuery.prototype = {
+    constructor: jQuery,
+
+    css: function(key, value) {},
+    html: function(value)
+}
+
+// 定义原型
+init.prototype = jQuery.fn
+```
+
+为什么要把原型方法放在$.fn 对象上？
+
+* 因为要扩展插件，做一个简单的插件例子
+
+```js
+$.fn.getNodeName = function () {
+    return this[0].nodeName
+}
+```
+
+* 这样就可以把 `getNodeName` 这个属性方法放在和 `jQuery.fn` 这个对象里，和 `css` `html`属性一个级别
+
+好处
+
+* 只有 `$` 会暴露在window 全局变量
+* 将插件扩展统一到 $.fn.xxx 这个借口，方便使用
