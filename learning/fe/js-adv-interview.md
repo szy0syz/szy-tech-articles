@@ -514,3 +514,23 @@ Promise.all([res1, res2]).then(data => {
 * 还是使用Promise，并没有和Promise冲突
 * 完全是同步的写法，再也没有回调函数
 * 但是，改变不了JS单线程、异步的本质
+
+## 第6章 mvvm和vue
+
+* 数据和视图的分离(解耦，开放封闭原则)，
+* 以数据驱动视图，只关心数据变化，DOM操作被封装
+
+### 对MVVM的理解
+
+* MVC：Model、View、Controller
+* MVVM
+* ViewModel：用来连接Model和View
+
+![mvc](http://cdn.jerryshi.com/picgo/20180804213343.png)
+
+* MVVM不算是一种创新
+* 只能算在MVC基础上的微创新
+* 真正结合前端场景应用的创建
+
+> view  可以通过 事件绑定 的形式影响 model
+> model 可以通过 数据绑定 的形式改变 view
