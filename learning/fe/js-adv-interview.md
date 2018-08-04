@@ -534,3 +534,75 @@ Promise.all([res1, res2]).then(data => {
 
 > view  可以通过 事件绑定 的形式影响 model
 > model 可以通过 数据绑定 的形式改变 view
+
+### Vue三要素
+
+* 响应式：vue 如何监听到 data 的每个属性变化？
+* 模板引擎：vue 的模板如何被解析，指令如何处理？
+* 渲染：vue 的模板如何被渲染成 html？以及渲染过程
+
+### Vue中如何实现响应式
+
+> Vue中使用了Object.defineProperty
+
+* 修改data属性后，vue立刻监听到
+* data属性被代理到vm(this的一个属性)上
+
+### Object.defineProperty
+
+```js
+var obj = {
+    name: 'jerry',
+    age: 30
+}
+console.log(obj.name) // 获取属性的时候，如何监听到？
+obj.name = 'jerry shi'          // 赋值属性的时候，如何监听到？
+////////////////////////
+var obj = {}
+var name = 'jerry'
+Object.defineProperty(obj, 'name', {
+    get: function() {
+        console.log('get')
+        return name
+    },
+    set: function(newVal) {
+        console.log('set')
+        name = newVal
+    }
+})
+console.log(obj.name)   // 可以监听到获取
+obj.name = 'jerry2'     // 可以监听到修改
+```
+
+### Vue响应式模拟实现
+
+```js
+var vm = {}
+var data = {
+    price: 99,
+    title: 'book1',
+    desc: 'good book'
+}
+
+var key, value
+for (key in data) {
+    // 创建闭包。新建一个函数，保证 key 的独立作用域
+    (function(key) {
+        Object.defineProperty(vm, key, {
+            get: function() {
+                console.log('get')
+                return data[key]
+            },
+            set: function() {
+                console.log('set')
+                data[key] = newVal
+            }
+        }
+    }
+    })(key)
+}
+```
+
+Vue的响应式
+
+> Vue在实例化时，先拿到data不急着挂载到this上，而是遍历data这个对象拿到每一个key，然后把key传到一个IIFE中，里面用Object.defineProperty给vm对象分别挂载key属性，还声明get和set函数。这样外界在调用就能形成响应式，从计算机的角度来看，只要挂载上后的属性都是一个栈地址的指针，每次获取或调用都会去执行那个闭包里的get和set函数。
