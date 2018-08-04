@@ -502,3 +502,15 @@ Promise.all([res1, res2]).then(data => {
   * Promise 实例必须实现then这个方法
   * then() 必须可以接收两个函数作为参数
   * then() 返回的必须是一个Promise实例
+
+### async/await
+
+* Promise的then函数只是将callback拆分了
+* async/await是最直接的同步写法
+* 我们一直在解决单线程异步的写法，所以async/await就是写法的解决方案
+* 使用await，函数必须用async标识
+* await后面跟的是一个Promise实例
+* 需要用babel-polyfill
+* 还是使用Promise，并没有和Promise冲突
+* 完全是同步的写法，再也没有回调函数
+* 但是，改变不了JS单线程、异步的本质
