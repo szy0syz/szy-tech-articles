@@ -428,3 +428,77 @@ promise和deferred区别
 * promise对象只能被动监听，不能主动篡改
 
 > 要想深入理解它，就需要知道它的前世今生
+
+### promise
+
+#### 异常捕获
+
+> then 只接受一个参数，最后统一用 catch 捕获异常
+
+```js
+result.then(img => {
+    console.log(img.width)
+}).then(img => {
+    console.log(img.heiht)
+}).catch(err => {
+    console.error(err)
+})
+```
+
+#### 多个串联
+
+```js
+var src1 = 'http://baidu.com/logo1.png'
+var res1 = loadImg(src1)
+var src2 = 'http://baidu.com/logo2.png'
+var res2 = loadImg(src2)
+
+// 链式操作
+// 我们在链式操作中，第一个异步结果处理完成后返回第二个异步结果
+res1.then(img => {
+    console.log('第一个图片加载完成')
+    return res2
+}).then(img => {
+    console.log('第二个图片加载完成')
+}).catch(err => {
+    console.error(err)
+})
+```
+
+#### all 和 race
+
+```js
+// Promise.all 接收一个 promise 对象的数组
+// 待全部完成之后，统一执行 success
+Promise.all([res1, res2]).then(data => {
+    // 接收到的 data 是一个数组，依次包含了多个 promise 返回的内容
+    console.log(data[0])
+    console.log(data[0])
+})
+
+// Promise.race 接收一个包含多个 promise 对象的数组
+// 只要有一个完成，就执行 success
+Promise.all([res1, res2]).then(data => {
+    // data 即最先执行完成的 promise 的返回值
+    console.log(data)
+})
+```
+
+#### Promise标准
+
+* 关于“标准”的闲谈
+  * 任何技术推广使用都需要一套标准来支撑
+  * 如 html js css http 等，无规矩不成方圆
+  * 任何不符合标准的东西，终将会被用户抛弃
+  * 不要挑战标准，不要自造标准
+
+* 状态变化
+  * 三种状态：pending、fulfilled、rejected
+  * 初始状态就是pending
+  * pending只能变为fulfilled，或者pending变为rejected，二选一
+  * 状态变化不可逆
+
+* then
+  * Promise 实例必须实现then这个方法
+  * then() 必须可以接收两个函数作为参数
+  * then() 返回的必须是一个Promise实例
