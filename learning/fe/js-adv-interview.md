@@ -363,3 +363,68 @@ alert 不处理完，JS执行和DOM渲染暂时卡顿
 * 待同步函数执行完毕，轮询执行 异步队列 的函数
 
 > 主进程按顺序执行，看到异步操作就加入异步队列，待主进程代码执行完毕，就去弹异步队列里的调用栈到主进程里去执行。JS引擎会一直监视着异步队列中有没有内容，一旦有了就要执行。
+
+### jQuery的Deferred
+
+![jq1](http://cdn.jerryshi.com/picgo/20180804143227.png)
+![jq2](http://cdn.jerryshi.com/picgo/20180804143310.png)
+![jq3](http://cdn.jerryshi.com/picgo/20180804143431.png)
+
+jQuery 1.5的变化
+
+* 无法改变 JS 异步和单线程的本质
+* 只能从写法上杜绝 callback 这种形式
+* 它是一种语法糖形式，但是解耦了代码
+* 很好的体现：开放封闭原则(对扩展开放/对修改封闭)
+* 以上图一的success回调函数里，如果我们想加个新逻辑，必须创建新回调来替换原来的回调，这就是对修改开放，对扩展封闭。还可以节省回归测试的工作。
+
+```js
+var wait = function () {
+    var task = function () {
+        console.log('执行完成')
+    }
+    setTimeout(task, 2000)
+}
+wait()
+```
+
+使用jQuery Deferred
+
+```js
+function waitHandle() {
+    var dtd = $.Deferred()
+
+    var wait = function (dtd) {
+        var task = function () {
+            console.log('执行完成')
+            dtd.resolve()  // 表示异步任务执行完毕
+            // dtd.reject() // 表示异步任务执行失败
+        }
+        setTimeout(task, 2000)
+        return dtd
+    }
+
+    // 注意，这里一定要有返回值
+    return wait(dtd)
+}
+
+var w = waitHandle()
+w
+  .then(function () {console.log('ok1')}, function() {console.log('err1')})
+  .then(function () {console.log('ok2')}, function() {console.log('err2')})
+```
+
+相当于我们对 `dtd` 进行一系列加工后最终返回出去
+
+总结
+
+* dtd的API可以分为两类，用意不同
+* 第一类：dtd.resolve dtd.reject
+* 第二类：dtd.then dtd.done dtd.fail
+
+promise和deferred区别
+
+* deferred对象有 dtd.resolve dtd.reject api可以外界主观修改执行结果
+* promise对象只能被动监听，不能主动篡改
+
+> 要想深入理解它，就需要知道它的前世今生
