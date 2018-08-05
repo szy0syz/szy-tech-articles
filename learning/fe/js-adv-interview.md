@@ -766,3 +766,34 @@ Vue中的vnode是借鉴了 `snabbdom`，`snabbdom`里包含了两个主要函数
   * 将 data 的属性代理到 vm 上
 * Vue如何解析模板(up)
 * Vue的整体实现流程(up)
+
+## 第7章 组件化和React
+
+React也符合两个特点：数据与视图分离；以数据驱动视图。但react更看重组件化，而vue是先有了mvvm结构后再建立组件化。
+
+说一下对组件化的理解：
+
+* 组件的封装
+  * 把视图、数据、变化逻辑三者都封装，外界调用不用关心组件内部这三部分怎么运作的
+* 组件的复用
+  * 把一个模板复用一万遍
+  * props传递(不传props就是重复了)
+
+### JSX本质
+
+![react](http://cdn.jerryshi.com/picgo/20180805202419.png)
+![react2](http://cdn.jerryshi.com/picgo/20180805203514.png)
+
+* JSX的本质其实是一种语法糖，需要被解析成JS才能运行
+* JSX解析成JS后，形式类似于snabbdom的h函数，只不过名字改成了 `React.createElment()`
+* JSX是一种独立的标准，可以被其它项目使用
+* 开发环境会将JSX编译成JS代码 render函数
+* JSX的写法大大降低了学习成本和编码工作量
+* 同时，JSX也会增加debug成本
+
+### JSX独立的标准
+
+* JSX是React引入的，但不是React独有的
+* React已经将它作为一个独立标准开放，其它项目也可以用
+* React.createElement是可以自定义修改的
+* 说明：本身功能已经完备；和其它标准兼容和扩展性没问题
