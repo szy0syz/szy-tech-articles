@@ -328,13 +328,14 @@ function isFirstLoad() {
   }
 }
 
-var firstLoad = isFirseLoad()
+var firstLoad = isFirstLoad()
 firstLoad(10) // true
 firstLoad(10) // false
 firstLoad(20) // true
 ```
 
 * **封装变量，收敛权限**
+* 这里好比当执行完 `var firstLoad = isFirstLoad()` 后，会开辟两个内存，两者单线联系，firstLoad 存的是外面那个内存的栈地址，而 _list 是存在再里一层的空间内，他和外界的连接只有 firstLoad 指向的空间，所以我们在window的空间是无法访问到 _list 所在的空间，所以事先了 封装变量，收敛权限
 
 ## 第 4 章 JS 基础知识（下）
 
