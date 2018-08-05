@@ -60,7 +60,7 @@ const createStore = (reducer) => {
   };
   // 为了没action时初始化state
   dispatch();
-  return { 
+  return {
     getState,
     subscribe,
     dispatch
@@ -209,8 +209,7 @@ ReactRom.render(<Counter />, document.querySelector('#root'));
 
 ### 关于React组件中使用Redux的流程
 
-1. 
-
+1. ？
 
 -------
 
@@ -219,12 +218,13 @@ ReactRom.render(<Counter />, document.querySelector('#root'));
 > 在箭头函数后，如果默认要默认返回就不要加花括号
 
 在实现combineReducers时用到了“高阶函数”，其定义为：
-  - 函数可以作为参数被传递；
-  - 函数可以作为返回值输出。
+
+- 函数可以作为参数被传递；
+- 函数可以作为返回值输出。
 
 我们实现combineReducers原理就是将函数作为结果输出。
 
-#### combineReducers的实现
+### combineReducers的实现
 
 1. 老表的实质：一个函数，形参接收的是一个由若干reducer组成对象，返回的也是一个标准的reducer函数
 2. 老表的作用：合并若干reducer成一个大的reducer返回
@@ -309,11 +309,11 @@ class Message extends Component {
 > If you want your application to be stable, don’t use context. It is an experimental API and it is likely to break in future releases of React.
 > 呵呵~
 
-------
+-------
 
 ## CH08: react-redux
 
-> React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。 
+> React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）
 
 ### UI 组件
 
@@ -343,7 +343,7 @@ const Title =
 
 > 在React中，当使用context属性时，在孙组件中的constructor构造函数中是无法获取this.context属性，因为还没初始化啊！
 
-------
+-------
 
 ## CH09: 使用系统库实现
 
@@ -359,7 +359,7 @@ const Title =
 
 > 完全写不出来嘛
 
-**重新整理思路，再用系统库实现一此React-Redux：**
+重新整理思路，再用系统库实现一此React-Redux：
 
 1. 从'react-redux'导`Provider`: 其实质就是将包裹组件，并自己属性上的sotre传递下去给所有子子孙孙组件。
 2. 导入sotre
