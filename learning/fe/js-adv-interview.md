@@ -667,7 +667,7 @@ Vue中的vnode是借鉴了 `snabbdom`，`snabbdom`里包含了两个主要函数
 * 页面首页渲染执行 updateComponent
 * data中每次修改属性，执行updateComponent
 
-回顾
+回顾：Vue如何解析模板
 
 * 模板：字符串，有逻辑，嵌入JS变量...
 * 模板必须转换为JS代码(有逻辑、渲染html、js变量)
@@ -675,3 +675,94 @@ Vue中的vnode是借鉴了 `snabbdom`，`snabbdom`里包含了两个主要函数
   * with语法
   * snabbdom的`h()`函数
 * updateComponent
+
+### Vue的整个实现流程
+
+* 第一步：解析模板成render函数
+  * `with`的用法
+  * 模板中的所有信息都要被render函数包含
+  * 模板中用到的 data 中的属性，都变成了js变量
+  * 模板中的v-model、v-for、v-on都变成了js逻辑
+  * `render` 函数返回的是 `vnode` 对象
+* 第二步：响应式监听
+* 第三部：首次渲染，显示页面，且绑定依赖(收集依赖)
+* 第四部：data属性变化，触发rerender
+
+第一步：解析模板成render函数
+![flow1](http://cdn.jerryshi.com/picgo/20180805140610.png)
+![flow2](http://cdn.jerryshi.com/picgo/20180805140736.png)
+
+第二步：开始响应式监听
+
+```js
+ let obj = {name:'jeffywin',play:{sport:'basketball'}}
+ function observer(obj){
+     if(typeof obj !== 'object') return; //如果不是对象，则return
+     for(let key in obj) {
+         defineReactive(obj, key, obj[key]) // 对象，属性，内容
+         observer(obj[key])//假如最后一层不是对象，把obj[key]递归下去
+     }
+ }
+
+ function defineReactive(tar, por, val) {
+     Object.defineProperty(tar, por,{
+         get() {
+             return val
+         },
+         set(newVal) {
+             if(val === newVal) return
+             val = newVal
+         }
+     })
+ }
+ observer(obj)//通过递归来拿到多层嵌套内容
+```
+
+* 核心点：交由 `Object.defineProperty()` 函数去挂载data的各属性到 vm 实例上 (引申：这样挂了以后 vue的render函数里的with就可以非常方便的使用了))
+
+第三步：首次渲染，显示页面，且绑定依赖
+
+![vnode](http://cdn.jerryshi.com/picgo/20180805133433.png)
+
+* 1、初始渲染，执行updateComponent，执行 vm._render()
+* 2、执行render函数，会访问到 vm.list 和 vm.title
+* 3、会被响应式 get 方法监听到 ??
+* 4、执行 updateComponent，会走到 vdom 的 patch 方法
+* patch 将 vnode 渲染成 DOM，初次渲染完成
+
+> 怪事情，明明是响应式 为什么要去监听 get 呢？ 获取我又不需要重新渲染页面啊？
+
+* data 中有很多属性，有些被用到，有些可能不被用到
+* 要被用到的会走 get ，不被用到的就不会走 get
+* 未走到 get 中的属性， set的时候我们也无需关心
+* 避免不必要的重复渲染
+
+![col](http://cdn.jerryshi.com/picgo/20180805144607.png)
+
+> 这估计就是 响应收集 ，页面用了属性 get 的就收集起来，render时就重新渲染，否则就不渲染，避免浪费
+
+第四部：data属性变化，触发render
+
+* 修改属性，被响应式 set 监听到
+* set 中执行 updateComponent
+* updateComponent重新执行 vm._render()
+* 生成的 vnode 和 preVnode，通过 patch进行对比
+* 最后渲染到html中
+
+### 总结
+
+* 说一下使用jQuery和使用框架的区别
+  * 数据和视图的分离和解耦
+  * 以数据驱动视图，只关心数据变化，DOM操作被封装
+* 说一下对MVVM的理解
+  * 对MVC的微创新
+  * 关系：VM就是V和M中间的一座桥，V通过 事件绑定 的形式影响M，M通过 数据绑定 的形式改变V
+* vue的三要素
+  * 响应式
+  * 模板引擎
+  * 渲染
+* vue如何实现响应式
+  * 理解Object.defineProperty
+  * 将 data 的属性代理到 vm 上
+* Vue如何解析模板(up)
+* Vue的整体实现流程(up)
