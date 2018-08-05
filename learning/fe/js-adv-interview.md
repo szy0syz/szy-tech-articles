@@ -651,3 +651,27 @@ Vue的响应式
   * v-model 怎么实现
   * v-on 怎么实现
   * v-for 怎么实现
+  * 剩下模板生成 html 的问题
+  * 另外，vm._c 是什么？render函数返回了什么？
+
+Vue中的vnode是借鉴了 `snabbdom`，`snabbdom`里包含了两个主要函数 `h()` `patch()`
+
+* `h()` 相当于 Vue 源码里的 `_c`
+* `patch()` 又分两个作用，一个是 `patch(container, vnode)` 把虚拟节点加入到容器中；另一个是 `patch(vnode, newVNode)`，对比两个新旧节点，然后找出diff差异后重新渲染
+* vm._c 其实相当于snabbdom中的h函数
+* render函数执行之后，返回的是 vnode
+
+![vnode](http://cdn.jerryshi.com/picgo/20180805133433.png)
+
+* updateCompinent 中实现了 vdom 的 patch
+* 页面首页渲染执行 updateComponent
+* data中每次修改属性，执行updateComponent
+
+回顾
+
+* 模板：字符串，有逻辑，嵌入JS变量...
+* 模板必须转换为JS代码(有逻辑、渲染html、js变量)
+* render函数是什么样子的
+  * with语法
+  * snabbdom的`h()`函数
+* updateComponent
