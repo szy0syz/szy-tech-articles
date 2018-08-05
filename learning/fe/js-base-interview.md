@@ -33,7 +33,12 @@ typeof null // object
 typeof console.log // function
 ```
 
-JavaScript 中共有 6 种基本数据类型：Undefined、Null、Boolean、Number、String、Symbol
+* JavaScript 中共有 7 种基本数据类型：
+  * 六种原始类型：Undefined、Null、Boolean、Number、String、Symbol
+  * 和 `Object` 类型
+  * 不能把js的内置对象：`Date`、`Array`等与数据类型混淆，因为他们和我们创建的对象就属于 `Object`
+
+> ↑↑↑ Jerry修改 ↑↑↑
 
 * 触发强制类型转换
   * 字符串拼接
