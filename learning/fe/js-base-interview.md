@@ -71,9 +71,9 @@ typeof console.log // function
 
 ### 如何理解 JSON
 
-JSON 只不过是一个 JS 对象而已
-JSON.stringify({a:10, b:20})
-JSON.parse('{"a":"1","b":"2"}')
+* JSON 只不过是一个 JS 对象而已
+* JSON.stringify({a:10, b:20})
+* JSON.parse('{"a":"1","b":"2"}')
 
 ### 原型和原型链
 
