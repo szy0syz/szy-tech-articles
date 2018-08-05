@@ -797,3 +797,38 @@ React也符合两个特点：数据与视图分离；以数据驱动视图。但
 * React已经将它作为一个独立标准开放，其它项目也可以用
 * React.createElement是可以自定义修改的
 * 说明：本身功能已经完备；和其它标准兼容和扩展性没问题
+
+### vdom
+
+* vdom是React初次推广开来的，结合JSx
+* JSX就是模板，最终要渲染成 html
+* 初次渲染 + 修改state后的re-render
+* 正好符合vdom的应用场景
+
+![snabbdom](http://cdn.jerryshi.com/picgo/20180805211630.png)
+
+何时patch
+
+* 初次渲染 - `ReactDOM.render(<App/>, container)`
+* 会触发 patch的第一种用法 `patch(container, vnode)`
+* re-render - setState
+* 会触发 patch(vnode, newVnode)
+
+自定义组件的解析
+
+![dd](http://cdn.jerryshi.com/picgo/20180805212225.png)
+
+* `div` - 直接渲染 `div` 即可， vdom可以做到
+* Input 和 List，是自定义组件(class)，vdom默认不认识
+* 因此Input和List定义的时候必须声明render函数
+* 根据props初始化实例，然后执行实例的render函数
+* render函数返回的还是vnode对象
+
+问题解答
+
+* 为何需要vdom：因为jsx需要渲染成html，数据驱动视图
+* React.createElement和h()，都是生成vnode，区别在于h()函数只考虑原生tagName，而createElement还需要考虑自定义函数传入情况
+* 何时 patch：ReactDOM.render()和setState
+* 自定义组件的解析：初始化实例，然后执行对应render
+
+### React setState的过程
