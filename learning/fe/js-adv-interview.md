@@ -800,7 +800,7 @@ React也符合两个特点：数据与视图分离；以数据驱动视图。但
 
 ### vdom
 
-* vdom是React初次推广开来的，结合JSx
+* vdom是React初次推广开来的，结合JSX
 * JSX就是模板，最终要渲染成 html
 * 初次渲染 + 修改state后的re-render
 * 正好符合vdom的应用场景
@@ -824,7 +824,7 @@ React也符合两个特点：数据与视图分离；以数据驱动视图。但
 * 根据props初始化实例，然后执行实例的render函数
 * render函数返回的还是vnode对象
 
-问题解答
+JSX和vdom的关系
 
 * 为何需要vdom：因为jsx需要渲染成html，数据驱动视图
 * React.createElement和h()，都是生成vnode，区别在于h()函数只考虑原生tagName，而createElement还需要考虑自定义函数传入情况
@@ -832,3 +832,78 @@ React也符合两个特点：数据与视图分离；以数据驱动视图。但
 * 自定义组件的解析：初始化实例，然后执行对应render
 
 ### React setState的过程
+
+* setState是异步的
+* vue修改属性也是异步的
+* setState的过程
+
+```js
+addTitle(title) {
+    const currentList = this.state.list
+    console.log(this.state.list)    // -> [1, 2]
+    this.setState({
+        list: currentList.concat(title) // add 3
+    })
+    console.log(this.stata.list)    // -> [1, 2] ?  --> async
+}
+```
+
+* setState为何需要异步
+  * 可能会一次执行多次 setState
+  * 你无法规定、限制用户如何使用 setState
+  * 没必要每次 setState 都重新渲染，考虑性能
+  * 即便是每次都重新渲染，用户也看不到中间的效果
+  * 只需要看到最后结果即可
+
+vue修改属性也是异步
+
+> 效果、原因和setState一样
+
+data属性修改时
+
+* 修改属性，被响应式的set监听到
+* set中执行 updateComponent (这步是异步的)
+* updateComponent重新执行vm._render()
+* 生成的vnode和prevVnode，通过patch进行对比
+* 渲染到html中
+
+setState的过程
+
+* 每个组件实例，都有renderComponent方法
+* 执行renderComponent 会重新执行实力的 render
+* render函数返回 newVnode，然后拿到prevVnode
+* 执行 patch(prevVnode, newVnode)
+
+### React和Vue
+
+* 本质的区别
+  * vue - 本质是MVVM框架，由MVC发展而来
+  * react - 本质是前端组件化框架，由后端组件化发展而来
+* 模板的区别
+  * vue - 使用模板 (最初由angular提出)
+  * react - 使用JSX
+  * 模板语法上，更加倾向于JSX
+  * 模板分离上，我更加倾向于vue
+  * 模板应该和JS逻辑分离(vue做到了,JSX没做到)
+  * 回顾“开放封闭原则”
+* 组件化的区别
+  * React本身就是组件化，没有组件化就不是React
+  * Vue也支持组件化，不过是在MVVM上的扩展
+  * 查阅vue组件化的文档，拉拉扯扯很多(侧面反映)
+  * 对于组件化，更加倾向于React，做的彻底而清晰
+* 两者共同点
+  * 都支持组件化
+  * 都是数据驱动视图
+* 选型
+  * 国内使用，首推vue。文档更易读、易学、社区够大
+  * 如果团队水平较高，推荐使用React，组件化和JSX
+
+![templ](http://cdn.jerryshi.com/picgo/20180805220748.png)
+![templ2](http://cdn.jerryshi.com/picgo/20180805220834.png)
+
+后言
+
+1. 文无第一武无第二，技术选型没有绝对的对与错
+2. 技术选型要考虑的因素非常多
+3. 作为面试者，你要有自己的主见
+4. 和面试官的观点不一致没关系，只要能说出自己的理由
