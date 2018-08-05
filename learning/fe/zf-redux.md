@@ -209,7 +209,7 @@ ReactRom.render(<Counter />, document.querySelector('#root'));
 
 ### 关于React组件中使用Redux的流程
 
-1. ？
+Todo
 
 -------
 
