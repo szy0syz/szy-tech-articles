@@ -9,7 +9,7 @@
   - `throttle`策略的电梯。保证如果电梯第一个人进来后，15秒后准时运送一次，不等待。如果没有人，则待机。
   - `debounce`策略的电梯。如果电梯里有人进来，等待15秒。如果又人进来，15秒等待重新计时，直到15秒超时，开始运送。
 
-## 防抖 debounce
+## 防抖-debounce
 
 - 防抖的原理：某行为在其个时间段内不停地被触发，且行为触发间断时间小于预设wait时间，此时行为执行函数一直不会被执行，直到停止触发的wait时间后才会被执行指定函数。
   - 拿mousemove举个栗子：鼠标在区域内不停的快速晃，此时预置函数不会被执行，直到晃停后xxx毫秒才会被执行。
@@ -42,7 +42,7 @@ container.onmousemove = debounce(getUserAction, 500);
 
 ![debounce01.png-173.6kB][1]
 
-## 防抖升级第二波，修复this关键字的指向
+## 防抖升级1：修复this关键字的指向
 
 ```javascript
 // 第二波 防抖
@@ -61,7 +61,7 @@ function debounce(func, wait) {
 }
 ```
 
-## 防抖升级第三波，修复arguments问题
+## 防抖升级2：修复arguments问题
 
 ```javascript
 function debounce(func, wait) {
@@ -80,7 +80,7 @@ function debounce(func, wait) {
 }
 ```
 
-## 防抖升级第四波，支持immediate立即执行
+## 防抖升级3：支持immediate立即执行
 
 - 如果immediate参数为true则，从来没有支持过func就立马执行一次。以后如果还想执行，你得等到wait时间后再触发行为就会立即执行。
 
@@ -108,7 +108,7 @@ function debounce(func, wait, immediate) {
 }
 ```
 
-## 防抖升级第五波，支持返回值
+## 防抖升级4：支持返回值
 
 ```javascript
 function debounce(func, wait, immediate) {
@@ -136,7 +136,7 @@ function debounce(func, wait, immediate) {
 }
 ```
 
-## 防抖升级第五波，支持取消
+## 防抖升级5：支持取消
 
 ```javascript
 function debounce(func, wait, immediate) {
@@ -172,7 +172,7 @@ function debounce(func, wait, immediate) {
 }
 ```
 
-## 第六波 支持取消防抖
+## 防抖升级6：支持取消防抖
 
 ```javascript
 function debounce(func, wait, immediate) {
