@@ -136,43 +136,7 @@ function debounce(func, wait, immediate) {
 }
 ```
 
-## 防抖升级5：支持取消
-
-```javascript
-function debounce(func, wait, immediate) {
-  var timeout, result; // result 要定义不销毁的作用域里~
-  // 将翻来的匿名函数换成具名函数，是为了给函数添加一个属性，在这个作用域里变量共享，则可以取消防抖。
-  var debounced = function () {
-    var _this = this;
-    var args = arguments;
-    if (timeout) clearTimeout(timeout);
-    if(immediate) {
-      // 这里的意思是说，如果没执行过func，就执行
-      var callNow = !timeout;
-      timeout = setTimeout(function () {
-        timeout = null; // 也是等到wait时间后再请timeout,到时间后才会执行第二次
-      }, wait);
-      // 如果从来没有执行过func，就立即执行
-      // 这里不是异步，这里可以返回值
-      if (callNow) result = func.apply(_this, args);
-    } else {
-      timeout = setTimeout(function () {
-        // 这里只异步空间，如果这里赋值result的话会一直都是undefined
-        func.apply(_this, args); // apply接收数组参数
-      }, wait);
-    }
-  };
-  
-  debounced.cancel = function () {
-    clearTimeout(timeout);
-    timeout = null; // 恢复初始化状态
-  };
-  
-  return debounced;
-}
-```
-
-## 防抖升级6：支持取消防抖
+## 防抖升级5：支持取消防抖
 
 ```javascript
 function debounce(func, wait, immediate) {
