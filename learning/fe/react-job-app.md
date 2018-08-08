@@ -101,9 +101,9 @@ React-4outer4
 
 页面文件结构，骨架结构的实现
 
-  - 组件放在Component文件夹下
-  - 页面放在Container文件夹下
-  - 页面入口处获取用户信息，决定跳转到哪个页面
+- 组件放在Component文件夹下
+- 页面放在Container文件夹下
+- 页面入口处获取用户信息，决定跳转到哪个页面
 
 开发模式
 
@@ -123,7 +123,6 @@ const { pwd, ...user } = data
 ```
 
 ![image.png-23.8kB][7]
-
 
   [1]: http://static.zybuluo.com/szy0syz/wojlnmcp2la4uxv0xe35juec/image.png
   [2]: http://static.zybuluo.com/szy0syz/3a1slmbmhcvnwing382lmxg6/image.png
