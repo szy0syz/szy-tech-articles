@@ -8,9 +8,9 @@
 
 > HTML DOM 定义了所有 HTML 元素的对象和属性，以及访问它们的方法。
 > HTML DOM 是关于如何获取、修改、添加或删除 HTML 元素的标准。
- 
+
 ## HTML DOM 节点
- 
+
 > ***在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML。***
 
 DOM 节点，根据 W3C 的 HTML DOM 标准，HTML 文档中的所有内容都是节点：
@@ -31,7 +31,7 @@ HTML DOM Tree 实例
 
 > 通过HTML DOM，树中的所有节点均可通过JavaScript进行访问。所有HTML元素(节点)均可修改，也可以创删除节点。
 
-#### 父节点、子节点和兄弟节点
+### 父节点、子节点和兄弟节点
 
 节点数中节点彼此有层级关系。
 
@@ -49,7 +49,7 @@ HTML DOM Tree 实例
 > w3cshcool上的例子讲错了，`html`是有父节点的，就是文档节点`document`。
 
 #### 小细节记录
- 
+
 ```javascript
 // 我在我博客http://jerryshi.com执行这个，你懂的我为什么不加all，毕竟一个文档只有一个html根节点嘛。
 var html = document.querySelector("html")
@@ -69,6 +69,7 @@ A：这个问题问得好，小伙，我看好你哦。来来来，走个原理�
 `HTMLDivElement`接口的原型链是这样的：`HTMLDivElement --> Element --> Element --> Node --> EventTarget`
 
 好了，看完原型链我们应该大概推算出：
+
 1. `childNodes`是把所有实现了Node接口的节点堆成一个类数组返回，常见的包括元素节点、attr属性节点、文本节点等
 2. `children`则只把实现了Element接口的节点堆成一个类数组返回
 
@@ -87,7 +88,7 @@ this.children = function () {
 
 ----------
 
-#### HTML DOM Nodes prototype 
+#### HTML DOM Nodes prototype
 
 ![dom-node-prototype.png-91.1kB][3]
 
