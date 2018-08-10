@@ -153,7 +153,7 @@ module: {
 ```js
 function loadImg(src) {
   var promise = new Promise(function(resolve, reject) {
-    var img = document.createElement('img)
+    var img = document.createElement('img')
     img.onload = function () {
       resolve(img)
     }
