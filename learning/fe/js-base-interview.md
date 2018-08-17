@@ -33,7 +33,12 @@ typeof null // object
 typeof console.log // function
 ```
 
-JavaScript 中共有 6 种基本数据类型：Undefined、Null、Boolean、Number、String、Symbol
+* JavaScript 中共有 7 种基本数据类型：
+  * 六种原始类型：Undefined、Null、Boolean、Number、String、Symbol
+  * 和 `Object` 类型
+  * 不能把js的内置对象：`Date`、`Array`等与数据类型混淆，因为他们和我们创建的对象就属于 `Object`
+
+> ↑↑↑ Jerry修改 ↑↑↑
 
 * 触发强制类型转换
   * 字符串拼接
@@ -66,9 +71,9 @@ JavaScript 中共有 6 种基本数据类型：Undefined、Null、Boolean、Numb
 
 ### 如何理解 JSON
 
-JSON 只不过是一个 JS 对象而已
-JSON.stringify({a:10, b:20})
-JSON.parse('{"a":"1","b":"2"}')
+* JSON 只不过是一个 JS 对象而已
+* JSON.stringify({a:10, b:20})
+* JSON.parse('{"a":"1","b":"2"}')
 
 ### 原型和原型链
 
@@ -85,7 +90,7 @@ JSON.parse('{"a":"1","b":"2"}')
 * 所有的引用类型（数据、对象、函数），都有一个`__proto__`(隐式原型)属性，其地址指向一个普通的对象
 * 所有的函数，都有一个`prototype`(显示原型)属性其属性值也是一个普通的对象
 * 所有的引用类型（数据、对象、函数），`__prpto__`隐式原型属性都指向它的构造函数的`prototype`属性
-* 当视图得到一个对象的属性时，吐过这个对象本身没有这个属性，那么就会去它的`__proto__`隐式原型(即它的构造函数的`prototype`)中寻找
+* 当试图得到一个对象的属性时，如果这个对象本身没有这个属性，那么就会去它的`__proto__`隐式原型(即它的构造函数的`prototype`)中寻找
 
 只循环对象自身的属性
 
@@ -297,7 +302,7 @@ for (i = 0; i < 10; i++) {
       alert(i)
     })
     document.body.appendChild(a)
-  })
+  })(i) // 这里是IIFE 要传参数
 }
 // 循环在立即执行函数中创建10个a标签，每个标签创建10个监听click事件，创建10个闭包一一对应这10个click监听函数~~~
 ```
@@ -323,13 +328,14 @@ function isFirstLoad() {
   }
 }
 
-var firstLoad = isFirseLoad()
+var firstLoad = isFirstLoad()
 firstLoad(10) // true
 firstLoad(10) // false
 firstLoad(20) // true
 ```
 
 * **封装变量，收敛权限**
+* 这里好比当执行完 `var firstLoad = isFirstLoad()` 后，会开辟两个内存，两者单线联系，firstLoad 存的是外面那个内存的栈地址，而 _list 是存在再里一层的空间内，他和外界的连接只有 firstLoad 指向的空间，所以我们在window的空间是无法访问到 _list 所在的空间，所以事先了 封装变量，收敛权限
 
 ## 第 4 章 JS 基础知识（下）
 
@@ -353,7 +359,7 @@ JS的三座大山：
 
 ### 日期
 
-* `Date.now()` 获取当前时间从19700101开始到现在的毫秒数
+* `Date.now()` 获取当前时间从 1970-01-01 00:00 开始到现在的毫秒数
 * 获取2018-04-22格式的日期
 
 ```js

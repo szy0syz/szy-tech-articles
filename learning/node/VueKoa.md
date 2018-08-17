@@ -209,7 +209,7 @@ this.$router.go(-1) 返回上一页
 在vue中可以直接在v-model后加trim去前后空格
 
 ```js
-inputinput(v-model.trim='info.phoneNumber' type='tel' placeholder='你的电话')
+input(v-model.trim='info.phoneNumber' type='tel' placeholder='你的电话')
 ```
 
 ### 9-3 支付功能的申请流程

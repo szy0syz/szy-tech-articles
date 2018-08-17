@@ -34,7 +34,7 @@ ReactDOM.render(
 ## CH02 JSX
 
 > 《React.js 小书
-》  http://huziketang.com/books/react/
+》  `http://huziketang.com/books/react/`
 
 ```js
 const el1 = <h1>hello</h1>;
@@ -116,6 +116,7 @@ function render({ props, type }, container) {
   container.appendChild(ele);
 }
 ```
+
 ## CH03 JSX
 
 - 在JSX的`{}`里放的是JS表达式，表达式是由变量的运行符组合而成
@@ -178,11 +179,11 @@ render(<Message msg="jerry" id="44" sytle={{color: 'red'}} hobby={['eat', 'sleep
 
 ## CH05 React组件的状态
 
-### 组件的两种定义方式及区别
+### 组件两种定义方式及区别
 
 - 类方式声明组件
   - 通过类来声明的组件比函数声明的组件多了一个 `状态`
-  - 状态可以用来存放组件内部一些变化的值。状态只能有内部初始化、由内部改变 
+  - 状态可以用来存放组件内部一些变化的值。状态只能有内部初始化、由内部改变
   - 类里的render方法指的是该组件将要如何渲染，一定要返回一个React元素，必须仅返回一个React元素
 
 ```js
@@ -248,11 +249,13 @@ static propTypes = {
 ```js
 <input type="text" value={this.state.val} />
 ```
+
 当我们仅给`input`元素的value设置组件状态，而不设置诸如onChange的handle时，组件被React当做`只读元素 read-only`
 
 ```js
 <input onChange={this.handleChange} type="text" value={this.state.val} />
 ```
+
 而当我们设置了onChange来处理绑定后，就会实现了input.value和state.val之间的`双向绑定`。
 
 ## CH8 非受控组件DOM操作
@@ -320,14 +323,14 @@ export default class Panel extends Component {
 
 一个组件类大多由 `extends Component` 创建。
 
-1. getInitialState
-初始化 `this.state` 的值，只在组件状态前调用一次。如果是ES6语法，也可以在构造函数中初始化状态: `constructor(props)`
+- getInitialState
+  - 初始化 `this.state` 的值，只在组件状态前调用一次。如果是ES6语法，也可以在构造函数中初始化状态: `constructor(props)`
 
-2. getDefaultProps
-只在组件创建时调用一次并缓存返回的对象(即在 `React.createClass` 之后就会调用)。
+- getDefaultProps
+  - 只在组件创建时调用一次并缓存返回的对象(即在 `React.createClass` 之后就会调用)。
 
-3. render
-组装生成这个组件的HTML结构(使用原生HTML标签或者子组件)，也可以返回null或者false，这时候 ReactDOM.findDOMNode(this)会返回null。
+- render
+  - 组装生成这个组件的HTML结构(使用原生HTML标签或者子组件)，也可以返回null或者false，这时候 ReactDOM.findDOMNode(this)会返回null。
 
 ### 装载组件时触发
 

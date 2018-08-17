@@ -9,7 +9,7 @@
   - `throttle`策略的电梯。保证如果电梯第一个人进来后，15秒后准时运送一次，不等待。如果没有人，则待机。
   - `debounce`策略的电梯。如果电梯里有人进来，等待15秒。如果又人进来，15秒等待重新计时，直到15秒超时，开始运送。
 
-## 防抖 debounce
+## 防抖-debounce
 
 - 防抖的原理：某行为在其个时间段内不停地被触发，且行为触发间断时间小于预设wait时间，此时行为执行函数一直不会被执行，直到停止触发的wait时间后才会被执行指定函数。
   - 拿mousemove举个栗子：鼠标在区域内不停的快速晃，此时预置函数不会被执行，直到晃停后xxx毫秒才会被执行。
@@ -42,7 +42,7 @@ container.onmousemove = debounce(getUserAction, 500);
 
 ![debounce01.png-173.6kB][1]
 
-## 防抖升级第二波，修复this关键字的指向
+## 防抖升级1：修复this关键字的指向
 
 ```javascript
 // 第二波 防抖
@@ -61,7 +61,7 @@ function debounce(func, wait) {
 }
 ```
 
-## 防抖升级第三波，修复arguments问题
+## 防抖升级2：修复arguments问题
 
 ```javascript
 function debounce(func, wait) {
@@ -80,7 +80,7 @@ function debounce(func, wait) {
 }
 ```
 
-## 防抖升级第四波，支持immediate立即执行
+## 防抖升级3：支持immediate立即执行
 
 - 如果immediate参数为true则，从来没有支持过func就立马执行一次。以后如果还想执行，你得等到wait时间后再触发行为就会立即执行。
 
@@ -108,7 +108,7 @@ function debounce(func, wait, immediate) {
 }
 ```
 
-## 防抖升级第五波，支持返回值
+## 防抖升级4：支持返回值
 
 ```javascript
 function debounce(func, wait, immediate) {
@@ -136,43 +136,7 @@ function debounce(func, wait, immediate) {
 }
 ```
 
-## 防抖升级第五波，支持取消
-
-```javascript
-function debounce(func, wait, immediate) {
-  var timeout, result; // result 要定义不销毁的作用域里~
-  // 将翻来的匿名函数换成具名函数，是为了给函数添加一个属性，在这个作用域里变量共享，则可以取消防抖。
-  var debounced = function () {
-    var _this = this;
-    var args = arguments;
-    if (timeout) clearTimeout(timeout);
-    if(immediate) {
-      // 这里的意思是说，如果没执行过func，就执行
-      var callNow = !timeout;
-      timeout = setTimeout(function () {
-        timeout = null; // 也是等到wait时间后再请timeout,到时间后才会执行第二次
-      }, wait);
-      // 如果从来没有执行过func，就立即执行
-      // 这里不是异步，这里可以返回值
-      if (callNow) result = func.apply(_this, args);
-    } else {
-      timeout = setTimeout(function () {
-        // 这里只异步空间，如果这里赋值result的话会一直都是undefined
-        func.apply(_this, args); // apply接收数组参数
-      }, wait);
-    }
-  };
-  
-  debounced.cancel = function () {
-    clearTimeout(timeout);
-    timeout = null; // 恢复初始化状态
-  };
-  
-  return debounced;
-}
-```
-
-## 第六波 支持取消防抖
+## 防抖升级5：支持取消防抖
 
 ```javascript
 function debounce(func, wait, immediate) {
