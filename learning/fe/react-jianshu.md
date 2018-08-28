@@ -43,6 +43,19 @@ handleItemRremove(index) {
 
 ## 第4章 React高级内容
 
+* `defaultProps` 默认属性值
+* `propTypes`    限制属性类别
+
+### props/state/render函数的关系
+
+> 当组件的 `state` 或者 `props` 发生改变时，`render`函数就会执行
+
+怎么证明呢？---> render函数首行加 `console.log`
+
+之所以数据发生变化，页面就会跟着变，是因为页面是由render函数渲染出来的。所以当数据state变化时，render函数就会重新执行一次，所以页面也就跟着变。这里数据不仅仅指的是state，其还包括了props
+
+当父组件的render函数被运行时，它所有的子组件的render函数都会再次被运行
+
 ## 第5章 Redux入门
 
 ## 第6章 Redux进阶
