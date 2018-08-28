@@ -56,6 +56,46 @@ handleItemRremove(index) {
 
 当父组件的render函数被运行时，它所有的子组件的render函数都会再次被运行
 
+### 相识虚拟DOM/渲染机制render
+
+> 第一版：渲染机制
+
+1. `state` 数据
+2. `jsx` 模板
+3. 数据 + 模板 结合，生成真实的DOM，页面渲染出来
+4. state 发生改变
+5. 数据 + 模板 结合，生成新的真实DOM，替换原来的DOM
+
+* 第一版缺陷：
+  * 第一次生成了一个完整的DOM片段
+  * 第二次又生成一个完整DOM
+  * 第二次生成的DOM替换掉第一次生成的DOM（**非常耗性能**）
+
+> 第二版：渲染机制
+
+1. `state` 数据
+2. `jsx` 模板
+3. 数据 + 模板 结合，生成真实的DOM，页面渲染出来
+4. state 发生改变
+5. 数据 + 模板 结合，生成新的真实DOM，但并不直接替换原来DOM
+6. 新的DOM (DocumentFragment) 和 原来的DOM做对比，找差异diff
+7. 找出了input框发生了变化
+8. 只用新的DOM中的input元素，替换掉老的DOM中的input元素
+
+* 第二版缺陷：
+  * 性能提升不明显
+
+> 第三版
+
+1. `state` 数据
+2. `jsx` 模板
+3. 数据 + 模板 结合，生成真实的DOM，页面渲染出来 `<div id="content"><span>hello world</span></div>`
+4. 生成虚拟DOM(实质就是一个JS对象数组而已，用它来描述真实DOM) `['div', {id: 'content'}, ['span',{}, 'hello world']]` (消耗了一点性能))
+5. state 发生改变
+6. 数据 + 模板 `['div', {id: 'content', ['span', {}, 'bye bye']}]` (极大的提示了性能，因为原来使用了WebAPI级别操作，生成DocumentFragment对象，性能开销很大，而现在只是一个JS对象)
+7. 比较原始虚拟DOM和新的虚拟DOM的区别，找到区别是span的内容
+8. 直接操作DOM，改变span的内容即可
+
 ## 第5章 Redux入门
 
 ## 第6章 Redux进阶
