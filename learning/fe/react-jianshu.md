@@ -89,12 +89,21 @@ handleItemRremove(index) {
 
 1. `state` 数据
 2. `jsx` 模板
-3. 数据 + 模板 结合，生成真实的DOM，页面渲染出来 `<div id="content"><span>hello world</span></div>`
-4. 生成虚拟DOM(实质就是一个JS对象数组而已，用它来描述真实DOM) `['div', {id: 'content'}, ['span',{}, 'hello world']]` (消耗了一点性能))
+3. 数据 + 模板生成虚拟DOM(实质就是一个JS对象数组而已，用它来描述真实DOM) `['div', {id: 'content'}, ['span',{}, 'hello world']]` (消耗了一点性能))
+4. 使用虚拟DOM的结构生成真实的DOM，页面渲染出来 `<div id="content"><span>hello world</span></div>`
 5. state 发生改变
 6. 数据 + 模板 `['div', {id: 'content', ['span', {}, 'bye bye']}]` (极大的提示了性能，因为原来使用了WebAPI级别操作，生成DocumentFragment对象，性能开销很大，而现在只是一个JS对象)
 7. 比较原始虚拟DOM和新的虚拟DOM的区别，找到区别是span的内容
-8. 直接操作DOM，改变span的内容即可
+8. 直接操作原始DOM，改变span的内容即可
+
+render函数中：jsx --> createElement --> 虚拟DOM(js对象) --> 真实DOM
+
+说白了也就是jsx中的 `<div></div>` 就不是虚拟dom，只是jsx的语法而已，但最终还是会转换
+
+虚拟DOM的好处：
+
+* 性能提升了
+* 他使得跨端应用得以实现，如React Native
 
 ## 第5章 Redux入门
 
