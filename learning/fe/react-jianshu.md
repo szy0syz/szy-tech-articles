@@ -105,6 +105,10 @@ render函数中：jsx --> createElement --> 虚拟DOM(js对象) --> 真实DOM
 * 性能提升了
 * 他使得跨端应用得以实现，如React Native
 
+### 虚拟DOM的diff算法
+
+> 两个虚拟DOM的比较差异就叫diff(diffrence)算法，实则就是JavaScript中两个js对象的差异比对。
+
 ## 第5章 Redux入门
 
 ## 第6章 Redux进阶
