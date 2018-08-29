@@ -121,6 +121,22 @@ render函数中：jsx --> createElement --> 虚拟DOM(js对象) --> 真实DOM
 
 在一些页面动画等特殊情况下，必须要操作dom时，我们还是用ref来获取dom。但要记得ref和setState合用是有些坑，导致了DOM获取并不及时，原因就是setState是异步的，如果你希望页面更新之后再获取dom，一定记得要把dom操作的语法放到setState的回调函数中。
 
+### 生命周期函数
+
+> 在组件运行的某个时刻，会被自动执行的一些函数。
+
+React生命周期函数的四大阶段：Initialization  --> Mounting  --> Updation  -->  Unmonting
+
+* `componentWillMount()`：在组件即将被挂载到页面的时刻自动执行
+* `render()`：渲染
+* `componentDidMount()`：组件刚刚被挂载之后的时刻自动执行
+* `shouldComponentUpdate()`：组件被更新之前，它会自动执行。该函数要求返回boolean值，返回false这不会执行render函数更新组件。所以可以理解这个函数为：是否应该更新组件？
+* `componentWillUpdate()`：组件被更新之前，它会自动执行，但它会在 `shouldComponentUpdate()` 之后执行。如果`shouldComponentUpdate()`：返回false就不会有该函数执行了
+* `componentDidUpdate()`：组件在被更新完成后，它会自动执行
+* `componentWillUpdate()`：当一个组件要从父组件接收了参数，且只有父组件的render函数被重新执行了，则子组件的这个生命周期函数就会被执行。如果这个子组件一开始没有，第一次添加到父组件中时，`componentWillUpdate()`是不会被执行的！打个自己理解的比分，这个生命周期函数好比，要先有儿子以后，父亲给儿子传递属性才会触发，要是连个父亲都有没，母亲生的儿子，是不可能触发的！！！
+* `componentWillUnmount`：组件即将要从页面中剔除的时刻，它会自动执行
+
+
 ## 第5章 Redux入门
 
 ## 第6章 Redux进阶
