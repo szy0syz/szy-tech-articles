@@ -391,6 +391,91 @@ return (
 
     又复习了一道redux执行流程
 
+### 8-8 实现加载更多功能
+
+`actionCreators`中可以传递更多参数
+
+### 8-9 返回顶部功能实现
+
+重构homepage-reducer
+
+[★React小技巧★] 在组件创建时所绑定的事件，必须在销毁组件时删除绑定。因为如果是SPA就麻烦了。
+
+### 8-10 首页性能调优及路由跳转
+
+在目前组件中，很多组件都用connect函数包裹，这样只要正颗state树的某孙子属性跟新，这些组件也被迫更新，这样会大大影响性能！所以解决方案：
+
+* 手写 `shouldCompoentsUpdate` 生命周期函数
+* 改用 `PureComponent` 代替 `Comppnent`
+
+[★React小技巧★] 如果使用 `PureComponent`时，必须结合使用 `immutable` 数据格式管理数据，否则没用直接 使用 `PureComponent` 就会触发React底层的坑！
+
+什么叫 单页应用程序(SPA) ？SPA指的是不管你怎么做页面的跳转，整个网站的只会加载一个(一次)HTML文件。
+
+为了保证每次跳转都是 SPA式跳转 我们得用 react-router-dom 包中的 `<Link>` 组件
+
+之前在Header组件的 logo 组件 我们使用了 a标签 的直接跳转，现在得修复成用 `<Link>` 组件
+
+在 `<BrowserRouter></BrowserRouter>` 的路由组件中只能有一个 `child`
+
 ## 第9章 项目：详情页面和登录功能开发
+
+### 9-1 详情页布局
+
+在写文章内部布局时，可以分别对标签写样式
+
+```js
+export const Content = styled.div`
+  color: #2f2f2f;
+  img {
+    width: 100%;
+  }
+  p {
+    margin: 25px 0;
+    font-size: 16px;
+    line-height: 30px;
+  }
+  b {
+    font-weight:bold;
+  }
+`
+```
+
+### 9-4 页面路由参数的传递
+
+react动态路由：先改路由匹配  -> 再传值 -> 最后组件内取值 `this.props.match.params.id`
+
+### 9-6 实现登录功能
+
+我们可以在 `Header` 组件中 条用 `Login` 组件的 `actionCreators`，因为每个组件可以操作的state 仅限于它自己范围内的，如果改变别人的 state 得让别人的 `actionCreators` 来发起
+
+render函数后可以跟 if 根据不同情况返回 对应jsx
+
+### 9-8 异步组件及withRouter路由方法的使用
+
+React的异步组件底层实现相对比较复杂，我们可以使用第三方封装组件即可：`react-loadable`
+
+[**1**] 在当前组件下创建 `loadable.js` 文件
+
+[**2**] 根据实际业务写 `LoadableComponent`组件
+
+```js
+import React from 'react'
+import Loadable from 'react-loadable'
+const LoadableComponent = Loadable({
+  loader: () => import('./'),
+  loading() {
+    return <div>loading...</div>
+  }
+});
+
+export default () => <LoadableComponent />
+```
+
+    自此，我们就创建了一个异步版的 `detail` 组件。
+
+[**3**] 再修改总路由配置文件，此时我们不能直接引入同步版的组件，我们需要引入 `loadableComponent` b版本的异步组件 `import Detail from './page/detail/loadbable'`
+
+[**4**] 如果组件内使用了动态路由参数，还需要在同步版组件导出时，套一层 withRouter， 这样组件就可以拿到路由参数 `export default connect(mapState, mapDispatch)(withRouter(Detail))`
 
 ## 第10章 课程总结
