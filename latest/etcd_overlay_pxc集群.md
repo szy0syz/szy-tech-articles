@@ -37,6 +37,17 @@ nohup ./etcd --name node-lk \
 
 
 # -- 在测试
+## ------------ ok ----------------
+nohup ./etcd --name node-yncce \
+--data-dir /home/jerry/etcd/default.etcd \
+--initial-advertise-peer-urls http://172.18.85.161:2380 \
+--listen-peer-urls http://172.18.85.161:2380 \
+--listen-client-urls http://172.18.85.161:2379,http://127.0.0.1:2379 \
+--advertise-client-urls http://172.18.85.161:2379 \
+--initial-cluster-token mritd-etcd-cluster \
+--initial-cluster node-yncce=http://172.18.85.161:2380,node-lk=http://172.18.69.200:2380 \
+--initial-cluster-state new&
+
 nohup ./etcd --name node-lk \
 --data-dir /home/jerry/etcd/default.etcd \
 --initial-advertise-peer-urls http://172.18.69.200:2380 \
@@ -46,7 +57,6 @@ nohup ./etcd --name node-lk \
 --initial-cluster-token mritd-etcd-cluster \
 --initial-cluster node-yncce=http://172.18.85.161:2380,node-lk=http://172.18.69.200:2380 \
 --initial-cluster-state new&
-
 # --------------------------------------------------------------------
 vim /etc/hosts
 
